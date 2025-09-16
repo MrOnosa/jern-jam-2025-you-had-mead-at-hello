@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://ckavqb25bdaul"]
+
+[ext_resource type="Texture2D" uid="uid://cf6x4dcqxxxn" path="res://assets/field.svg" id="1_fj7yv"]
+[ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://character_body_2d.gd" id="2_aqk2v"]
+[ext_resource type="Texture2D" uid="uid://ouxjix8duaje" path="res://assets/frog.svg" id="2_tlwt5"]
+[ext_resource type="Script" uid="uid://cmcyjojsvvnxw" path="res://bee_colony.gd" id="4_036b0"]
+[ext_resource type="Texture2D" uid="uid://iml8e1d6t7qe" path="res://assets/bee_colony.svg" id="4_aqk2v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aqk2v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tlwt5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_036b0"]
+radius = 37.054016
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dwbse"]
+radius = 90.02222
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqk2v"]
+radius = 100.0
+height = 282.03125
+
+[node name="World" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Grass" type="TextureRect" parent="."]
+texture_repeat = 2
+offset_right = 13491.0
+offset_bottom = 8707.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_fj7yv")
+stretch_mode = 1
+
+[node name="BeeKeeper" type="CharacterBody2D" parent="."]
+position = Vector2(230, 189)
+motion_mode = 1
+script = ExtResource("2_aqk2v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BeeKeeper"]
+scale = Vector2(0.1494709, 0.1494709)
+sprite_frames = SubResource("SpriteFrames_aqk2v")
+
+[node name="Camera2D" type="Camera2D" parent="BeeKeeper"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeeKeeper"]
+visible = false
+shape = SubResource("CircleShape2D_036b0")
+
+[node name="BeeColony" type="StaticBody2D" parent="."]
+position = Vector2(466, 116)
+scale = Vector2(0.25386548, 0.25386548)
+script = ExtResource("4_036b0")
+
+[node name="Sprite2D" type="Sprite2D" parent="BeeColony"]
+texture = ExtResource("4_aqk2v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeeColony"]
+visible = false
+position = Vector2(6, 46)
+shape = SubResource("CircleShape2D_dwbse")
+
+[node name="InteractiveArea2D" type="Area2D" parent="BeeColony"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeeColony/InteractiveArea2D"]
+visible = false
+position = Vector2(3.939094, 63.025505)
+rotation = 1.5707964
+scale = Vector2(2.6427908, 2.8213081)
+shape = SubResource("CapsuleShape2D_aqk2v")
+
+[connection signal="body_entered" from="BeeColony/InteractiveArea2D" to="BeeColony" method="_on_interactive_area_2d_body_entered"]
+[connection signal="body_exited" from="BeeColony/InteractiveArea2D" to="BeeColony" method="_on_interactive_area_2d_body_exited"]

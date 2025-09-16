@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="100mm"
+   height="100mm"
+   viewBox="0 0 100 100"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   sodipodi:docname="field.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="120.56171"
+     inkscape:cy="177.83736"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect5"
+       is_visible="true"
+       lpeversion="1.3"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       uniform="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4"
+       is_visible="true"
+       lpeversion="1.3"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       uniform="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect3"
+       is_visible="true"
+       lpeversion="1.3"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       uniform="false" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect1"
+       is_visible="true"
+       lpeversion="1" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#3eb848;stroke:none;stroke-width:3.0185;paint-order:stroke fill markers;fill-opacity:1"
+       id="rect1"
+       width="100"
+       height="100"
+       x="0"
+       y="0" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#2a7b31;stroke-width:3.0185;stroke-opacity:1;paint-order:stroke fill markers"
+       d="m 17.305702,59.026475 c 0,0 7.390002,-0.65481 7.577091,17.773422 0,-20.860385 2.245064,-22.637727 2.245064,-22.637727"
+       id="path5"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#2a7b31;stroke-width:3.0185;stroke-opacity:1;paint-order:stroke fill markers"
+       d="M 24.882793,76.799897 C 28.437477,66.229388 33.021151,66.603564 33.021151,66.603564"
+       id="path6" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#2a7b31;stroke-width:2.54989;stroke-opacity:1;paint-order:stroke fill markers"
+       d="m 74.750428,31.199605 c 0,0 -6.175321,-0.559193 -6.331659,15.178095 0,-17.814291 -1.876047,-19.3321 -1.876047,-19.3321"
+       id="path7"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#2a7b31;stroke-width:2.54989;stroke-opacity:1;paint-order:stroke fill markers"
+       d="M 68.418769,46.3777 C 65.448361,37.350728 61.618097,37.670265 61.618097,37.670265"
+       id="path8" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#2a7b31;stroke-width:2.42843;stroke-opacity:1;paint-order:stroke fill markers"
+       d="m 34.168989,15.832145 c 0,0 5.703945,1.024971 5.872031,14.301031 0,-15.028231 -1.119734,-18.366637 -1.119734,-18.366637"
+       id="path9"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#2a7b31;stroke-width:2.42843;stroke-opacity:1;paint-order:stroke fill markers"
+       d="m 40.04102,30.133176 c 3.193631,-7.615201 6.002113,-9.368692 6.002113,-9.368692"
+       id="path10"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#2a7b31;stroke-width:2.42843;stroke-opacity:1;paint-order:stroke fill markers"
+       d="m 82.437866,81.732685 c 0,0 5.703945,1.024971 5.872031,14.301031 0,-15.028231 -1.119734,-18.366637 -1.119734,-18.366637"
+       id="path11"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#2a7b31;stroke-width:2.42843;stroke-opacity:1;paint-order:stroke fill markers"
+       d="m 88.309897,96.033716 c 3.193631,-7.615201 6.002113,-9.368692 6.002113,-9.368692"
+       id="path12"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>
