@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://iml8e1d6t7qe"
-path="res://.godot/imported/bee_colony.svg-437cdf2a30e511ef9e59691d0a29a7e3.ctex"
+uid="uid://ouxjix8duaje"
+path="res://.godot/imported/frog.svg-9c096f74feec6c8529fad8bbd2f03024.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bee_colony.svg"
-dest_files=["res://.godot/imported/bee_colony.svg-437cdf2a30e511ef9e59691d0a29a7e3.ctex"]
+source_file="res://assets/placeholder/frog.svg"
+dest_files=["res://.godot/imported/frog.svg-9c096f74feec6c8529fad8bbd2f03024.ctex"]
 
 [params]
 
