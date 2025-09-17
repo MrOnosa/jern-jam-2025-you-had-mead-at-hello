@@ -1,11 +1,4 @@
-# d2jam-2025-sheep-herder
+# jern-jam-2025-you-had-mead-at-hello
+for Jern Jam 2025 - https://itch.io/jam/jern-jam-2025
 
-Play for free at: https://mronosa.itch.io/sheep-herder
-
-​Use WASD to control the dog. Gather the sheep in the pen.
-
-Controller support is also available. 
-
-By: Captain_Onosa for D2Jam - https://d2jam.com/
 Engine: Godot
-Font:  Open Sans SemiBold
