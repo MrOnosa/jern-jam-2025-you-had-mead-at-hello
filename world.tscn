@@ -1,20 +1,21 @@
-[gd_scene load_steps=34 format=3 uid="uid://ckavqb25bdaul"]
+[gd_scene load_steps=35 format=3 uid="uid://ckavqb25bdaul"]
 
 [ext_resource type="Texture2D" uid="uid://cf6x4dcqxxxn" path="res://assets/field.svg" id="1_fj7yv"]
 [ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://bee_keeper.gd" id="2_aqk2v"]
-[ext_resource type="Texture2D" uid="uid://ouxjix8duaje" path="res://assets/placeholder/frog.svg" id="2_tlwt5"]
 [ext_resource type="Shader" uid="uid://byxo6um7bonre" path="res://world.tres" id="3_hiqwa"]
 [ext_resource type="Script" uid="uid://cuuenfvx0rdhk" path="res://FancyCamera.gd" id="3_ic0uy"]
 [ext_resource type="Script" uid="uid://cmcyjojsvvnxw" path="res://bee_colony.gd" id="4_036b0"]
-[ext_resource type="Texture2D" uid="uid://iml8e1d6t7qe" path="res://assets/placeholder/bee_colony.svg" id="4_aqk2v"]
 [ext_resource type="Texture2D" uid="uid://d3asabufovkvv" path="res://assets/placeholder/honeyHighSprite.png" id="4_pkg7o"]
 [ext_resource type="Texture2D" uid="uid://bgejwesxmh55" path="res://assets/placeholder/harvestHoneyButtonTexture.png" id="6_dwbse"]
-[ext_resource type="Texture2D" uid="uid://bmtmvlpipa3d6" path="res://assets/placeholder/workbenchSprite.png" id="8_gbfbk"]
+[ext_resource type="Texture2D" uid="uid://dgrh8ag1vpqjf" path="res://assets/beekeeper.png" id="6_hiqwa"]
+[ext_resource type="Texture2D" uid="uid://fi4kpxtqot0o" path="res://assets/beekeeper_sting.png" id="7_2u3nc"]
 [ext_resource type="Script" uid="uid://dor5ypb603q08" path="res://workbench.gd" id="8_ioo17"]
+[ext_resource type="Texture2D" uid="uid://d2chyn8tlqyat" path="res://assets/beehive.png" id="9_2u3nc"]
 [ext_resource type="Texture2D" uid="uid://4cli82gdv1h3" path="res://assets/placeholder/circle2.png" id="10_wse8f"]
 [ext_resource type="Script" uid="uid://b7k4vr6n0ij4s" path="res://bee.gd" id="12_70uel"]
-[ext_resource type="Texture2D" uid="uid://bwxlmj2q6pff2" path="res://assets/placeholder/bee.jpg" id="12_k3n1d"]
+[ext_resource type="Texture2D" uid="uid://pve1ikrunf0d" path="res://assets/workbench.png" id="12_hiqwa"]
 [ext_resource type="Texture2D" uid="uid://dpbrbhw3fct20" path="res://assets/placeholder/flower.png" id="14_hiqwa"]
+[ext_resource type="Texture2D" uid="uid://bd8chkxgjblgq" path="res://assets/bee.png" id="14_udxuc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_70uel"]
 normal = Vector2(0, 1)
@@ -53,22 +54,26 @@ shader_parameter/FloatParameter = 25.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_tlwt5")
+"texture": ExtResource("6_hiqwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2u3nc")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_036b0"]
-radius = 37.054016
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ikiii"]
+radius = 14.0
+height = 80.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dwbse"]
-radius = 90.02222
+radius = 54.00926
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqk2v"]
-radius = 303.31024
-height = 811.45337
+radius = 86.000015
+height = 262.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_dwbse"]
 font_size = 50
@@ -78,7 +83,7 @@ stacked_outline_0/size = 7
 stacked_outline_0/color = Color(0, 0.74509805, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wse8f"]
-size = Vector2(165, 104)
+size = Vector2(150, 66)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ioo17"]
 radius = 104.0
@@ -88,7 +93,7 @@ height = 300.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("12_k3n1d")
+"texture": ExtResource("14_udxuc")
 }],
 "loop": true,
 "name": &"default",
@@ -177,11 +182,11 @@ motion_mode = 1
 script = ExtResource("2_aqk2v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BeeKeeper"]
-scale = Vector2(0.1494709, 0.1494709)
 sprite_frames = SubResource("SpriteFrames_aqk2v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BeeKeeper"]
-shape = SubResource("CircleShape2D_036b0")
+position = Vector2(0, 38)
+shape = SubResource("CapsuleShape2D_ikiii")
 
 [node name="Holding" type="Node2D" parent="BeeKeeper"]
 
@@ -194,30 +199,29 @@ texture = ExtResource("4_pkg7o")
 
 [node name="BeeColony" type="StaticBody2D" parent="."]
 position = Vector2(466, 116)
-scale = Vector2(0.25386548, 0.25386548)
 script = ExtResource("4_036b0")
 
 [node name="Sprite2D" type="Sprite2D" parent="BeeColony"]
-texture = ExtResource("4_aqk2v")
+texture = ExtResource("9_2u3nc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BeeColony"]
-visible = false
-position = Vector2(6, 46)
+position = Vector2(-14, 21)
 shape = SubResource("CircleShape2D_dwbse")
 
 [node name="InteractiveArea2D" type="Area2D" parent="BeeColony"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BeeColony/InteractiveArea2D"]
-position = Vector2(3.939094, 63.025505)
+position = Vector2(-9.999992, 14)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_aqk2v")
 
 [node name="ActionButton" type="TextureButton" parent="BeeColony"]
 z_index = 100
-offset_left = -86.66007
-offset_top = 169.38104
-offset_right = 106.33993
-offset_bottom = 361.38104
+offset_left = -45.99997
+offset_top = 88.0
+offset_right = 147.00003
+offset_bottom = 280.0
+scale = Vector2(0.32000124, 0.32000124)
 texture_normal = ExtResource("6_dwbse")
 
 [node name="Label" type="Label" parent="BeeColony/ActionButton"]
@@ -236,19 +240,19 @@ position = Vector2(734, 333)
 script = ExtResource("8_ioo17")
 
 [node name="WorkbenchSprite" type="Sprite2D" parent="Workbench"]
-texture = ExtResource("8_gbfbk")
+texture = ExtResource("12_hiqwa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Workbench"]
-position = Vector2(1, 36)
+position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_wse8f")
 
 [node name="InteractiveArea2D" type="Area2D" parent="Workbench"]
+position = Vector2(-4, -25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Workbench/InteractiveArea2D"]
 position = Vector2(-5.000001, 28)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ioo17")
-metadata/_edit_lock_ = true
 
 [node name="ActionButton" type="TextureButton" parent="Workbench"]
 z_index = 100
@@ -278,108 +282,9 @@ gravity_scale = 0.0
 script = ExtResource("12_70uel")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bee"]
-scale = Vector2(0.19, 0.19)
 sprite_frames = SubResource("SpriteFrames_2o6r5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bee"]
-shape = SubResource("CircleShape2D_70uel")
-
-[node name="Bee2" type="RigidBody2D" parent="."]
-position = Vector2(53, 47)
-collision_layer = 3
-collision_mask = 3
-gravity_scale = 0.0
-script = ExtResource("12_70uel")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bee2"]
-scale = Vector2(0.19, 0.19)
-sprite_frames = SubResource("SpriteFrames_2o6r5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee2"]
-shape = SubResource("CircleShape2D_70uel")
-
-[node name="Bee3" type="RigidBody2D" parent="."]
-position = Vector2(53, 47)
-collision_layer = 3
-collision_mask = 3
-gravity_scale = 0.0
-script = ExtResource("12_70uel")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bee3"]
-scale = Vector2(0.19, 0.19)
-sprite_frames = SubResource("SpriteFrames_2o6r5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee3"]
-shape = SubResource("CircleShape2D_70uel")
-
-[node name="Bee4" type="RigidBody2D" parent="."]
-position = Vector2(53, 47)
-collision_layer = 3
-collision_mask = 3
-gravity_scale = 0.0
-script = ExtResource("12_70uel")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bee4"]
-scale = Vector2(0.19, 0.19)
-sprite_frames = SubResource("SpriteFrames_2o6r5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee4"]
-shape = SubResource("CircleShape2D_70uel")
-
-[node name="Bee5" type="RigidBody2D" parent="."]
-position = Vector2(53, 47)
-collision_layer = 3
-collision_mask = 3
-gravity_scale = 0.0
-script = ExtResource("12_70uel")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bee5"]
-scale = Vector2(0.19, 0.19)
-sprite_frames = SubResource("SpriteFrames_2o6r5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee5"]
-shape = SubResource("CircleShape2D_70uel")
-
-[node name="Bee6" type="RigidBody2D" parent="."]
-position = Vector2(53, 47)
-collision_layer = 3
-collision_mask = 3
-gravity_scale = 0.0
-script = ExtResource("12_70uel")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bee6"]
-scale = Vector2(0.19, 0.19)
-sprite_frames = SubResource("SpriteFrames_2o6r5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee6"]
-shape = SubResource("CircleShape2D_70uel")
-
-[node name="Bee7" type="RigidBody2D" parent="."]
-position = Vector2(53, 47)
-collision_layer = 3
-collision_mask = 3
-gravity_scale = 0.0
-script = ExtResource("12_70uel")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bee7"]
-scale = Vector2(0.19, 0.19)
-sprite_frames = SubResource("SpriteFrames_2o6r5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee7"]
-shape = SubResource("CircleShape2D_70uel")
-
-[node name="Bee8" type="RigidBody2D" parent="."]
-position = Vector2(53, 47)
-collision_layer = 3
-collision_mask = 3
-gravity_scale = 0.0
-script = ExtResource("12_70uel")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bee8"]
-scale = Vector2(0.19, 0.19)
-sprite_frames = SubResource("SpriteFrames_2o6r5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee8"]
 shape = SubResource("CircleShape2D_70uel")
 
 [node name="Flower" type="Area2D" parent="." groups=["has_food"]]
