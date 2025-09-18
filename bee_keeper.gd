@@ -9,9 +9,6 @@ const SPEED = 300.0
 
 var target_position : Vector2
 var click_position : Vector2
-
-var sim_vel : Vector2
-
 var holding := Holding.NOTHING
 
 func _ready():
@@ -22,38 +19,10 @@ func _process(_delta: float) -> void:
 	%HoneyHighSprite.visible = holding == Holding.HONEY_HIGH
 
 func _physics_process(_delta: float) -> void:
-	if position.distance_to(click_position) > 100:
-		#if((click_position - position).normalized().x < 0):
-		#	target_position.x = (click_position - position).clamp((click_position - position).normalized(), Vector2.ZERO).x
-
-		#else:
-		#	target_position.x = (click_position - position).clamp(Vector2.ZERO, (click_position - position).normalized()).x
-
-		#if((click_position - position).normalized().y < 0):
-		#	target_position.y = (click_position - position).clamp((click_position - position).normalized(), Vector2.ZERO).y
-
-		#else:
-		#	target_position.y = (click_position - position).clamp(Vector2.ZERO, (click_position - position).normalized()).y
-		#target_position = (click_position - position).clamp(Vector2.ZERO, (click_position - position).normalized())
+	if position.distance_to(click_position) > 3:
 		target_position = (click_position - position).normalized()
-		sim_vel = sim_vel.lerp(target_position * SPEED * clampf(position.distance_to(target_position) / 5, 0, 1), 0.025)
-	else:
-		sim_vel *= 0.95
-	velocity = sim_vel
-	move_and_slide()
-	
-	# Add the gravity.
-	## Handle jump.
-	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		#velocity.y = JUMP_VELOCITY
-#
-	## Get the input direction and handle the movement/deceleration.
-	## As good practice, you should replace UI actions with custom gameplay actions.
-	#var direction := Input.get_axis("ui_left", "ui_right")
-	#if direction:
-		#velocity.x = direction * SPEED
-	#else:
-		#velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity = target_position * SPEED
+		move_and_slide()
 		
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click"):
