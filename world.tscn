@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bmtmvlpipa3d6" path="res://assets/placeholder/workbenchSprite.png" id="8_gbfbk"]
 [ext_resource type="Script" uid="uid://dor5ypb603q08" path="res://workbench.gd" id="8_ioo17"]
 [ext_resource type="Texture2D" uid="uid://4cli82gdv1h3" path="res://assets/placeholder/circle2.png" id="10_wse8f"]
-[ext_resource type="Script" uid="uid://b7k4vr6n0ij4s" path="res://bee.gd" id="12_70uel"]
+[ext_resource type="Script" path="res://bee.gd" id="12_70uel"]
 [ext_resource type="Texture2D" uid="uid://bwxlmj2q6pff2" path="res://assets/placeholder/bee.jpg" id="12_k3n1d"]
 [ext_resource type="Texture2D" uid="uid://dpbrbhw3fct20" path="res://assets/placeholder/flower.png" id="14_hiqwa"]
 
