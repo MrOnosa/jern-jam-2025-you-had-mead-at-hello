@@ -12,14 +12,14 @@ func _process(delta: float) -> void:
 
 func bee_navigate_generator() -> void:
 	var subtween_spin = create_tween()
-	subtween_spin.tween_property(self, "rotation_degrees", 45.0, 1.0)
-	subtween_spin.tween_property(self, "rotation_degrees", 0.0, 1.0)
+	subtween_spin.tween_property(self, "rotation_degrees", 45.0, randf_range(0.5, 1.5)).set_trans(Tween.TRANS_SINE ) 
+	subtween_spin.tween_property(self, "rotation_degrees", 0.0, randf_range(0.5, 1.5)).set_trans(Tween.TRANS_SINE )
 	
 	
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "position", world_clamp(position + Vector2(randi_range(-10, 10), randi_range(-10, 30))), 1.0).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(self, "position", world_clamp(position + Vector2(randi_range(-10, 10), randi_range(-10, 30))), randf_range(0.5, 1.5)).set_trans(Tween.TRANS_SINE )
 	tween.tween_subtween(subtween_spin)
-	tween.tween_property(self, "position", world_clamp(position + Vector2(randi_range(-50, 100), randi_range(-100, 300))), 1.0).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(self, "position", world_clamp(position + Vector2(randi_range(-50, 100), randi_range(-100, 300))), randf_range(0.5, 1.5)).set_trans(Tween.TRANS_SINE )
 	tween.tween_callback(bee_navigate_generator)
 	
 func world_clamp(vector: Vector2) -> Vector2:

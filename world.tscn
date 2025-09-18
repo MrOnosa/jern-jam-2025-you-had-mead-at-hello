@@ -1,8 +1,9 @@
-[gd_scene load_steps=32 format=3 uid="uid://ckavqb25bdaul"]
+[gd_scene load_steps=34 format=3 uid="uid://ckavqb25bdaul"]
 
 [ext_resource type="Texture2D" uid="uid://cf6x4dcqxxxn" path="res://assets/field.svg" id="1_fj7yv"]
 [ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://bee_keeper.gd" id="2_aqk2v"]
 [ext_resource type="Texture2D" uid="uid://ouxjix8duaje" path="res://assets/placeholder/frog.svg" id="2_tlwt5"]
+[ext_resource type="Shader" uid="uid://byxo6um7bonre" path="res://world.tres" id="3_hiqwa"]
 [ext_resource type="Script" uid="uid://cuuenfvx0rdhk" path="res://FancyCamera.gd" id="3_ic0uy"]
 [ext_resource type="Script" uid="uid://cmcyjojsvvnxw" path="res://bee_colony.gd" id="4_036b0"]
 [ext_resource type="Texture2D" uid="uid://iml8e1d6t7qe" path="res://assets/placeholder/bee_colony.svg" id="4_aqk2v"]
@@ -43,6 +44,10 @@ height = 2177
 noise = SubResource("FastNoiseLite_wse8f")
 color_ramp = SubResource("Gradient_ioo17")
 seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hiqwa"]
+shader = ExtResource("3_hiqwa")
+shader_parameter/FloatParameter = 25.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aqk2v"]
 animations = [{
@@ -151,7 +156,19 @@ centered = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(308, 145)
+position_smoothing_enabled = true
 script = ExtResource("3_ic0uy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+material = SubResource("ShaderMaterial_hiqwa")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="BeeKeeper" type="CharacterBody2D" parent="."]
 z_index = 1
