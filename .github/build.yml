@@ -1,0 +1,59 @@
+# .github/workflows/build.yml
+
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Say Hi
+        run: echo "About to download Godot and use to to push to itch"
+
+      - name: Download Godot
+        run: wget https://github.com/godotengine/godot-builds/releases/download/4.5-stable/Godot_v4.5-stable_linux.x86_64.zip
+
+      - name: Unzip Godot
+        run: unzip Godot_v4.5-stable_linux.x86_64.zip
+
+      - name: Rename Godot
+        run: mv Godot_v4.5-stable_linux.x86_64 godot
+
+      - name: Download Export Templates
+        run: wget https://github.com/godotengine/godot-builds/releases/download/4.5-stable/Godot_v4.5-stable_export_templates.tpz
+
+      - name: Unzip Export Templates
+        run: unzip Godot_v4.5-stable_export_templates.tpz
+
+      - name: Create Export Template Directory
+        run: mkdir -p ~/.local/share/godot/export_templates/4.5.stable
+
+      - name: Move Export Templates
+        run: mv templates/* ~/.local/share/godot/export_templates/4.5.stable/
+
+      - name: Export Game
+        run: |
+          mkdir -p ./build
+          godot --headless --export-release "Web" ./build/index.html
+
+      - name: Download Butler
+        run: |
+          wget -O butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+          unzip butler.zip
+          chmod +x butler
+          ./butler -V
+
+      - name: Save Butler API Key
+        run: |
+          mkdir -p ~/.config/itch
+          echo "${{ secrets.BUTLER_API_KEY }}" > ~/.config/itch/butler_creds
+
+      - name: Upload to Itch
+        run: butler push ./build mronosa/you-had-mead-at-hello:web

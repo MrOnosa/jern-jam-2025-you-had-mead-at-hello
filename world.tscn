@@ -74,7 +74,7 @@ shape = SubResource("CircleShape2D_036b0")
 
 [node name="HoneyHighSprite" type="Sprite2D" parent="BeeKeeper/Holding"]
 unique_name_in_owner = true
-position = Vector2(18, 7)
+position = Vector2(-16.000004, 8)
 scale = Vector2(0.30586722, 0.30586722)
 texture = ExtResource("4_pkg7o")
 
