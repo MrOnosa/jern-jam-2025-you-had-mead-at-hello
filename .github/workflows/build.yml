@@ -35,9 +35,6 @@ jobs:
       - name: Move Export Templates
         run: mv templates/* ~/.local/share/godot/export_templates/4.5.stable/
 
-      - name: List files
-        run: ls -l
-
       - name: Export Game
         run: |
           mkdir -p ./build

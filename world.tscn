@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ckavqb25bdaul"]
+[gd_scene load_steps=32 format=3 uid="uid://ckavqb25bdaul"]
 
 [ext_resource type="Texture2D" uid="uid://cf6x4dcqxxxn" path="res://assets/field.svg" id="1_fj7yv"]
 [ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://bee_keeper.gd" id="2_aqk2v"]
@@ -11,6 +11,20 @@
 [ext_resource type="Texture2D" uid="uid://bmtmvlpipa3d6" path="res://assets/placeholder/workbenchSprite.png" id="8_gbfbk"]
 [ext_resource type="Script" uid="uid://dor5ypb603q08" path="res://workbench.gd" id="8_ioo17"]
 [ext_resource type="Texture2D" uid="uid://4cli82gdv1h3" path="res://assets/placeholder/circle2.png" id="10_wse8f"]
+[ext_resource type="Script" uid="uid://b7k4vr6n0ij4s" path="res://bee.gd" id="12_70uel"]
+[ext_resource type="Texture2D" uid="uid://bwxlmj2q6pff2" path="res://assets/placeholder/bee.jpg" id="12_k3n1d"]
+[ext_resource type="Texture2D" uid="uid://dpbrbhw3fct20" path="res://assets/placeholder/flower.png" id="14_hiqwa"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_70uel"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hiqwa"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2u3nc"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_udxuc"]
 
 [sub_resource type="Gradient" id="Gradient_ioo17"]
 colors = PackedColorArray(0, 0, 0, 0.09803922, 1, 1, 1, 0.09803922)
@@ -65,6 +79,23 @@ size = Vector2(165, 104)
 radius = 104.0
 height = 300.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_2o6r5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_k3n1d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_70uel"]
+radius = 17.117243
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2u3nc"]
+radius = 79.15807
+
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 
@@ -77,11 +108,41 @@ texture = ExtResource("10_wse8f")
 
 [node name="Grass" type="TextureRect" parent="."]
 texture_repeat = 2
-offset_right = 13491.0
-offset_bottom = 8707.0
+offset_right = 13000.0
+offset_bottom = 8000.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_fj7yv")
 stretch_mode = 1
+
+[node name="TopWorldBoundry" type="StaticBody2D" parent="Grass"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass/TopWorldBoundry"]
+shape = SubResource("WorldBoundaryShape2D_70uel")
+
+[node name="LeftWorldBoundry" type="StaticBody2D" parent="Grass"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass/LeftWorldBoundry"]
+shape = SubResource("WorldBoundaryShape2D_hiqwa")
+
+[node name="RightWorldBoundry" type="StaticBody2D" parent="Grass"]
+position = Vector2(13000, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass/RightWorldBoundry"]
+shape = SubResource("WorldBoundaryShape2D_2u3nc")
+
+[node name="BottomWorldBoundry" type="StaticBody2D" parent="Grass"]
+position = Vector2(0, 8000)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass/BottomWorldBoundry"]
+shape = SubResource("WorldBoundaryShape2D_udxuc")
 
 [node name="Sprite2D" type="Sprite2D" parent="Grass"]
 scale = Vector2(4, 4)
@@ -191,6 +252,130 @@ text = "Place
 Honey
 "
 label_settings = SubResource("LabelSettings_dwbse")
+
+[node name="Bee" type="RigidBody2D" parent="."]
+position = Vector2(53, 47)
+collision_layer = 3
+collision_mask = 3
+gravity_scale = 0.0
+script = ExtResource("12_70uel")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bee"]
+scale = Vector2(0.19, 0.19)
+sprite_frames = SubResource("SpriteFrames_2o6r5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee"]
+shape = SubResource("CircleShape2D_70uel")
+
+[node name="Bee2" type="RigidBody2D" parent="."]
+position = Vector2(53, 47)
+collision_layer = 3
+collision_mask = 3
+gravity_scale = 0.0
+script = ExtResource("12_70uel")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bee2"]
+scale = Vector2(0.19, 0.19)
+sprite_frames = SubResource("SpriteFrames_2o6r5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee2"]
+shape = SubResource("CircleShape2D_70uel")
+
+[node name="Bee3" type="RigidBody2D" parent="."]
+position = Vector2(53, 47)
+collision_layer = 3
+collision_mask = 3
+gravity_scale = 0.0
+script = ExtResource("12_70uel")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bee3"]
+scale = Vector2(0.19, 0.19)
+sprite_frames = SubResource("SpriteFrames_2o6r5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee3"]
+shape = SubResource("CircleShape2D_70uel")
+
+[node name="Bee4" type="RigidBody2D" parent="."]
+position = Vector2(53, 47)
+collision_layer = 3
+collision_mask = 3
+gravity_scale = 0.0
+script = ExtResource("12_70uel")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bee4"]
+scale = Vector2(0.19, 0.19)
+sprite_frames = SubResource("SpriteFrames_2o6r5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee4"]
+shape = SubResource("CircleShape2D_70uel")
+
+[node name="Bee5" type="RigidBody2D" parent="."]
+position = Vector2(53, 47)
+collision_layer = 3
+collision_mask = 3
+gravity_scale = 0.0
+script = ExtResource("12_70uel")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bee5"]
+scale = Vector2(0.19, 0.19)
+sprite_frames = SubResource("SpriteFrames_2o6r5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee5"]
+shape = SubResource("CircleShape2D_70uel")
+
+[node name="Bee6" type="RigidBody2D" parent="."]
+position = Vector2(53, 47)
+collision_layer = 3
+collision_mask = 3
+gravity_scale = 0.0
+script = ExtResource("12_70uel")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bee6"]
+scale = Vector2(0.19, 0.19)
+sprite_frames = SubResource("SpriteFrames_2o6r5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee6"]
+shape = SubResource("CircleShape2D_70uel")
+
+[node name="Bee7" type="RigidBody2D" parent="."]
+position = Vector2(53, 47)
+collision_layer = 3
+collision_mask = 3
+gravity_scale = 0.0
+script = ExtResource("12_70uel")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bee7"]
+scale = Vector2(0.19, 0.19)
+sprite_frames = SubResource("SpriteFrames_2o6r5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee7"]
+shape = SubResource("CircleShape2D_70uel")
+
+[node name="Bee8" type="RigidBody2D" parent="."]
+position = Vector2(53, 47)
+collision_layer = 3
+collision_mask = 3
+gravity_scale = 0.0
+script = ExtResource("12_70uel")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bee8"]
+scale = Vector2(0.19, 0.19)
+sprite_frames = SubResource("SpriteFrames_2o6r5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee8"]
+shape = SubResource("CircleShape2D_70uel")
+
+[node name="Flower" type="Area2D" parent="." groups=["has_food"]]
+position = Vector2(131.00006, 114)
+scale = Vector2(0.40502125, 0.40502125)
+collision_layer = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Flower"]
+texture = ExtResource("14_hiqwa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flower"]
+position = Vector2(-3, -30)
+shape = SubResource("CircleShape2D_2u3nc")
 
 [connection signal="honey_collected" from="BeeColony" to="BeeKeeper" method="_on_bee_colony_honey_collected"]
 [connection signal="body_entered" from="BeeColony/InteractiveArea2D" to="BeeColony" method="_on_interactive_area_2d_body_entered"]
