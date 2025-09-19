@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://dd1j0wu8bg72n"]
+
+[ext_resource type="Texture2D" uid="uid://bvblu6a5mtfg6" path="res://scenes/title_screen/assets/title_bg.png" id="1_j12ko"]
+[ext_resource type="Script" uid="uid://dhvupcvw2or0m" path="res://scenes/title_screen/title_screen.gd" id="1_yegqs"]
+[ext_resource type="Texture2D" uid="uid://bigq0ux7il0nn" path="res://scenes/title_screen/assets/new_game.png" id="2_yegqs"]
+[ext_resource type="Texture2D" uid="uid://qxcasxif5fif" path="res://scenes/title_screen/assets/new_game_hover.png" id="3_xoykc"]
+[ext_resource type="Texture2D" uid="uid://bhdhgbx1rrdf4" path="res://scenes/title_screen/assets/options.png" id="4_ju3lf"]
+[ext_resource type="Texture2D" uid="uid://f1fia5wr0c4h" path="res://scenes/title_screen/assets/options_hover.png" id="5_xetrx"]
+[ext_resource type="Texture2D" uid="uid://dss0ttnorcmjv" path="res://scenes/title_screen/assets/exit.png" id="6_yepnq"]
+[ext_resource type="Texture2D" uid="uid://cw4wd8a58f1no" path="res://scenes/title_screen/assets/exit_hover.png" id="7_4u6ih"]
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_yegqs")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.40392157, 0.5137255, 0.20392157, 1)
+
+[node name="TitleBg" type="Sprite2D" parent="."]
+position = Vector2(635, 359.00003)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_j12ko")
+
+[node name="NewGameButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+offset_left = 478.99997
+offset_top = 332.99997
+offset_right = 931.0
+offset_bottom = 440.99997
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("2_yegqs")
+texture_hover = ExtResource("3_xoykc")
+
+[node name="OptionsButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+offset_left = 481.0
+offset_top = 442.0
+offset_right = 933.0
+offset_bottom = 550.0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("4_ju3lf")
+texture_hover = ExtResource("5_xetrx")
+
+[node name="ExitButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+offset_left = 481.99997
+offset_top = 548.0
+offset_right = 934.0
+offset_bottom = 656.0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("6_yepnq")
+texture_hover = ExtResource("7_4u6ih")
