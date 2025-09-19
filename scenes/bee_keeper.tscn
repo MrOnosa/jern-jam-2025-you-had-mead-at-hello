@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c3b1wwqkjscss"]
 
-[ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://bee_keeper.gd" id="1_3i6xr"]
+[ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://scenes/bee_keeper.gd" id="1_3i6xr"]
 [ext_resource type="Texture2D" uid="uid://dgrh8ag1vpqjf" path="res://assets/beekeeper.png" id="2_tnovc"]
 [ext_resource type="Texture2D" uid="uid://fi4kpxtqot0o" path="res://assets/beekeeper_sting.png" id="3_qps6d"]
 [ext_resource type="Texture2D" uid="uid://d3asabufovkvv" path="res://assets/placeholder/honeyHighSprite.png" id="4_sjvhd"]

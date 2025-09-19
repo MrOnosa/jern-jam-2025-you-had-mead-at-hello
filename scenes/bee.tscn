@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ws0llatxgtev"]
 
-[ext_resource type="Script" uid="uid://b7k4vr6n0ij4s" path="res://bee.gd" id="1_vie5o"]
+[ext_resource type="Script" uid="uid://b7k4vr6n0ij4s" path="res://scenes/bee.gd" id="1_vie5o"]
 [ext_resource type="Texture2D" uid="uid://bd8chkxgjblgq" path="res://assets/bee.png" id="2_ogg2i"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2o6r5"]
@@ -17,10 +17,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_70uel"]
 radius = 17.117243
 
-[node name="Bee" type="RigidBody2D"]
+[node name="Bee" type="Area2D"]
 collision_layer = 3
 collision_mask = 3
-gravity_scale = 0.0
 script = ExtResource("1_vie5o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

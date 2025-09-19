@@ -13,7 +13,7 @@ var holding := Holding.NOTHING
 
 func _ready():
 	GoToObj = get_node("../GoingTowardsThisPoint")
-	click_position = position
+	click_position = position	
 
 func _process(_delta: float) -> void:
 	%HoneyHighSprite.visible = holding == Holding.HONEY_HIGH

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://df31ndq2c5s56"]
 
-[ext_resource type="Script" uid="uid://dor5ypb603q08" path="res://workbench.gd" id="1_7tolv"]
+[ext_resource type="Script" uid="uid://dor5ypb603q08" path="res://scenes/workbench.gd" id="1_7tolv"]
 [ext_resource type="Texture2D" uid="uid://pve1ikrunf0d" path="res://assets/workbench.png" id="2_ri8fd"]
 [ext_resource type="Texture2D" uid="uid://bgejwesxmh55" path="res://assets/placeholder/harvestHoneyButtonTexture.png" id="3_7rqw5"]
 
