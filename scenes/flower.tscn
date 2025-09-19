@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7rtim3q5xhms"]
+
+[ext_resource type="Texture2D" uid="uid://dpbrbhw3fct20" path="res://assets/placeholder/flower.png" id="1_8x8dx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2u3nc"]
+radius = 79.15807
+
+[node name="Flower" type="Area2D" groups=["has_food"]]
+scale = Vector2(0.40502125, 0.40502125)
+collision_layer = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8x8dx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -30)
+shape = SubResource("CircleShape2D_2u3nc")

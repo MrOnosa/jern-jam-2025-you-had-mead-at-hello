@@ -1,0 +1,131 @@
+[gd_scene load_steps=18 format=3 uid="uid://ckavqb25bdaul"]
+
+[ext_resource type="Texture2D" uid="uid://4cli82gdv1h3" path="res://assets/placeholder/circle2.png" id="1_7r4gi"]
+[ext_resource type="Texture2D" uid="uid://cf6x4dcqxxxn" path="res://assets/field.svg" id="2_w7kh3"]
+[ext_resource type="Script" uid="uid://cuuenfvx0rdhk" path="res://FancyCamera.gd" id="3_e3hyu"]
+[ext_resource type="Shader" uid="uid://byxo6um7bonre" path="res://world.tres" id="4_q5onr"]
+[ext_resource type="PackedScene" uid="uid://c3b1wwqkjscss" path="res://scenes/bee_keeper.tscn" id="5_jhx03"]
+[ext_resource type="PackedScene" uid="uid://cnqxl80su0co4" path="res://scenes/bee_colony.tscn" id="6_o8fc1"]
+[ext_resource type="PackedScene" uid="uid://df31ndq2c5s56" path="res://scenes/workbench.tscn" id="7_xo05s"]
+[ext_resource type="PackedScene" uid="uid://ws0llatxgtev" path="res://scenes/bee.tscn" id="8_dss4m"]
+[ext_resource type="PackedScene" uid="uid://b7rtim3q5xhms" path="res://scenes/flower.tscn" id="9_7t5mc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_70uel"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hiqwa"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2u3nc"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_udxuc"]
+
+[sub_resource type="Gradient" id="Gradient_ioo17"]
+colors = PackedColorArray(0, 0, 0, 0.09803922, 1, 1, 1, 0.09803922)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wse8f"]
+noise_type = 2
+frequency = 0.0122
+fractal_type = 3
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ic0uy"]
+width = 3373
+height = 2177
+noise = SubResource("FastNoiseLite_wse8f")
+color_ramp = SubResource("Gradient_ioo17")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hiqwa"]
+shader = ExtResource("4_q5onr")
+shader_parameter/FloatParameter = 25.0
+
+[node name="World" type="Node2D"]
+y_sort_enabled = true
+
+[node name="GoingTowardsThisPoint" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.5019608)
+position = Vector2(308, 145)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_7r4gi")
+
+[node name="Grass" type="TextureRect" parent="."]
+texture_repeat = 2
+offset_right = 13000.0
+offset_bottom = 8000.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_w7kh3")
+stretch_mode = 1
+
+[node name="TopWorldBoundry" type="StaticBody2D" parent="Grass"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass/TopWorldBoundry"]
+shape = SubResource("WorldBoundaryShape2D_70uel")
+
+[node name="LeftWorldBoundry" type="StaticBody2D" parent="Grass"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass/LeftWorldBoundry"]
+shape = SubResource("WorldBoundaryShape2D_hiqwa")
+
+[node name="RightWorldBoundry" type="StaticBody2D" parent="Grass"]
+position = Vector2(13000, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass/RightWorldBoundry"]
+shape = SubResource("WorldBoundaryShape2D_2u3nc")
+
+[node name="BottomWorldBoundry" type="StaticBody2D" parent="Grass"]
+position = Vector2(0, 8000)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass/BottomWorldBoundry"]
+shape = SubResource("WorldBoundaryShape2D_udxuc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Grass"]
+scale = Vector2(4, 4)
+texture = SubResource("NoiseTexture2D_ic0uy")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(308, 145)
+position_smoothing_enabled = true
+script = ExtResource("3_e3hyu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+material = SubResource("ShaderMaterial_hiqwa")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BeeKeeper" parent="." instance=ExtResource("5_jhx03")]
+position = Vector2(308, 145)
+
+[node name="BeeColony" parent="." instance=ExtResource("6_o8fc1")]
+position = Vector2(466, 116)
+
+[node name="Workbench" parent="." instance=ExtResource("7_xo05s")]
+position = Vector2(734, 333)
+
+[node name="Bee" parent="." instance=ExtResource("8_dss4m")]
+position = Vector2(53, 47)
+
+[node name="Flower" parent="." instance=ExtResource("9_7t5mc")]
+position = Vector2(131.00006, 114)
+
+[connection signal="honey_collected" from="BeeColony" to="BeeKeeper" method="_on_bee_colony_honey_collected"]
+[connection signal="placed" from="Workbench" to="BeeKeeper" method="_on_workbench_placed"]

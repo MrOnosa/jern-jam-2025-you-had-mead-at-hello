@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3b1wwqkjscss"]
+
+[ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://bee_keeper.gd" id="1_3i6xr"]
+[ext_resource type="Texture2D" uid="uid://dgrh8ag1vpqjf" path="res://assets/beekeeper.png" id="2_tnovc"]
+[ext_resource type="Texture2D" uid="uid://fi4kpxtqot0o" path="res://assets/beekeeper_sting.png" id="3_qps6d"]
+[ext_resource type="Texture2D" uid="uid://d3asabufovkvv" path="res://assets/placeholder/honeyHighSprite.png" id="4_sjvhd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aqk2v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tnovc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qps6d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ikiii"]
+radius = 14.0
+height = 80.0
+
+[node name="BeeKeeper" type="CharacterBody2D"]
+z_index = 1
+motion_mode = 1
+script = ExtResource("1_3i6xr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_aqk2v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 38)
+shape = SubResource("CapsuleShape2D_ikiii")
+
+[node name="Holding" type="Node2D" parent="."]
+
+[node name="HoneyHighSprite" type="Sprite2D" parent="Holding"]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(-16.000004, 8)
+scale = Vector2(0.30586722, 0.30586722)
+texture = ExtResource("4_sjvhd")

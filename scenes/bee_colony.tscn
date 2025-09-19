@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnqxl80su0co4"]
+
+[ext_resource type="Script" uid="uid://cmcyjojsvvnxw" path="res://bee_colony.gd" id="1_mcgfy"]
+[ext_resource type="Texture2D" uid="uid://d2chyn8tlqyat" path="res://assets/beehive.png" id="2_c2ynb"]
+[ext_resource type="Texture2D" uid="uid://bgejwesxmh55" path="res://assets/placeholder/harvestHoneyButtonTexture.png" id="3_js7wk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dwbse"]
+radius = 54.00926
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqk2v"]
+radius = 86.000015
+height = 262.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_dwbse"]
+font_size = 50
+font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+stacked_outline_count = 1
+stacked_outline_0/size = 7
+stacked_outline_0/color = Color(0, 0.74509805, 0, 1)
+
+[node name="BeeColony" type="StaticBody2D"]
+script = ExtResource("1_mcgfy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_c2ynb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-14, 21)
+shape = SubResource("CircleShape2D_dwbse")
+
+[node name="InteractiveArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea2D"]
+position = Vector2(-9.999992, 14)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_aqk2v")
+
+[node name="ActionButton" type="TextureButton" parent="."]
+z_index = 100
+offset_left = -45.99997
+offset_top = 88.0
+offset_right = 147.00003
+offset_bottom = 280.0
+scale = Vector2(0.32000124, 0.32000124)
+texture_normal = ExtResource("3_js7wk")
+
+[node name="Label" type="Label" parent="ActionButton"]
+z_index = 101
+layout_mode = 0
+offset_top = 11.817282
+offset_right = 201.0
+offset_bottom = 224.81728
+text = "Harvest 
+Honey
+"
+label_settings = SubResource("LabelSettings_dwbse")
+
+[connection signal="body_entered" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_entered"]
+[connection signal="body_exited" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_exited"]
+[connection signal="pressed" from="ActionButton" to="." method="_on_action_button_pressed"]
