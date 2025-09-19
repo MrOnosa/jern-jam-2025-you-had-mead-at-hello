@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ckavqb25bdaul"]
+[gd_scene load_steps=29 format=3 uid="uid://ckavqb25bdaul"]
 
 [ext_resource type="Texture2D" uid="uid://4cli82gdv1h3" path="res://assets/placeholder/circle2.png" id="1_7r4gi"]
 [ext_resource type="Script" uid="uid://cugl826a8ai2" path="res://scenes/world.gd" id="1_w7kh3"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://c3b1wwqkjscss" path="res://scenes/bee_keeper.tscn" id="5_jhx03"]
 [ext_resource type="PackedScene" uid="uid://cnqxl80su0co4" path="res://scenes/bee_colony.tscn" id="6_o8fc1"]
 [ext_resource type="PackedScene" uid="uid://df31ndq2c5s56" path="res://scenes/workbench.tscn" id="7_xo05s"]
-[ext_resource type="PackedScene" uid="uid://b7rtim3q5xhms" path="res://scenes/flower.tscn" id="9_7t5mc"]
 [ext_resource type="Texture2D" uid="uid://b0iiiv4kr8ig3" path="res://assets/flowers/wildflower_1.png" id="10_7t5mc"]
 [ext_resource type="Texture2D" uid="uid://ct7p4oxh0ropg" path="res://assets/flowers/wildflower_2.png" id="11_lakw3"]
 [ext_resource type="Texture2D" uid="uid://c8cwxglledpf3" path="res://assets/flowers/wildflower_3.png" id="12_pm21f"]
@@ -135,9 +134,6 @@ scale = Vector2(0.3, 0.3)
 [node name="Workbench" parent="." instance=ExtResource("7_xo05s")]
 position = Vector2(734, 333)
 scale = Vector2(0.3, 0.3)
-
-[node name="Flower" parent="." instance=ExtResource("9_7t5mc")]
-position = Vector2(131.00006, 114)
 
 [node name="SpawnBeeTimer" type="Timer" parent="."]
 autostart = true
