@@ -7,6 +7,7 @@ var being_harvested := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$AnimatedSprite2D.frame = randi_range(0, 11)
 	pollen_available = total_pollen_available
 	pass # Replace with function body.
 
