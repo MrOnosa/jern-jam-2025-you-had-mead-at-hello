@@ -24,7 +24,6 @@ radius = 14.0
 height = 80.0
 
 [node name="BeeKeeper" type="CharacterBody2D"]
-z_index = 1
 motion_mode = 1
 script = ExtResource("1_3i6xr")
 
