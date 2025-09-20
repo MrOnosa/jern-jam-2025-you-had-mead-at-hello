@@ -2,10 +2,14 @@ extends AnimatableBody2D
 class_name Bee
 
 enum Objective { LEAVE_BEE_HIVE, FORAGING, FOUND_FOOD, GET_FOOD, BEELING_IT_BACK_TO_THE_HIVE, ENTER_BEE_HIVE  }
+@export var threshold_pollin_before_returning_home := 100
 var heading := 0.0 #180 degrees
 var currently_faceing_right := true
 var foraging_iteration := 0
+var foraging_with_pollin_iteration := 0
+var flower_harvesting_iteration := 0
 var nearby_flowers : Array[Flower] = []
+var flowers_visited : Array[Flower] = []
 var flower_of_interest : Flower = null
 var pollen_collected := 0
 var home_hive : BeeColony = null
@@ -27,7 +31,11 @@ func _process(delta: float) -> void:
 func bee_navigate_generator() -> void:
 	# If we're near a flower and need pollen, consider the flower
 	for f in nearby_flowers:
-		if flower_of_interest == null && current_objective == Objective.FORAGING && !f.being_harvested && f.pollen_available > 0:
+		if flower_of_interest == null \
+		   && current_objective == Objective.FORAGING \
+		   && !f.being_harvested \
+		   && f.pollen_available > 0 \
+		   && !flowers_visited.has(f):			
 			f.being_harvested = true
 			current_objective = Objective.FOUND_FOOD
 			flower_of_interest = f
@@ -57,6 +65,12 @@ func bee_navigate_generator() -> void:
 				# Keep things from getting too wild
 				foraging_iteration = 0
 			
+			# Used as a safety net so we don't look for more flowers forever before returning home
+			if pollen_collected > 0:
+				foraging_with_pollin_iteration += 1
+				if foraging_with_pollin_iteration > 90:
+					current_objective = Objective.BEELING_IT_BACK_TO_THE_HIVE					
+			
 			var tween = get_tree().create_tween()
 			var new_position = world_clamp(position + buzz_path)
 			tween.tween_property(self, "position", new_position, randf_range(0.7, 1.2)).set_trans(Tween.TRANS_SINE )
@@ -70,16 +84,19 @@ func bee_navigate_generator() -> void:
 				tween.tween_property(self, "position", new_position, 3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE )
 				current_objective = Objective.GET_FOOD
 				set_facing(new_position)
-				tween.tween_callback(bee_navigate_generator)			
+				tween.tween_callback(bee_navigate_generator)		
+				flowers_visited.append(flower_of_interest)
+				flower_harvesting_iteration = 0
 			else:
 				current_objective = Objective.FORAGING
 				bee_navigate_generator()
 		Objective.GET_FOOD:	
 			if flower_of_interest != null:
 				# The bee will move about the flower's surface while collecting all the pollen from the flower
-				if flower_of_interest.pollen_available > 0:
+				if flower_of_interest.pollen_available > 0 && flower_harvesting_iteration < randi_range(3,5) && pollen_collected < threshold_pollin_before_returning_home:
+					flower_harvesting_iteration += 1
 					# Continue getting pollen
-					var pollen_collected_this_step = min(flower_of_interest.pollen_available, randi_range(8,102))
+					var pollen_collected_this_step = min(flower_of_interest.pollen_available, randi_range(8,12))
 					flower_of_interest.pollen_available -= pollen_collected_this_step
 					pollen_collected += pollen_collected_this_step
 					
@@ -96,15 +113,15 @@ func bee_navigate_generator() -> void:
 					set_facing(new_position)
 					tween.tween_callback(bee_navigate_generator)
 				else:
-					#TODO: Collect pollen from multiple flowers before heading back
+					# Collect pollen from multiple flowers before heading back
 					# So I can collect a few times from a flower until the bee is filled up
-					# bees could keep a list of flowers theyve visited in thier trip to avoid
-					# going to the same flower over and over again
-					# and having a safty timeout so if there are no more flowers
-					# and they have pollen, they head back home anyway
 					flower_of_interest.being_harvested = false
 					flower_of_interest = null
-					current_objective = Objective.BEELING_IT_BACK_TO_THE_HIVE
+					
+					if pollen_collected >= threshold_pollin_before_returning_home:
+						current_objective = Objective.BEELING_IT_BACK_TO_THE_HIVE
+					else:
+						current_objective = Objective.FORAGING
 					bee_navigate_generator()
 			else:
 				current_objective = Objective.FORAGING
@@ -128,6 +145,8 @@ func bee_navigate_generator() -> void:
 					set_facing(new_position)
 					tween.tween_callback(bee_navigate_generator)
 		Objective.ENTER_BEE_HIVE:	
+			# Transfer pollin to the hive
+			home_hive.pollin_collected += pollen_collected
 			queue_free() # =(
 		_:	
 			var subtween_spin = create_tween()

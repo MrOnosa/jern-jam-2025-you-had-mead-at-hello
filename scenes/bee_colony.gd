@@ -1,6 +1,9 @@
 extends StaticBody2D
 class_name BeeColony
 
+var pollin_collected := 0
+var honey_produced := 0
+
 signal honey_collected
 @onready var action_button: TextureButton = $ActionButton
 
@@ -14,7 +17,8 @@ func _process(delta: float) -> void:
 	
 func _on_interactive_area_2d_body_entered(body: Node2D) -> void:
 	if body is BeeKeeper:
-		action_button.show()
+		if honey_produced > 0:
+			action_button.show()
 
 
 func _on_interactive_area_2d_body_exited(body: Node2D) -> void:

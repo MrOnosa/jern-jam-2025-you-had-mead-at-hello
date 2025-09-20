@@ -29,6 +29,7 @@ window/stretch/mode="viewport"
 [global_group]
 
 has_food="This has something the bees want to find"
+bee_group=""
 
 [input]
 
