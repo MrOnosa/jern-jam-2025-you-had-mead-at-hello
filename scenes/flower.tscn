@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7rtim3q5xhms"]
+[gd_scene load_steps=5 format=3 uid="uid://b7rtim3q5xhms"]
 
 [ext_resource type="Texture2D" uid="uid://up2g7k2iyy6y" path="res://assets/flowers/wildflower_6.png" id="1_8x8dx"]
 [ext_resource type="Script" uid="uid://bqo8nfwoa5sx6" path="res://scenes/flower.gd" id="1_yoh7s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2u3nc"]
 radius = 388.89154
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yoh7s"]
+size = Vector2(56.78716, 49.380146)
 
 [node name="Flower" type="Area2D" groups=["has_food"]]
 scale = Vector2(0.40502125, 0.40502125)
@@ -20,5 +23,20 @@ texture = ExtResource("1_8x8dx")
 position = Vector2(-4.938012, -125.91931)
 shape = SubResource("CircleShape2D_2u3nc")
 
+[node name="RepollinateTimer" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
+
+[node name="BeeMarker2D" type="Marker2D" parent="."]
+position = Vector2(-3.8146973e-06, -133.32634)
+
+[node name="CollectionArea2D" type="Area2D" parent="."]
+
+[node name="CollectionShape2D" type="CollisionShape2D" parent="CollectionArea2D"]
+position = Vector2(-1.2345011, -130.8573)
+scale = Vector2(0.99999964, 0.99999964)
+shape = SubResource("RectangleShape2D_yoh7s")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered" flags=18]
 [connection signal="body_exited" from="." to="." method="_on_body_exited" flags=18]
+[connection signal="timeout" from="RepollinateTimer" to="." method="_on_repollinate_timer_timeout"]

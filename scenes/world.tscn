@@ -111,6 +111,10 @@ centered = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(308, 145)
+limit_left = 0
+limit_top = 0
+limit_right = 3900
+limit_bottom = 2400
 position_smoothing_enabled = true
 script = ExtResource("3_e3hyu")
 
@@ -209,7 +213,52 @@ texture = ExtResource("21_ctatt")
 position = Vector2(307, 495)
 
 [node name="Flower2" parent="." instance=ExtResource("9_7t5mc")]
-position = Vector2(470, 561.99994)
+position = Vector2(519, 523.99994)
+
+[node name="Flower3" parent="." instance=ExtResource("9_7t5mc")]
+position = Vector2(430.00006, 730)
+
+[node name="Flower4" parent="." instance=ExtResource("9_7t5mc")]
+position = Vector2(698, 659)
+
+[node name="Flower5" parent="." instance=ExtResource("9_7t5mc")]
+position = Vector2(862, 557)
+
+[node name="Flower6" parent="." instance=ExtResource("9_7t5mc")]
+position = Vector2(882, 456)
+
+[node name="Flower7" parent="." instance=ExtResource("9_7t5mc")]
+position = Vector2(825, 174.00006)
+
+[node name="Flower8" parent="." instance=ExtResource("9_7t5mc")]
+position = Vector2(673, 251)
+
+[node name="Flower9" parent="." instance=ExtResource("9_7t5mc")]
+position = Vector2(573, 280)
+
+[node name="Flower10" parent="." instance=ExtResource("9_7t5mc")]
+position = Vector2(138.00003, 581)
+
+[node name="Flower11" parent="." instance=ExtResource("9_7t5mc")]
+position = Vector2(205, 737.00006)
+
+[node name="Flower12" parent="." instance=ExtResource("9_7t5mc")]
+position = Vector2(973.99994, 832)
+
+[node name="Flower13" parent="." instance=ExtResource("9_7t5mc")]
+position = Vector2(1256, 599.00006)
+
+[node name="Flower14" parent="." instance=ExtResource("9_7t5mc")]
+position = Vector2(1215, 313.00003)
+
+[node name="Flower15" parent="." instance=ExtResource("9_7t5mc")]
+position = Vector2(1488, 392)
+
+[node name="Flower16" parent="." instance=ExtResource("9_7t5mc")]
+position = Vector2(1575, 707)
+
+[node name="Flower17" parent="." instance=ExtResource("9_7t5mc")]
+position = Vector2(1357, 899)
 
 [connection signal="honey_collected" from="BeeColony" to="BeeKeeper" method="_on_bee_colony_honey_collected"]
 [connection signal="placed" from="Workbench" to="BeeKeeper" method="_on_workbench_placed"]

@@ -6,9 +6,10 @@ var heading := 0.0 #180 degrees
 var currently_faceing_right := true
 var foraging_iteration := 0
 var nearby_flowers : Array[Flower] = []
+var flower_of_interest : Flower = null
+var pollen_collected := 0
 #var bee_transition_type_pattern := bee_transition_type_factory()
 var current_objective := Objective.LEAVE_BEE_HIVE
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,7 +23,15 @@ func _process(delta: float) -> void:
 	else:
 		$AnimatedSprite2D.scale = Vector2(-1,1)
 
-func bee_navigate_generator() -> void:	
+func bee_navigate_generator() -> void:
+	# If we're near a flower and need pollen, consider the flower
+	for f in nearby_flowers:
+		if flower_of_interest == null && current_objective == Objective.FORAGING && !f.being_harvested && f.pollen_available > 0:
+			f.being_harvested = true
+			current_objective = Objective.FOUND_FOOD
+			flower_of_interest = f
+	
+	# Now control how the bee will move using short tweens. This will use the callback to here after each movement
 	match current_objective:
 		Objective.LEAVE_BEE_HIVE:
 			scale = Vector2.ZERO
@@ -35,7 +44,6 @@ func bee_navigate_generator() -> void:
 			heading = randf_range(0, PI)
 		Objective.FORAGING:
 			# Bees wondering around 
-			
 			# Picks a vector of length 50,50 to 150,150 that is pointed towards the current heading
 			var buzz_path = Vector2(randi_range(50, 150), randi_range(50, 150)) * Vector2.from_angle(heading)
 			# Adjust the heading slightly at first, but after a bit, the heading changes. This way the bees
@@ -49,18 +57,51 @@ func bee_navigate_generator() -> void:
 			var tween = get_tree().create_tween()
 			var new_position = world_clamp(position + buzz_path)
 			tween.tween_property(self, "position", new_position, randf_range(0.7, 1.2)).set_trans(Tween.TRANS_SINE )
-			currently_faceing_right = new_position.x > position.x
+			currently_faceing_right = new_position.x > position.x #todo figure out how to handle this ina  clean way that i can resue
 			tween.tween_callback(bee_navigate_generator)			
+		Objective.FOUND_FOOD:
+			if flower_of_interest != null:
+				# buzz our bees to the flower of choice in a nifty way			
+				var new_position = world_clamp(flower_of_interest.get_node("BeeMarker2D").global_position)
+				var tween = get_tree().create_tween()
+				tween.tween_property(self, "position", new_position, 3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE )
+				current_objective = Objective.GET_FOOD
+				tween.tween_callback(bee_navigate_generator)			
+			else:
+				current_objective = Objective.FORAGING
+		Objective.GET_FOOD:	
+			if flower_of_interest != null:
+				if flower_of_interest.pollen_available > 0:
+					# Continue getting pollen
+					var pollen_collected_this_step = min(flower_of_interest.pollen_available, 10)
+					flower_of_interest.pollen_available  -= pollen_collected_this_step
+					pollen_collected += pollen_collected_this_step
+					
+					var flower_bee_marker = flower_of_interest.get_node("BeeMarker2D").global_position
+					var collision_shape_2d = flower_of_interest.get_node("CollectionArea2D/CollectionShape2D") as CollisionShape2D
+					
+					var rect : Rect2 = collision_shape_2d.shape.get_rect()
+					var x = randf_range(rect.position.x, rect.position.x+rect.size.x)
+					var y = randf_range(rect.position.y, rect.position.y+rect.size.y)
+					var new_position = world_clamp(flower_bee_marker + Vector2(x,y)) 
+					
+					var tween = get_tree().create_tween()
+					tween.tween_property(self, "position", new_position, 3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE )
+					tween.tween_callback(bee_navigate_generator)
+				else:
+					current_objective = Objective.BEELING_IT_BACK_TO_THE_HIVE
+			else:
+				current_objective = Objective.FORAGING
+			
 		_:	
 			var subtween_spin = create_tween()
 			subtween_spin.tween_property(self, "rotation_degrees", 45.0, randf_range(0.5, 1.5)).set_trans(Tween.TRANS_SINE ) 
-			subtween_spin.tween_property(self, "rotation_degrees", 0.0, randf_range(0.5, 1.5)).set_trans(Tween.TRANS_SINE )
-			
+			subtween_spin.tween_property(self, "rotation_degrees", 0.0, randf_range(0.5, 1.5)).set_trans(Tween.TRANS_SINE )		
 			
 			var tween = get_tree().create_tween()
-			tween.tween_property(self, "position", world_clamp(position + Vector2(randi_range(-30, 30), randi_range(-30, 30))), randf_range(0.5, 1.5)).set_trans(Tween.TRANS_SINE )
+			#tween.tween_property(self, "position", world_clamp(position + Vector2(randi_range(-30, 30), randi_range(-30, 30))), randf_range(0.5, 1.5)).set_trans(Tween.TRANS_SINE )
 			tween.tween_subtween(subtween_spin)
-			tween.tween_property(self, "position", world_clamp(position + Vector2(randi_range(-300, 300), randi_range(-300, 300))), randf_range(0.5, 1.5)).set_trans(Tween.TRANS_SINE )
+			#tween.tween_property(self, "position", world_clamp(position + Vector2(randi_range(-300, 300), randi_range(-300, 300))), randf_range(0.5, 1.5)).set_trans(Tween.TRANS_SINE )
 			tween.tween_callback(bee_navigate_generator)
 	
 func world_clamp(vector: Vector2) -> Vector2:
