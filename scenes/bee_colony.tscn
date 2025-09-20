@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnqxl80su0co4"]
+[gd_scene load_steps=8 format=3 uid="uid://cnqxl80su0co4"]
 
 [ext_resource type="Script" uid="uid://cmcyjojsvvnxw" path="res://scenes/bee_colony.gd" id="1_mcgfy"]
 [ext_resource type="Texture2D" uid="uid://d2chyn8tlqyat" path="res://assets/beehive.png" id="2_c2ynb"]
-[ext_resource type="Texture2D" uid="uid://bgejwesxmh55" path="res://assets/placeholder/harvestHoneyButtonTexture.png" id="3_js7wk"]
+[ext_resource type="Texture2D" uid="uid://dogtp5dbjim3t" path="res://assets/gui/button_1.png" id="3_js7wk"]
+[ext_resource type="Texture2D" uid="uid://vfm1p832dp0b" path="res://assets/gui/button_1_hover.png" id="4_64qp5"]
+[ext_resource type="LabelSettings" uid="uid://cn1rdmmbnmsu3" path="res://assets/gui/button_font.tres" id="5_flwcb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dwbse"]
 radius = 142.59383
@@ -10,13 +12,6 @@ radius = 142.59383
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqk2v"]
 radius = 271.0
 height = 852.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_dwbse"]
-font_size = 50
-font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
-stacked_outline_count = 1
-stacked_outline_0/size = 7
-stacked_outline_0/color = Color(0, 0.74509805, 0, 1)
 
 [node name="BeeColony" type="StaticBody2D"]
 script = ExtResource("1_mcgfy")
@@ -37,23 +32,32 @@ shape = SubResource("CapsuleShape2D_aqk2v")
 
 [node name="ActionButton" type="TextureButton" parent="."]
 z_index = 100
-offset_left = -136.99998
-offset_top = 231.00002
-offset_right = 56.000015
-offset_bottom = 423.0
+offset_left = -359.0
+offset_top = -419.99994
+offset_right = 113.0
+offset_bottom = -227.99995
 scale = Vector2(1.4800011, 1.4800011)
 texture_normal = ExtResource("3_js7wk")
+texture_hover = ExtResource("4_64qp5")
 
 [node name="Label" type="Label" parent="ActionButton"]
 z_index = 101
-layout_mode = 0
-offset_top = 11.817282
-offset_right = 201.0
-offset_bottom = 224.81728
-text = "Harvest 
-Honey
-"
-label_settings = SubResource("LabelSettings_dwbse")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.5
+offset_top = -29.0
+offset_right = 155.5
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Harvest Honey"
+label_settings = ExtResource("5_flwcb")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ExitHiveMarker2D" type="Marker2D" parent="."]
 position = Vector2(2, 109)

@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dd1j0wu8bg72n"]
+[gd_scene load_steps=10 format=3 uid="uid://dd1j0wu8bg72n"]
 
 [ext_resource type="Texture2D" uid="uid://bvblu6a5mtfg6" path="res://scenes/title_screen/assets/title_bg.png" id="1_j12ko"]
 [ext_resource type="Script" uid="uid://dhvupcvw2or0m" path="res://scenes/title_screen/title_screen.gd" id="1_yegqs"]
-[ext_resource type="Texture2D" uid="uid://bigq0ux7il0nn" path="res://scenes/title_screen/assets/new_game.png" id="2_yegqs"]
-[ext_resource type="Texture2D" uid="uid://qxcasxif5fif" path="res://scenes/title_screen/assets/new_game_hover.png" id="3_xoykc"]
-[ext_resource type="Texture2D" uid="uid://bhdhgbx1rrdf4" path="res://scenes/title_screen/assets/options.png" id="4_ju3lf"]
-[ext_resource type="Texture2D" uid="uid://f1fia5wr0c4h" path="res://scenes/title_screen/assets/options_hover.png" id="5_xetrx"]
-[ext_resource type="Texture2D" uid="uid://dss0ttnorcmjv" path="res://scenes/title_screen/assets/exit.png" id="6_yepnq"]
-[ext_resource type="Texture2D" uid="uid://cw4wd8a58f1no" path="res://scenes/title_screen/assets/exit_hover.png" id="7_4u6ih"]
+[ext_resource type="Texture2D" uid="uid://dogtp5dbjim3t" path="res://assets/gui/button_1.png" id="3_xoykc"]
+[ext_resource type="Texture2D" uid="uid://vfm1p832dp0b" path="res://assets/gui/button_1_hover.png" id="4_ju3lf"]
+[ext_resource type="LabelSettings" uid="uid://cn1rdmmbnmsu3" path="res://assets/gui/button_font.tres" id="5_xoykc"]
+[ext_resource type="Texture2D" uid="uid://brh416hlld4qi" path="res://assets/gui/button_2.png" id="6_yepnq"]
+[ext_resource type="Texture2D" uid="uid://c5etmq5xjnqbf" path="res://assets/gui/button_2_hover.png" id="7_4u6ih"]
+[ext_resource type="Texture2D" uid="uid://bx4wcfd2mkn5b" path="res://assets/gui/button_3.png" id="8_v2f8g"]
+[ext_resource type="Texture2D" uid="uid://clgcnpwnfrm1h" path="res://assets/gui/button_3_hover.png" id="9_k2vsc"]
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_yegqs")
@@ -17,7 +18,7 @@ offset_right = 1280.0
 offset_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.40392157, 0.5137255, 0.20392157, 1)
+color = Color(1, 0.7764706, 0.34117648, 1)
 
 [node name="TitleBg" type="Sprite2D" parent="."]
 position = Vector2(635, 359.00003)
@@ -26,30 +27,78 @@ texture = ExtResource("1_j12ko")
 
 [node name="NewGameButton" type="TextureButton" parent="."]
 unique_name_in_owner = true
-offset_left = 478.99997
-offset_top = 332.99997
-offset_right = 931.0
-offset_bottom = 440.99997
+offset_left = 471.0
+offset_top = 298.0
+offset_right = 943.0
+offset_bottom = 485.0
 scale = Vector2(0.7, 0.7)
-texture_normal = ExtResource("2_yegqs")
-texture_hover = ExtResource("3_xoykc")
+texture_normal = ExtResource("3_xoykc")
+texture_hover = ExtResource("4_ju3lf")
+
+[node name="NewGameLabel" type="Label" parent="NewGameButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "New Game"
+label_settings = ExtResource("5_xoykc")
 
 [node name="OptionsButton" type="TextureButton" parent="."]
 unique_name_in_owner = true
-offset_left = 481.0
-offset_top = 442.0
-offset_right = 933.0
-offset_bottom = 550.0
-scale = Vector2(0.7, 0.7)
-texture_normal = ExtResource("4_ju3lf")
-texture_hover = ExtResource("5_xetrx")
-
-[node name="ExitButton" type="TextureButton" parent="."]
-unique_name_in_owner = true
-offset_left = 481.99997
-offset_top = 548.0
-offset_right = 934.0
-offset_bottom = 656.0
+offset_left = 473.00003
+offset_top = 407.00003
+offset_right = 945.0
+offset_bottom = 594.0
 scale = Vector2(0.7, 0.7)
 texture_normal = ExtResource("6_yepnq")
 texture_hover = ExtResource("7_4u6ih")
+
+[node name="OptionsButtonLabel" type="Label" parent="OptionsButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -11.5
+offset_right = 31.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+label_settings = ExtResource("5_xoykc")
+
+[node name="CreditsButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+offset_left = 474.0
+offset_top = 513.0
+offset_right = 946.0
+offset_bottom = 700.0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("8_v2f8g")
+texture_hover = ExtResource("9_k2vsc")
+
+[node name="CreditsButtonLabel" type="Label" parent="CreditsButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.5
+offset_top = -29.0
+offset_right = 74.5
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Credits"
+label_settings = ExtResource("5_xoykc")
