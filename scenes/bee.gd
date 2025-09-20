@@ -111,13 +111,24 @@ func bee_navigate_generator() -> void:
 				bee_navigate_generator()
 		Objective.BEELING_IT_BACK_TO_THE_HIVE:	
 				# buzz our bees to the flower of choice in a nifty way			
-				var new_position = world_clamp(home_hive.get_node("ExitHiveMarker2D").global_position)
-				var tween = get_tree().create_tween()
-				#fix so we go in spurts
-				tween.tween_property(self, "position", new_position, 3).set_trans(Tween.TRANS_LINEAR )
-				current_objective = Objective.ENTER_BEE_HIVE
-				set_facing(new_position)
-				tween.tween_callback(bee_navigate_generator)			
+				var goal_position = home_hive.get_node("ExitHiveMarker2D").global_position
+				if position.distance_to(goal_position) < 300:					
+					var new_position = world_clamp(goal_position)
+					var tween = get_tree().create_tween()
+					tween.tween_property(self, "position", new_position, 3).set_trans(Tween.TRANS_LINEAR )
+					current_objective = Objective.ENTER_BEE_HIVE
+					set_facing(new_position)
+					tween.tween_callback(bee_navigate_generator)
+				else:		
+					var distance_to_span_this_round = Vector2(100,100)
+					var heading_to_bee_hive = position.angle_to_point(goal_position)
+					var new_position = world_clamp(position + (distance_to_span_this_round * Vector2.from_angle(heading_to_bee_hive)))
+					var tween = get_tree().create_tween()
+					tween.tween_property(self, "position", new_position, 1).set_trans(Tween.TRANS_LINEAR )
+					set_facing(new_position)
+					tween.tween_callback(bee_navigate_generator)
+		Objective.ENTER_BEE_HIVE:	
+			queue_free() # =(
 		_:	
 			var subtween_spin = create_tween()
 			subtween_spin.tween_property(self, "rotation_degrees", 45.0, randf_range(0.5, 1.5)).set_trans(Tween.TRANS_SINE ) 
@@ -134,11 +145,9 @@ func world_clamp(vector: Vector2) -> Vector2:
 
 func notice_flower(flower: Flower):
 	nearby_flowers.append(flower)
-	print(" notices flower ",nearby_flowers )
 	
 func left_flower(flower: Flower):
 	nearby_flowers.erase(flower)
-	print("=( flower wasn't good enough ", nearby_flowers)
 
 func set_facing(new_position: Vector2) -> void:
 	currently_faceing_right = new_position.x > position.x
