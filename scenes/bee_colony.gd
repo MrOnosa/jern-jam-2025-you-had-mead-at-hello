@@ -1,7 +1,7 @@
 extends StaticBody2D
 class_name BeeColony
 
-var pollin_collected := 0
+var pollen_collected := 0
 var honey_produced := 0
 
 signal honey_collected
