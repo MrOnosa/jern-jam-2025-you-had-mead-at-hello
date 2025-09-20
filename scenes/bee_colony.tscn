@@ -55,6 +55,9 @@ Honey
 "
 label_settings = SubResource("LabelSettings_dwbse")
 
+[node name="ExitHiveMarker2D" type="Marker2D" parent="."]
+position = Vector2(2, 109)
+
 [connection signal="body_entered" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_entered"]
 [connection signal="body_exited" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_exited"]
 [connection signal="pressed" from="ActionButton" to="." method="_on_action_button_pressed"]

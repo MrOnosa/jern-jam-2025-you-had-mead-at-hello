@@ -1,11 +1,14 @@
-extends Area2D
+extends AnimatableBody2D
+class_name Bee
 
 enum Objective { LEAVE_BEE_HIVE, FORAGING, FOUND_FOOD, GET_FOOD, BEELING_IT_BACK_TO_THE_HIVE, ENTER_BEE_HIVE  }
 var heading := 0.0 #180 degrees
 var currently_faceing_right := true
 var foraging_iteration := 0
+var nearby_flowers : Array[Flower] = []
 #var bee_transition_type_pattern := bee_transition_type_factory()
 var current_objective := Objective.LEAVE_BEE_HIVE
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,7 +25,9 @@ func _process(delta: float) -> void:
 func bee_navigate_generator() -> void:	
 	match current_objective:
 		Objective.LEAVE_BEE_HIVE:
+			scale = Vector2.ZERO
 			var tween = get_tree().create_tween()
+			#tween.tween_property(self, "scale", Vector2.ONE, 1).set_trans(Tween.TRANS_LINEAR)
 			tween.tween_property(self, "position", world_clamp(position + Vector2(randi_range(-10, 10), randi_range(30, 80))), randf_range(0.5, 1.5)).set_trans(Tween.TRANS_SINE )
 			tween.tween_callback(bee_navigate_generator)
 			current_objective = Objective.FORAGING
@@ -60,6 +65,14 @@ func bee_navigate_generator() -> void:
 	
 func world_clamp(vector: Vector2) -> Vector2:
 	return Vector2(clamp(vector.x, 0, 13000 * .3), clamp(vector.y, 0, 8000 * .3))
+
+func notice_flower(flower: Flower):
+	nearby_flowers.append(flower)
+	print(" notices flower ",nearby_flowers )
+	
+func left_flower(flower: Flower):
+	nearby_flowers.erase(flower)
+	print("=( flower wasn't good enough ", nearby_flowers)
 	
 #func bee_transition_type_factory() -> Tween.TransitionType:
 	#var randi = randi_range(0, 4)

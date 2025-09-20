@@ -1,17 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7rtim3q5xhms"]
+[gd_scene load_steps=4 format=3 uid="uid://b7rtim3q5xhms"]
 
-[ext_resource type="Texture2D" uid="uid://dpbrbhw3fct20" path="res://assets/placeholder/flower.png" id="1_8x8dx"]
+[ext_resource type="Texture2D" uid="uid://up2g7k2iyy6y" path="res://assets/flowers/wildflower_6.png" id="1_8x8dx"]
+[ext_resource type="Script" uid="uid://bqo8nfwoa5sx6" path="res://scenes/flower.gd" id="1_yoh7s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2u3nc"]
-radius = 79.15807
+radius = 388.89154
 
 [node name="Flower" type="Area2D" groups=["has_food"]]
 scale = Vector2(0.40502125, 0.40502125)
-collision_layer = 3
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_yoh7s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.938012, -76.539185)
 texture = ExtResource("1_8x8dx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, -30)
+position = Vector2(-4.938012, -125.91931)
 shape = SubResource("CircleShape2D_2u3nc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="." to="." method="_on_body_exited" flags=18]
