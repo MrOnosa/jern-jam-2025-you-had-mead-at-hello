@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="You had mead at hello"
-run/main_scene="uid://ckavqb25bdaul"
+run/main_scene="uid://dd1j0wu8bg72n"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
