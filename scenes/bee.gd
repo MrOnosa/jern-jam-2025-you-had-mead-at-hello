@@ -8,6 +8,7 @@ var foraging_iteration := 0
 var nearby_flowers : Array[Flower] = []
 var flower_of_interest : Flower = null
 var pollen_collected := 0
+var home_hive : BeeColony = null
 #var bee_transition_type_pattern := bee_transition_type_factory()
 var current_objective := Objective.LEAVE_BEE_HIVE
 
@@ -37,7 +38,9 @@ func bee_navigate_generator() -> void:
 			scale = Vector2.ZERO
 			var tween = get_tree().create_tween()
 			#tween.tween_property(self, "scale", Vector2.ONE, 1).set_trans(Tween.TRANS_LINEAR)
-			tween.tween_property(self, "position", world_clamp(position + Vector2(randi_range(-10, 10), randi_range(30, 80))), randf_range(0.5, 1.5)).set_trans(Tween.TRANS_SINE )
+			var new_position = world_clamp(position + Vector2(randi_range(-10, 10), randi_range(30, 80)))
+			tween.tween_property(self, "position", new_position, randf_range(0.5, 1.5)).set_trans(Tween.TRANS_SINE )
+			set_facing(new_position)
 			tween.tween_callback(bee_navigate_generator)
 			current_objective = Objective.FORAGING
 			foraging_iteration = 0
@@ -57,7 +60,7 @@ func bee_navigate_generator() -> void:
 			var tween = get_tree().create_tween()
 			var new_position = world_clamp(position + buzz_path)
 			tween.tween_property(self, "position", new_position, randf_range(0.7, 1.2)).set_trans(Tween.TRANS_SINE )
-			currently_faceing_right = new_position.x > position.x #todo figure out how to handle this ina  clean way that i can resue
+			set_facing(new_position)
 			tween.tween_callback(bee_navigate_generator)			
 		Objective.FOUND_FOOD:
 			if flower_of_interest != null:
@@ -66,15 +69,18 @@ func bee_navigate_generator() -> void:
 				var tween = get_tree().create_tween()
 				tween.tween_property(self, "position", new_position, 3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE )
 				current_objective = Objective.GET_FOOD
+				set_facing(new_position)
 				tween.tween_callback(bee_navigate_generator)			
 			else:
 				current_objective = Objective.FORAGING
+				bee_navigate_generator()
 		Objective.GET_FOOD:	
 			if flower_of_interest != null:
+				# The bee will move about the flower's surface while collecting all the pollen from the flower
 				if flower_of_interest.pollen_available > 0:
 					# Continue getting pollen
-					var pollen_collected_this_step = min(flower_of_interest.pollen_available, 10)
-					flower_of_interest.pollen_available  -= pollen_collected_this_step
+					var pollen_collected_this_step = min(flower_of_interest.pollen_available, randi_range(8,102))
+					flower_of_interest.pollen_available -= pollen_collected_this_step
 					pollen_collected += pollen_collected_this_step
 					
 					var flower_bee_marker = flower_of_interest.get_node("BeeMarker2D").global_position
@@ -87,12 +93,31 @@ func bee_navigate_generator() -> void:
 					
 					var tween = get_tree().create_tween()
 					tween.tween_property(self, "position", new_position, 3).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE )
+					set_facing(new_position)
 					tween.tween_callback(bee_navigate_generator)
 				else:
+					#TODO: Collect pollen from multiple flowers before heading back
+					# So I can collect a few times from a flower until the bee is filled up
+					# bees could keep a list of flowers theyve visited in thier trip to avoid
+					# going to the same flower over and over again
+					# and having a safty timeout so if there are no more flowers
+					# and they have pollen, they head back home anyway
+					flower_of_interest.being_harvested = false
+					flower_of_interest = null
 					current_objective = Objective.BEELING_IT_BACK_TO_THE_HIVE
+					bee_navigate_generator()
 			else:
 				current_objective = Objective.FORAGING
-			
+				bee_navigate_generator()
+		Objective.BEELING_IT_BACK_TO_THE_HIVE:	
+				# buzz our bees to the flower of choice in a nifty way			
+				var new_position = world_clamp(home_hive.get_node("ExitHiveMarker2D").global_position)
+				var tween = get_tree().create_tween()
+				#fix so we go in spurts
+				tween.tween_property(self, "position", new_position, 3).set_trans(Tween.TRANS_LINEAR )
+				current_objective = Objective.ENTER_BEE_HIVE
+				set_facing(new_position)
+				tween.tween_callback(bee_navigate_generator)			
 		_:	
 			var subtween_spin = create_tween()
 			subtween_spin.tween_property(self, "rotation_degrees", 45.0, randf_range(0.5, 1.5)).set_trans(Tween.TRANS_SINE ) 
@@ -114,7 +139,10 @@ func notice_flower(flower: Flower):
 func left_flower(flower: Flower):
 	nearby_flowers.erase(flower)
 	print("=( flower wasn't good enough ", nearby_flowers)
-	
+
+func set_facing(new_position: Vector2) -> void:
+	currently_faceing_right = new_position.x > position.x
+
 #func bee_transition_type_factory() -> Tween.TransitionType:
 	#var randi = randi_range(0, 4)
 	#match randi:

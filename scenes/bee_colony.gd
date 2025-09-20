@@ -1,4 +1,5 @@
 extends StaticBody2D
+class_name BeeColony
 
 signal honey_collected
 @onready var action_button: TextureButton = $ActionButton
