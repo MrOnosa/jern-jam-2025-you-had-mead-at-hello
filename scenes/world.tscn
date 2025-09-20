@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://4cli82gdv1h3" path="res://assets/placeholder/circle2.png" id="1_7r4gi"]
 [ext_resource type="Script" uid="uid://cugl826a8ai2" path="res://scenes/world.gd" id="1_w7kh3"]
-[ext_resource type="Texture2D" uid="uid://cf6x4dcqxxxn" path="res://assets/field.svg" id="2_w7kh3"]
+[ext_resource type="Texture2D" uid="uid://dmnihv382ty1d" path="res://assets/ground_texture.png" id="3_7iits"]
 [ext_resource type="Script" uid="uid://cuuenfvx0rdhk" path="res://FancyCamera.gd" id="3_e3hyu"]
 [ext_resource type="Shader" uid="uid://byxo6um7bonre" path="res://world.tres" id="4_q5onr"]
 [ext_resource type="PackedScene" uid="uid://c3b1wwqkjscss" path="res://scenes/bee_keeper.tscn" id="5_jhx03"]
@@ -71,7 +71,7 @@ texture_repeat = 2
 offset_right = 13000.0
 offset_bottom = 8000.0
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_w7kh3")
+texture = ExtResource("3_7iits")
 stretch_mode = 1
 
 [node name="TopWorldBoundry" type="StaticBody2D" parent="Grass"]
