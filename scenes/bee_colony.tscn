@@ -37,11 +37,11 @@ shape = SubResource("CapsuleShape2D_aqk2v")
 
 [node name="ActionButton" type="TextureButton" parent="."]
 z_index = 100
-offset_left = -45.99997
-offset_top = 88.0
-offset_right = 147.00003
-offset_bottom = 280.0
-scale = Vector2(0.32000124, 0.32000124)
+offset_left = -136.99998
+offset_top = 231.00002
+offset_right = 56.000015
+offset_bottom = 423.0
+scale = Vector2(1.4800011, 1.4800011)
 texture_normal = ExtResource("3_js7wk")
 
 [node name="Label" type="Label" parent="ActionButton"]
