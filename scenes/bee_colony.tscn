@@ -13,7 +13,7 @@ radius = 142.59383
 radius = 271.0
 height = 852.0
 
-[node name="BeeColony" type="StaticBody2D"]
+[node name="BeeColony" type="StaticBody2D" groups=["bee_colony"]]
 script = ExtResource("1_mcgfy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -62,6 +62,30 @@ vertical_alignment = 1
 [node name="ExitHiveMarker2D" type="Marker2D" parent="."]
 position = Vector2(2, 109)
 
+[node name="HoneyProductionTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="DebugRichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 193.0
+offset_top = -122.0
+offset_right = 895.0
+offset_bottom = 79.0
+theme_override_font_sizes/normal_font_size = 48
+text = "a
+b
+c
+"
+fit_content = true
+
+[node name="HiveUpkeepTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="BeeSpawnTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="body_entered" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_entered"]
 [connection signal="body_exited" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_exited"]
 [connection signal="pressed" from="ActionButton" to="." method="_on_action_button_pressed"]
+[connection signal="timeout" from="HoneyProductionTimer" to="." method="_on_honey_production_timer_timeout"]
+[connection signal="timeout" from="HiveUpkeepTimer" to="." method="_on_hive_upkeep_timer_timeout"]
+[connection signal="timeout" from="BeeSpawnTimer" to="." method="_on_bee_spawn_timer_timeout"]

@@ -123,9 +123,6 @@ scale = Vector2(0.3, 0.3)
 position = Vector2(734, 333)
 scale = Vector2(0.3, 0.3)
 
-[node name="SpawnBeeTimer" type="Timer" parent="."]
-autostart = true
-
 [node name="Flowers" type="Node2D" parent="."]
 visible = false
 
@@ -244,5 +241,5 @@ position = Vector2(1575, 707)
 position = Vector2(1357, 899)
 
 [connection signal="honey_collected" from="BeeColony" to="BeeKeeper" method="_on_bee_colony_honey_collected"]
+[connection signal="spawn_bee" from="BeeColony" to="." method="_on_bee_colony_spawn_bee"]
 [connection signal="placed" from="Workbench" to="BeeKeeper" method="_on_workbench_placed"]
-[connection signal="timeout" from="SpawnBeeTimer" to="." method="_on_spawn_bee_timer_timeout" flags=18]

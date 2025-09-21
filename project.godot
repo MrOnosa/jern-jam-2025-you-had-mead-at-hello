@@ -30,6 +30,7 @@ window/stretch/mode="viewport"
 
 has_food="This has something the bees want to find"
 bee_group=""
+bee_colony="ya know, for the bee colonies or bee hives or whatever"
 
 [input]
 

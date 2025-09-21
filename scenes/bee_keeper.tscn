@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://scenes/bee_keeper.gd" id="1_3i6xr"]
 [ext_resource type="Texture2D" uid="uid://dgrh8ag1vpqjf" path="res://assets/beekeeper.png" id="2_tnovc"]
 [ext_resource type="Texture2D" uid="uid://fi4kpxtqot0o" path="res://assets/beekeeper_sting.png" id="3_qps6d"]
-[ext_resource type="Texture2D" uid="uid://d3asabufovkvv" path="res://assets/placeholder/honeyHighSprite.png" id="4_sjvhd"]
+[ext_resource type="Texture2D" uid="uid://cbt2ynwtf5wff" path="res://assets/honey/honey_jar.png" id="4_3i6xr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aqk2v"]
 animations = [{
@@ -39,6 +39,6 @@ shape = SubResource("CapsuleShape2D_ikiii")
 [node name="HoneyHighSprite" type="Sprite2D" parent="Holding"]
 unique_name_in_owner = true
 z_index = 1
-position = Vector2(-16.000004, 8)
-scale = Vector2(0.30586722, 0.30586722)
-texture = ExtResource("4_sjvhd")
+position = Vector2(33, 19)
+scale = Vector2(0.08399694, 0.08399692)
+texture = ExtResource("4_3i6xr")

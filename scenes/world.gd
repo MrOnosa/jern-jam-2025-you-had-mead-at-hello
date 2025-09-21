@@ -14,11 +14,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
-func _on_spawn_bee_timer_timeout(source: Timer) -> void:
-	var all_bees = get_tree().get_nodes_in_group("bee_group")
-	if all_bees.size() < 10:	
-		var bee : Bee = BEE.instantiate()
-		bee.position = $BeeColony/ExitHiveMarker2D.global_position
-		bee.home_hive = $BeeColony
-		add_child(bee)
+func _on_bee_colony_spawn_bee(home_hive: BeeColony) -> void:	
+	var bee : Bee = BEE.instantiate()
+	bee.position = home_hive.get_node("ExitHiveMarker2D").global_position
+	bee.home_hive = home_hive
+	add_child(bee)
