@@ -70,6 +70,7 @@ offset_left = 193.0
 offset_top = -122.0
 offset_right = 895.0
 offset_bottom = 79.0
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 48
 text = "a
 b

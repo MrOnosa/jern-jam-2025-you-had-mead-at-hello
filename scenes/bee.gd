@@ -6,6 +6,7 @@ enum Objective { LEAVE_BEE_HIVE, FORAGING, FOUND_FOOD, GET_FOOD, BEELING_IT_BACK
 var heading := 0.0 #180 degrees
 var currently_facing_right := true
 var foraging_iteration := 0
+var foraging_iteration_never_resets := 0
 var foraging_with_pollen_iteration := 0
 var flower_harvesting_iteration := 0
 var nearby_flowers : Array[Flower] = []
@@ -52,6 +53,7 @@ func bee_navigate_generator() -> void:
 			tween.tween_callback(bee_navigate_generator)
 			current_objective = Objective.FORAGING
 			foraging_iteration = 0
+			foraging_iteration_never_resets = 0
 			heading = randf_range(0, PI)
 		Objective.FORAGING:
 			# Bees wondering around 
@@ -61,6 +63,7 @@ func bee_navigate_generator() -> void:
 			# do not go in the same direction forever, but they do go in the same direction for a bit
 			heading += randf_range(-0.174533 * (foraging_iteration % 10), 0.174533 * (foraging_iteration % 10))
 			foraging_iteration += 1
+			foraging_iteration_never_resets += 1
 			if (foraging_iteration > 100):
 				# Keep things from getting too wild
 				foraging_iteration = 0
@@ -69,7 +72,10 @@ func bee_navigate_generator() -> void:
 			if pollen_collected > 0:
 				foraging_with_pollen_iteration += 1
 				if foraging_with_pollen_iteration > 90:
-					current_objective = Objective.BEELING_IT_BACK_TO_THE_HIVE					
+					current_objective = Objective.BEELING_IT_BACK_TO_THE_HIVE		
+			elif foraging_iteration_never_resets > 300:			
+				# Fail safe if the bee just gets super lost and never finds a flower, just back home			
+				current_objective = Objective.BEELING_IT_BACK_TO_THE_HIVE				
 			
 			var tween = get_tree().create_tween()
 			var new_position = world_clamp(position + buzz_path)

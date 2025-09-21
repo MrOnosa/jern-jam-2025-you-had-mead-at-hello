@@ -56,6 +56,7 @@ offset_bottom = 8000.0
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_7iits")
 stretch_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="TopWorldBoundry" type="StaticBody2D" parent="Grass"]
 collision_layer = 3
@@ -100,6 +101,7 @@ limit_right = 3900
 limit_bottom = 2400
 position_smoothing_enabled = true
 script = ExtResource("3_e3hyu")
+metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
@@ -118,6 +120,12 @@ position = Vector2(308, 145)
 [node name="BeeColony" parent="." instance=ExtResource("6_o8fc1")]
 position = Vector2(457, 111)
 scale = Vector2(0.3, 0.3)
+raw_honey_produced = 59.0
+
+[node name="BeeColony2" parent="." instance=ExtResource("6_o8fc1")]
+position = Vector2(1027, 145)
+scale = Vector2(0.3, 0.3)
+raw_honey_produced = 59.0
 
 [node name="Workbench" parent="." instance=ExtResource("7_xo05s")]
 position = Vector2(734, 333)
@@ -242,4 +250,6 @@ position = Vector2(1357, 899)
 
 [connection signal="honey_collected" from="BeeColony" to="BeeKeeper" method="_on_bee_colony_honey_collected"]
 [connection signal="spawn_bee" from="BeeColony" to="." method="_on_bee_colony_spawn_bee"]
+[connection signal="honey_collected" from="BeeColony2" to="BeeKeeper" method="_on_bee_colony_honey_collected"]
+[connection signal="spawn_bee" from="BeeColony2" to="." method="_on_bee_colony_spawn_bee"]
 [connection signal="placed" from="Workbench" to="BeeKeeper" method="_on_workbench_placed"]
