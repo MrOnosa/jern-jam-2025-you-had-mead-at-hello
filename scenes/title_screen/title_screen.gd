@@ -3,7 +3,8 @@ extends Node2D
 
 @onready var new_game_button: TextureButton = %NewGameButton
 @onready var options_button: TextureButton = %OptionsButton
-@onready var exit_button: TextureButton = %ExitButton
+@onready var credits_button: TextureButton = %CreditsButton
+
 
 func _ready() -> void:
 	new_game_button.pressed.connect(_on_new_game_button_pressed)

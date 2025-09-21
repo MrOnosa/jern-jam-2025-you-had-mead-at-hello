@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3b1wwqkjscss"]
+[gd_scene load_steps=8 format=3 uid="uid://c3b1wwqkjscss"]
 
 [ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://scenes/bee_keeper.gd" id="1_3i6xr"]
 [ext_resource type="Texture2D" uid="uid://dgrh8ag1vpqjf" path="res://assets/beekeeper.png" id="2_tnovc"]
 [ext_resource type="Texture2D" uid="uid://fi4kpxtqot0o" path="res://assets/beekeeper_sting.png" id="3_qps6d"]
 [ext_resource type="Texture2D" uid="uid://cbt2ynwtf5wff" path="res://assets/honey/honey_jar.png" id="4_3i6xr"]
+[ext_resource type="PackedScene" uid="uid://bmm35ikscd1li" path="res://scenes/player/player_animations.tscn" id="4_tnovc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aqk2v"]
 animations = [{
@@ -23,12 +24,16 @@ animations = [{
 radius = 14.0
 height = 80.0
 
-[node name="BeeKeeper" type="CharacterBody2D"]
+[node name="BeeKeeper" type="CharacterBody2D" node_paths=PackedStringArray("player_rig")]
 motion_mode = 1
 script = ExtResource("1_3i6xr")
+player_rig = NodePath("PlayerAnimations")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_aqk2v")
+
+[node name="PlayerAnimations" parent="." instance=ExtResource("4_tnovc")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 38)

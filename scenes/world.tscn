@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ckavqb25bdaul"]
+[gd_scene load_steps=29 format=3 uid="uid://ckavqb25bdaul"]
 
 [ext_resource type="Texture2D" uid="uid://4cli82gdv1h3" path="res://assets/placeholder/circle2.png" id="1_7r4gi"]
 [ext_resource type="Script" uid="uid://cugl826a8ai2" path="res://scenes/world.gd" id="1_w7kh3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://byxo6um7bonre" path="res://world.tres" id="4_q5onr"]
 [ext_resource type="PackedScene" uid="uid://c3b1wwqkjscss" path="res://scenes/bee_keeper.tscn" id="5_jhx03"]
 [ext_resource type="PackedScene" uid="uid://cnqxl80su0co4" path="res://scenes/bee_colony.tscn" id="6_o8fc1"]
+[ext_resource type="PackedScene" uid="uid://bmm35ikscd1li" path="res://scenes/player/player_animations.tscn" id="7_kpybi"]
 [ext_resource type="PackedScene" uid="uid://df31ndq2c5s56" path="res://scenes/workbench.tscn" id="7_xo05s"]
 [ext_resource type="PackedScene" uid="uid://b7rtim3q5xhms" path="res://scenes/flower.tscn" id="9_7t5mc"]
 [ext_resource type="Texture2D" uid="uid://b0iiiv4kr8ig3" path="res://assets/flowers/wildflower_1.png" id="10_7t5mc"]
@@ -114,12 +115,16 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="Player" parent="." instance=ExtResource("7_kpybi")]
+position = Vector2(185, 162)
+
 [node name="BeeKeeper" parent="." instance=ExtResource("5_jhx03")]
 position = Vector2(308, 145)
 
 [node name="BeeColony" parent="." instance=ExtResource("6_o8fc1")]
 position = Vector2(457, 111)
 scale = Vector2(0.3, 0.3)
+raw_honey_produced = 20000.0
 total_bees = 80000
 
 [node name="BeeColony2" parent="." instance=ExtResource("6_o8fc1")]

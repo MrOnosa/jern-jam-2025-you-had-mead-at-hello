@@ -1,0 +1,373 @@
+[gd_scene load_steps=87 format=3 uid="uid://bmm35ikscd1li"]
+
+[ext_resource type="Texture2D" uid="uid://bbkdgtvep74rj" path="res://scenes/player/assets/idle/Beekeeper-idle_00.png" id="1_3j4b4"]
+[ext_resource type="Script" uid="uid://bsgg1ohf8mno2" path="res://scenes/player/player_animations.gd" id="1_4b1ex"]
+[ext_resource type="Texture2D" uid="uid://cq87csdl031rf" path="res://scenes/player/assets/idle/Beekeeper-idle_01.png" id="2_yj68g"]
+[ext_resource type="Texture2D" uid="uid://cyqer58y4fmgy" path="res://scenes/player/assets/idle/Beekeeper-idle_02.png" id="3_ioxgp"]
+[ext_resource type="Texture2D" uid="uid://yx26u0dlyfst" path="res://scenes/player/assets/idle/Beekeeper-idle_03.png" id="4_cnsyf"]
+[ext_resource type="Texture2D" uid="uid://ch1pjybncqrpo" path="res://scenes/player/assets/idle/Beekeeper-idle_04.png" id="5_007i1"]
+[ext_resource type="Texture2D" uid="uid://c3u35nhjqoy2c" path="res://scenes/player/assets/idle/Beekeeper-idle_05.png" id="6_6cv16"]
+[ext_resource type="Texture2D" uid="uid://cca2ssmgc0ot7" path="res://scenes/player/assets/idle/Beekeeper-idle_06.png" id="7_j4nxn"]
+[ext_resource type="Texture2D" uid="uid://cuwngb4ehqovh" path="res://scenes/player/assets/idle/Beekeeper-idle_07.png" id="8_28m0y"]
+[ext_resource type="Texture2D" uid="uid://bgewu10f5kfie" path="res://scenes/player/assets/idle/Beekeeper-idle_08.png" id="9_uniwh"]
+[ext_resource type="Texture2D" uid="uid://ik2j5b05pqj3" path="res://scenes/player/assets/idle/Beekeeper-idle_09.png" id="10_iqsei"]
+[ext_resource type="Texture2D" uid="uid://ki833spktobu" path="res://scenes/player/assets/idle/Beekeeper-idle_10.png" id="11_tffgl"]
+[ext_resource type="Texture2D" uid="uid://dcdk1lvmqppyj" path="res://scenes/player/assets/idle/Beekeeper-idle_11.png" id="12_pk8ii"]
+[ext_resource type="Texture2D" uid="uid://bi0dwf1abaf8g" path="res://scenes/player/assets/idle/Beekeeper-idle_12.png" id="13_5mf0n"]
+[ext_resource type="Texture2D" uid="uid://b6j2g3i0fmj50" path="res://scenes/player/assets/idle/Beekeeper-idle_13.png" id="14_4hvnv"]
+[ext_resource type="Texture2D" uid="uid://k5mpkcfbwp30" path="res://scenes/player/assets/idle/Beekeeper-idle_14.png" id="15_bbmj2"]
+[ext_resource type="Texture2D" uid="uid://cbqp5an848keh" path="res://scenes/player/assets/idle/Beekeeper-idle_15.png" id="16_kxw46"]
+[ext_resource type="Texture2D" uid="uid://bt4vl2kne37ub" path="res://scenes/player/assets/idle/Beekeeper-idle_16.png" id="17_8qxvo"]
+[ext_resource type="Texture2D" uid="uid://5yawo6wdbw1t" path="res://scenes/player/assets/idle/Beekeeper-idle_17.png" id="18_5q8fn"]
+[ext_resource type="Texture2D" uid="uid://csfcnqfccs2f2" path="res://scenes/player/assets/idle/Beekeeper-idle_18.png" id="19_wva7c"]
+[ext_resource type="Texture2D" uid="uid://kqyotx1oa8hb" path="res://scenes/player/assets/idle/Beekeeper-idle_19.png" id="20_7obkq"]
+[ext_resource type="Texture2D" uid="uid://k2gd1kt62a0e" path="res://scenes/player/assets/idle/Beekeeper-idle_20.png" id="21_vo27k"]
+[ext_resource type="Texture2D" uid="uid://d3vmtbx6b6qtm" path="res://scenes/player/assets/walking/Beekeeper-walk_00.png" id="22_genst"]
+[ext_resource type="Texture2D" uid="uid://cwwi33tj6f6bx" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_00.png" id="22_trum3"]
+[ext_resource type="Texture2D" uid="uid://dk1j5enhc1u8w" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_01.png" id="23_4b1ex"]
+[ext_resource type="Texture2D" uid="uid://dlgakx5uqocyg" path="res://scenes/player/assets/walking/Beekeeper-walk_01.png" id="23_niom3"]
+[ext_resource type="Texture2D" uid="uid://de6kg3yd7mt7n" path="res://scenes/player/assets/walking/Beekeeper-walk_02.png" id="24_ttakn"]
+[ext_resource type="Texture2D" uid="uid://o720u2buaoda" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_02.png" id="24_v8cnd"]
+[ext_resource type="Texture2D" uid="uid://bqs5flwl4k37m" path="res://scenes/player/assets/walking/Beekeeper-walk_03.png" id="25_rw8a5"]
+[ext_resource type="Texture2D" uid="uid://bi7hva5wksk30" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_03.png" id="25_wuxn4"]
+[ext_resource type="Texture2D" uid="uid://b2syoyvfcfg4g" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_04.png" id="26_46q5t"]
+[ext_resource type="Texture2D" uid="uid://cmvk3l46p5xp3" path="res://scenes/player/assets/walking/Beekeeper-walk_04.png" id="26_iwuka"]
+[ext_resource type="Texture2D" uid="uid://cqdletswlytqd" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_05.png" id="27_5miun"]
+[ext_resource type="Texture2D" uid="uid://cfveongl4goxx" path="res://scenes/player/assets/walking/Beekeeper-walk_05.png" id="27_hyqqp"]
+[ext_resource type="Texture2D" uid="uid://pls2irqq7omq" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_06.png" id="28_7u1tp"]
+[ext_resource type="Texture2D" uid="uid://75qnb42maus6" path="res://scenes/player/assets/walking/Beekeeper-walk_06.png" id="28_ds1xl"]
+[ext_resource type="Texture2D" uid="uid://x01fcu60fuhy" path="res://scenes/player/assets/walking/Beekeeper-walk_07.png" id="29_1u1sw"]
+[ext_resource type="Texture2D" uid="uid://bx5eit2uakeff" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_07.png" id="29_pq1ih"]
+[ext_resource type="Texture2D" uid="uid://c1ea1rqtel7fv" path="res://scenes/player/assets/walking/Beekeeper-walk_08.png" id="30_2t3bg"]
+[ext_resource type="Texture2D" uid="uid://1l8bv285rp5p" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_08.png" id="30_31ki0"]
+[ext_resource type="Texture2D" uid="uid://bvydhy5ghy6s0" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_09.png" id="31_hf5gj"]
+[ext_resource type="Texture2D" uid="uid://dujxs6twx2hlb" path="res://scenes/player/assets/walking/Beekeeper-walk_09.png" id="31_jrbya"]
+[ext_resource type="Texture2D" uid="uid://cplogdnc8jc3e" path="res://scenes/player/assets/walking/Beekeeper-walk_10.png" id="32_ahqnk"]
+[ext_resource type="Texture2D" uid="uid://g4sbqmo8h8lj" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_10.png" id="32_avmva"]
+[ext_resource type="Texture2D" uid="uid://3gw83qudwhuk" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_11.png" id="33_0ioy2"]
+[ext_resource type="Texture2D" uid="uid://cfdumsgupwh6a" path="res://scenes/player/assets/walking/Beekeeper-walk_11.png" id="33_vb1ce"]
+[ext_resource type="Texture2D" uid="uid://kb24j67d0jra" path="res://scenes/player/assets/walking/Beekeeper-walk_12.png" id="34_0ncpa"]
+[ext_resource type="Texture2D" uid="uid://bxfg1xweheoic" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_12.png" id="34_vlhku"]
+[ext_resource type="Texture2D" uid="uid://duv4hvtrb5t1b" path="res://scenes/player/assets/walking/Beekeeper-walk_13.png" id="35_upxxc"]
+[ext_resource type="Texture2D" uid="uid://f7qp5inwydpt" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_13.png" id="35_ws0t6"]
+[ext_resource type="Texture2D" uid="uid://b8lp4h41731qh" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_14.png" id="36_i6ap2"]
+[ext_resource type="Texture2D" uid="uid://b3wgtswdvtvtu" path="res://scenes/player/assets/walking/Beekeeper-walk_14.png" id="36_ln3h3"]
+[ext_resource type="Texture2D" uid="uid://cbex6tngsj0br" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_15.png" id="37_88c1f"]
+[ext_resource type="Texture2D" uid="uid://bggm1hi8gyiy7" path="res://scenes/player/assets/walking/Beekeeper-walk_15.png" id="37_uygh0"]
+[ext_resource type="Texture2D" uid="uid://dgmem0t6gj73j" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_16.png" id="38_hdu4s"]
+[ext_resource type="Texture2D" uid="uid://cpiwuortpss60" path="res://scenes/player/assets/walking/Beekeeper-walk_16.png" id="38_t1aof"]
+[ext_resource type="Texture2D" uid="uid://b6wvrpyio36jx" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_17.png" id="39_0wr6q"]
+[ext_resource type="Texture2D" uid="uid://b02sq6k6pujbh" path="res://scenes/player/assets/walking/Beekeeper-walk_17.png" id="39_w8qe1"]
+[ext_resource type="Texture2D" uid="uid://dwdmr8r4k1o5b" path="res://scenes/player/assets/walking/Beekeeper-walk_18.png" id="40_hdvrm"]
+[ext_resource type="Texture2D" uid="uid://bxagk3l1kvhcf" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_18.png" id="40_p0anf"]
+[ext_resource type="Texture2D" uid="uid://c4lng02are5n2" path="res://scenes/player/assets/walking/Beekeeper-walk_19.png" id="41_5xbmr"]
+[ext_resource type="Texture2D" uid="uid://c63y53amd1c4k" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_19.png" id="41_lhgc7"]
+[ext_resource type="Texture2D" uid="uid://bi8i11mr1iuoh" path="res://scenes/player/assets/walking/Beekeeper-walk_20.png" id="42_hir57"]
+[ext_resource type="Texture2D" uid="uid://cm8h5ie8evjlb" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_20.png" id="42_vy876"]
+[ext_resource type="Texture2D" uid="uid://b8w3njqm88m5h" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_00.png" id="64_0vtlm"]
+[ext_resource type="Texture2D" uid="uid://be66n1f77e2gm" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_01.png" id="65_drv02"]
+[ext_resource type="Texture2D" uid="uid://ctoy0bornnolk" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_02.png" id="66_tmafg"]
+[ext_resource type="Texture2D" uid="uid://dobwxb384grgf" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_03.png" id="67_2enr6"]
+[ext_resource type="Texture2D" uid="uid://dt3by1mjgkbb0" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_04.png" id="68_qxlpa"]
+[ext_resource type="Texture2D" uid="uid://chtwjitoym543" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_05.png" id="69_iwd08"]
+[ext_resource type="Texture2D" uid="uid://cdq6jlqyahrvq" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_06.png" id="70_5oeuk"]
+[ext_resource type="Texture2D" uid="uid://do0hevk0mwf03" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_07.png" id="71_oq5hk"]
+[ext_resource type="Texture2D" uid="uid://bdgybulstpq2v" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_08.png" id="72_kfile"]
+[ext_resource type="Texture2D" uid="uid://wcaa5pssxwct" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_09.png" id="73_pkjeu"]
+[ext_resource type="Texture2D" uid="uid://cgg6klbinc8pi" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_10.png" id="74_0epl4"]
+[ext_resource type="Texture2D" uid="uid://blyvnwe6f66k0" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_11.png" id="75_3r8w6"]
+[ext_resource type="Texture2D" uid="uid://63cynt2seix4" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_12.png" id="76_i816j"]
+[ext_resource type="Texture2D" uid="uid://n3rycbmbqxnr" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_13.png" id="77_laqvq"]
+[ext_resource type="Texture2D" uid="uid://ca6rdqukvv7xn" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_14.png" id="78_aq51r"]
+[ext_resource type="Texture2D" uid="uid://h8nwpm7wqm17" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_15.png" id="79_q3ejk"]
+[ext_resource type="Texture2D" uid="uid://b0hhsf40nxjlp" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_16.png" id="80_2dxln"]
+[ext_resource type="Texture2D" uid="uid://dn585ql1n8s5b" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_17.png" id="81_gsldg"]
+[ext_resource type="Texture2D" uid="uid://b8kx6atbhpew8" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_18.png" id="82_rrrpt"]
+[ext_resource type="Texture2D" uid="uid://b25hji6jb3x3b" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_19.png" id="83_us45u"]
+[ext_resource type="Texture2D" uid="uid://f6o0iorndn6l" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_20.png" id="84_wvv85"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_myrg7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3j4b4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_yj68g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ioxgp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cnsyf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_007i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6cv16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j4nxn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_28m0y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_uniwh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_iqsei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_tffgl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_pk8ii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_5mf0n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_4hvnv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_bbmj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_kxw46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8qxvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_5q8fn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_wva7c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_7obkq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_vo27k")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_trum3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_4b1ex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_v8cnd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_wuxn4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_46q5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_5miun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_7u1tp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_pq1ih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_31ki0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_hf5gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_avmva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_0ioy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_vlhku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_ws0t6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_i6ap2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_88c1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_hdu4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_0wr6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_p0anf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_lhgc7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_vy876")
+}],
+"loop": true,
+"name": &"idle_hold",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_genst")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_niom3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ttakn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_rw8a5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_iwuka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_hyqqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_ds1xl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_1u1sw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_2t3bg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_jrbya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_ahqnk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_vb1ce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_0ncpa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_upxxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_ln3h3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_uygh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_t1aof")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_w8qe1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_hdvrm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_5xbmr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_hir57")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("64_0vtlm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_drv02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_tmafg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_2enr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_qxlpa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_iwd08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_5oeuk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_oq5hk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_kfile")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_pkjeu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_0epl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_3r8w6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_i816j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_laqvq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_aq51r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_q3ejk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_2dxln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_gsldg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_rrrpt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_us45u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_wvv85")
+}],
+"loop": true,
+"name": &"walking_hold",
+"speed": 30.0
+}]
+
+[node name="PlayerAnimations" type="Node2D"]
+script = ExtResource("1_4b1ex")
+
+[node name="Animations" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1, 0)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_myrg7")
+animation = &"idle_hold"
+autoplay = "idle"
