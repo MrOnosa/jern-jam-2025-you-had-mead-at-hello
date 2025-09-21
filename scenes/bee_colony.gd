@@ -13,7 +13,9 @@ class_name BeeColony
 @export var max_population := 80000
 @export var bees_to_sprite_threshold := 2000.0 # How many bees do you need to see a sprite of a bee in the wild
 
-@export var bees_needed_to_convert_pollen_to_honey = 10000
+@export var bees_needed_to_convert_pollen_to_honey := 10000
+
+var is_starving := false
 
 signal honey_collected
 signal spawn_bee(home_hive: BeeColony)
@@ -27,6 +29,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var food_needed := total_bees * raw_honey_consumption_ratio
 	$DebugRichTextLabel.text = str("PC: ", str(pollen_collected), "\nRHP: ", str(raw_honey_produced), "\nPop: ", total_bees, "\nFN: ", food_needed)
+	$InfoPanel/PopulationLabel.text = str("Population: ", add_commas_to_number(total_bees))
+	
+	$InfoPanel/StarvingLabel.visible = is_starving
 	pass
 	
 func _on_interactive_area_2d_body_entered(body: Node2D) -> void:
@@ -66,10 +71,12 @@ func _on_hive_upkeep_timer_timeout() -> void:
 	var honey_to_feed_all_the_bees = total_bees * raw_honey_consumption_ratio
 	if raw_honey_produced > honey_to_feed_all_the_bees:
 		# Feed the bees
+		is_starving = false
 		raw_honey_produced -= honey_to_feed_all_the_bees
 		total_bees = min(max_population, total_bees + bee_growth) # todo make a range
 	else:
 		# Starving!!
+		is_starving = true
 		total_bees = max(8000, ceili(total_bees * 0.95))
 	
 	pass # Replace with function body.
@@ -89,4 +96,18 @@ func _on_bee_spawn_timer_timeout() -> void:
 	
 	if  bee_sprites_belonging_to_this_hive < (total_bees/bees_to_sprite_threshold):
 		spawn_bee.emit(self)
-		
+				
+# Found at https://www.reddit.com/r/godot/comments/9iw4ie/comment/mdy16ln/
+func add_commas_to_number(input_number : int) -> String:
+		var number_as_string : String = str(input_number)
+		var output_string : String = ""
+		var last_index : int = number_as_string.length() - 1
+		#For each digit in the number...
+		for index in range(number_as_string.length()):
+			#add that digit to the output string, and then...
+			output_string = output_string + number_as_string.substr(index,1)
+			#if the index is at the thousandths, millions, billionths place, etc.
+			#i.e. where you would put a comma, then insert a comma after that digit.
+			if (last_index - index) % 3 == 0 and index != last_index:
+				output_string = output_string + ","
+		return output_string
