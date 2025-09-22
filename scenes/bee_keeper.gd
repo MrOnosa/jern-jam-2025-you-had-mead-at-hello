@@ -13,6 +13,7 @@ var target_position : Vector2
 var click_position : Vector2
 var holding := Holding.NOTHING
 var anim_state := Action.IDLE
+var player_facing_right := true
 
 func _ready():
 	GoToObj = get_node("../GoingTowardsThisPoint")
@@ -31,6 +32,11 @@ func _process(_delta: float) -> void:
 			player_rig.animations.animation = "walking"
 		elif anim_state == Action.IDLE:
 			player_rig.animations.animation = "idle"
+		
+	if player_facing_right:
+		$PlayerAnimations.scale.x = 1
+	else:
+		$PlayerAnimations.scale.x = -1
 
 func _physics_process(_delta: float) -> void:
 	if position.distance_to(click_position) > 3:
@@ -47,14 +53,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("left_click"):
 		click_position = get_global_mouse_position()
 		GoToObj.global_position = click_position
-		
-		var test = position.direction_to(click_position)
-		print(test)
-		
-		if test.x < 0:
-			scale.x = -1
-		elif test.x > 0:
-			scale.x = 1
+		player_facing_right = GoToObj.global_position.x > position.x
 
 
 func _on_bee_colony_honey_collected() -> void:
