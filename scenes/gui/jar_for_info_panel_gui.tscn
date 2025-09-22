@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdc0ihum5w7nc"]
+
+[ext_resource type="Texture2D" uid="uid://cbt2ynwtf5wff" path="res://assets/honey/honey_jar.png" id="1_ll1dj"]
+
+[node name="JarTextureProgressBar" type="TextureProgressBar"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 61.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("1_ll1dj")

@@ -124,7 +124,7 @@ position = Vector2(308, 145)
 [node name="BeeColony" parent="." instance=ExtResource("6_o8fc1")]
 position = Vector2(457, 111)
 scale = Vector2(0.3, 0.3)
-raw_honey_produced = 20000.0
+raw_honey_produced = 360.0
 total_bees = 80000
 
 [node name="BeeColony2" parent="." instance=ExtResource("6_o8fc1")]

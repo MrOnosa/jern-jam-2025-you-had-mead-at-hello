@@ -1,9 +1,17 @@
 extends StaticBody2D
 class_name BeeColony
 
+
+@onready var jar_1_texture_progress_bar = %Jar1TextureProgressBar
+@onready var jar_2_texture_progress_bar = %Jar2TextureProgressBar
+@onready var jar_3_texture_progress_bar = %Jar3TextureProgressBar
+@onready var jar_4_texture_progress_bar = %Jar4TextureProgressBar
+@onready var jar_5_texture_progress_bar = %Jar5TextureProgressBar
+@onready var jar_6_texture_progress_bar = %Jar6TextureProgressBar
+
 @export var pollen_needed_to_produce_one_raw_honey := 10
 @export var pollen_collected := 0
-@export var max_raw_honey_capacity := 1000.0
+@export var max_raw_honey_capacity := 360.0 # raw_honey_needed_for_a_jar * 6
 @export var raw_honey_needed_for_a_jar := 60.0
 @export var raw_honey_produced := 0.0
 @export var raw_honey_consumption_ratio := (1/50000.0)
@@ -32,7 +40,17 @@ func _process(delta: float) -> void:
 	$InfoPanel/PopulationLabel.text = str("Population: ", add_commas_to_number(total_bees))
 	
 	$InfoPanel/StarvingLabel.visible = is_starving
-	pass
+	
+	# Fill each jar with honey			
+	jar_1_texture_progress_bar.value = calc_jar_percent(0)
+	jar_2_texture_progress_bar.value = calc_jar_percent(1)
+	jar_3_texture_progress_bar.value = calc_jar_percent(2)
+	jar_4_texture_progress_bar.value = calc_jar_percent(3)
+	jar_5_texture_progress_bar.value = calc_jar_percent(4)
+	jar_6_texture_progress_bar.value = calc_jar_percent(5)
+	
+func calc_jar_percent(jar_index: float) -> float:
+	return min(100.0,( raw_honey_produced / raw_honey_needed_for_a_jar - jar_index) * 100.0)
 	
 func _on_interactive_area_2d_body_entered(body: Node2D) -> void:
 	if body is BeeKeeper:
