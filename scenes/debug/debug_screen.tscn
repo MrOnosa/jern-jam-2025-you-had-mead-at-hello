@@ -1,0 +1,92 @@
+[gd_scene load_steps=16 format=3 uid="uid://dd1j0wu8bg72n"]
+
+[ext_resource type="Script" uid="uid://bgxf7tweh2eeq" path="res://scenes/debug/debug_screen.gd" id="1_huf50"]
+[ext_resource type="Texture2D" uid="uid://dogtp5dbjim3t" path="res://assets/gui/button_1.png" id="2_pwge1"]
+[ext_resource type="Texture2D" uid="uid://vfm1p832dp0b" path="res://assets/gui/button_1_hover.png" id="3_ym87i"]
+[ext_resource type="LabelSettings" uid="uid://cn1rdmmbnmsu3" path="res://assets/gui/button_font.tres" id="4_ohxfy"]
+[ext_resource type="Texture2D" uid="uid://d2chyn8tlqyat" path="res://assets/beehive.png" id="5_osbsg"]
+[ext_resource type="Texture2D" uid="uid://dgrh8ag1vpqjf" path="res://assets/beekeeper.png" id="6_0jf13"]
+[ext_resource type="Texture2D" uid="uid://bbkdgtvep74rj" path="res://scenes/player/assets/idle/Beekeeper-idle_00.png" id="7_5q7ky"]
+[ext_resource type="Texture2D" uid="uid://cwwi33tj6f6bx" path="res://scenes/player/assets/idle_hold/Beekeeper-idle_holding_00.png" id="8_epoqa"]
+[ext_resource type="Texture2D" uid="uid://d3vmtbx6b6qtm" path="res://scenes/player/assets/walking/Beekeeper-walk_00.png" id="9_oppmd"]
+[ext_resource type="Texture2D" uid="uid://b8w3njqm88m5h" path="res://scenes/player/assets/walking_hold/Beekeeper-walk_holding_00.png" id="10_xvqvo"]
+[ext_resource type="Texture2D" uid="uid://bd8chkxgjblgq" path="res://assets/bee.png" id="11_gd35m"]
+[ext_resource type="Texture2D" uid="uid://pve1ikrunf0d" path="res://assets/workbench.png" id="12_24ena"]
+[ext_resource type="Texture2D" uid="uid://cbt2ynwtf5wff" path="res://assets/honey/honey_jar.png" id="13_w86ix"]
+[ext_resource type="Texture2D" uid="uid://b0iiiv4kr8ig3" path="res://assets/flowers/wildflower_1.png" id="14_6mwbq"]
+[ext_resource type="Texture2D" uid="uid://c81mm7m46lu2p" path="res://assets/flowers/wildflower_10.png" id="15_6guhs"]
+
+[node name="DebugScreen" type="Node2D"]
+script = ExtResource("1_huf50")
+
+[node name="TitleButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+offset_left = -9.9999695
+offset_top = -16.99997
+offset_right = 462.00003
+offset_bottom = 170.00003
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("2_pwge1")
+texture_hover = ExtResource("3_ym87i")
+
+[node name="NewGameLabel" type="Label" parent="TitleButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Go to Title Screen"
+label_settings = ExtResource("4_ohxfy")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Beehive" type="Sprite2D" parent="."]
+position = Vector2(1104, 212)
+texture = ExtResource("5_osbsg")
+
+[node name="Beekeeper" type="Sprite2D" parent="."]
+position = Vector2(876, 86)
+texture = ExtResource("6_0jf13")
+
+[node name="BeekeeperIdle00" type="Sprite2D" parent="."]
+position = Vector2(739, 133)
+texture = ExtResource("7_5q7ky")
+
+[node name="BeekeeperIdleHolding00" type="Sprite2D" parent="."]
+position = Vector2(573, 139)
+texture = ExtResource("8_epoqa")
+
+[node name="BeekeeperWalk00" type="Sprite2D" parent="."]
+position = Vector2(418, 145)
+texture = ExtResource("9_oppmd")
+
+[node name="BeekeeperWalkHolding00" type="Sprite2D" parent="."]
+position = Vector2(1178, 535)
+texture = ExtResource("10_xvqvo")
+
+[node name="Bee" type="Sprite2D" parent="."]
+position = Vector2(873, 213)
+texture = ExtResource("11_gd35m")
+
+[node name="Workbench" type="Sprite2D" parent="."]
+position = Vector2(736, 488)
+texture = ExtResource("12_24ena")
+
+[node name="HoneyJar" type="Sprite2D" parent="."]
+position = Vector2(193, 429)
+texture = ExtResource("13_w86ix")
+
+[node name="Wildflower1" type="Sprite2D" parent="."]
+position = Vector2(418, 497)
+texture = ExtResource("14_6mwbq")
+
+[node name="Wildflower10" type="Sprite2D" parent="."]
+position = Vector2(1066, 526)
+texture = ExtResource("15_6guhs")
