@@ -34,6 +34,7 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_aqk2v")
 
 [node name="PlayerAnimations" parent="." instance=ExtResource("4_tnovc")]
+unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 38)
