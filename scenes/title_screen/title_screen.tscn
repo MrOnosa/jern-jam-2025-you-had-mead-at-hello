@@ -1,7 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://nq85x62by4kk"]
+[gd_scene load_steps=22 format=3 uid="uid://nq85x62by4kk"]
 
-[ext_resource type="Texture2D" uid="uid://bvblu6a5mtfg6" path="res://scenes/title_screen/assets/title_bg.png" id="1_j12ko"]
 [ext_resource type="Script" uid="uid://dhvupcvw2or0m" path="res://scenes/title_screen/title_screen.gd" id="1_yegqs"]
+[ext_resource type="Texture2D" uid="uid://cboahm3u16ohl" path="res://scenes/title_screen/assets/title_bg_ground.png" id="2_yepnq"]
+[ext_resource type="AudioStream" uid="uid://bkwul40wn181j" path="res://assets/sfx/ui_accept.ogg" id="2_ypusn"]
+[ext_resource type="Texture2D" uid="uid://cd50jmmib3uhm" path="res://scenes/title_screen/assets/title_menu_bg.png" id="3_4u6ih"]
+[ext_resource type="AudioStream" uid="uid://eftifp5h88l0" path="res://assets/sfx/ui_hover.ogg" id="3_nj8cf"]
 [ext_resource type="Texture2D" uid="uid://dogtp5dbjim3t" path="res://assets/gui/button_1.png" id="3_xoykc"]
 [ext_resource type="Texture2D" uid="uid://vfm1p832dp0b" path="res://assets/gui/button_1_hover.png" id="4_ju3lf"]
 [ext_resource type="LabelSettings" uid="uid://cn1rdmmbnmsu3" path="res://assets/gui/button_font.tres" id="5_xoykc"]
@@ -9,21 +12,37 @@
 [ext_resource type="Texture2D" uid="uid://c5etmq5xjnqbf" path="res://assets/gui/button_2_hover.png" id="7_4u6ih"]
 [ext_resource type="Texture2D" uid="uid://bx4wcfd2mkn5b" path="res://assets/gui/button_3.png" id="8_v2f8g"]
 [ext_resource type="Texture2D" uid="uid://clgcnpwnfrm1h" path="res://assets/gui/button_3_hover.png" id="9_k2vsc"]
+[ext_resource type="Texture2D" uid="uid://dynotg3cxsefg" path="res://scenes/title_screen/assets/you-had-me-logo.png" id="11_v2f8g"]
+[ext_resource type="Texture2D" uid="uid://cdvju7lp6b1wm" path="res://scenes/title_screen/assets/jern-jam-logo.png" id="12_k2vsc"]
+[ext_resource type="Texture2D" uid="uid://bd8chkxgjblgq" path="res://assets/bee.png" id="13_4u6ih"]
+[ext_resource type="Texture2D" uid="uid://up2g7k2iyy6y" path="res://assets/flowers/wildflower_6.png" id="14_5q4na"]
+[ext_resource type="Texture2D" uid="uid://u1s80pi3ub7d" path="res://assets/flowers/wildflower_5.png" id="15_cqe78"]
+[ext_resource type="Texture2D" uid="uid://c8cwxglledpf3" path="res://assets/flowers/wildflower_3.png" id="16_ypusn"]
+[ext_resource type="Texture2D" uid="uid://llbgsodmfdrx" path="res://assets/flowers/wildflower_7.png" id="17_nj8cf"]
+[ext_resource type="Texture2D" uid="uid://cjmjhyf3ra50r" path="res://assets/flowers/wildflower_8.png" id="18_f5c17"]
+[ext_resource type="Texture2D" uid="uid://dene3d8hdg5gf" path="res://assets/flowers/wildflower_9.png" id="19_hhw6k"]
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_yegqs")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1280.0
-offset_bottom = 720.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 0.7764706, 0.34117648, 1)
+[node name="AudioPlayers" type="Node2D" parent="."]
 
-[node name="TitleBg" type="Sprite2D" parent="."]
-position = Vector2(635, 359.00003)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("1_j12ko")
+[node name="SFXAccept" type="AudioStreamPlayer" parent="AudioPlayers"]
+unique_name_in_owner = true
+stream = ExtResource("2_ypusn")
+
+[node name="SFXHover" type="AudioStreamPlayer" parent="AudioPlayers"]
+unique_name_in_owner = true
+stream = ExtResource("3_nj8cf")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_yepnq")
+
+[node name="TitleMenuBg" type="Sprite2D" parent="."]
+position = Vector2(634, 470)
+texture = ExtResource("3_4u6ih")
 
 [node name="NewGameButton" type="TextureButton" parent="."]
 unique_name_in_owner = true
@@ -102,3 +121,52 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Credits"
 label_settings = ExtResource("5_xoykc")
+
+[node name="YouHadMeLogo" type="Sprite2D" parent="."]
+position = Vector2(623, 173)
+texture = ExtResource("11_v2f8g")
+
+[node name="JernJamLogo" type="Sprite2D" parent="."]
+position = Vector2(128, 640)
+texture = ExtResource("12_k2vsc")
+
+[node name="Bees" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="BeeFlying" type="Sprite2D" parent="Bees"]
+unique_name_in_owner = true
+position = Vector2(91, 132)
+texture = ExtResource("13_4u6ih")
+
+[node name="Flowers" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Wildflower6" type="Sprite2D" parent="Flowers"]
+position = Vector2(1190, 642)
+scale = Vector2(0.47129187, 0.47129187)
+texture = ExtResource("14_5q4na")
+
+[node name="Wildflower5" type="Sprite2D" parent="Flowers"]
+position = Vector2(269.99997, 400)
+scale = Vector2(0.48305085, 0.48305085)
+texture = ExtResource("15_cqe78")
+
+[node name="Wildflower3" type="Sprite2D" parent="Flowers"]
+position = Vector2(96, 206)
+scale = Vector2(0.38, 0.38)
+texture = ExtResource("16_ypusn")
+
+[node name="Wildflower7" type="Sprite2D" parent="Flowers"]
+position = Vector2(1118, 205)
+scale = Vector2(0.45774648, 0.45774648)
+texture = ExtResource("17_nj8cf")
+
+[node name="Wildflower8" type="Sprite2D" parent="Flowers"]
+position = Vector2(995.99994, 409)
+scale = Vector2(0.4925926, 0.49259257)
+texture = ExtResource("18_f5c17")
+
+[node name="Wildflower9" type="Sprite2D" parent="Flowers"]
+position = Vector2(291, 139)
+scale = Vector2(0.54545456, 0.54545456)
+texture = ExtResource("19_hhw6k")
