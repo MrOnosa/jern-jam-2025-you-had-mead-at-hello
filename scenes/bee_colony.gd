@@ -25,6 +25,7 @@ extends StaticBody2D
 @export var bees_needed_to_convert_pollen_to_honey := 10000
 
 var player_nearby : BeeKeeper = null
+var mouse_hovering : bool = false
 var is_starving : bool = false
 
 signal honey_collected
@@ -62,7 +63,7 @@ func _process(delta: float) -> void:
 		action_button.hide()
 		info_panel.hide()
 	
-	if Input.is_action_pressed("show_all_stats_key"):
+	if Input.is_action_pressed("show_all_stats_key") || mouse_hovering:
 		info_panel.show()
 		
 	
@@ -145,3 +146,11 @@ func add_commas_to_number(input_number : int) -> String:
 			if (last_index - index) % 3 == 0 and index != last_index:
 				output_string = output_string + ","
 		return output_string
+
+
+func _on_mouse_entered() -> void:
+	mouse_hovering = true
+
+
+func _on_mouse_exited() -> void:
+	mouse_hovering = false

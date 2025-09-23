@@ -24,6 +24,7 @@ stacked_outline_count = 1
 stacked_outline_0/size = 8
 
 [node name="BeeColony" type="StaticBody2D" groups=["bee_colony"]]
+input_pickable = true
 script = ExtResource("1_mcgfy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -203,6 +204,8 @@ c
 "
 fit_content = true
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="body_entered" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_entered"]
 [connection signal="body_exited" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_exited"]
 [connection signal="pressed" from="ActionButton" to="." method="_on_action_button_pressed"]
