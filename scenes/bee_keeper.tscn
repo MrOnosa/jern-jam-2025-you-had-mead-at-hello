@@ -46,5 +46,4 @@ shape = SubResource("CapsuleShape2D_ikiii")
 unique_name_in_owner = true
 z_index = 1
 position = Vector2(33, 19)
-scale = Vector2(0.08399694, 0.08399692)
 texture = ExtResource("4_3i6xr")

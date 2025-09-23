@@ -1,16 +1,185 @@
-[gd_scene load_steps=6 format=3 uid="uid://ws0llatxgtev"]
+[gd_scene load_steps=47 format=3 uid="uid://ws0llatxgtev"]
 
 [ext_resource type="Script" uid="uid://b7k4vr6n0ij4s" path="res://scenes/bee.gd" id="1_vie5o"]
-[ext_resource type="Texture2D" uid="uid://bd8chkxgjblgq" path="res://assets/bee.png" id="2_ogg2i"]
+[ext_resource type="Texture2D" uid="uid://cw051ckwfdhxg" path="res://scenes/bee_animation/assets/flying/bee-flying_00.png" id="2_xbaam"]
+[ext_resource type="Texture2D" uid="uid://cxrx77ydhhmyr" path="res://scenes/bee_animation/assets/flying/bee-flying_01.png" id="3_3rnet"]
+[ext_resource type="Texture2D" uid="uid://p1eq3fq5bh4m" path="res://scenes/bee_animation/assets/flying/bee-flying_02.png" id="4_byuir"]
+[ext_resource type="Texture2D" uid="uid://bx3nnb03quk3j" path="res://scenes/bee_animation/assets/flying/bee-flying_03.png" id="5_cl8hc"]
+[ext_resource type="Texture2D" uid="uid://bp5popw1r18vk" path="res://scenes/bee_animation/assets/flying/bee-flying_04.png" id="6_xil5s"]
+[ext_resource type="Texture2D" uid="uid://bq1gljn5o2hs2" path="res://scenes/bee_animation/assets/flying/bee-flying_05.png" id="7_65fmh"]
+[ext_resource type="Texture2D" uid="uid://bt7cbk00s7knc" path="res://scenes/bee_animation/assets/flying/bee-flying_06.png" id="8_7ybxj"]
+[ext_resource type="Texture2D" uid="uid://bx6nft8f358q0" path="res://scenes/bee_animation/assets/flying/bee-flying_07.png" id="9_7hk7n"]
+[ext_resource type="Texture2D" uid="uid://db54sxequkot7" path="res://scenes/bee_animation/assets/flying/bee-flying_08.png" id="10_m72y8"]
+[ext_resource type="Texture2D" uid="uid://ljduyg0qq8g3" path="res://scenes/bee_animation/assets/flying/bee-flying_09.png" id="11_6l4bd"]
+[ext_resource type="Texture2D" uid="uid://btp6x7ta1tcvg" path="res://scenes/bee_animation/assets/flying/bee-flying_10.png" id="12_cs28f"]
+[ext_resource type="Texture2D" uid="uid://bmycxacux150l" path="res://scenes/bee_animation/assets/flying/bee-flying_11.png" id="13_7hq3e"]
+[ext_resource type="Texture2D" uid="uid://b8bqyxesrgph4" path="res://scenes/bee_animation/assets/flying/bee-flying_12.png" id="14_gtcg4"]
+[ext_resource type="Texture2D" uid="uid://5lnf8blmdspo" path="res://scenes/bee_animation/assets/flying/bee-flying_13.png" id="15_66o34"]
+[ext_resource type="Texture2D" uid="uid://buo8dg5gk3e4s" path="res://scenes/bee_animation/assets/flying/bee-flying_14.png" id="16_oqgqt"]
+[ext_resource type="Texture2D" uid="uid://dbrmy38nyoofa" path="res://scenes/bee_animation/assets/flying/bee-flying_15.png" id="17_xiwag"]
+[ext_resource type="Texture2D" uid="uid://d0nouddv1hbml" path="res://scenes/bee_animation/assets/flying/bee-flying_16.png" id="18_n7eny"]
+[ext_resource type="Texture2D" uid="uid://dv630fevc8ixd" path="res://scenes/bee_animation/assets/flying/bee-flying_17.png" id="19_fxtel"]
+[ext_resource type="Texture2D" uid="uid://bv35vb51osr3p" path="res://scenes/bee_animation/assets/flying/bee-flying_18.png" id="20_81b6h"]
+[ext_resource type="Texture2D" uid="uid://oqr3cg1yl6nv" path="res://scenes/bee_animation/assets/flying/bee-flying_19.png" id="21_h3ilx"]
+[ext_resource type="Texture2D" uid="uid://btqc0s7awy8wd" path="res://scenes/bee_animation/assets/flying/bee-flying_20.png" id="22_udx88"]
+[ext_resource type="Texture2D" uid="uid://dvmuwt0g2fme5" path="res://scenes/bee_animation/assets/idle/bee-idle_00.png" id="23_7hmtl"]
+[ext_resource type="Texture2D" uid="uid://c7r6thpqtylg2" path="res://scenes/bee_animation/assets/idle/bee-idle_01.png" id="24_oeuha"]
+[ext_resource type="Texture2D" uid="uid://c7v4vt845bxgr" path="res://scenes/bee_animation/assets/idle/bee-idle_02.png" id="25_r0k1k"]
+[ext_resource type="Texture2D" uid="uid://dc3arow1athv4" path="res://scenes/bee_animation/assets/idle/bee-idle_03.png" id="26_dojl6"]
+[ext_resource type="Texture2D" uid="uid://divpcppmpc0f" path="res://scenes/bee_animation/assets/idle/bee-idle_04.png" id="27_pafpe"]
+[ext_resource type="Texture2D" uid="uid://mmal2ke5pdyg" path="res://scenes/bee_animation/assets/idle/bee-idle_05.png" id="28_pdc0y"]
+[ext_resource type="Texture2D" uid="uid://cwq70wbd51a0e" path="res://scenes/bee_animation/assets/idle/bee-idle_06.png" id="29_70eid"]
+[ext_resource type="Texture2D" uid="uid://d37gco5n2cv6o" path="res://scenes/bee_animation/assets/idle/bee-idle_07.png" id="30_orvp8"]
+[ext_resource type="Texture2D" uid="uid://sbk2imlab27r" path="res://scenes/bee_animation/assets/idle/bee-idle_08.png" id="31_ftblv"]
+[ext_resource type="Texture2D" uid="uid://coy0k3hwwfkmg" path="res://scenes/bee_animation/assets/idle/bee-idle_09.png" id="32_q41op"]
+[ext_resource type="Texture2D" uid="uid://bva32corwq2qv" path="res://scenes/bee_animation/assets/idle/bee-idle_10.png" id="33_5jrfe"]
+[ext_resource type="Texture2D" uid="uid://dbela5d1spo8n" path="res://scenes/bee_animation/assets/idle/bee-idle_11.png" id="34_1wyco"]
+[ext_resource type="Texture2D" uid="uid://m1n2mgeg0adp" path="res://scenes/bee_animation/assets/idle/bee-idle_12.png" id="35_axdpd"]
+[ext_resource type="Texture2D" uid="uid://6kg1s1ceb12j" path="res://scenes/bee_animation/assets/idle/bee-idle_13.png" id="36_2fiwj"]
+[ext_resource type="Texture2D" uid="uid://cvnwdybk2llji" path="res://scenes/bee_animation/assets/idle/bee-idle_14.png" id="37_735ai"]
+[ext_resource type="Texture2D" uid="uid://bosh5pb7lcegh" path="res://scenes/bee_animation/assets/idle/bee-idle_15.png" id="38_06jqt"]
+[ext_resource type="Texture2D" uid="uid://d2pt4go6y2wc0" path="res://scenes/bee_animation/assets/idle/bee-idle_16.png" id="39_qnomc"]
+[ext_resource type="Texture2D" uid="uid://b2qush1gj6co" path="res://scenes/bee_animation/assets/idle/bee-idle_17.png" id="40_npsrs"]
+[ext_resource type="Texture2D" uid="uid://bry33hi67mc66" path="res://scenes/bee_animation/assets/idle/bee-idle_18.png" id="41_d1wbx"]
+[ext_resource type="Texture2D" uid="uid://berqkkcu1m4ha" path="res://scenes/bee_animation/assets/idle/bee-idle_19.png" id="42_7yjbt"]
+[ext_resource type="Texture2D" uid="uid://cmsk6qsg7nkdk" path="res://scenes/bee_animation/assets/idle/bee-idle_20.png" id="43_ocv2d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2o6r5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ogg2i")
+"texture": ExtResource("2_xbaam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3rnet")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_byuir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cl8hc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xil5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_65fmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7ybxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7hk7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m72y8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6l4bd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_cs28f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7hq3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gtcg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_66o34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_oqgqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_xiwag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_n7eny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_fxtel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_81b6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_h3ilx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_udx88")
 }],
 "loop": true,
-"name": &"default",
+"name": &"flying",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_7hmtl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_oeuha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_r0k1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_dojl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_pafpe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_pdc0y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_70eid")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_orvp8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_ftblv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_q41op")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_5jrfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_1wyco")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_axdpd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_2fiwj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_735ai")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_06jqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_qnomc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_npsrs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_d1wbx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_7yjbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_ocv2d")
+}],
+"loop": true,
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -27,8 +196,11 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_vie5o")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Animations" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_2o6r5")
+animation = &"idle"
+autoplay = "flying"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_70uel")

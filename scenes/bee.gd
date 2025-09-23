@@ -2,7 +2,12 @@ class_name Bee
 extends AnimatableBody2D
 
 enum Objective { LEAVE_BEE_HIVE, FORAGING, FOUND_FOOD, GET_FOOD, BEELING_IT_BACK_TO_THE_HIVE, ENTER_BEE_HIVE  }
+enum Action { FLYING, IDLE }
+
 @export var threshold_pollen_before_returning_home := 100
+@onready var animations: AnimatedSprite2D = %Animations
+
+
 var heading := 0.0 #180 degrees
 var currently_facing_right := true
 var foraging_iteration := 0
@@ -16,6 +21,7 @@ var pollen_collected := 0
 var home_hive : BeeColony = null
 #var bee_transition_type_pattern := bee_transition_type_factory()
 var current_objective := Objective.LEAVE_BEE_HIVE
+var anim_state = Action.FLYING
 
 var Line : Line2D
 
@@ -28,15 +34,19 @@ func _ready() -> void:
 	Line.set_point_position(2, global_position)
 	Line.set_point_position(3, global_position)
 	bee_navigate_generator()
-	pass # Replace with function body.
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if anim_state == Action.FLYING:
+		animations.animation = "flying"
+	elif anim_state == Action.IDLE:
+		animations.animation = "idle"
 	
 	if currently_facing_right:
-		$AnimatedSprite2D.scale = Vector2(1,1)
+		animations.scale = Vector2(1,1)
 	else:
-		$AnimatedSprite2D.scale = Vector2(-1,1)
+		animations.scale = Vector2(-1,1)
 # just cause
 func _physics_process(delta: float) -> void:
 	Line.global_position = Vector2.ZERO

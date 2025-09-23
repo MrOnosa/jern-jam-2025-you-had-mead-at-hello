@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cnqxl80su0co4"]
+[gd_scene load_steps=13 format=3 uid="uid://cnqxl80su0co4"]
 
 [ext_resource type="Script" uid="uid://cmcyjojsvvnxw" path="res://scenes/bee_colony.gd" id="1_mcgfy"]
 [ext_resource type="Texture2D" uid="uid://d2chyn8tlqyat" path="res://assets/beehive.png" id="2_c2ynb"]
@@ -10,18 +10,23 @@
 [ext_resource type="PackedScene" uid="uid://bdc0ihum5w7nc" path="res://scenes/gui/jar_for_info_panel_gui.tscn" id="8_713g0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dwbse"]
-radius = 142.59383
+radius = 46.64
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqk2v"]
-radius = 483.0
-height = 1328.0
+radius = 128.0
+height = 324.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_4e8ou"]
+font = ExtResource("7_flwcb")
+font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_713g0"]
 font = ExtResource("7_flwcb")
-font_size = 60
+font_size = 56
 font_color = Color(0.84, 0, 0, 1)
 stacked_outline_count = 1
-stacked_outline_0/size = 8
+stacked_outline_0/size = 15
+stacked_outline_0/color = Color(1, 1, 1, 1)
 
 [node name="BeeColony" type="StaticBody2D" groups=["bee_colony"]]
 input_pickable = true
@@ -31,51 +36,23 @@ script = ExtResource("1_mcgfy")
 texture = ExtResource("2_c2ynb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 21)
+position = Vector2(0, 18)
 shape = SubResource("CircleShape2D_dwbse")
 
 [node name="InteractiveArea2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea2D"]
-position = Vector2(-9.999992, 14)
+position = Vector2(2, 15)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_aqk2v")
 
-[node name="ActionButton" type="TextureButton" parent="."]
-z_index = 100
-offset_left = -359.0
-offset_top = -419.99994
-offset_right = 113.0
-offset_bottom = -227.99995
-scale = Vector2(1.4800011, 1.4800011)
-texture_normal = ExtResource("3_js7wk")
-texture_hover = ExtResource("4_64qp5")
-
-[node name="Label" type="Label" parent="ActionButton"]
-z_index = 101
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -155.5
-offset_top = -29.0
-offset_right = 155.5
-offset_bottom = 29.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Harvest Honey"
-label_settings = ExtResource("5_flwcb")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="InfoPanel" type="TextureRect" parent="."]
 z_index = 100
-offset_left = 167.0
-offset_top = -201.0
-offset_right = 746.0
-offset_bottom = 324.0
+offset_left = 59.0
+offset_top = -131.0
+offset_right = 638.0
+offset_bottom = 394.0
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_64qp5")
 
 [node name="HeaderLabel" type="Label" parent="InfoPanel"]
@@ -86,10 +63,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -154.5
-offset_top = -222.5
-offset_right = 156.5
-offset_bottom = -164.5
+offset_left = -233.50002
+offset_top = -218.5
+offset_right = 239.83331
+offset_bottom = -160.49998
 grow_horizontal = 2
 grow_vertical = 2
 text = "Bee Hive Stats"
@@ -105,14 +82,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -231.5
-offset_top = -147.5
-offset_right = 166.5
-offset_bottom = -89.5
+offset_left = -243.5
+offset_top = -165.16666
+offset_right = 239.83331
+offset_bottom = -118.499985
 grow_horizontal = 2
 grow_vertical = 2
 text = "Population: 80,000"
-label_settings = ExtResource("5_flwcb")
+label_settings = SubResource("LabelSettings_4e8ou")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -125,10 +102,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -309.5
-offset_top = 32.5
-offset_right = 304.5
-offset_bottom = 181.5
+offset_left = -247.5
+offset_top = 23.5
+offset_right = 245.83337
+offset_bottom = 172.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Starving! 
@@ -139,10 +116,10 @@ vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InfoPanel"]
 layout_mode = 0
-offset_left = 71.0
-offset_top = 186.0
-offset_right = 507.0
-offset_bottom = 499.0
+offset_left = 132.0
+offset_top = 162.0
+offset_right = 454.84576
+offset_bottom = 434.0
 theme_override_constants/separation = 11
 
 [node name="TopHBoxContainer" type="HBoxContainer" parent="InfoPanel/VBoxContainer"]
@@ -179,8 +156,37 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="ActionButton" type="TextureButton" parent="."]
+z_index = 100
+offset_left = 112.0
+offset_top = 91.0
+offset_right = 584.0
+offset_bottom = 278.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("3_js7wk")
+texture_hover = ExtResource("4_64qp5")
+
+[node name="Label" type="Label" parent="ActionButton"]
+z_index = 101
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.5
+offset_top = -29.0
+offset_right = 155.5
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Harvest Honey"
+label_settings = ExtResource("5_flwcb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ExitHiveMarker2D" type="Marker2D" parent="."]
-position = Vector2(2, 109)
+position = Vector2(2, 47)
 
 [node name="HoneyProductionTimer" type="Timer" parent="."]
 autostart = true
@@ -192,12 +198,13 @@ autostart = true
 autostart = true
 
 [node name="DebugRichTextLabel" type="RichTextLabel" parent="."]
-offset_left = -555.0
-offset_top = -136.0
-offset_right = 147.0
-offset_bottom = 65.0
+offset_left = -135.0
+offset_top = -65.0
+offset_right = 193.94223
+offset_bottom = 136.0
+scale = Vector2(0.5928093, 0.5928093)
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/normal_font_size = 28
 text = "a
 b
 c

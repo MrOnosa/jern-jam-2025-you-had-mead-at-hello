@@ -47,10 +47,19 @@ func _process(delta: float) -> void:
 	# Fill each jar with honey			
 	jar_1_texture_progress_bar.value = calc_jar_percent(0)
 	jar_2_texture_progress_bar.value = calc_jar_percent(1)
+	jar_2_texture_progress_bar.modulate = Color.WHITE if jar_2_texture_progress_bar.value > 0 else Color.TRANSPARENT
+	
 	jar_3_texture_progress_bar.value = calc_jar_percent(2)
+	jar_3_texture_progress_bar.modulate = Color.WHITE if jar_3_texture_progress_bar.value > 0 else Color.TRANSPARENT
+	
 	jar_4_texture_progress_bar.value = calc_jar_percent(3)
+	jar_4_texture_progress_bar.modulate = Color.WHITE if jar_4_texture_progress_bar.value > 0 else Color.TRANSPARENT
+	
 	jar_5_texture_progress_bar.value = calc_jar_percent(4)
+	jar_5_texture_progress_bar.modulate = Color.WHITE if jar_5_texture_progress_bar.value > 0 else Color.TRANSPARENT
+	
 	jar_6_texture_progress_bar.value = calc_jar_percent(5)
+	jar_6_texture_progress_bar.modulate = Color.WHITE if jar_6_texture_progress_bar.value > 0 else Color.TRANSPARENT
 	
 	if player_nearby != null:
 		info_panel.show()
