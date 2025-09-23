@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ws0llatxgtev"]
+[gd_scene load_steps=6 format=3 uid="uid://ws0llatxgtev"]
 
 [ext_resource type="Script" uid="uid://b7k4vr6n0ij4s" path="res://scenes/bee.gd" id="1_vie5o"]
 [ext_resource type="Texture2D" uid="uid://bd8chkxgjblgq" path="res://assets/bee.png" id="2_ogg2i"]
@@ -17,6 +17,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_70uel"]
 radius = 17.117243
 
+[sub_resource type="Curve" id="Curve_vie5o"]
+_data = [Vector2(0, 1), 0.0, -2.2150881, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Bee" type="AnimatableBody2D" groups=["bee_group"]]
 z_index = 1
 collision_layer = 2
@@ -28,3 +32,12 @@ sprite_frames = SubResource("SpriteFrames_2o6r5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_70uel")
+
+[node name="Line2D" type="Line2D" parent="."]
+modulate = Color(1, 1, 1, 0.078431375)
+z_index = -1
+position = Vector2(0, 2.265)
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)
+width = 20.0
+width_curve = SubResource("Curve_vie5o")
+joint_mode = 2
