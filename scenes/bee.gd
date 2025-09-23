@@ -1,5 +1,5 @@
-extends AnimatableBody2D
 class_name Bee
+extends AnimatableBody2D
 
 enum Objective { LEAVE_BEE_HIVE, FORAGING, FOUND_FOOD, GET_FOOD, BEELING_IT_BACK_TO_THE_HIVE, ENTER_BEE_HIVE  }
 @export var threshold_pollen_before_returning_home := 100

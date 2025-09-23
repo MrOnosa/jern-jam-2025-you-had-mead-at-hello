@@ -1,5 +1,5 @@
-extends Area2D
 class_name Flower
+extends Area2D
 
 @export var total_pollen_available := 100
 var pollen_available := 0

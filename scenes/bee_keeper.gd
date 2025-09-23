@@ -1,6 +1,5 @@
-extends CharacterBody2D
 class_name BeeKeeper
-
+extends CharacterBody2D
 
 enum Holding { NOTHING, HONEY_LOW, HONEY_HIGH, MEAD_LOW, MEAD_HIGH, SMOKER, SODA_CAN }
 enum Action { IDLE, WALKING }

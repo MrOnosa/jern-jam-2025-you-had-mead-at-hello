@@ -13,8 +13,8 @@
 radius = 142.59383
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqk2v"]
-radius = 354.0
-height = 852.0
+radius = 483.0
+height = 1328.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_713g0"]
 font = ExtResource("7_flwcb")

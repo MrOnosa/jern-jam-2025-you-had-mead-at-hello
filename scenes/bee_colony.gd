@@ -1,6 +1,5 @@
-extends StaticBody2D
 class_name BeeColony
-
+extends StaticBody2D
 
 @onready var jar_1_texture_progress_bar = %Jar1TextureProgressBar
 @onready var jar_2_texture_progress_bar = %Jar2TextureProgressBar
@@ -8,6 +7,8 @@ class_name BeeColony
 @onready var jar_4_texture_progress_bar = %Jar4TextureProgressBar
 @onready var jar_5_texture_progress_bar = %Jar5TextureProgressBar
 @onready var jar_6_texture_progress_bar = %Jar6TextureProgressBar
+@onready var action_button: TextureButton = $ActionButton
+@onready var info_panel: TextureRect = $InfoPanel
 
 @export var pollen_needed_to_produce_one_raw_honey := 10
 @export var pollen_collected := 0
@@ -23,15 +24,16 @@ class_name BeeColony
 
 @export var bees_needed_to_convert_pollen_to_honey := 10000
 
-var is_starving := false
+var player_nearby : BeeKeeper = null
+var is_starving : bool = false
 
 signal honey_collected
 signal spawn_bee(home_hive: BeeColony)
-@onready var action_button: TextureButton = $ActionButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	action_button.hide()
+	info_panel.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -49,17 +51,31 @@ func _process(delta: float) -> void:
 	jar_5_texture_progress_bar.value = calc_jar_percent(4)
 	jar_6_texture_progress_bar.value = calc_jar_percent(5)
 	
+	if player_nearby != null:
+		info_panel.show()
+		if player_nearby.holding == BeeKeeper.Holding.NOTHING \
+		  && raw_honey_produced > raw_honey_needed_for_a_jar:
+			action_button.show()
+		else:
+			action_button.hide()			
+	else:
+		action_button.hide()
+		info_panel.hide()
+	
+	if Input.is_action_pressed("show_all_stats_key"):
+		info_panel.show()
+		
+	
 func calc_jar_percent(jar_index: float) -> float:
 	return min(100.0,( raw_honey_produced / raw_honey_needed_for_a_jar - jar_index) * 100.0)
 	
 func _on_interactive_area_2d_body_entered(body: Node2D) -> void:
 	if body is BeeKeeper:
-		if raw_honey_produced > raw_honey_needed_for_a_jar:
-			action_button.show()
+		player_nearby = body
 
 func _on_interactive_area_2d_body_exited(body: Node2D) -> void:
 	if body is BeeKeeper:
-		action_button.hide()
+		player_nearby = null
 
 func _on_action_button_pressed() -> void:
 	if raw_honey_produced >= raw_honey_needed_for_a_jar:
