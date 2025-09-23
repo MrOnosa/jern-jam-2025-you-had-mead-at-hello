@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ckavqb25bdaul"]
+[gd_scene load_steps=29 format=3 uid="uid://ckavqb25bdaul"]
 
 [ext_resource type="Texture2D" uid="uid://4cli82gdv1h3" path="res://assets/placeholder/circle2.png" id="1_7r4gi"]
 [ext_resource type="Script" uid="uid://cugl826a8ai2" path="res://scenes/world.gd" id="1_w7kh3"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://c81mm7m46lu2p" path="res://assets/flowers/wildflower_10.png" id="19_oo54l"]
 [ext_resource type="Texture2D" uid="uid://djpgmytcta7nn" path="res://assets/flowers/wildflower_11.png" id="20_kpybi"]
 [ext_resource type="Texture2D" uid="uid://cyxv76hbmspvo" path="res://assets/flowers/wildflower_12.png" id="21_ctatt"]
+[ext_resource type="Texture2D" uid="uid://dr0od7ibrfglk" path="res://assets/wind.png" id="23_kpybi"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_70uel"]
 normal = Vector2(0, 1)
@@ -120,47 +121,18 @@ position = Vector2(231, 142)
 [node name="BeeColony" parent="." instance=ExtResource("6_o8fc1")]
 position = Vector2(457, 111)
 scale = Vector2(0.3, 0.3)
-pollen_needed_to_produce_one_raw_honey = 10
-pollen_collected = 0
-max_raw_honey_capacity = 360.0
-raw_honey_needed_for_a_jar = 60.0
 raw_honey_produced = 360.0
-raw_honey_consumption_ratio = 2e-05
-bee_growth = 250
 total_bees = 80000
-max_population = 80000
-bees_to_sprite_threshold = 2000.0
-bees_needed_to_convert_pollen_to_honey = 10000
 
 [node name="BeeColony2" parent="." instance=ExtResource("6_o8fc1")]
 position = Vector2(1027, 145)
 scale = Vector2(0.3, 0.3)
-pollen_needed_to_produce_one_raw_honey = 10
-pollen_collected = 0
-max_raw_honey_capacity = 360.0
-raw_honey_needed_for_a_jar = 60.0
 raw_honey_produced = 59.0
-raw_honey_consumption_ratio = 2e-05
-bee_growth = 250
-total_bees = 10000
-max_population = 80000
-bees_to_sprite_threshold = 2000.0
-bees_needed_to_convert_pollen_to_honey = 10000
 
 [node name="BeeColony3" parent="." instance=ExtResource("6_o8fc1")]
 position = Vector2(747, 125)
 scale = Vector2(0.3, 0.3)
-pollen_needed_to_produce_one_raw_honey = 10
-pollen_collected = 0
-max_raw_honey_capacity = 360.0
-raw_honey_needed_for_a_jar = 60.0
 raw_honey_produced = 59.0
-raw_honey_consumption_ratio = 2e-05
-bee_growth = 250
-total_bees = 10000
-max_population = 80000
-bees_to_sprite_threshold = 2000.0
-bees_needed_to_convert_pollen_to_honey = 10000
 
 [node name="Workbench" parent="." instance=ExtResource("7_xo05s")]
 position = Vector2(734, 333)
@@ -282,6 +254,25 @@ position = Vector2(1575, 707)
 
 [node name="Flower17" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(1357, 899)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 75
+position = Vector2(-500, 1250)
+amount = 200
+texture = ExtResource("23_kpybi")
+lifetime = 10.0
+preprocess = 5.0
+speed_scale = 0.5
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1500)
+direction = Vector2(0, 0)
+spread = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 750.0
+initial_velocity_max = 1000.0
+scale_amount_max = 3.0
+color = Color(1, 1, 1, 0.19607843)
 
 [connection signal="honey_collected" from="BeeColony" to="BeeKeeper" method="_on_bee_colony_honey_collected"]
 [connection signal="spawn_bee" from="BeeColony" to="." method="_on_bee_colony_spawn_bee"]

@@ -5,8 +5,11 @@ extends Area2D
 var pollen_available := 0
 var being_harvested := false
 
+var rand : float
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	rand = randf_range(0, 5)
 	$AnimatedSprite2D.frame = randi_range(0, 11)
 	pollen_available = total_pollen_available
 	pass # Replace with function body.
@@ -14,6 +17,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+func _physics_process(delta: float) -> void:
+	global_rotation_degrees = sin((Time.get_ticks_msec() * 0.001) + rand) * 5
 
 func _on_body_entered(body: Node2D, source: Flower) -> void:
 	if body is Bee:

@@ -17,17 +17,33 @@ var home_hive : BeeColony = null
 #var bee_transition_type_pattern := bee_transition_type_factory()
 var current_objective := Objective.LEAVE_BEE_HIVE
 
+var Line : Line2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Line = get_node("Line2D")
+	Line.joint_mode = 2
+	Line.set_point_position(0, global_position)
+	Line.set_point_position(1, global_position)
+	Line.set_point_position(2, global_position)
+	Line.set_point_position(3, global_position)
 	bee_navigate_generator()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
 	if currently_facing_right:
 		$AnimatedSprite2D.scale = Vector2(1,1)
 	else:
 		$AnimatedSprite2D.scale = Vector2(-1,1)
+# just cause
+func _physics_process(delta: float) -> void:
+	Line.global_position = Vector2.ZERO
+	Line.set_point_position(0, global_position)
+	Line.set_point_position(1, Line.get_point_position(1).lerp(Line.get_point_position(0), 0.05))
+	Line.set_point_position(2, Line.get_point_position(2).lerp(Line.get_point_position(1), 0.05))
+	Line.set_point_position(3, Line.get_point_position(3).lerp(Line.get_point_position(2), 0.05))
 
 func bee_navigate_generator() -> void:
 	# If we're near a flower and need pollen, consider the flower
