@@ -9,6 +9,7 @@ extends Node2D
 @onready var flowers: Node2D = %Flowers
 @onready var sfx_accept: AudioStreamPlayer = %SFXAccept
 @onready var sfx_hover: AudioStreamPlayer = %SFXHover
+@onready var jern_jam_logo: TextureButton = $JernJamLogo
 
 
 func _ready() -> void:
@@ -45,3 +46,20 @@ func button_hover_sound() -> void:
 func button_click_sound() -> void:
 	sfx_accept.pitch_scale = randf_range(0.8,1.2)
 	sfx_accept.play()
+
+
+func _on_jern_jam_logo_pressed() -> void:
+	if OS.has_feature('web'):
+		JavaScriptBridge.eval("window.open('https://itch.io/jam/jern-jam-2025', '_blank').focus();")
+	else:
+		OS.shell_open("https://itch.io/jam/jern-jam-2025")
+
+
+func _on_jern_jam_logo_mouse_entered() -> void:
+	var t_logo = create_tween().set_trans(Tween.TRANS_LINEAR)
+	t_logo.tween_property(jern_jam_logo, "scale", Vector2(1.05,1.05),0.5)
+
+
+func _on_jern_jam_logo_mouse_exited() -> void:
+	var t_logo = create_tween().set_trans(Tween.TRANS_LINEAR)
+	t_logo.tween_property(jern_jam_logo, "scale", Vector2.ONE,0.5)

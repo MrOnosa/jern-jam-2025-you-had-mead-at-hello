@@ -7,11 +7,11 @@
 [ext_resource type="LabelSettings" uid="uid://cn1rdmmbnmsu3" path="res://assets/gui/button_font.tres" id="5_hjm4f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wse8f"]
-size = Vector2(546, 202)
+size = Vector2(177, 80)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ioo17"]
-radius = 324.0
-height = 1264.0
+radius = 163.0
+height = 326.0
 
 [node name="Workbench" type="StaticBody2D"]
 script = ExtResource("1_7tolv")
@@ -20,7 +20,7 @@ script = ExtResource("1_7tolv")
 texture = ExtResource("2_ri8fd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, 75)
+position = Vector2(0.5, 14)
 shape = SubResource("RectangleShape2D_wse8f")
 
 [node name="InteractiveArea2D" type="Area2D" parent="."]
@@ -30,14 +30,15 @@ position = Vector2(-4, -25)
 position = Vector2(11.999999, 26)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ioo17")
+debug_color = Color(0, 0.6, 0.69803923, 0.28235295)
 
 [node name="ActionButton" type="TextureButton" parent="."]
 z_index = 100
-offset_left = -295.0
-offset_top = -396.0
-offset_right = 177.0
-offset_bottom = -204.0
-scale = Vector2(1.2479429, 1.2479429)
+offset_left = -95.0
+offset_top = -144.0
+offset_right = 377.0
+offset_bottom = 48.0
+scale = Vector2(0.4, 0.4)
 texture_normal = ExtResource("3_7rqw5")
 texture_hover = ExtResource("4_8j27g")
 

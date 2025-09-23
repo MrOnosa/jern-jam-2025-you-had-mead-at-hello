@@ -53,7 +53,6 @@ texture = ExtResource("1_7r4gi")
 texture_repeat = 2
 offset_right = 13000.0
 offset_bottom = 8000.0
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_7iits")
 stretch_mode = 1
 metadata/_edit_lock_ = true
@@ -115,173 +114,144 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="BeeKeeper" parent="." instance=ExtResource("5_jhx03")]
-position = Vector2(231, 142)
+position = Vector2(229, 436)
 
 [node name="BeeColony" parent="." instance=ExtResource("6_o8fc1")]
-position = Vector2(457, 111)
-scale = Vector2(0.3, 0.3)
-pollen_needed_to_produce_one_raw_honey = 10
-pollen_collected = 0
-max_raw_honey_capacity = 360.0
-raw_honey_needed_for_a_jar = 60.0
+position = Vector2(366, 233)
 raw_honey_produced = 360.0
-raw_honey_consumption_ratio = 2e-05
-bee_growth = 250
 total_bees = 80000
-max_population = 80000
-bees_to_sprite_threshold = 2000.0
-bees_needed_to_convert_pollen_to_honey = 10000
 
 [node name="BeeColony2" parent="." instance=ExtResource("6_o8fc1")]
-position = Vector2(1027, 145)
-scale = Vector2(0.3, 0.3)
-pollen_needed_to_produce_one_raw_honey = 10
-pollen_collected = 0
-max_raw_honey_capacity = 360.0
-raw_honey_needed_for_a_jar = 60.0
+position = Vector2(1576, 164)
 raw_honey_produced = 59.0
-raw_honey_consumption_ratio = 2e-05
-bee_growth = 250
-total_bees = 10000
-max_population = 80000
-bees_to_sprite_threshold = 2000.0
-bees_needed_to_convert_pollen_to_honey = 10000
 
 [node name="BeeColony3" parent="." instance=ExtResource("6_o8fc1")]
-position = Vector2(747, 125)
-scale = Vector2(0.3, 0.3)
-pollen_needed_to_produce_one_raw_honey = 10
-pollen_collected = 0
-max_raw_honey_capacity = 360.0
-raw_honey_needed_for_a_jar = 60.0
+position = Vector2(1151, 508)
 raw_honey_produced = 59.0
-raw_honey_consumption_ratio = 2e-05
-bee_growth = 250
-total_bees = 10000
-max_population = 80000
-bees_to_sprite_threshold = 2000.0
-bees_needed_to_convert_pollen_to_honey = 10000
 
 [node name="Workbench" parent="." instance=ExtResource("7_xo05s")]
-position = Vector2(734, 333)
-scale = Vector2(0.3, 0.3)
+position = Vector2(697, 455)
 
 [node name="Flowers" type="Node2D" parent="."]
 visible = false
 
 [node name="Wildflower1" type="Sprite2D" parent="Flowers"]
 position = Vector2(202, 592.5984)
-scale = Vector2(0.36065573, 0.36065575)
 texture = ExtResource("10_7t5mc")
 
 [node name="Wildflower2" type="Sprite2D" parent="Flowers"]
 position = Vector2(331.00003, 530.00006)
-scale = Vector2(0.31060606, 0.3106061)
 texture = ExtResource("11_lakw3")
 
 [node name="Wildflower3" type="Sprite2D" parent="Flowers"]
 position = Vector2(153.00002, 449)
-scale = Vector2(0.284, 0.284)
 texture = ExtResource("12_pm21f")
 
 [node name="Wildflower4" type="Sprite2D" parent="Flowers"]
 position = Vector2(670, 640.8605)
-scale = Vector2(0.39534894, 0.39534888)
 texture = ExtResource("13_2lf6f")
 
 [node name="Wildflower5" type="Sprite2D" parent="Flowers"]
 position = Vector2(545, 517)
-scale = Vector2(0.35310733, 0.35310733)
 texture = ExtResource("14_7iits")
 
 [node name="Wildflower6" type="Sprite2D" parent="Flowers"]
 position = Vector2(1128, 258)
-scale = Vector2(0.3, 0.3)
 texture = ExtResource("15_oo54l")
 
 [node name="Wildflower7" type="Sprite2D" parent="Flowers"]
 position = Vector2(968.5, 623.2324)
-scale = Vector2(0.40140846, 0.40140846)
 texture = ExtResource("16_kpybi")
 
 [node name="Wildflower8" type="Sprite2D" parent="Flowers"]
 position = Vector2(1143, 631)
 rotation = 0.154553
-scale = Vector2(0.41111112, 0.41111112)
 texture = ExtResource("17_ctatt")
 
 [node name="Wildflower9" type="Sprite2D" parent="Flowers"]
 position = Vector2(964.00006, 442)
-scale = Vector2(0.44545454, 0.44545454)
 texture = ExtResource("18_7iits")
 
 [node name="Wildflower10" type="Sprite2D" parent="Flowers"]
 position = Vector2(697, 128.00002)
-scale = Vector2(0.5508475, 0.5508475)
 texture = ExtResource("19_oo54l")
 
 [node name="Wildflower11" type="Sprite2D" parent="Flowers"]
 position = Vector2(1110, 646)
 rotation = -0.21117447
-scale = Vector2(0.33653846, 0.33653846)
 texture = ExtResource("20_kpybi")
 
-[node name="Wildflower12" type="Sprite2D" parent="."]
-visible = false
+[node name="Wildflower12" type="Sprite2D" parent="Flowers"]
 position = Vector2(961.00006, 116)
-scale = Vector2(0.36206895, 0.36206898)
 texture = ExtResource("21_ctatt")
 
 [node name="Flower" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(307, 495)
+scale = Vector2(1, 1)
 
 [node name="Flower2" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(519, 523.99994)
+scale = Vector2(1, 1)
 
 [node name="Flower3" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(430.00006, 730)
+scale = Vector2(1, 1)
 
 [node name="Flower4" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(698, 659)
+scale = Vector2(1, 1)
 
 [node name="Flower5" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(862, 557)
+scale = Vector2(1, 1)
 
 [node name="Flower6" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(882, 456)
+scale = Vector2(1, 1)
 
 [node name="Flower7" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(825, 174.00006)
+scale = Vector2(1, 1)
 
 [node name="Flower8" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(673, 251)
+scale = Vector2(1, 1)
 
 [node name="Flower9" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(573, 280)
+scale = Vector2(1, 1)
 
 [node name="Flower10" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(138.00003, 581)
+scale = Vector2(1, 1)
 
 [node name="Flower11" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(205, 737.00006)
+scale = Vector2(1, 1)
 
 [node name="Flower12" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(973.99994, 832)
+scale = Vector2(1, 1)
 
 [node name="Flower13" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(1256, 599.00006)
+scale = Vector2(1, 1)
 
 [node name="Flower14" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(1215, 313.00003)
+scale = Vector2(1, 1)
 
 [node name="Flower15" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(1488, 392)
+scale = Vector2(1, 1)
 
 [node name="Flower16" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(1575, 707)
+scale = Vector2(1, 1)
 
 [node name="Flower17" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(1357, 899)
+scale = Vector2(1, 1)
 
 [connection signal="honey_collected" from="BeeColony" to="BeeKeeper" method="_on_bee_colony_honey_collected"]
 [connection signal="spawn_bee" from="BeeColony" to="." method="_on_bee_colony_spawn_bee"]

@@ -59,7 +59,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2u3nc"]
-radius = 388.89154
+radius = 239.54
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yoh7s"]
 size = Vector2(56.78716, 49.380146)
@@ -79,6 +79,7 @@ frame = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4.938012, -125.91931)
 shape = SubResource("CircleShape2D_2u3nc")
+debug_color = Color(0, 0.6, 0.69803923, 0.13725491)
 
 [node name="RepollinateTimer" type="Timer" parent="."]
 wait_time = 60.0
