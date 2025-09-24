@@ -1,45 +1,43 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnqxl80su0co4"]
+[gd_scene load_steps=13 format=3 uid="uid://crwo4bniwcg18"]
 
-[ext_resource type="Script" uid="uid://cmcyjojsvvnxw" path="res://scenes/bee_colony.gd" id="1_mcgfy"]
-[ext_resource type="Texture2D" uid="uid://d2chyn8tlqyat" path="res://assets/beehive.png" id="2_c2ynb"]
-[ext_resource type="Texture2D" uid="uid://dogtp5dbjim3t" path="res://assets/gui/button_1.png" id="3_js7wk"]
-[ext_resource type="Texture2D" uid="uid://vfm1p832dp0b" path="res://assets/gui/button_1_hover.png" id="4_64qp5"]
-[ext_resource type="LabelSettings" uid="uid://cn1rdmmbnmsu3" path="res://assets/gui/button_font.tres" id="5_flwcb"]
-[ext_resource type="Texture2D" uid="uid://da6cpijlphj45" path="res://assets/gui/panel_bg.png" id="6_64qp5"]
-[ext_resource type="FontFile" uid="uid://b7vkyxnsa7dol" path="res://assets/fonts/Sunset Friday.otf" id="7_flwcb"]
-[ext_resource type="PackedScene" uid="uid://bdc0ihum5w7nc" path="res://scenes/gui/jar_for_info_panel_gui.tscn" id="8_713g0"]
+[ext_resource type="Script" uid="uid://cmcyjojsvvnxw" path="res://scenes/bee_colony.gd" id="1_mlkej"]
+[ext_resource type="Texture2D" uid="uid://ddekt73u2v20e" path="res://assets/hive_upgrade.png" id="2_mlkej"]
+[ext_resource type="Texture2D" uid="uid://da6cpijlphj45" path="res://assets/gui/panel_bg.png" id="3_8ftgu"]
+[ext_resource type="LabelSettings" uid="uid://cn1rdmmbnmsu3" path="res://assets/gui/button_font.tres" id="4_cx43v"]
+[ext_resource type="FontFile" uid="uid://b7vkyxnsa7dol" path="res://assets/fonts/Sunset Friday.otf" id="5_67b4r"]
+[ext_resource type="PackedScene" uid="uid://bdc0ihum5w7nc" path="res://scenes/gui/jar_for_info_panel_gui.tscn" id="6_edqvm"]
+[ext_resource type="Texture2D" uid="uid://dogtp5dbjim3t" path="res://assets/gui/button_1.png" id="7_r2i3f"]
+[ext_resource type="Texture2D" uid="uid://vfm1p832dp0b" path="res://assets/gui/button_1_hover.png" id="8_n5mp6"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dwbse"]
-radius = 46.64
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlkej"]
+size = Vector2(90, 118)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqk2v"]
 radius = 128.0
 height = 324.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_4e8ou"]
-font = ExtResource("7_flwcb")
+font = ExtResource("5_67b4r")
 font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_713g0"]
-font = ExtResource("7_flwcb")
+font = ExtResource("5_67b4r")
 font_size = 56
 font_color = Color(0.84, 0, 0, 1)
 stacked_outline_count = 1
 stacked_outline_0/size = 15
 stacked_outline_0/color = Color(1, 1, 1, 1)
 
-[node name="BeeColony" type="StaticBody2D" groups=["bee_colony"]]
+[node name="ManMadeBeeColony" type="StaticBody2D" groups=["bee_colony"]]
 input_pickable = true
-script = ExtResource("1_mcgfy")
-max_raw_honey_capacity = 120.0
-max_population = 20000
+script = ExtResource("1_mlkej")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_c2ynb")
+texture = ExtResource("2_mlkej")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 18)
-shape = SubResource("CircleShape2D_dwbse")
+position = Vector2(1, 23)
+shape = SubResource("RectangleShape2D_mlkej")
 
 [node name="InteractiveArea2D" type="Area2D" parent="." groups=["too_close_bubble"]]
 
@@ -55,7 +53,7 @@ offset_top = -131.0
 offset_right = 638.0
 offset_bottom = 394.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_64qp5")
+texture = ExtResource("3_8ftgu")
 
 [node name="HeaderLabel" type="Label" parent="InfoPanel"]
 z_index = 101
@@ -72,7 +70,7 @@ offset_bottom = -160.49998
 grow_horizontal = 2
 grow_vertical = 2
 text = "Bee Hive Stats"
-label_settings = ExtResource("5_flwcb")
+label_settings = ExtResource("4_cx43v")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -129,15 +127,15 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 26
 
-[node name="Jar1TextureProgressBar" parent="InfoPanel/VBoxContainer/TopHBoxContainer" instance=ExtResource("8_713g0")]
+[node name="Jar1TextureProgressBar" parent="InfoPanel/VBoxContainer/TopHBoxContainer" instance=ExtResource("6_edqvm")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Jar2TextureProgressBar" parent="InfoPanel/VBoxContainer/TopHBoxContainer" instance=ExtResource("8_713g0")]
+[node name="Jar2TextureProgressBar" parent="InfoPanel/VBoxContainer/TopHBoxContainer" instance=ExtResource("6_edqvm")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Jar3TextureProgressBar" parent="InfoPanel/VBoxContainer/TopHBoxContainer" instance=ExtResource("8_713g0")]
+[node name="Jar3TextureProgressBar" parent="InfoPanel/VBoxContainer/TopHBoxContainer" instance=ExtResource("6_edqvm")]
 unique_name_in_owner = true
 layout_mode = 2
 
@@ -146,15 +144,15 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 26
 
-[node name="Jar4TextureProgressBar" parent="InfoPanel/VBoxContainer/BottomHBoxContainer" instance=ExtResource("8_713g0")]
+[node name="Jar4TextureProgressBar" parent="InfoPanel/VBoxContainer/BottomHBoxContainer" instance=ExtResource("6_edqvm")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Jar5TextureProgressBar" parent="InfoPanel/VBoxContainer/BottomHBoxContainer" instance=ExtResource("8_713g0")]
+[node name="Jar5TextureProgressBar" parent="InfoPanel/VBoxContainer/BottomHBoxContainer" instance=ExtResource("6_edqvm")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Jar6TextureProgressBar" parent="InfoPanel/VBoxContainer/BottomHBoxContainer" instance=ExtResource("8_713g0")]
+[node name="Jar6TextureProgressBar" parent="InfoPanel/VBoxContainer/BottomHBoxContainer" instance=ExtResource("6_edqvm")]
 unique_name_in_owner = true
 layout_mode = 2
 
@@ -165,8 +163,8 @@ offset_top = 91.0
 offset_right = 584.0
 offset_bottom = 278.0
 scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("3_js7wk")
-texture_hover = ExtResource("4_64qp5")
+texture_normal = ExtResource("7_r2i3f")
+texture_hover = ExtResource("8_n5mp6")
 
 [node name="Label" type="Label" parent="ActionButton"]
 z_index = 101
@@ -183,12 +181,12 @@ offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Harvest Honey"
-label_settings = ExtResource("5_flwcb")
+label_settings = ExtResource("4_cx43v")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ExitHiveMarker2D" type="Marker2D" parent="."]
-position = Vector2(2, 47)
+position = Vector2(3, -37)
 
 [node name="HoneyProductionTimer" type="Timer" parent="."]
 autostart = true

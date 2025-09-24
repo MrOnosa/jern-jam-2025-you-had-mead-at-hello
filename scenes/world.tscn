@@ -116,7 +116,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="BeeKeeper" parent="." instance=ExtResource("5_jhx03")]
-position = Vector2(229, 436)
+position = Vector2(573, 344)
 
 [node name="Workbench" parent="." instance=ExtResource("7_xo05s")]
 position = Vector2(697, 455)
@@ -246,7 +246,8 @@ color = Color(1, 1, 1, 0.19607843)
 
 [connection signal="mouse_entered" from="HUD/PanelContainer" to="." method="_HUD_on_panel_container_mouse_entered"]
 [connection signal="mouse_exited" from="HUD/PanelContainer" to="." method="_HUD_on_panel_container_mouse_exited"]
-[connection signal="pressed" from="HUD/PanelContainer/VBoxContainer/NaturalBeeHiveButton" to="." method="_on_natural_bee_hive_button_pressed"]
+[connection signal="pressed" from="HUD/PanelContainer/VBoxContainer/NaturalHiveButton" to="." method="_on_natural_hive_button_pressed"]
+[connection signal="pressed" from="HUD/PanelContainer/VBoxContainer/ManMadeHiveButton" to="." method="_on_man_made_hive_button_pressed"]
 [connection signal="placed" from="Workbench" to="BeeKeeper" method="_on_workbench_placed"]
 
 [editable path="HUD"]

@@ -2,14 +2,19 @@ extends Node2D
 
 const BEE = preload("uid://ws0llatxgtev")
 
-const NATURAL_HONEY_HIVE_DRAGGABLE = preload("uid://dd56jcjuc6gn8")
+const NATURAL_HIVE_DRAGGABLE = preload("uid://dd56jcjuc6gn8")
+const MAN_MADE_HIVE_DRAGGABLE = preload("uid://dsmlt42isfk6r")
 const BEE_COLONY = preload("uid://cnqxl80su0co4")
+const MAN_MADE_BEE_COLONY = preload("uid://crwo4bniwcg18")
+
 
 @onready var bee_keeper: BeeKeeper = $BeeKeeper
 
 
+enum Draggable_Items { NATURAL_BEE_HIVE, MAN_MADE_BEE_HIVE} 
 var mouse_is_over_HUD : bool = false
 var drag_and_drop_item : Variant = null
+var drag_and_drop_item_type : Draggable_Items
 #const WORLD_GRASS_NOISE_TEXTURE = preload("uid://c0a00g37gmqql")
 
 # Called when the node enters the scene tree for the first time.
@@ -27,9 +32,9 @@ func _process(delta: float) -> void:
 		drag_and_drop_item.modulate = Color.WHITE
 		var any_collisions : bool = false
 		if !mouse_is_over_HUD:
-			var all_bee_colonies = get_tree().get_nodes_in_group("bee_colony") as Array[BeeColony]
-			for b in all_bee_colonies:
-				if b.get_node("InteractiveArea2D").overlaps_area(drag_and_drop_item.get_node("InteractiveArea2D")):
+			var all_the_things = get_tree().get_nodes_in_group("too_close_bubble") as Array[Area2D]
+			for b in all_the_things:
+				if b.overlaps_area(drag_and_drop_item.get_node("InteractiveArea2D")):
 					any_collisions = true
 					drag_and_drop_item.modulate = Color.INDIAN_RED
 					break
@@ -41,15 +46,29 @@ func _process(delta: float) -> void:
 					#todo - Sfx that goes AANT!
 					pass
 				else:
-					var bee_colony = BEE_COLONY.instantiate() as BeeColony
-					bee_colony.position = drag_and_drop_item.position
-					bee_colony.total_bees = 8000
-					bee_colony.raw_honey_produced = bee_colony.raw_honey_needed_for_a_jar - 0.1
-					bee_colony.max_population = 20000
-					bee_colony.max_raw_honey_capacity = bee_colony.raw_honey_needed_for_a_jar * 2
-					bee_colony.honey_collected.connect(bee_keeper._on_bee_colony_honey_collected)
-					bee_colony.spawn_bee.connect(_on_bee_colony_spawn_bee)
-					add_child(bee_colony)
+					match drag_and_drop_item_type:
+						Draggable_Items.NATURAL_BEE_HIVE:
+							var bee_colony = BEE_COLONY.instantiate() as BeeColony
+							bee_colony.position = drag_and_drop_item.position
+							bee_colony.total_bees = 8000
+							bee_colony.raw_honey_produced = bee_colony.raw_honey_needed_for_a_jar - 0.1
+							bee_colony.max_population = 20000
+							bee_colony.max_raw_honey_capacity = bee_colony.raw_honey_needed_for_a_jar * 2
+							bee_colony.honey_collected.connect(bee_keeper._on_bee_colony_honey_collected)
+							bee_colony.spawn_bee.connect(_on_bee_colony_spawn_bee)
+							add_child(bee_colony)	
+						Draggable_Items.MAN_MADE_BEE_HIVE:	
+							var bee_colony = MAN_MADE_BEE_COLONY.instantiate() as BeeColony
+							bee_colony.position = drag_and_drop_item.position
+							bee_colony.total_bees = 8000
+							bee_colony.raw_honey_produced = bee_colony.raw_honey_needed_for_a_jar - 0.1
+							bee_colony.max_population = 80000
+							bee_colony.max_raw_honey_capacity = bee_colony.raw_honey_needed_for_a_jar * 6
+							bee_colony.honey_collected.connect(bee_keeper._on_bee_colony_honey_collected)
+							bee_colony.spawn_bee.connect(_on_bee_colony_spawn_bee)
+							add_child(bee_colony)					
+						_:
+							printerr("Huh?", drag_and_drop_item_type)
 			
 			# Always clear this even if they are still over the hud.
 			drag_and_drop_item.queue_free()
@@ -61,11 +80,15 @@ func _on_bee_colony_spawn_bee(home_hive: BeeColony) -> void:
 	add_child(bee)
 
 # GUI 
-func _on_natural_bee_hive_button_pressed() -> void:
-	var new_bee_colony = NATURAL_HONEY_HIVE_DRAGGABLE.instantiate()
-	drag_and_drop_item = new_bee_colony
+func _on_natural_hive_button_pressed() -> void:
+	drag_and_drop_item = NATURAL_HIVE_DRAGGABLE.instantiate()
+	drag_and_drop_item_type = Draggable_Items.NATURAL_BEE_HIVE
 	add_child(drag_and_drop_item)
-	pass # Replace with function body.
+
+func _on_man_made_hive_button_pressed() -> void:
+	drag_and_drop_item = MAN_MADE_HIVE_DRAGGABLE.instantiate()
+	drag_and_drop_item_type = Draggable_Items.MAN_MADE_BEE_HIVE
+	add_child(drag_and_drop_item)
 
 
 func _HUD_on_panel_container_mouse_entered() -> void:

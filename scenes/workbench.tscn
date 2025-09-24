@@ -23,7 +23,7 @@ texture = ExtResource("2_ri8fd")
 position = Vector2(0.5, 14)
 shape = SubResource("RectangleShape2D_wse8f")
 
-[node name="InteractiveArea2D" type="Area2D" parent="."]
+[node name="InteractiveArea2D" type="Area2D" parent="." groups=["too_close_bubble"]]
 position = Vector2(-4, -25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea2D"]

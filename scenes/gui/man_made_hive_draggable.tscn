@@ -1,15 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dd56jcjuc6gn8"]
+[gd_scene load_steps=3 format=3 uid="uid://dsmlt42isfk6r"]
 
-[ext_resource type="Texture2D" uid="uid://d2chyn8tlqyat" path="res://assets/beehive.png" id="1_ah7sc"]
+[ext_resource type="Texture2D" uid="uid://ddekt73u2v20e" path="res://assets/hive_upgrade.png" id="1_0kbb0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_opwqi"]
 radius = 128.0
 height = 324.0
 
-[node name="NaturalHoneyHiveDraggable" type="Node2D"]
+[node name="ManMadeHiveDraggable" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ah7sc")
+texture = ExtResource("1_0kbb0")
 
 [node name="InteractiveArea2D" type="Area2D" parent="."]
 

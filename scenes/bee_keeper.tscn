@@ -47,3 +47,10 @@ unique_name_in_owner = true
 z_index = 1
 position = Vector2(33, 19)
 texture = ExtResource("4_3i6xr")
+
+[node name="InteractiveArea2D" type="Area2D" parent="." groups=["too_close_bubble"]]
+position = Vector2(-4, -25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea2D"]
+position = Vector2(4, 63)
+shape = SubResource("CapsuleShape2D_ikiii")

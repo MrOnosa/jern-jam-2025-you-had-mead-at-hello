@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtc7nf7jxt17u"]
+[gd_scene load_steps=3 format=3 uid="uid://dtc7nf7jxt17u"]
 
 [ext_resource type="Texture2D" uid="uid://d2chyn8tlqyat" path="res://assets/beehive.png" id="1_86rft"]
+[ext_resource type="Texture2D" uid="uid://ddekt73u2v20e" path="res://assets/hive_upgrade.png" id="2_624ws"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -11,9 +12,16 @@ offset_bottom = 642.0
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="NaturalBeeHiveButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+[node name="NaturalHiveButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 1
 action_mode = 0
 texture_normal = ExtResource("1_86rft")
+
+[node name="ManMadeHiveButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+action_mode = 0
+texture_normal = ExtResource("2_624ws")
