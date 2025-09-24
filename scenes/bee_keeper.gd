@@ -26,7 +26,9 @@ func _ready():
 	player_base_scale = scale
 	direction_facing = player_base_scale.x
 
+
 func _process(_delta: float) -> void:
+	z_index = int(global_position.y) + 100
 	honey_high_sprite.visible = holding == Holding.HONEY_HIGH
 	
 	if holding:

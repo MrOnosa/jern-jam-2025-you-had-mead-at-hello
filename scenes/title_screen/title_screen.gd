@@ -9,7 +9,8 @@ extends Node2D
 @onready var flowers: Node2D = %Flowers
 @onready var sfx_accept: AudioStreamPlayer = %SFXAccept
 @onready var sfx_hover: AudioStreamPlayer = %SFXHover
-@onready var jern_jam_logo: TextureButton = $JernJamLogo
+@onready var jern_jam_logo: TextureButton = %JernJamLogo
+
 
 
 func _ready() -> void:

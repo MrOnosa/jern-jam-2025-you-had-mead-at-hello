@@ -13,7 +13,7 @@ config_version=5
 config/name="You had mead at hello"
 run/main_scene="uid://nq85x62by4kk"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://bhe4d4w7erdmy"
 
 [debug]
 

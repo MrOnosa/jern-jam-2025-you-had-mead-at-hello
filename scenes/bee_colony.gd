@@ -33,6 +33,7 @@ signal spawn_bee(home_hive: BeeColony)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	z_index = int(global_position.y)
 	action_button.hide()
 	info_panel.hide()
 

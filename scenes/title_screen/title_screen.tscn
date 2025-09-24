@@ -164,6 +164,7 @@ position = Vector2(623, 173)
 texture = ExtResource("11_v2f8g")
 
 [node name="JernJamLogo" type="TextureButton" parent="UI"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0

@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bdc0ihum5w7nc" path="res://scenes/gui/jar_for_info_panel_gui.tscn" id="8_713g0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dwbse"]
-radius = 46.64
+radius = 55.145264
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqk2v"]
 radius = 128.0
@@ -38,7 +38,7 @@ max_population = 20000
 texture = ExtResource("2_c2ynb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 18)
+position = Vector2(1, 10)
 shape = SubResource("CircleShape2D_dwbse")
 
 [node name="InteractiveArea2D" type="Area2D" parent="." groups=["too_close_bubble"]]
