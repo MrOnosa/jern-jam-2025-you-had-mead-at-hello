@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://4cli82gdv1h3" path="res://assets/placeholder/circle2.png" id="1_7r4gi"]
 [ext_resource type="Script" uid="uid://cugl826a8ai2" path="res://scenes/world.gd" id="1_w7kh3"]
+[ext_resource type="PackedScene" uid="uid://dtc7nf7jxt17u" path="res://scenes/gui/hud.tscn" id="2_ctatt"]
 [ext_resource type="Texture2D" uid="uid://dmnihv382ty1d" path="res://assets/ground_texture.png" id="3_7iits"]
 [ext_resource type="Script" uid="uid://cuuenfvx0rdhk" path="res://FancyCamera.gd" id="3_e3hyu"]
 [ext_resource type="Texture2D" uid="uid://dpaf0yu32l15v" path="res://assets/world_texture_noise_rendered.png" id="4_oo54l"]
 [ext_resource type="Shader" uid="uid://byxo6um7bonre" path="res://world.tres" id="4_q5onr"]
 [ext_resource type="PackedScene" uid="uid://c3b1wwqkjscss" path="res://scenes/bee_keeper.tscn" id="5_jhx03"]
-[ext_resource type="PackedScene" uid="uid://cnqxl80su0co4" path="res://scenes/bee_colony.tscn" id="6_o8fc1"]
 [ext_resource type="PackedScene" uid="uid://df31ndq2c5s56" path="res://scenes/workbench.tscn" id="7_xo05s"]
 [ext_resource type="PackedScene" uid="uid://b7rtim3q5xhms" path="res://scenes/flower.tscn" id="9_7t5mc"]
 [ext_resource type="Texture2D" uid="uid://b0iiiv4kr8ig3" path="res://assets/flowers/wildflower_1.png" id="10_7t5mc"]
@@ -42,6 +42,8 @@ shader_parameter/FloatParameter = 25.0
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_w7kh3")
+
+[node name="HUD" parent="." instance=ExtResource("2_ctatt")]
 
 [node name="GoingTowardsThisPoint" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -94,7 +96,6 @@ texture = ExtResource("4_oo54l")
 centered = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(308, 145)
 limit_left = 0
 limit_top = 0
 limit_right = 3900
@@ -116,19 +117,6 @@ mouse_filter = 2
 
 [node name="BeeKeeper" parent="." instance=ExtResource("5_jhx03")]
 position = Vector2(229, 436)
-
-[node name="BeeColony" parent="." instance=ExtResource("6_o8fc1")]
-position = Vector2(366, 233)
-raw_honey_produced = 360.0
-total_bees = 80000
-
-[node name="BeeColony2" parent="." instance=ExtResource("6_o8fc1")]
-position = Vector2(1576, 164)
-raw_honey_produced = 59.0
-
-[node name="BeeColony3" parent="." instance=ExtResource("6_o8fc1")]
-position = Vector2(1151, 508)
-raw_honey_produced = 59.0
 
 [node name="Workbench" parent="." instance=ExtResource("7_xo05s")]
 position = Vector2(697, 455)
@@ -273,10 +261,7 @@ initial_velocity_max = 1000.0
 scale_amount_max = 3.0
 color = Color(1, 1, 1, 0.19607843)
 
-[connection signal="honey_collected" from="BeeColony" to="BeeKeeper" method="_on_bee_colony_honey_collected"]
-[connection signal="spawn_bee" from="BeeColony" to="." method="_on_bee_colony_spawn_bee"]
-[connection signal="honey_collected" from="BeeColony2" to="BeeKeeper" method="_on_bee_colony_honey_collected"]
-[connection signal="spawn_bee" from="BeeColony2" to="." method="_on_bee_colony_spawn_bee"]
-[connection signal="honey_collected" from="BeeColony3" to="BeeKeeper" method="_on_bee_colony_honey_collected"]
-[connection signal="spawn_bee" from="BeeColony3" to="." method="_on_bee_colony_spawn_bee"]
+[connection signal="pressed" from="HUD/PanelContainer/VBoxContainer/NaturalBeeHiveButton" to="." method="_on_natural_bee_hive_button_pressed"]
 [connection signal="placed" from="Workbench" to="BeeKeeper" method="_on_workbench_placed"]
+
+[editable path="HUD"]
