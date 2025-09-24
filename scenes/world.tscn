@@ -176,71 +176,54 @@ texture = ExtResource("21_ctatt")
 
 [node name="Flower" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(307, 495)
-scale = Vector2(1, 1)
 
 [node name="Flower2" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(519, 523.99994)
-scale = Vector2(1, 1)
 
 [node name="Flower3" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(430.00006, 730)
-scale = Vector2(1, 1)
 
 [node name="Flower4" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(698, 659)
-scale = Vector2(1, 1)
 
 [node name="Flower5" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(862, 557)
-scale = Vector2(1, 1)
 
 [node name="Flower6" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(882, 456)
-scale = Vector2(1, 1)
 
 [node name="Flower7" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(825, 174.00006)
-scale = Vector2(1, 1)
 
 [node name="Flower8" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(673, 251)
-scale = Vector2(1, 1)
 
 [node name="Flower9" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(573, 280)
-scale = Vector2(1, 1)
 
 [node name="Flower10" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(138.00003, 581)
-scale = Vector2(1, 1)
 
 [node name="Flower11" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(205, 737.00006)
-scale = Vector2(1, 1)
 
 [node name="Flower12" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(973.99994, 832)
-scale = Vector2(1, 1)
 
 [node name="Flower13" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(1256, 599.00006)
-scale = Vector2(1, 1)
 
 [node name="Flower14" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(1215, 313.00003)
-scale = Vector2(1, 1)
 
 [node name="Flower15" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(1488, 392)
-scale = Vector2(1, 1)
 
 [node name="Flower16" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(1575, 707)
-scale = Vector2(1, 1)
 
 [node name="Flower17" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(1357, 899)
-scale = Vector2(1, 1)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 z_index = 75
@@ -261,6 +244,8 @@ initial_velocity_max = 1000.0
 scale_amount_max = 3.0
 color = Color(1, 1, 1, 0.19607843)
 
+[connection signal="mouse_entered" from="HUD/PanelContainer" to="." method="_HUD_on_panel_container_mouse_entered"]
+[connection signal="mouse_exited" from="HUD/PanelContainer" to="." method="_HUD_on_panel_container_mouse_exited"]
 [connection signal="pressed" from="HUD/PanelContainer/VBoxContainer/NaturalBeeHiveButton" to="." method="_on_natural_bee_hive_button_pressed"]
 [connection signal="placed" from="Workbench" to="BeeKeeper" method="_on_workbench_placed"]
 
