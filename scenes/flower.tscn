@@ -65,7 +65,6 @@ radius = 239.54
 size = Vector2(56.78716, 49.380146)
 
 [node name="Flower" type="Area2D" groups=["has_food"]]
-scale = Vector2(0.40502125, 0.40502125)
 collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_yoh7s")
