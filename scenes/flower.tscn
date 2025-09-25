@@ -70,13 +70,14 @@ collision_mask = 3
 script = ExtResource("1_yoh7s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2.469006, -76.539185)
+position = Vector2(1.9999967, -51.5)
 scale = Vector2(0.99999994, 0.99999994)
 sprite_frames = SubResource("SpriteFrames_6or65")
 frame = 5
+frame_progress = 0.8624871
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4.938012, -125.91931)
+position = Vector2(-0.4690094, -88.960815)
 shape = SubResource("CircleShape2D_2u3nc")
 debug_color = Color(0, 0.6, 0.69803923, 0.13725491)
 
@@ -85,9 +86,10 @@ wait_time = 60.0
 autostart = true
 
 [node name="BeeMarker2D" type="Marker2D" parent="."]
-position = Vector2(-3.8146973e-06, -133.32634)
+position = Vector2(-0.4690094, -79.960815)
 
 [node name="CollectionArea2D" type="Area2D" parent="."]
+position = Vector2(-0.4690094, 51.039185)
 
 [node name="CollectionShape2D" type="CollisionShape2D" parent="CollectionArea2D"]
 position = Vector2(-1.2345011, -130.8573)

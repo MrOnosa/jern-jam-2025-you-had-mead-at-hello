@@ -1,27 +1,15 @@
-[gd_scene load_steps=30 format=3 uid="uid://ckavqb25bdaul"]
+[gd_scene load_steps=18 format=3 uid="uid://ckavqb25bdaul"]
 
-[ext_resource type="Texture2D" uid="uid://4cli82gdv1h3" path="res://assets/placeholder/circle2.png" id="1_7r4gi"]
 [ext_resource type="Script" uid="uid://cugl826a8ai2" path="res://scenes/world.gd" id="1_w7kh3"]
 [ext_resource type="PackedScene" uid="uid://dtc7nf7jxt17u" path="res://scenes/gui/hud.tscn" id="2_ctatt"]
 [ext_resource type="Texture2D" uid="uid://dmnihv382ty1d" path="res://assets/ground_texture.png" id="3_7iits"]
 [ext_resource type="Script" uid="uid://cuuenfvx0rdhk" path="res://FancyCamera.gd" id="3_e3hyu"]
+[ext_resource type="Texture2D" uid="uid://bb727seoq3eci" path="res://assets/ground_marker.png" id="3_q5onr"]
 [ext_resource type="Texture2D" uid="uid://dpaf0yu32l15v" path="res://assets/world_texture_noise_rendered.png" id="4_oo54l"]
 [ext_resource type="Shader" uid="uid://byxo6um7bonre" path="res://world.tres" id="4_q5onr"]
 [ext_resource type="PackedScene" uid="uid://c3b1wwqkjscss" path="res://scenes/bee_keeper.tscn" id="5_jhx03"]
-[ext_resource type="PackedScene" uid="uid://df31ndq2c5s56" path="res://scenes/workbench.tscn" id="7_xo05s"]
 [ext_resource type="PackedScene" uid="uid://b7rtim3q5xhms" path="res://scenes/flower.tscn" id="9_7t5mc"]
-[ext_resource type="Texture2D" uid="uid://b0iiiv4kr8ig3" path="res://assets/flowers/wildflower_1.png" id="10_7t5mc"]
-[ext_resource type="Texture2D" uid="uid://ct7p4oxh0ropg" path="res://assets/flowers/wildflower_2.png" id="11_lakw3"]
-[ext_resource type="Texture2D" uid="uid://c8cwxglledpf3" path="res://assets/flowers/wildflower_3.png" id="12_pm21f"]
-[ext_resource type="Texture2D" uid="uid://duv5qdo1noan4" path="res://assets/flowers/wildflower_4.png" id="13_2lf6f"]
-[ext_resource type="Texture2D" uid="uid://u1s80pi3ub7d" path="res://assets/flowers/wildflower_5.png" id="14_7iits"]
-[ext_resource type="Texture2D" uid="uid://up2g7k2iyy6y" path="res://assets/flowers/wildflower_6.png" id="15_oo54l"]
-[ext_resource type="Texture2D" uid="uid://llbgsodmfdrx" path="res://assets/flowers/wildflower_7.png" id="16_kpybi"]
-[ext_resource type="Texture2D" uid="uid://cjmjhyf3ra50r" path="res://assets/flowers/wildflower_8.png" id="17_ctatt"]
-[ext_resource type="Texture2D" uid="uid://dene3d8hdg5gf" path="res://assets/flowers/wildflower_9.png" id="18_7iits"]
-[ext_resource type="Texture2D" uid="uid://c81mm7m46lu2p" path="res://assets/flowers/wildflower_10.png" id="19_oo54l"]
-[ext_resource type="Texture2D" uid="uid://djpgmytcta7nn" path="res://assets/flowers/wildflower_11.png" id="20_kpybi"]
-[ext_resource type="Texture2D" uid="uid://cyxv76hbmspvo" path="res://assets/flowers/wildflower_12.png" id="21_ctatt"]
+[ext_resource type="PackedScene" uid="uid://b7snix20rjbed" path="res://scenes/sell_box.tscn" id="9_ctatt"]
 [ext_resource type="Texture2D" uid="uid://dr0od7ibrfglk" path="res://assets/wind.png" id="23_kpybi"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_70uel"]
@@ -48,12 +36,27 @@ script = ExtResource("1_w7kh3")
 
 [node name="HUD" parent="." instance=ExtResource("2_ctatt")]
 
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/PanelContainer/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="CashLabel" type="Label" parent="HUD/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "CASH:"
+
+[node name="CashAmountLabel" type="Label" parent="HUD/PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "$999999"
+horizontal_alignment = 2
+clip_text = true
+
 [node name="GoingTowardsThisPoint" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.5019608)
-position = Vector2(308, 145)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_7r4gi")
+position = Vector2(573, 412)
+texture = ExtResource("3_q5onr")
 
 [node name="Grass" type="TextureRect" parent="."]
 texture_repeat = 2
@@ -125,63 +128,10 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="BeeKeeper" parent="." instance=ExtResource("5_jhx03")]
-position = Vector2(573, 344)
+position = Vector2(508, 216)
 
-[node name="Workbench" parent="." instance=ExtResource("7_xo05s")]
-position = Vector2(697, 455)
-
-[node name="Flowers" type="Node2D" parent="."]
-visible = false
-
-[node name="Wildflower1" type="Sprite2D" parent="Flowers"]
-position = Vector2(202, 592.5984)
-texture = ExtResource("10_7t5mc")
-
-[node name="Wildflower2" type="Sprite2D" parent="Flowers"]
-position = Vector2(331.00003, 530.00006)
-texture = ExtResource("11_lakw3")
-
-[node name="Wildflower3" type="Sprite2D" parent="Flowers"]
-position = Vector2(153.00002, 449)
-texture = ExtResource("12_pm21f")
-
-[node name="Wildflower4" type="Sprite2D" parent="Flowers"]
-position = Vector2(670, 640.8605)
-texture = ExtResource("13_2lf6f")
-
-[node name="Wildflower5" type="Sprite2D" parent="Flowers"]
-position = Vector2(545, 517)
-texture = ExtResource("14_7iits")
-
-[node name="Wildflower6" type="Sprite2D" parent="Flowers"]
-position = Vector2(1128, 258)
-texture = ExtResource("15_oo54l")
-
-[node name="Wildflower7" type="Sprite2D" parent="Flowers"]
-position = Vector2(968.5, 623.2324)
-texture = ExtResource("16_kpybi")
-
-[node name="Wildflower8" type="Sprite2D" parent="Flowers"]
-position = Vector2(1143, 631)
-rotation = 0.154553
-texture = ExtResource("17_ctatt")
-
-[node name="Wildflower9" type="Sprite2D" parent="Flowers"]
-position = Vector2(964.00006, 442)
-texture = ExtResource("18_7iits")
-
-[node name="Wildflower10" type="Sprite2D" parent="Flowers"]
-position = Vector2(697, 128.00002)
-texture = ExtResource("19_oo54l")
-
-[node name="Wildflower11" type="Sprite2D" parent="Flowers"]
-position = Vector2(1110, 646)
-rotation = -0.21117447
-texture = ExtResource("20_kpybi")
-
-[node name="Wildflower12" type="Sprite2D" parent="Flowers"]
-position = Vector2(961.00006, 116)
-texture = ExtResource("21_ctatt")
+[node name="SellBox" parent="." instance=ExtResource("9_ctatt")]
+position = Vector2(352, 268)
 
 [node name="Flower" parent="." instance=ExtResource("9_7t5mc")]
 position = Vector2(307, 495)
@@ -208,6 +158,7 @@ position = Vector2(825, 174.00006)
 position = Vector2(673, 251)
 
 [node name="Flower9" parent="." instance=ExtResource("9_7t5mc")]
+y_sort_enabled = true
 position = Vector2(573, 280)
 
 [node name="Flower10" parent="." instance=ExtResource("9_7t5mc")]
@@ -259,6 +210,7 @@ color = Color(1, 1, 1, 0.19607843)
 [connection signal="pressed" from="HUD/PanelContainer/VBoxContainer/ManMadeHiveButton" to="." method="_on_man_made_hive_button_pressed"]
 [connection signal="mouse_entered" from="Camera2D/CanvasLayer/MouseInWindowArea2D" to="." method="_on_mouse_in_window_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Camera2D/CanvasLayer/MouseInWindowArea2D" to="." method="_on_mouse_in_window_area_2d_mouse_exited"]
-[connection signal="placed" from="Workbench" to="BeeKeeper" method="_on_workbench_placed"]
+[connection signal="placed" from="SellBox" to="." method="_on_sell_box_placed"]
+[connection signal="placed" from="SellBox" to="BeeKeeper" method="_on_sell_box_placed"]
 
 [editable path="HUD"]

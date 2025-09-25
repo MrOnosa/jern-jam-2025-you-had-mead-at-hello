@@ -14,7 +14,7 @@ const SPEED = 300.0
 
 var target_position : Vector2
 var click_position : Vector2
-var holding := Holding.NOTHING
+var holding := Holding.HONEY_HIGH
 var anim_state := Action.IDLE
 var player_facing_right : bool = true
 var direction_facing
@@ -28,7 +28,7 @@ func _ready():
 
 
 func _process(_delta: float) -> void:
-	z_index = int(global_position.y) + 100
+	#z_index = int(global_position.y) + 100
 	honey_high_sprite.visible = holding == Holding.HONEY_HIGH
 	
 	if holding:
@@ -74,6 +74,9 @@ func _on_bee_colony_honey_collected() -> void:
 
 func _on_workbench_placed() -> void:
 	if holding != Holding.NOTHING:
+		holding = Holding.NOTHING		
+
+
+func _on_sell_box_placed() -> void:
+	if holding != Holding.NOTHING:
 		holding = Holding.NOTHING
-		# TODO put the item on the workbench
-		

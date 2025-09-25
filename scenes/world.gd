@@ -7,11 +7,12 @@ const MAN_MADE_HIVE_DRAGGABLE = preload("uid://dsmlt42isfk6r")
 const BEE_COLONY = preload("uid://cnqxl80su0co4")
 const MAN_MADE_BEE_COLONY = preload("uid://crwo4bniwcg18")
 
-
+@onready var cash_amount_label: Label = %CashAmountLabel
 @onready var bee_keeper: BeeKeeper = $BeeKeeper
 
 
 enum Draggable_Items { NATURAL_BEE_HIVE, MAN_MADE_BEE_HIVE} 
+@export var cash : int = 100
 var mouse_is_over_HUD : bool = false
 var mouse_is_within_window : bool = true
 var drag_and_drop_item : Variant = null
@@ -27,6 +28,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	cash_amount_label.text = str("$", Utility.add_commas_to_number(cash))
 	if drag_and_drop_item != null && !drag_and_drop_item.is_queued_for_deletion():
 		# https://www.reddit.com/r/godot/comments/yge1ms/comment/iucbhph/
 		drag_and_drop_item.position = drag_and_drop_item.get_parent().get_local_mouse_position()
@@ -79,6 +81,13 @@ func _on_bee_colony_spawn_bee(home_hive: BeeColony) -> void:
 	bee.position = home_hive.get_node("ExitHiveMarker2D").global_position
 	bee.home_hive = home_hive
 	add_child(bee)
+
+
+func _on_sell_box_placed() -> void:
+	print("Sold!")
+	cash += 100
+	pass # Replace with function body.
+
 
 # GUI 
 func _on_natural_hive_button_pressed() -> void:

@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=3 uid="uid://b7snix20rjbed"]
+
+[ext_resource type="Script" uid="uid://cf20ju8y3y8py" path="res://scenes/sell_box.gd" id="1_47t8m"]
+[ext_resource type="Texture2D" uid="uid://c32hjrwlewe4l" path="res://assets/sell_box_back.png" id="2_uowdk"]
+[ext_resource type="Texture2D" uid="uid://brh416hlld4qi" path="res://assets/gui/button_2.png" id="3_47t8m"]
+[ext_resource type="Texture2D" uid="uid://ctcdr6dyt0o5l" path="res://assets/sell_box_face.png" id="3_55i2q"]
+[ext_resource type="FontFile" uid="uid://b7vkyxnsa7dol" path="res://assets/fonts/Sunset Friday.otf" id="4_47t8m"]
+[ext_resource type="Texture2D" uid="uid://c5etmq5xjnqbf" path="res://assets/gui/button_2_hover.png" id="4_e26ny"]
+[ext_resource type="LabelSettings" uid="uid://cn1rdmmbnmsu3" path="res://assets/gui/button_font.tres" id="5_t15yl"]
+[ext_resource type="Texture2D" uid="uid://ccmbsar8ut357" path="res://assets/sell_box.png" id="8_e26ny"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wse8f"]
+size = Vector2(129, 71)
+
+[sub_resource type="LabelSettings" id="LabelSettings_e26ny"]
+font = ExtResource("4_47t8m")
+font_size = 14
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ioo17"]
+radius = 163.0
+height = 326.0
+
+[node name="SellBox" type="StaticBody2D"]
+script = ExtResource("1_47t8m")
+
+[node name="BackSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_uowdk")
+
+[node name="FaceSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_55i2q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 5.5)
+shape = SubResource("RectangleShape2D_wse8f")
+
+[node name="PlaceLabel" type="Label" parent="."]
+z_index = 101
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -19.0
+offset_right = 110.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "For Sell"
+label_settings = SubResource("LabelSettings_e26ny")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractiveArea2D" type="Area2D" parent="." groups=["too_close_bubble"]]
+position = Vector2(-4, -25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea2D"]
+position = Vector2(11.999999, 26)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ioo17")
+debug_color = Color(0, 0.6, 0.69803923, 0.28235295)
+metadata/_edit_lock_ = true
+
+[node name="ActionButton" type="TextureButton" parent="."]
+z_index = 100
+offset_left = -123.0
+offset_top = 25.0
+offset_right = 349.0
+offset_bottom = 217.0
+scale = Vector2(0.52, 0.52)
+texture_normal = ExtResource("3_47t8m")
+texture_hover = ExtResource("4_e26ny")
+
+[node name="PlaceLabel2" type="Label" parent="ActionButton"]
+z_index = 101
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -29.0
+offset_right = 128.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sell Honey"
+label_settings = ExtResource("5_t15yl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellBox" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+texture = ExtResource("8_e26ny")
+
+[connection signal="body_entered" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_entered"]
+[connection signal="body_exited" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_exited"]
+[connection signal="pressed" from="ActionButton" to="." method="_on_action_button_pressed"]

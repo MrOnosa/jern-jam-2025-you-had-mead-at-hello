@@ -35,12 +35,14 @@ sprite_frames = SubResource("SpriteFrames_aqk2v")
 
 [node name="PlayerAnimations" parent="." instance=ExtResource("4_tnovc")]
 unique_name_in_owner = true
+position = Vector2(1, -69)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 38)
+position = Vector2(1, -31)
 shape = SubResource("CapsuleShape2D_ikiii")
 
 [node name="Holding" type="Node2D" parent="."]
+position = Vector2(1, -69)
 
 [node name="HoneyHighSprite" type="Sprite2D" parent="Holding"]
 unique_name_in_owner = true
@@ -49,7 +51,7 @@ position = Vector2(33, 19)
 texture = ExtResource("4_3i6xr")
 
 [node name="InteractiveArea2D" type="Area2D" parent="." groups=["too_close_bubble"]]
-position = Vector2(-4, -25)
+position = Vector2(-3, -94)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea2D"]
 position = Vector2(4, 63)

@@ -28,7 +28,7 @@ var Line : Line2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Line = get_node("Line2D")
-	Line.joint_mode = 2
+	Line.joint_mode = Line2D.LINE_JOINT_ROUND
 	Line.set_point_position(0, global_position)
 	Line.set_point_position(1, global_position)
 	Line.set_point_position(2, global_position)
@@ -38,7 +38,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	z_index = int(global_position.y)
+	#z_index = int(global_position.y)
 	if anim_state == Action.FLYING:
 		animations.animation = "flying"
 	elif anim_state == Action.IDLE:

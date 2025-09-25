@@ -9,7 +9,7 @@ var rand : float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	z_index = int(global_position.y)
+	#z_index = int(global_position.y)
 	rand = randf_range(0, 5)
 	$AnimatedSprite2D.frame = randi_range(0, 11)
 	pollen_available = total_pollen_available

@@ -15,6 +15,10 @@ run/main_scene="uid://nq85x62by4kk"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="uid://bhe4d4w7erdmy"
 
+[autoload]
+
+Utility="*res://scenes/utility.gd"
+
 [debug]
 
 gdscript/warnings/unused_variable=0

@@ -33,7 +33,7 @@ signal spawn_bee(home_hive: BeeColony)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	z_index = int(global_position.y)
+	#z_index = int(global_position.y)
 	action_button.hide()
 	info_panel.hide()
 
@@ -41,7 +41,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var food_needed := total_bees * raw_honey_consumption_ratio
 	$DebugRichTextLabel.text = str("PC: ", str(pollen_collected), "\nRHP: ", str(raw_honey_produced), "\nPop: ", total_bees, "\nFN: ", food_needed)
-	$InfoPanel/PopulationLabel.text = str("Population: ", add_commas_to_number(total_bees))
+	$InfoPanel/PopulationLabel.text = str("Population: ", Utility.add_commas_to_number(total_bees))
 	
 	$InfoPanel/StarvingLabel.visible = is_starving
 	
@@ -141,22 +141,6 @@ func _on_bee_spawn_timer_timeout() -> void:
 	
 	if  bee_sprites_belonging_to_this_hive < (total_bees/bees_to_sprite_threshold):
 		spawn_bee.emit(self)
-				
-# Found at https://www.reddit.com/r/godot/comments/9iw4ie/comment/mdy16ln/
-func add_commas_to_number(input_number : int) -> String:
-		var number_as_string : String = str(input_number)
-		var output_string : String = ""
-		var last_index : int = number_as_string.length() - 1
-		#For each digit in the number...
-		for index in range(number_as_string.length()):
-			#add that digit to the output string, and then...
-			output_string = output_string + number_as_string.substr(index,1)
-			#if the index is at the thousandths, millions, billionths place, etc.
-			#i.e. where you would put a comma, then insert a comma after that digit.
-			if (last_index - index) % 3 == 0 and index != last_index:
-				output_string = output_string + ","
-		return output_string
-
 
 func _on_mouse_entered() -> void:
 	mouse_hovering = true
