@@ -73,13 +73,6 @@ func _process(delta: float) -> void:
 			
 			# Always clear this even if they are still over the hud.
 			drag_and_drop_item.queue_free()
-
-func _notification(what):
-	# Test if the mouse leaves the window entirely
-	if what == NOTIFICATION_WM_MOUSE_ENTER:
-		mouse_is_within_window = true
-	elif what == NOTIFICATION_WM_MOUSE_EXIT:
-		mouse_is_within_window = false
 		
 func _on_bee_colony_spawn_bee(home_hive: BeeColony) -> void:	
 	var bee : Bee = BEE.instantiate()
@@ -105,3 +98,11 @@ func _HUD_on_panel_container_mouse_entered() -> void:
 
 func _HUD_on_panel_container_mouse_exited() -> void:
 	mouse_is_over_HUD = false
+
+
+func _on_mouse_in_window_area_2d_mouse_entered() -> void:
+	mouse_is_within_window = true
+
+
+func _on_mouse_in_window_area_2d_mouse_exited() -> void:
+	mouse_is_within_window = false

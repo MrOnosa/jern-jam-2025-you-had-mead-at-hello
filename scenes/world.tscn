@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ckavqb25bdaul"]
+[gd_scene load_steps=30 format=3 uid="uid://ckavqb25bdaul"]
 
 [ext_resource type="Texture2D" uid="uid://4cli82gdv1h3" path="res://assets/placeholder/circle2.png" id="1_7r4gi"]
 [ext_resource type="Script" uid="uid://cugl826a8ai2" path="res://scenes/world.gd" id="1_w7kh3"]
@@ -34,6 +34,9 @@ normal = Vector2(1, 0)
 normal = Vector2(-1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_udxuc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpybi"]
+size = Vector2(1245, 687)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hiqwa"]
 shader = ExtResource("4_q5onr")
@@ -105,6 +108,12 @@ script = ExtResource("3_e3hyu")
 metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="MouseInWindowArea2D" type="Area2D" parent="Camera2D/CanvasLayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/CanvasLayer/MouseInWindowArea2D"]
+position = Vector2(641.5, 362.5)
+shape = SubResource("RectangleShape2D_kpybi")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
 material = SubResource("ShaderMaterial_hiqwa")
@@ -248,6 +257,8 @@ color = Color(1, 1, 1, 0.19607843)
 [connection signal="mouse_exited" from="HUD/PanelContainer" to="." method="_HUD_on_panel_container_mouse_exited"]
 [connection signal="pressed" from="HUD/PanelContainer/VBoxContainer/NaturalHiveButton" to="." method="_on_natural_hive_button_pressed"]
 [connection signal="pressed" from="HUD/PanelContainer/VBoxContainer/ManMadeHiveButton" to="." method="_on_man_made_hive_button_pressed"]
+[connection signal="mouse_entered" from="Camera2D/CanvasLayer/MouseInWindowArea2D" to="." method="_on_mouse_in_window_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Camera2D/CanvasLayer/MouseInWindowArea2D" to="." method="_on_mouse_in_window_area_2d_mouse_exited"]
 [connection signal="placed" from="Workbench" to="BeeKeeper" method="_on_workbench_placed"]
 
 [editable path="HUD"]
