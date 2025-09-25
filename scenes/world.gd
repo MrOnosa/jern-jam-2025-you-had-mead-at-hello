@@ -13,6 +13,7 @@ const MAN_MADE_BEE_COLONY = preload("uid://crwo4bniwcg18")
 
 enum Draggable_Items { NATURAL_BEE_HIVE, MAN_MADE_BEE_HIVE} 
 var mouse_is_over_HUD : bool = false
+var mouse_is_within_window : bool = true
 var drag_and_drop_item : Variant = null
 var drag_and_drop_item_type : Draggable_Items
 #const WORLD_GRASS_NOISE_TEXTURE = preload("uid://c0a00g37gmqql")
@@ -40,7 +41,7 @@ func _process(delta: float) -> void:
 					break
 		
 		if  Input.is_action_just_released("left_click"):
-			if !mouse_is_over_HUD:				
+			if !mouse_is_over_HUD && mouse_is_within_window:				
 				# Check if the space is free				
 				if any_collisions:
 					#todo - Sfx that goes AANT!
@@ -73,6 +74,13 @@ func _process(delta: float) -> void:
 			# Always clear this even if they are still over the hud.
 			drag_and_drop_item.queue_free()
 
+func _notification(what):
+	# Test if the mouse leaves the window entirely
+	if what == NOTIFICATION_WM_MOUSE_ENTER:
+		mouse_is_within_window = true
+	elif what == NOTIFICATION_WM_MOUSE_EXIT:
+		mouse_is_within_window = false
+		
 func _on_bee_colony_spawn_bee(home_hive: BeeColony) -> void:	
 	var bee : Bee = BEE.instantiate()
 	bee.position = home_hive.get_node("ExitHiveMarker2D").global_position
