@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 	
 func _on_new_game_button_pressed() -> void:
 	button_click_sound()
-	get_tree().change_scene_to_file("res://scenes/world.tscn")
+	get_tree().change_scene_to_file("res://scenes/bloomheart_woods/bloomheart_woods.tscn")
 
 
 func animate_bee() -> void:

@@ -1,0 +1,1550 @@
+[gd_scene load_steps=38 format=3 uid="uid://dq68pnmyoe7mc"]
+
+[ext_resource type="Script" uid="uid://mqqion7wrlty" path="res://scenes/bloomheart_woods/bloomheart_woods.gd" id="1_be4b0"]
+[ext_resource type="Texture2D" uid="uid://dmnihv382ty1d" path="res://assets/ground_texture.png" id="1_bwr0l"]
+[ext_resource type="PackedScene" uid="uid://dtc7nf7jxt17u" path="res://scenes/gui/hud.tscn" id="1_t832r"]
+[ext_resource type="Texture2D" uid="uid://dr0od7ibrfglk" path="res://assets/wind.png" id="2_t8ugh"]
+[ext_resource type="Script" uid="uid://cuuenfvx0rdhk" path="res://FancyCamera.gd" id="3_mtc27"]
+[ext_resource type="Shader" uid="uid://byxo6um7bonre" path="res://world.tres" id="4_y41x7"]
+[ext_resource type="Texture2D" uid="uid://cu4mun30y57ka" path="res://assets/Level Decoration/dirt_round_1.png" id="6_be4b0"]
+[ext_resource type="Texture2D" uid="uid://bb727seoq3eci" path="res://assets/ground_marker.png" id="6_t8ugh"]
+[ext_resource type="PackedScene" uid="uid://c3b1wwqkjscss" path="res://scenes/bee_keeper.tscn" id="7_a72ot"]
+[ext_resource type="Texture2D" uid="uid://dpaf0yu32l15v" path="res://assets/world_texture_noise_rendered.png" id="7_be4b0"]
+[ext_resource type="PackedScene" uid="uid://b7snix20rjbed" path="res://scenes/sell_box.tscn" id="10_y41x7"]
+[ext_resource type="Texture2D" uid="uid://rj5ijglc6m3w" path="res://assets/Level Decoration/flower_1.png" id="11_aaydc"]
+[ext_resource type="Texture2D" uid="uid://bk6ktsajpn4sh" path="res://assets/Level Decoration/dirth_path_short_h.png" id="11_asq8e"]
+[ext_resource type="PackedScene" uid="uid://bcmis3rujwpjh" path="res://scenes/level_decoration/tree_1.tscn" id="11_wwylo"]
+[ext_resource type="Texture2D" uid="uid://cyrisgkbskoyb" path="res://assets/Level Decoration/dirt_path_short_v.png" id="12_0jk2t"]
+[ext_resource type="PackedScene" uid="uid://brh26l2u7pq6t" path="res://scenes/level_decoration/bush_3.tscn" id="12_a1cbq"]
+[ext_resource type="PackedScene" uid="uid://cnum66j7fdc6p" path="res://scenes/level_decoration/tree_2.tscn" id="12_erajg"]
+[ext_resource type="Texture2D" uid="uid://cjfnnifd04cfb" path="res://assets/Level Decoration/flower_2.png" id="12_pgetw"]
+[ext_resource type="PackedScene" uid="uid://dtj1332ycu3b1" path="res://scenes/level_decoration/tree_3.tscn" id="13_26v1y"]
+[ext_resource type="Texture2D" uid="uid://c1xw674f3h8pv" path="res://assets/Level Decoration/flower_3.png" id="13_kyyel"]
+[ext_resource type="Texture2D" uid="uid://bc6k3lrp62p28" path="res://assets/Level Decoration/dirt_path_long_h.png" id="13_v18ym"]
+[ext_resource type="Texture2D" uid="uid://cd6qskc3e2xwn" path="res://assets/Level Decoration/dirt_path_long_v.png" id="14_3x1p1"]
+[ext_resource type="PackedScene" uid="uid://y6ulpn24oveh" path="res://scenes/level_decoration/tree_4.tscn" id="14_a1cbq"]
+[ext_resource type="Texture2D" uid="uid://dirpfh5dtu6wl" path="res://assets/Level Decoration/flower_4.png" id="14_asq8e"]
+[ext_resource type="Texture2D" uid="uid://bwapus8sj03rl" path="res://assets/Level Decoration/flower_5.png" id="15_7uv6i"]
+[ext_resource type="PackedScene" uid="uid://glscrjjw8ofl" path="res://scenes/level_decoration/bush_1.tscn" id="16_aaydc"]
+[ext_resource type="PackedScene" uid="uid://ds4fwqgr0foma" path="res://scenes/level_decoration/bush_2.tscn" id="17_3o2h1"]
+[ext_resource type="Texture2D" uid="uid://c8mm26e11bevy" path="res://assets/Level Decoration/grass_2.png" id="17_hv86g"]
+[ext_resource type="Texture2D" uid="uid://ddq8v0vemum0" path="res://assets/Level Decoration/grass_3.png" id="18_y8ijm"]
+[ext_resource type="Texture2D" uid="uid://d0kxev5dluyyc" path="res://assets/Level Decoration/grass_4.png" id="19_va1an"]
+[ext_resource type="PackedScene" uid="uid://b7rtim3q5xhms" path="res://scenes/flower.tscn" id="26_kyyel"]
+[ext_resource type="Texture2D" uid="uid://c1p0aqp2hu4tm" path="res://assets/Level Decoration/bush_3.png" id="30_0kbu6"]
+[ext_resource type="Texture2D" uid="uid://d0ftkcffvo5yo" path="res://assets/Level Decoration/bush_2.png" id="31_trquv"]
+[ext_resource type="Texture2D" uid="uid://d0qxi1gdjgdfa" path="res://assets/Level Decoration/bush_4.png" id="32_mrrg2"]
+[ext_resource type="Texture2D" uid="uid://dxqv3h5pfnjuq" path="res://assets/Level Decoration/bush_1.png" id="33_bxj5p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhfi5"]
+size = Vector2(1245, 687)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0jk2t"]
+shader = ExtResource("4_y41x7")
+shader_parameter/FloatParameter = 25.0
+
+[node name="BloomheartWoods" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_be4b0")
+
+[node name="HUD" parent="." instance=ExtResource("1_t832r")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/PanelContainer/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="CashLabel" type="Label" parent="HUD/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "CASH:"
+
+[node name="CashAmountLabel" type="Label" parent="HUD/PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "$999999"
+horizontal_alignment = 2
+clip_text = true
+
+[node name="CloudShadows" type="CPUParticles2D" parent="HUD"]
+z_index = 75
+position = Vector2(-146, 1255)
+amount = 200
+texture = ExtResource("2_t8ugh")
+lifetime = 20.0
+preprocess = 20.0
+speed_scale = 0.05
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1500)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(980, 0)
+scale_amount_max = 2.0
+color = Color(0, 0, 0, 0.16470589)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 6400
+limit_bottom = 3600
+position_smoothing_enabled = true
+script = ExtResource("3_mtc27")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="MouseInWindowArea2D" type="Area2D" parent="Camera2D/CanvasLayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/CanvasLayer/MouseInWindowArea2D"]
+position = Vector2(641.5, 362.5)
+shape = SubResource("RectangleShape2D_mhfi5")
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+visible = false
+material = SubResource("ShaderMaterial_0jk2t")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="GroundArea" type="Node2D" parent="."]
+
+[node name="Ground" type="TextureRect" parent="GroundArea"]
+offset_right = 6400.0
+offset_bottom = 3600.0
+texture = ExtResource("1_bwr0l")
+stretch_mode = 1
+flip_h = true
+
+[node name="Dirt" type="Node2D" parent="GroundArea"]
+
+[node name="DirtRound1" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(3301, 1720)
+scale = Vector2(1.209, 1.209)
+texture = ExtResource("6_be4b0")
+
+[node name="DirtRound8" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(2573, 1481)
+scale = Vector2(1.209, 1.209)
+texture = ExtResource("6_be4b0")
+
+[node name="DirtRound9" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(4153, 1444.9999)
+scale = Vector2(1.209, 1.209)
+texture = ExtResource("6_be4b0")
+
+[node name="DirtRound10" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(3095, 1720.9999)
+scale = Vector2(1.209, 1.209)
+texture = ExtResource("6_be4b0")
+
+[node name="DirtRound11" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(3047.9998, 1058)
+scale = Vector2(1.209, 1.209)
+texture = ExtResource("6_be4b0")
+
+[node name="DirtRound12" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(4048, 997)
+scale = Vector2(1.209, 1.209)
+texture = ExtResource("6_be4b0")
+
+[node name="DirtPathShortV" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(3308, 1549)
+texture = ExtResource("12_0jk2t")
+
+[node name="DirtPathLongH" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(3554, 1715)
+texture = ExtResource("13_v18ym")
+
+[node name="DirtPathLongV" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(3308, 1941)
+texture = ExtResource("14_3x1p1")
+
+[node name="DirtRound2" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(2895, 1580)
+texture = ExtResource("6_be4b0")
+
+[node name="DirtRound3" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(1081, 1315.0001)
+scale = Vector2(1.375, 1.375)
+texture = ExtResource("6_be4b0")
+
+[node name="DirtRound7" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(695.00006, 239.00009)
+scale = Vector2(1.375, 1.375)
+texture = ExtResource("6_be4b0")
+
+[node name="DirtRound4" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(975, 2767)
+scale = Vector2(1.375, 1.375)
+texture = ExtResource("6_be4b0")
+
+[node name="DirtRound5" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(5601, 688)
+scale = Vector2(1.375, 1.375)
+texture = ExtResource("6_be4b0")
+
+[node name="DirtRound6" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(5350.0005, 2706)
+scale = Vector2(1.375, 1.375)
+texture = ExtResource("6_be4b0")
+
+[node name="DirtPathShortV2" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(2797.9998, 1383)
+scale = Vector2(0.905, 0.905)
+texture = ExtResource("12_0jk2t")
+
+[node name="DirtPathLongH2" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(5051, 2701)
+texture = ExtResource("13_v18ym")
+
+[node name="DirtPathLongH3" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(4551, 2698)
+texture = ExtResource("13_v18ym")
+
+[node name="DirtPathLongH4" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(4056, 2696)
+texture = ExtResource("13_v18ym")
+
+[node name="DirtPathLongH5" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(3567, 2696)
+texture = ExtResource("13_v18ym")
+
+[node name="DirtPathLongV2" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(3312, 2437)
+texture = ExtResource("14_3x1p1")
+
+[node name="DirtPathLongH6" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(4063, 1721)
+texture = ExtResource("13_v18ym")
+
+[node name="DirtPathLongH7" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(4551, 1723)
+texture = ExtResource("13_v18ym")
+
+[node name="DirtPathLongH8" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(5042, 1724)
+texture = ExtResource("13_v18ym")
+
+[node name="DirtPathLongH9" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(5373, 1718)
+texture = ExtResource("13_v18ym")
+
+[node name="DirtPathLongV3" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(5606, 1450)
+texture = ExtResource("14_3x1p1")
+
+[node name="DirtPathLongV4" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(5606, 963)
+texture = ExtResource("14_3x1p1")
+
+[node name="DirtPathLongV5" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(2808, 1003)
+texture = ExtResource("14_3x1p1")
+
+[node name="DirtPathLongH10" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(2583, 736)
+texture = ExtResource("13_v18ym")
+
+[node name="DirtPathLongH11" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(2192, 733)
+texture = ExtResource("13_v18ym")
+
+[node name="DirtPathLongH12" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(1753, 727)
+texture = ExtResource("13_v18ym")
+
+[node name="DirtPathLongH13" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(1310, 724)
+texture = ExtResource("13_v18ym")
+
+[node name="DirthPathShortH" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(868, 718)
+texture = ExtResource("11_asq8e")
+
+[node name="DirtPathShortV3" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(693, 494)
+texture = ExtResource("12_0jk2t")
+
+[node name="DirtPathLongV6" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(1099, 1006)
+texture = ExtResource("14_3x1p1")
+
+[node name="DirtPathLongV7" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(3309, 2931)
+texture = ExtResource("14_3x1p1")
+
+[node name="DirtPathLongH14" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(3058, 3169)
+texture = ExtResource("13_v18ym")
+
+[node name="DirtPathLongH15" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(2579, 3163)
+texture = ExtResource("13_v18ym")
+
+[node name="DirtPathLongH16" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(2102, 3161)
+texture = ExtResource("13_v18ym")
+
+[node name="DirtPathLongH17" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(1634, 3157)
+texture = ExtResource("13_v18ym")
+
+[node name="DirtPathLongH18" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(1238, 3155)
+texture = ExtResource("13_v18ym")
+
+[node name="DirtPathShortV4" type="Sprite2D" parent="GroundArea/Dirt"]
+position = Vector2(976, 3005)
+texture = ExtResource("12_0jk2t")
+
+[node name="Flowers" type="Node2D" parent="GroundArea"]
+
+[node name="Flower1" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3187, 1575)
+texture = ExtResource("11_aaydc")
+
+[node name="Flower2" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3452, 1611)
+texture = ExtResource("11_aaydc")
+
+[node name="Flower3" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3637, 1260)
+texture = ExtResource("11_aaydc")
+
+[node name="Flower4" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3875, 1279)
+texture = ExtResource("11_aaydc")
+
+[node name="Flower5" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3251, 1269)
+texture = ExtResource("11_aaydc")
+
+[node name="Flower6" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3618, 1271)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower7" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3655, 1282)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower8" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3662, 1245)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower9" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3228, 1289)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower10" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3051, 1560)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower11" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3037, 1604)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower12" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3381, 1634)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower13" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3608, 1783)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower14" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3608, 1783)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower15" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3728, 2094)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower16" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3742, 2114)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower17" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3757, 2087)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower18" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3763, 2106)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower19" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3717, 2113)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower20" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3581, 1796)
+texture = ExtResource("13_kyyel")
+
+[node name="Flower21" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3609, 1807)
+texture = ExtResource("13_kyyel")
+
+[node name="Flower22" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3634, 1796)
+texture = ExtResource("13_kyyel")
+
+[node name="Flower23" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3589, 1822)
+texture = ExtResource("13_kyyel")
+
+[node name="Flower24" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3547, 1841)
+texture = ExtResource("13_kyyel")
+
+[node name="Flower25" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3545, 1886)
+texture = ExtResource("13_kyyel")
+
+[node name="Flower26" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3624, 1888)
+texture = ExtResource("13_kyyel")
+
+[node name="Flower27" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3523, 1914)
+texture = ExtResource("13_kyyel")
+
+[node name="Flower28" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3401, 1644)
+texture = ExtResource("14_asq8e")
+
+[node name="Flower29" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3468, 1624)
+texture = ExtResource("14_asq8e")
+
+[node name="Flower30" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3487, 1606)
+texture = ExtResource("14_asq8e")
+
+[node name="Flower31" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3484, 1627)
+texture = ExtResource("14_asq8e")
+
+[node name="Flower32" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3497, 1620)
+texture = ExtResource("14_asq8e")
+
+[node name="Flower33" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3505, 1626)
+texture = ExtResource("14_asq8e")
+
+[node name="Flower34" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3546, 1598)
+texture = ExtResource("14_asq8e")
+
+[node name="Flower35" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3174, 1582)
+texture = ExtResource("14_asq8e")
+
+[node name="Flower36" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3064, 1591)
+texture = ExtResource("14_asq8e")
+
+[node name="Flower37" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(2808, 1714)
+texture = ExtResource("15_7uv6i")
+
+[node name="Flower38" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(2819, 1739)
+texture = ExtResource("15_7uv6i")
+
+[node name="Flower39" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(2865, 1700)
+texture = ExtResource("15_7uv6i")
+
+[node name="Flower40" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(2841, 1738)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower41" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(2811, 1769)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower42" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3491, 1642)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower43" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(795, 2707)
+texture = ExtResource("14_asq8e")
+
+[node name="Flower44" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(842, 2619)
+texture = ExtResource("11_aaydc")
+
+[node name="Flower45" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(1129, 2862)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower46" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(1152, 2958)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower47" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(2733, 2483)
+texture = ExtResource("15_7uv6i")
+
+[node name="Flower48" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(2757, 2497)
+texture = ExtResource("11_aaydc")
+
+[node name="Flower49" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(2721, 2510)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower50" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(504, 2124)
+texture = ExtResource("14_asq8e")
+
+[node name="Flower51" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(1101, 1474)
+texture = ExtResource("11_aaydc")
+
+[node name="Flower52" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(987, 1428)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower53" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(801, 1211)
+texture = ExtResource("13_kyyel")
+
+[node name="Flower54" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(621, 1114)
+texture = ExtResource("11_aaydc")
+
+[node name="Flower55" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(1004, 806)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower56" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(1158, 518)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower57" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(1301, 581)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower58" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(1526, 162)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower59" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(1677, 462)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower60" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(2416, 522)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower61" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(2659, 870)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower62" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(2981, 947)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower63" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(2984, 462)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower64" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3289, 111)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower65" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3660, 707)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower66" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3532, 952)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower67" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(4064, 817)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower68" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(5104, 371)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower69" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(5300, 1380)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower70" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(6236, 1716)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower71" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(5204, 1521)
+texture = ExtResource("11_aaydc")
+
+[node name="Flower72" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(5595, 2659)
+texture = ExtResource("11_aaydc")
+
+[node name="Flower73" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3852, 2573)
+texture = ExtResource("11_aaydc")
+
+[node name="Flower74" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(3265, 3503)
+texture = ExtResource("11_aaydc")
+
+[node name="Flower75" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(2262, 2708)
+texture = ExtResource("11_aaydc")
+
+[node name="Flower76" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(2219, 2616)
+texture = ExtResource("11_aaydc")
+
+[node name="Flower77" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(2256, 2518)
+texture = ExtResource("11_aaydc")
+
+[node name="Flower78" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(1901, 2298)
+texture = ExtResource("11_aaydc")
+
+[node name="Flower79" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(1382, 2500)
+texture = ExtResource("15_7uv6i")
+
+[node name="Flower80" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(1345, 2115)
+texture = ExtResource("15_7uv6i")
+
+[node name="Flower81" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(250, 1999)
+texture = ExtResource("15_7uv6i")
+
+[node name="Flower82" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(123, 2593)
+texture = ExtResource("15_7uv6i")
+
+[node name="Flower83" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(117, 3137)
+texture = ExtResource("15_7uv6i")
+
+[node name="Flower84" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(160, 3473)
+texture = ExtResource("15_7uv6i")
+
+[node name="Flower85" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(912, 1228)
+texture = ExtResource("15_7uv6i")
+
+[node name="Flower86" type="Sprite2D" parent="GroundArea/Flowers"]
+position = Vector2(894, 1271)
+texture = ExtResource("15_7uv6i")
+
+[node name="GrassTufts" type="Node2D" parent="GroundArea"]
+
+[node name="Grass2" type="Sprite2D" parent="GroundArea/GrassTufts"]
+position = Vector2(874, 2756)
+texture = ExtResource("17_hv86g")
+
+[node name="Grass3" type="Sprite2D" parent="GroundArea/GrassTufts"]
+position = Vector2(962, 2876)
+texture = ExtResource("18_y8ijm")
+
+[node name="Grass4" type="Sprite2D" parent="GroundArea/GrassTufts"]
+position = Vector2(1588, 3160)
+texture = ExtResource("19_va1an")
+
+[node name="Sprite2D" type="Sprite2D" parent="GroundArea"]
+position = Vector2(-116, -331)
+scale = Vector2(1.96, 1.96)
+texture = ExtResource("7_be4b0")
+centered = false
+
+[node name="BeeKeeper" parent="." instance=ExtResource("7_a72ot")]
+position = Vector2(3309, 1725)
+
+[node name="GoingTowardsThisPoint" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.5019608)
+position = Vector2(3308, 1725)
+texture = ExtResource("6_t8ugh")
+
+[node name="TreesBushes" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Tree1" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(3486, 1494)
+
+[node name="Bush12" parent="TreesBushes" instance=ExtResource("12_a1cbq")]
+position = Vector2(3653, 1173)
+
+[node name="Bush13" parent="TreesBushes" instance=ExtResource("12_a1cbq")]
+position = Vector2(3847, 1202)
+
+[node name="Tree12" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(3713, 1129)
+
+[node name="Tree85" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(3915, 565)
+
+[node name="Tree86" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(4232, 832)
+
+[node name="Tree87" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(4476, 515)
+
+[node name="Tree88" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(4958, 731)
+
+[node name="Tree89" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(5413, 469)
+
+[node name="Tree90" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(5964, 671)
+
+[node name="Tree91" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(6281, 340)
+
+[node name="Tree92" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(6350, 469)
+
+[node name="Tree93" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(6267, 616)
+
+[node name="Tree94" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(6345, 772)
+
+[node name="Tree95" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(6350, 1043)
+
+[node name="Tree96" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(5946, 1158)
+
+[node name="Tree97" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(6167, 1581)
+
+[node name="Tree98" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(5905, 1687)
+
+[node name="Tree99" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(5271, 1108)
+
+[node name="Tree100" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(4789, 1076)
+
+[node name="Tree101" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(4366, 1320)
+
+[node name="Tree102" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(4757, 1536)
+
+[node name="Tree103" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(5056, 1472)
+
+[node name="Tree104" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(5378, 1256)
+
+[node name="Tree105" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(4974, 1582)
+
+[node name="Tree106" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(4556, 626)
+
+[node name="Tree107" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(5503, 1614)
+
+[node name="Tree108" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(5747, 1357)
+
+[node name="Tree109" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(5719, 475)
+
+[node name="Tree110" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(5494, 558)
+
+[node name="Tree111" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(5182, 287)
+
+[node name="Tree112" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(5049, 218)
+
+[node name="Tree113" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(4916, 246)
+
+[node name="Tree2" parent="TreesBushes" instance=ExtResource("11_wwylo")]
+position = Vector2(3747, 1639)
+
+[node name="Sprite" parent="TreesBushes/Tree2" index="0"]
+flip_h = true
+
+[node name="Tree3" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(3032, 1521)
+
+[node name="Tree4" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(2626, 1898)
+
+[node name="Tree5" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(2643, 1268)
+
+[node name="Tree58" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(2785, 576)
+
+[node name="Tree59" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(3129, 859)
+
+[node name="Tree60" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(3407, 520)
+
+[node name="Tree61" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(2325, 434)
+
+[node name="Tree62" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(1724, 378)
+
+[node name="Tree63" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(1542, 1187)
+
+[node name="Tree64" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(794, 1121)
+
+[node name="Tree65" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(238, 1106)
+
+[node name="Tree66" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(561, 1500)
+
+[node name="Tree67" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(1284, 444)
+
+[node name="Tree68" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(339, 388)
+
+[node name="Tree69" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(951, 605)
+
+[node name="Tree70" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(1042, 150)
+
+[node name="Tree71" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(754, 140)
+
+[node name="Tree72" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(501, 120)
+
+[node name="Tree73" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(147, 201)
+
+[node name="Tree74" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(117, 610)
+
+[node name="Tree75" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(1431, 565)
+
+[node name="Tree76" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(2169, 525)
+
+[node name="Tree77" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(3084, 394)
+
+[node name="Tree78" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(1937, 990)
+
+[node name="Tree79" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(2053, 1172)
+
+[node name="Tree80" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(1866, 1167)
+
+[node name="Tree81" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(1947, 1354)
+
+[node name="Tree82" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(2260, 1602)
+
+[node name="Tree83" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(2407, 935)
+
+[node name="Tree84" parent="TreesBushes" instance=ExtResource("12_erajg")]
+position = Vector2(1280, 1577)
+
+[node name="Tree6" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(3795, 2056)
+
+[node name="Tree7" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(3557, 2391)
+
+[node name="Tree11" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(3998, 2502)
+
+[node name="Tree13" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(4350, 2579)
+
+[node name="Tree14" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(4502, 2157)
+
+[node name="Tree15" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(4793, 2494)
+
+[node name="Tree29" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(5002, 2152)
+
+[node name="Tree16" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(5225, 2511)
+
+[node name="Tree17" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(5863, 2887)
+
+[node name="Tree18" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(5728, 3221)
+
+[node name="Tree19" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(6222, 3388)
+
+[node name="Tree20" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(6264, 2841)
+
+[node name="Tree21" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(5717, 3654)
+
+[node name="Tree22" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(5299, 3430)
+
+[node name="Tree23" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(6024, 2325)
+
+[node name="Tree24" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(5538, 2215)
+
+[node name="Tree25" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(4854, 3123)
+
+[node name="Tree26" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(4383, 3495)
+
+[node name="Tree27" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(4105, 3111)
+
+[node name="Tree28" parent="TreesBushes" instance=ExtResource("13_26v1y")]
+position = Vector2(3707, 3313)
+
+[node name="Tree8" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(3149, 2167)
+
+[node name="Tree9" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(2779, 2320)
+
+[node name="Tree10" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(2920, 2818)
+
+[node name="Tree30" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(2590, 3023)
+
+[node name="Tree31" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(2670, 3452)
+
+[node name="Tree32" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(2138, 3517)
+
+[node name="Tree33" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(1997, 2704)
+
+[node name="Tree34" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(1553, 3023)
+
+[node name="Tree35" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(1397, 3498)
+
+[node name="Tree36" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(1800, 3301)
+
+[node name="Tree37" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(1056, 3407)
+
+[node name="Tree38" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(760, 3137)
+
+[node name="Tree39" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(714, 2476)
+
+[node name="Tree40" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(1128, 2332)
+
+[node name="Tree41" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(1523, 2442)
+
+[node name="Tree42" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(1982, 2081)
+
+[node name="Tree43" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(1519, 1899)
+
+[node name="Tree44" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(934, 1842)
+
+[node name="Tree45" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(393, 1948)
+
+[node name="Tree46" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(166, 2418)
+
+[node name="Tree47" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(287, 3308)
+
+[node name="Tree48" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(348, 2878)
+
+[node name="Tree49" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(535, 3479)
+
+[node name="Tree50" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(328, 3509)
+
+[node name="Tree51" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(1197, 3554)
+
+[node name="Tree52" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(1207, 2503)
+
+[node name="Tree53" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(1030, 2473)
+
+[node name="Tree54" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(257, 2498)
+
+[node name="Tree55" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(439, 2084)
+
+[node name="Tree56" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(1890, 3484)
+
+[node name="Tree57" parent="TreesBushes" instance=ExtResource("14_a1cbq")]
+position = Vector2(1652, 2013)
+
+[node name="Bush1" parent="TreesBushes" instance=ExtResource("16_aaydc")]
+position = Vector2(3837, 2076)
+
+[node name="Bush2" parent="TreesBushes" instance=ExtResource("16_aaydc")]
+position = Vector2(3742, 2064)
+
+[node name="Bush3" parent="TreesBushes" instance=ExtResource("16_aaydc")]
+position = Vector2(3890, 2092)
+
+[node name="Bush4" parent="TreesBushes" instance=ExtResource("17_3o2h1")]
+position = Vector2(2601, 1292)
+
+[node name="Bush5" parent="TreesBushes" instance=ExtResource("17_3o2h1")]
+position = Vector2(2693, 1322)
+
+[node name="Bush6" parent="TreesBushes" instance=ExtResource("17_3o2h1")]
+position = Vector2(2533, 1927)
+
+[node name="Bush7" parent="TreesBushes" instance=ExtResource("17_3o2h1")]
+position = Vector2(2487, 1987)
+
+[node name="Bush8" parent="TreesBushes" instance=ExtResource("12_a1cbq")]
+position = Vector2(3438, 1543)
+
+[node name="Bush9" parent="TreesBushes" instance=ExtResource("12_a1cbq")]
+position = Vector2(3551, 1567)
+
+[node name="Bush10" parent="TreesBushes" instance=ExtResource("12_a1cbq")]
+position = Vector2(3804, 1677)
+
+[node name="Bush11" parent="TreesBushes" instance=ExtResource("12_a1cbq")]
+position = Vector2(3757, 1211)
+
+[node name="Bush14" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(1007, 1909)
+texture = ExtResource("30_0kbu6")
+
+[node name="Bush15" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(619, 1667)
+texture = ExtResource("31_trquv")
+
+[node name="Bush16" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(555, 1022)
+texture = ExtResource("32_mrrg2")
+
+[node name="Bush17" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(2247, 548)
+texture = ExtResource("30_0kbu6")
+
+[node name="Bush18" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(2965, 815)
+texture = ExtResource("32_mrrg2")
+
+[node name="Bush19" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(3885, 680)
+texture = ExtResource("33_bxj5p")
+
+[node name="Bush20" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(3931, 703)
+texture = ExtResource("33_bxj5p")
+flip_h = true
+
+[node name="Bush21" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(4988, 871)
+texture = ExtResource("30_0kbu6")
+
+[node name="Bush22" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(5042, 955)
+texture = ExtResource("30_0kbu6")
+
+[node name="Bush23" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(6149, 1108)
+texture = ExtResource("30_0kbu6")
+
+[node name="Bush24" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(5774, 2005)
+texture = ExtResource("30_0kbu6")
+
+[node name="Bush25" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(5504, 2464)
+texture = ExtResource("30_0kbu6")
+
+[node name="Bush26" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(4673, 2119)
+texture = ExtResource("30_0kbu6")
+
+[node name="Bush27" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(4148, 2512)
+texture = ExtResource("30_0kbu6")
+
+[node name="Bush28" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(3392, 3409)
+texture = ExtResource("30_0kbu6")
+
+[node name="Bush29" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(2417, 2533)
+texture = ExtResource("30_0kbu6")
+
+[node name="Bush30" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(1769, 2743)
+texture = ExtResource("32_mrrg2")
+
+[node name="Bush31" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(1517, 3523)
+texture = ExtResource("32_mrrg2")
+
+[node name="Bush32" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(1616, 3535)
+texture = ExtResource("32_mrrg2")
+flip_h = true
+
+[node name="Bush33" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(2015, 3534)
+texture = ExtResource("32_mrrg2")
+flip_h = true
+
+[node name="Bush34" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(447, 2304)
+texture = ExtResource("33_bxj5p")
+
+[node name="Bush35" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(79, 3331)
+texture = ExtResource("31_trquv")
+
+[node name="Bush36" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(536, 2826)
+texture = ExtResource("30_0kbu6")
+
+[node name="Flower2" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(850, 3217)
+texture = ExtResource("12_pgetw")
+
+[node name="Flower3" type="Sprite2D" parent="TreesBushes"]
+position = Vector2(961, 2581)
+texture = ExtResource("13_kyyel")
+
+[node name="Wildflowers" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Flower" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3584, 1893)
+
+[node name="Flower2" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3802, 2180)
+
+[node name="Flower3" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3680, 2145)
+
+[node name="Flower4" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(2859, 1785)
+
+[node name="Flower5" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3111, 1604)
+
+[node name="Flower6" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3683, 1270)
+
+[node name="Flower7" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3607, 1299)
+
+[node name="Flower8" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3913, 1227)
+
+[node name="Flower9" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3919, 1646)
+
+[node name="Flower10" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(2872, 1368)
+
+[node name="Flower11" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3232, 1260)
+
+[node name="Flower12" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3249, 2236)
+
+[node name="Flower13" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3002, 2347)
+
+[node name="Flower14" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(2968, 2044)
+
+[node name="Flower15" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(2895, 1986)
+
+[node name="Flower16" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(2917, 2105)
+
+[node name="Flower17" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3078, 2411)
+
+[node name="Flower18" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3333, 2389)
+
+[node name="Flower19" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3671, 2456)
+
+[node name="Flower20" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3747, 2307)
+
+[node name="Flower21" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3437, 1862)
+
+[node name="Flower22" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3494, 1954)
+
+[node name="Flower23" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3424, 2027)
+
+[node name="Flower24" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(2335, 3053)
+
+[node name="Flower25" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(2429, 2764)
+
+[node name="Flower26" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(2813, 3023)
+
+[node name="Flower27" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3165, 2759)
+
+[node name="Flower28" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3181, 3026)
+
+[node name="Flower29" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3435, 2835)
+
+[node name="Flower30" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3783, 2838)
+
+[node name="Flower31" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3881, 3153)
+
+[node name="Flower32" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4108, 3388)
+
+[node name="Flower33" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4325, 3018)
+
+[node name="Flower34" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4648, 3257)
+
+[node name="Flower35" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3462, 3226)
+
+[node name="Flower36" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3035, 3402)
+
+[node name="Flower37" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(2467, 3433)
+
+[node name="Flower38" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(1943, 2928)
+
+[node name="Flower39" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(1714, 2611)
+
+[node name="Flower40" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(1344, 2696)
+
+[node name="Flower41" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(547, 2636)
+
+[node name="Flower42" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(161, 2903)
+
+[node name="Flower43" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(519, 3051)
+
+[node name="Flower44" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(786, 3431)
+
+[node name="Flower45" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(1235, 3014)
+
+[node name="Flower46" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(833, 2035)
+
+[node name="Flower47" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(827, 1429)
+
+[node name="Flower48" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(1279, 1074)
+
+[node name="Flower49" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(1676, 1421)
+
+[node name="Flower50" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(1255, 1879)
+
+[node name="Flower51" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(2049, 1615)
+
+[node name="Flower52" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(2269, 1973)
+
+[node name="Flower53" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(2178, 2306)
+
+[node name="Flower54" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(1745, 2158)
+
+[node name="Flower55" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(2548, 2287)
+
+[node name="Flower56" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(2375, 1132)
+
+[node name="Flower57" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(1967, 501)
+
+[node name="Flower58" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(1666, 636)
+
+[node name="Flower59" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(542, 887)
+
+[node name="Flower60" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(420, 771)
+
+[node name="Flower61" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(546, 715)
+
+[node name="Flower62" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(373, 546)
+
+[node name="Flower63" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(511, 540)
+
+[node name="Flower64" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(172, 1303)
+
+[node name="Flower65" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(172, 1742)
+
+[node name="Flower66" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(373, 1466)
+
+[node name="Flower67" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(2533, 184)
+
+[node name="Flower68" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(2828, 209)
+
+[node name="Flower69" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(2577, 504)
+
+[node name="Flower70" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(2891, 730)
+
+[node name="Flower71" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3261, 504)
+
+[node name="Flower72" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3399, 764)
+
+[node name="Flower73" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3653, 620)
+
+[node name="Flower74" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3644, 212)
+
+[node name="Flower75" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4152, 225)
+
+[node name="Flower76" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4281, 332)
+
+[node name="Flower77" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4150, 401)
+
+[node name="Flower78" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4070, 552)
+
+[node name="Flower79" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4032, 277)
+
+[node name="Flower80" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4311, 170)
+
+[node name="Flower81" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4625, 230)
+
+[node name="Flower82" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4791, 418)
+
+[node name="Flower83" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4691, 606)
+
+[node name="Flower84" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4556, 829)
+
+[node name="Flower85" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4380, 647)
+
+[node name="Flower86" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4559, 1099)
+
+[node name="Flower87" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(5209, 540)
+
+[node name="Flower88" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(5306, 754)
+
+[node name="Flower89" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(5847, 809)
+
+[node name="Flower90" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(5979, 222)
+
+[node name="Flower91" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(6139, 934)
+
+[node name="Flower92" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(5985, 1333)
+
+[node name="Flower93" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(6167, 1873)
+
+[node name="Flower94" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(5784, 1848)
+
+[node name="Flower95" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(5731, 2394)
+
+[node name="Flower96" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(6214, 2372)
+
+[node name="Flower97" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(5282, 1926)
+
+[node name="Flower98" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4742, 1948)
+
+[node name="Flower99" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4595, 1537)
+
+[node name="Flower100" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4485, 1456)
+
+[node name="Flower101" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4246, 1942)
+
+[node name="Flower102" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4133, 2155)
+
+[node name="Flower103" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4296, 2186)
+
+[node name="Flower104" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4566, 2421)
+
+[node name="Flower105" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4954, 2547)
+
+[node name="Flower106" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4989, 2321)
+
+[node name="Flower107" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(5391, 2374)
+
+[node name="Flower108" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(5457, 3102)
+
+[node name="Flower109" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(5548, 3319)
+
+[node name="Flower110" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(5863, 3333)
+
+[node name="Flower111" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(5941, 3154)
+
+[node name="Flower112" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(6087, 2999)
+
+[node name="Flower113" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(6291, 3027)
+
+[node name="Flower114" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(6018, 3426)
+
+[node name="Flower115" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(6316, 3486)
+
+[node name="Flower116" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(6047, 3220)
+
+[node name="Flower117" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(5067, 3520)
+
+[node name="Flower118" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(5036, 3368)
+
+[node name="Flower119" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(5105, 3178)
+
+[node name="Flower120" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(5029, 2962)
+
+[node name="Flower121" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(5167, 2865)
+
+[node name="Flower122" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4615, 2889)
+
+[node name="Flower123" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4777, 3531)
+
+[node name="Flower124" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(4542, 3562)
+
+[node name="Flower125" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(3865, 3534)
+
+[node name="Interactables" type="Node2D" parent="." groups=["interactables"]]
+unique_name_in_owner = true
+y_sort_enabled = true
+
+[node name="SellBox" parent="Interactables" groups=["interactables"] instance=ExtResource("10_y41x7")]
+position = Vector2(2899, 1556)
+
+[editable path="HUD"]
+[editable path="TreesBushes/Tree2"]
