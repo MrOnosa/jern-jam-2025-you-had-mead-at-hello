@@ -3,17 +3,19 @@
 [ext_resource type="Texture2D" uid="uid://d2chyn8tlqyat" path="res://assets/beehive.png" id="1_jouke"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_opwqi"]
-radius = 128.0
-height = 324.0
+radius = 58.0
+height = 116.0
 
 [node name="NaturalHiveDraggable" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -57)
 texture = ExtResource("1_jouke")
 
 [node name="InteractiveArea2D" type="Area2D" parent="."]
+position = Vector2(0.5, -57.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea2D"]
-position = Vector2(2, 15)
+position = Vector2(0, -1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_opwqi")

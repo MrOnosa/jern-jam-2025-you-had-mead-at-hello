@@ -33,25 +33,26 @@ input_pickable = true
 script = ExtResource("1_mlkej")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -81)
 texture = ExtResource("2_mlkej")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 23)
+position = Vector2(1, -58)
 shape = SubResource("RectangleShape2D_mlkej")
 
 [node name="InteractiveArea2D" type="Area2D" parent="." groups=["too_close_bubble"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea2D"]
-position = Vector2(2, 15)
+position = Vector2(2, -66)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_aqk2v")
 
 [node name="InfoPanel" type="TextureRect" parent="."]
 z_index = 100
 offset_left = 59.0
-offset_top = -131.0
+offset_top = -212.0
 offset_right = 638.0
-offset_bottom = 394.0
+offset_bottom = 313.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_8ftgu")
 
@@ -159,9 +160,9 @@ layout_mode = 2
 [node name="ActionButton" type="TextureButton" parent="."]
 z_index = 100
 offset_left = 112.0
-offset_top = 91.0
+offset_top = 10.0
 offset_right = 584.0
-offset_bottom = 278.0
+offset_bottom = 197.0
 scale = Vector2(0.4, 0.4)
 texture_normal = ExtResource("7_r2i3f")
 texture_hover = ExtResource("8_n5mp6")
@@ -186,7 +187,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ExitHiveMarker2D" type="Marker2D" parent="."]
-position = Vector2(3, -37)
+position = Vector2(3, -118)
 
 [node name="HoneyProductionTimer" type="Timer" parent="."]
 autostart = true

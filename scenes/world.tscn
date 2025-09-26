@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ckavqb25bdaul"]
+[gd_scene load_steps=26 format=3 uid="uid://ckavqb25bdaul"]
 
 [ext_resource type="Script" uid="uid://cugl826a8ai2" path="res://scenes/world.gd" id="1_w7kh3"]
 [ext_resource type="PackedScene" uid="uid://dtc7nf7jxt17u" path="res://scenes/gui/hud.tscn" id="2_ctatt"]
@@ -10,6 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://c3b1wwqkjscss" path="res://scenes/bee_keeper.tscn" id="5_jhx03"]
 [ext_resource type="PackedScene" uid="uid://b7rtim3q5xhms" path="res://scenes/flower.tscn" id="9_7t5mc"]
 [ext_resource type="PackedScene" uid="uid://b7snix20rjbed" path="res://scenes/sell_box.tscn" id="9_ctatt"]
+[ext_resource type="PackedScene" uid="uid://bcmis3rujwpjh" path="res://scenes/level_decoration/tree_1.tscn" id="12_q5onr"]
+[ext_resource type="PackedScene" uid="uid://cnum66j7fdc6p" path="res://scenes/level_decoration/tree_2.tscn" id="13_jhx03"]
+[ext_resource type="PackedScene" uid="uid://dtj1332ycu3b1" path="res://scenes/level_decoration/tree_3.tscn" id="14_o8fc1"]
+[ext_resource type="PackedScene" uid="uid://y6ulpn24oveh" path="res://scenes/level_decoration/tree_4.tscn" id="15_xo05s"]
+[ext_resource type="PackedScene" uid="uid://glscrjjw8ofl" path="res://scenes/level_decoration/bush_1.tscn" id="16_pm21f"]
+[ext_resource type="PackedScene" uid="uid://ds4fwqgr0foma" path="res://scenes/level_decoration/bush_2.tscn" id="17_2lf6f"]
+[ext_resource type="PackedScene" uid="uid://brh26l2u7pq6t" path="res://scenes/level_decoration/bush_3.tscn" id="18_7iits"]
+[ext_resource type="PackedScene" uid="uid://br8hxs6xyd0mu" path="res://scenes/level_decoration/bush_4.tscn" id="19_oo54l"]
 [ext_resource type="Texture2D" uid="uid://dr0od7ibrfglk" path="res://assets/wind.png" id="23_kpybi"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_70uel"]
@@ -203,6 +211,33 @@ initial_velocity_min = 750.0
 initial_velocity_max = 1000.0
 scale_amount_max = 3.0
 color = Color(1, 1, 1, 0.19607843)
+
+[node name="Tree1" parent="." instance=ExtResource("12_q5onr")]
+position = Vector2(626, 746)
+
+[node name="Tree2" parent="." instance=ExtResource("13_jhx03")]
+position = Vector2(294, 984)
+
+[node name="Tree3" parent="." instance=ExtResource("14_o8fc1")]
+position = Vector2(913, 1066)
+
+[node name="Tree4" parent="." instance=ExtResource("14_o8fc1")]
+position = Vector2(913, 1066)
+
+[node name="Tree5" parent="." instance=ExtResource("15_xo05s")]
+position = Vector2(1218, 982)
+
+[node name="Bush1" parent="." instance=ExtResource("16_pm21f")]
+position = Vector2(390, 1201)
+
+[node name="Bush2" parent="." instance=ExtResource("17_2lf6f")]
+position = Vector2(635, 1256)
+
+[node name="Bush3" parent="." instance=ExtResource("18_7iits")]
+position = Vector2(830, 1421)
+
+[node name="Bush4" parent="." instance=ExtResource("19_oo54l")]
+position = Vector2(499, 1505)
 
 [connection signal="mouse_entered" from="HUD/PanelContainer" to="." method="_HUD_on_panel_container_mouse_entered"]
 [connection signal="mouse_exited" from="HUD/PanelContainer" to="." method="_HUD_on_panel_container_mouse_exited"]

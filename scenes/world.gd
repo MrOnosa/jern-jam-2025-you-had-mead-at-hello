@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 					break
 		
 		if  Input.is_action_just_released("left_click"):
-			if !mouse_is_over_HUD && mouse_is_within_window:				
+			if !mouse_is_over_HUD:				
 				# Check if the space is free				
 				if any_collisions:
 					#todo - Sfx that goes AANT!
@@ -107,11 +107,3 @@ func _HUD_on_panel_container_mouse_entered() -> void:
 
 func _HUD_on_panel_container_mouse_exited() -> void:
 	mouse_is_over_HUD = false
-
-
-func _on_mouse_in_window_area_2d_mouse_entered() -> void:
-	mouse_is_within_window = true
-
-
-func _on_mouse_in_window_area_2d_mouse_exited() -> void:
-	mouse_is_within_window = false

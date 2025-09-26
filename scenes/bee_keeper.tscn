@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3b1wwqkjscss"]
+[gd_scene load_steps=9 format=3 uid="uid://c3b1wwqkjscss"]
 
 [ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://scenes/bee_keeper.gd" id="1_3i6xr"]
 [ext_resource type="Texture2D" uid="uid://dgrh8ag1vpqjf" path="res://assets/beekeeper.png" id="2_tnovc"]
@@ -22,6 +22,10 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ikiii"]
 radius = 14.0
+height = 42.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tnovc"]
+radius = 14.0
 height = 80.0
 
 [node name="BeeKeeper" type="CharacterBody2D" node_paths=PackedStringArray("player_rig")]
@@ -38,7 +42,7 @@ unique_name_in_owner = true
 position = Vector2(1, -69)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -31)
+position = Vector2(1, -10)
 shape = SubResource("CapsuleShape2D_ikiii")
 
 [node name="Holding" type="Node2D" parent="."]
@@ -51,8 +55,10 @@ position = Vector2(33, 19)
 texture = ExtResource("4_3i6xr")
 
 [node name="InteractiveArea2D" type="Area2D" parent="." groups=["too_close_bubble"]]
+visible = false
 position = Vector2(-3, -94)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea2D"]
+visible = false
 position = Vector2(4, 63)
-shape = SubResource("CapsuleShape2D_ikiii")
+shape = SubResource("CapsuleShape2D_tnovc")

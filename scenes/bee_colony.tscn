@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bdc0ihum5w7nc" path="res://scenes/gui/jar_for_info_panel_gui.tscn" id="8_713g0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dwbse"]
-radius = 55.145264
+radius = 41.003048
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqk2v"]
 radius = 128.0
@@ -35,13 +35,15 @@ max_raw_honey_capacity = 120.0
 max_population = 20000
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -57)
 texture = ExtResource("2_c2ynb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 10)
+position = Vector2(0, -43.5)
 shape = SubResource("CircleShape2D_dwbse")
 
 [node name="InteractiveArea2D" type="Area2D" parent="." groups=["too_close_bubble"]]
+position = Vector2(0, -57.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea2D"]
 position = Vector2(2, 15)
@@ -51,9 +53,9 @@ shape = SubResource("CapsuleShape2D_aqk2v")
 [node name="InfoPanel" type="TextureRect" parent="."]
 z_index = 100
 offset_left = 59.0
-offset_top = -131.0
+offset_top = -188.5
 offset_right = 638.0
-offset_bottom = 394.0
+offset_bottom = 336.5
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_64qp5")
 
@@ -188,7 +190,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ExitHiveMarker2D" type="Marker2D" parent="."]
-position = Vector2(2, 47)
+position = Vector2(1, -23)
 
 [node name="HoneyProductionTimer" type="Timer" parent="."]
 autostart = true
