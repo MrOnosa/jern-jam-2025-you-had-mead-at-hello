@@ -109,6 +109,49 @@ uniform float FloatParameter = 25.0;
 
 
 
+void vertex() {
+// Input:2
+	vec4 n_out2p0 = COLOR;
+
+
+	vec3 n_out4p0;
+// ColorOp:4
+	vec3 n_in4p1 = vec3(255.00000, 0.00000, 0.00000);
+	{
+		float base = vec3(n_out2p0.xyz).x;
+		float blend = n_in4p1.x;
+		if (base < 0.5) {
+			n_out4p0.x = (base * (blend + 0.5));
+		} else {
+			n_out4p0.x = (1.0 - (1.0 - base) * (1.0 - (blend - 0.5)));
+		}
+	}
+	{
+		float base = vec3(n_out2p0.xyz).y;
+		float blend = n_in4p1.y;
+		if (base < 0.5) {
+			n_out4p0.y = (base * (blend + 0.5));
+		} else {
+			n_out4p0.y = (1.0 - (1.0 - base) * (1.0 - (blend - 0.5)));
+		}
+	}
+	{
+		float base = vec3(n_out2p0.xyz).z;
+		float blend = n_in4p1.z;
+		if (base < 0.5) {
+			n_out4p0.z = (base * (blend + 0.5));
+		} else {
+			n_out4p0.z = (1.0 - (1.0 - base) * (1.0 - (blend - 0.5)));
+		}
+	}
+
+
+// Output:0
+	COLOR.rgb = n_out4p0;
+
+
+}
+
 void fragment() {
 	vec4 n_out4p0;
 // Texture2D:4
@@ -218,6 +261,7 @@ nodes/vertex/2/node = SubResource("VisualShaderNodeInput_kko2o")
 nodes/vertex/2/position = Vector2(20, 120)
 nodes/vertex/4/node = SubResource("VisualShaderNodeColorOp_dbpwn")
 nodes/vertex/4/position = Vector2(380, 180)
+nodes/vertex/connections = PackedInt32Array(2, 0, 4, 0, 4, 0, 0, 2)
 nodes/fragment/0/position = Vector2(1640, -20)
 nodes/fragment/2/node = SubResource("VisualShaderNodeInput_dbpwn")
 nodes/fragment/2/position = Vector2(-240, 0)
