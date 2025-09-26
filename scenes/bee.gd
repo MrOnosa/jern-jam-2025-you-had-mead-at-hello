@@ -193,7 +193,7 @@ func bee_navigate_generator() -> void:
 			tween.tween_callback(bee_navigate_generator)
 	
 func world_clamp(vector: Vector2) -> Vector2:
-	return Vector2(clamp(vector.x, 0, 6400 * .3), clamp(vector.y, 0, 3600 * .3))
+	return Vector2(clamp(vector.x, 0, 6400), clamp(vector.y, 0, 3600))
 
 func notice_flower(flower: Flower):
 	nearby_flowers.append(flower)
