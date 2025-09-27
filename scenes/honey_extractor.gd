@@ -19,6 +19,7 @@ extends StaticBody2D
 @onready var honeycomb_action_button: TextureButton = $VBoxContainer/HoneycombActionButton
 @onready var honey_action_button: TextureButton = $VBoxContainer/HoneyActionButton
 @onready var beeswax_action_button: TextureButton = $VBoxContainer/BeeswaxActionButton
+@onready var extractor_sound: AudioStreamPlayer2D = %ExtractorSound
 
 var player_nearby : BeeKeeper = null
 var mouse_hovering : bool = false
@@ -123,6 +124,7 @@ func _on_mouse_exited() -> void:
 	mouse_hovering = false
 
 func _on_honeycomb_action_button_pressed() -> void:
+	extractor_sound.play()
 	honeycombs = min(3.0, honeycombs + 1.0)
 	player_nearby.holding = BeeKeeper.Holding.NOTHING
 
