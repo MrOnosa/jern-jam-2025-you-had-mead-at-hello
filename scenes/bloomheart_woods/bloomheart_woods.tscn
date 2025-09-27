@@ -56,12 +56,12 @@ preprocess = 20.0
 speed_scale = 0.5
 randomness = 1.0
 emission_shape = 3
-emission_rect_extents = Vector2(1, 1500)
+emission_rect_extents = Vector2(1, 3000)
 direction = Vector2(0, 0)
 spread = 180.0
 gravity = Vector2(108.889, 0)
 scale_amount_max = 2.0
-color = Color(0, 0, 0, 0.16470589)
+color = Color(0, 0, 0, 0.46666667)
 
 [node name="FogEffects" type="CPUParticles2D" parent="HUD"]
 z_index = 75
@@ -73,14 +73,14 @@ preprocess = 5.0
 speed_scale = 0.5
 randomness = 1.0
 emission_shape = 3
-emission_rect_extents = Vector2(1, 1500)
+emission_rect_extents = Vector2(1, 3000)
 direction = Vector2(0, 0)
 spread = 10.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 750.0
 initial_velocity_max = 1000.0
 scale_amount_max = 3.0
-color = Color(1, 1, 1, 0.19607843)
+color = Color(5.912981, 5.912981, 5.912981, 0.19607843)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0

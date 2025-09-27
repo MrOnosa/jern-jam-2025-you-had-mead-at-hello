@@ -1,6 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtj1332ycu3b1"]
+[gd_scene load_steps=6 format=3 uid="uid://dtj1332ycu3b1"]
 
+[ext_resource type="Shader" uid="uid://bhgve0st3u4xb" path="res://scenes/level_decoration/wind_shader.gdshader" id="1_5t6lj"]
 [ext_resource type="Texture2D" uid="uid://26thlhyogl3n" path="res://assets/Level Decoration/tree_3.png" id="1_my8r0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xj8r0"]
+shader = ExtResource("1_5t6lj")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mfc15"]
 radius = 17.0
@@ -13,6 +26,7 @@ height = 318.0
 [node name="Tree3" type="StaticBody2D"]
 
 [node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_xj8r0")
 position = Vector2(-13, -179)
 texture = ExtResource("1_my8r0")
 

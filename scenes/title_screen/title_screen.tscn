@@ -22,8 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://dxqv3h5pfnjuq" path="res://assets/Level Decoration/bush_1.png" id="20_1aktp"]
 [ext_resource type="Texture2D" uid="uid://c1p0aqp2hu4tm" path="res://assets/Level Decoration/bush_3.png" id="21_uw5t6"]
 [ext_resource type="Texture2D" uid="uid://d0ftkcffvo5yo" path="res://assets/Level Decoration/bush_2.png" id="22_l1jqm"]
-[ext_resource type="Texture2D" uid="uid://26thlhyogl3n" path="res://assets/Level Decoration/tree_3.png" id="23_xjhr2"]
-[ext_resource type="Texture2D" uid="uid://yp8jwql7t1ft" path="res://assets/Level Decoration/tree_4.png" id="24_vqeu6"]
 [ext_resource type="Texture2D" uid="uid://jxdyeyjumou5" path="res://assets/Level Decoration/grass_6.png" id="25_f625p"]
 [ext_resource type="Texture2D" uid="uid://dwiil5rev4q1a" path="res://assets/Level Decoration/grass_5.png" id="26_jbwi5"]
 [ext_resource type="Texture2D" uid="uid://d0kxev5dluyyc" path="res://assets/Level Decoration/grass_4.png" id="27_6cp4c"]
@@ -32,10 +30,12 @@
 [ext_resource type="Texture2D" uid="uid://c1xw674f3h8pv" path="res://assets/Level Decoration/flower_3.png" id="30_0hct4"]
 [ext_resource type="Texture2D" uid="uid://rj5ijglc6m3w" path="res://assets/Level Decoration/flower_1.png" id="31_vxyap"]
 [ext_resource type="Texture2D" uid="uid://bwapus8sj03rl" path="res://assets/Level Decoration/flower_5.png" id="32_e0tf4"]
-[ext_resource type="Texture2D" uid="uid://cgr7os6w1gm1l" path="res://assets/Level Decoration/tree_2.png" id="33_w01vi"]
-[ext_resource type="Texture2D" uid="uid://dqshur2vvn10p" path="res://assets/Level Decoration/tree_1.png" id="34_157gd"]
+[ext_resource type="PackedScene" uid="uid://y6ulpn24oveh" path="res://scenes/level_decoration/tree_4.tscn" id="34_v7aim"]
 [ext_resource type="Texture2D" uid="uid://dirpfh5dtu6wl" path="res://assets/Level Decoration/flower_4.png" id="35_5crfj"]
+[ext_resource type="PackedScene" uid="uid://dtj1332ycu3b1" path="res://scenes/level_decoration/tree_3.tscn" id="35_6p2y5"]
 [ext_resource type="Texture2D" uid="uid://d2chyn8tlqyat" path="res://assets/beehive.png" id="36_55nhr"]
+[ext_resource type="PackedScene" uid="uid://cnum66j7fdc6p" path="res://scenes/level_decoration/tree_2.tscn" id="36_vcj8s"]
+[ext_resource type="PackedScene" uid="uid://bcmis3rujwpjh" path="res://scenes/level_decoration/tree_1.tscn" id="37_1aktp"]
 [ext_resource type="Texture2D" uid="uid://ddekt73u2v20e" path="res://assets/hive_upgrade.png" id="37_1x2ov"]
 
 [node name="TitleScreen" type="Node2D"]
@@ -235,14 +235,6 @@ texture = ExtResource("21_uw5t6")
 position = Vector2(904, 604)
 texture = ExtResource("22_l1jqm")
 
-[node name="Tree3" type="Sprite2D" parent="."]
-position = Vector2(1182, 154)
-texture = ExtResource("23_xjhr2")
-
-[node name="Tree4" type="Sprite2D" parent="."]
-position = Vector2(117, 95)
-texture = ExtResource("24_vqeu6")
-
 [node name="Grass6" type="Sprite2D" parent="."]
 position = Vector2(260, 511)
 texture = ExtResource("25_f625p")
@@ -278,14 +270,6 @@ texture = ExtResource("29_hxreq")
 [node name="Flower5" type="Sprite2D" parent="."]
 position = Vector2(1128, 383)
 texture = ExtResource("32_e0tf4")
-
-[node name="Tree2" type="Sprite2D" parent="."]
-position = Vector2(1115, 593)
-texture = ExtResource("33_w01vi")
-
-[node name="Tree1" type="Sprite2D" parent="."]
-position = Vector2(288, 522)
-texture = ExtResource("34_157gd")
 
 [node name="Flower6" type="Sprite2D" parent="."]
 position = Vector2(316, 230)
@@ -378,6 +362,18 @@ texture = ExtResource("36_55nhr")
 [node name="HiveUpgrade" type="Sprite2D" parent="."]
 position = Vector2(284, 268)
 texture = ExtResource("37_1x2ov")
+
+[node name="Tree4" parent="." instance=ExtResource("34_v7aim")]
+position = Vector2(1108, 761)
+
+[node name="Tree3" parent="." instance=ExtResource("35_6p2y5")]
+position = Vector2(1188, 337)
+
+[node name="Tree2" parent="." instance=ExtResource("36_vcj8s")]
+position = Vector2(98, 279)
+
+[node name="Tree1" parent="." instance=ExtResource("37_1aktp")]
+position = Vector2(288, 675)
 
 [connection signal="mouse_entered" from="UI/JernJamLogo" to="." method="_on_jern_jam_logo_mouse_entered"]
 [connection signal="mouse_exited" from="UI/JernJamLogo" to="." method="_on_jern_jam_logo_mouse_exited"]

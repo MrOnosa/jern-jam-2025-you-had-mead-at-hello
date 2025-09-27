@@ -15,6 +15,7 @@ extends Node2D
 
 func _ready() -> void:
 	new_game_button.pressed.connect(_on_new_game_button_pressed)
+	credits_button.pressed.connect(_on_credits_button_pressed)
 	
 	new_game_button.mouse_entered.connect(button_hover_sound)
 	options_button.mouse_entered.connect(button_hover_sound)
@@ -64,3 +65,8 @@ func _on_jern_jam_logo_mouse_entered() -> void:
 func _on_jern_jam_logo_mouse_exited() -> void:
 	var t_logo = create_tween().set_trans(Tween.TRANS_LINEAR)
 	t_logo.tween_property(jern_jam_logo, "scale", Vector2.ONE,0.5)
+
+
+func _on_credits_button_pressed() -> void:
+	button_click_sound()
+	get_tree().change_scene_to_file("res://scenes/credits_scene/credits_scene.tscn")
