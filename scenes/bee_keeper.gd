@@ -1,7 +1,7 @@
 class_name BeeKeeper
 extends CharacterBody2D
 
-enum Holding { NOTHING, HONEY_LOW, HONEY_HIGH, MEAD_LOW, MEAD_HIGH, SMOKER, SODA_CAN }
+enum Holding { NOTHING, HONEY_LOW, HONEY_HIGH, MEAD_LOW, MEAD_HIGH, SMOKER, SODA_CAN, HONEYCOMB_HIGH, BEESWAX }
 enum Action { IDLE, WALKING }
 const SPEED = 300.0
 
@@ -10,11 +10,13 @@ const SPEED = 300.0
 
 @onready var player_animations: PlayerAnimations = %PlayerAnimations
 @onready var honey_high_sprite: Sprite2D = %HoneyHighSprite
+@onready var beeswax_high_sprite: Sprite2D = %BeeswaxHighSprite
+@onready var honeycomb_high_sprite: Sprite2D = %HoneycombHighSprite
 
 
 var target_position : Vector2
 var click_position : Vector2
-var holding := Holding.HONEY_HIGH
+var holding := Holding.NOTHING
 var anim_state := Action.IDLE
 var player_facing_right : bool = true
 var direction_facing
@@ -28,8 +30,9 @@ func _ready():
 
 
 func _process(_delta: float) -> void:
-	#z_index = int(global_position.y) + 100
 	honey_high_sprite.visible = holding == Holding.HONEY_HIGH
+	beeswax_high_sprite.visible = holding == Holding.BEESWAX
+	honeycomb_high_sprite.visible = holding == Holding.HONEYCOMB_HIGH
 	
 	if holding:
 		if anim_state == Action.WALKING:
@@ -69,7 +72,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 func _on_bee_colony_honey_collected() -> void:
 	if holding == Holding.NOTHING:
-		holding = Holding.HONEY_HIGH
+		holding = Holding.HONEYCOMB_HIGH
 
 
 func _on_workbench_placed() -> void:

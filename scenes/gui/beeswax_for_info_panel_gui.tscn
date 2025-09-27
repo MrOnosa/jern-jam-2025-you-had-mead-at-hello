@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://4mkrks3yoo4l"]
+
+[ext_resource type="Texture2D" uid="uid://byv7mpmg6mpsv" path="res://assets/beeswax.png" id="1_vsrku"]
+
+[node name="BeeswaxTextureProgressBar" type="TextureProgressBar"]
+offset_right = 51.0
+offset_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 100.0
+nine_patch_stretch = true
+texture_progress = ExtResource("1_vsrku")

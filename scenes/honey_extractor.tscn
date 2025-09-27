@@ -1,0 +1,259 @@
+[gd_scene load_steps=14 format=3 uid="uid://cgbkpvg1ukgty"]
+
+[ext_resource type="Script" uid="uid://bcqjme1f4uoc5" path="res://scenes/honey_extractor.gd" id="1_287tr"]
+[ext_resource type="Texture2D" uid="uid://chkcygvbewdof" path="res://assets/honey_extractor.png" id="1_n0350"]
+[ext_resource type="Texture2D" uid="uid://da6cpijlphj45" path="res://assets/gui/panel_bg.png" id="3_mqeji"]
+[ext_resource type="LabelSettings" uid="uid://cn1rdmmbnmsu3" path="res://assets/gui/button_font.tres" id="4_v6w55"]
+[ext_resource type="FontFile" uid="uid://b7vkyxnsa7dol" path="res://assets/fonts/Sunset Friday.otf" id="5_j72ib"]
+[ext_resource type="PackedScene" uid="uid://bdc0ihum5w7nc" path="res://scenes/gui/jar_for_info_panel_gui.tscn" id="6_8wlw4"]
+[ext_resource type="Texture2D" uid="uid://dogtp5dbjim3t" path="res://assets/gui/button_1.png" id="7_nvdoh"]
+[ext_resource type="PackedScene" uid="uid://cncss4go8dud1" path="res://scenes/gui/honeycomb_for_info_panel_gui.tscn" id="7_ssiej"]
+[ext_resource type="Texture2D" uid="uid://vfm1p832dp0b" path="res://assets/gui/button_1_hover.png" id="8_hk8x8"]
+[ext_resource type="PackedScene" uid="uid://4mkrks3yoo4l" path="res://scenes/gui/beeswax_for_info_panel_gui.tscn" id="8_mqeji"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dwbse"]
+radius = 41.003048
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqk2v"]
+radius = 128.0
+height = 324.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_4e8ou"]
+font = ExtResource("5_j72ib")
+font_size = 32
+
+[node name="HoneyExtractor" type="StaticBody2D" groups=["bee_colony"]]
+input_pickable = true
+script = ExtResource("1_287tr")
+
+[node name="AnchorNode" type="Node2D" parent="."]
+position = Vector2(0, -60)
+
+[node name="Sprite2D" type="Sprite2D" parent="AnchorNode"]
+unique_name_in_owner = true
+texture = ExtResource("1_n0350")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -43.5)
+shape = SubResource("CircleShape2D_dwbse")
+
+[node name="InteractiveArea2D" type="Area2D" parent="." groups=["too_close_bubble"]]
+position = Vector2(0, -57.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea2D"]
+position = Vector2(2, 15)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_aqk2v")
+
+[node name="InfoPanel" type="TextureRect" parent="."]
+z_index = 100
+offset_left = 59.0
+offset_top = -188.5
+offset_right = 638.0
+offset_bottom = 336.5
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_mqeji")
+
+[node name="HeaderLabel" type="Label" parent="InfoPanel"]
+z_index = 101
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.50002
+offset_top = -218.5
+offset_right = 239.83331
+offset_bottom = -160.49998
+grow_horizontal = 2
+grow_vertical = 2
+text = "Honey Extractor"
+label_settings = ExtResource("4_v6w55")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="InfoPanel"]
+z_index = 101
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -243.5
+offset_top = -165.16666
+offset_right = 239.83331
+offset_bottom = -118.499985
+grow_horizontal = 2
+grow_vertical = 2
+text = "Currenly Idle - Needs honeycomb"
+label_settings = SubResource("LabelSettings_4e8ou")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoPanel"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 162.0
+offset_right = 454.84576
+offset_bottom = 434.0
+theme_override_constants/separation = 11
+
+[node name="TopHBoxContainer" type="HBoxContainer" parent="InfoPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 26
+
+[node name="Honeycomb1TextureProgressBar" parent="InfoPanel/VBoxContainer/TopHBoxContainer" instance=ExtResource("7_ssiej")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Honeycomb2TextureProgressBar" parent="InfoPanel/VBoxContainer/TopHBoxContainer" instance=ExtResource("7_ssiej")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Honeycomb3TextureProgressBar" parent="InfoPanel/VBoxContainer/TopHBoxContainer" instance=ExtResource("7_ssiej")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BottomHBoxContainer" type="HBoxContainer" parent="InfoPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 26
+
+[node name="Jar1TextureProgressBar" parent="InfoPanel/VBoxContainer/BottomHBoxContainer" instance=ExtResource("6_8wlw4")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Jar2TextureProgressBar" parent="InfoPanel/VBoxContainer/BottomHBoxContainer" instance=ExtResource("6_8wlw4")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Jar3TextureProgressBar" parent="InfoPanel/VBoxContainer/BottomHBoxContainer" instance=ExtResource("6_8wlw4")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BottomHBoxContainer2" type="HBoxContainer" parent="InfoPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 26
+
+[node name="Beeswax1TextureProgressBar" parent="InfoPanel/VBoxContainer/BottomHBoxContainer2" instance=ExtResource("8_mqeji")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Beeswax2TextureProgressBar" parent="InfoPanel/VBoxContainer/BottomHBoxContainer2" instance=ExtResource("8_mqeji")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Beeswax3TextureProgressBar" parent="InfoPanel/VBoxContainer/BottomHBoxContainer2" instance=ExtResource("8_mqeji")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 82.0
+offset_top = 22.0
+offset_right = 1350.0
+offset_bottom = 435.0
+scale = Vector2(0.52, 0.52)
+theme_override_constants/separation = -60
+
+[node name="HoneycombActionButton" type="TextureButton" parent="VBoxContainer"]
+z_index = 100
+layout_mode = 2
+texture_normal = ExtResource("7_nvdoh")
+texture_hover = ExtResource("8_hk8x8")
+
+[node name="Label" type="Label" parent="VBoxContainer/HoneycombActionButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -562.6154
+offset_top = -31.961533
+offset_right = -225.61542
+offset_bottom = 26.038467
+grow_horizontal = 2
+grow_vertical = 2
+text = "Use Honeycomb"
+label_settings = ExtResource("4_v6w55")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HoneyActionButton" type="TextureButton" parent="VBoxContainer"]
+z_index = 100
+layout_mode = 2
+texture_normal = ExtResource("7_nvdoh")
+texture_hover = ExtResource("8_hk8x8")
+
+[node name="Label" type="Label" parent="VBoxContainer/HoneyActionButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -549.6154
+offset_top = -31.961533
+offset_right = -238.61542
+offset_bottom = 26.038467
+grow_horizontal = 2
+grow_vertical = 2
+text = "Pick Up Honey"
+label_settings = ExtResource("4_v6w55")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BeeswaxActionButton" type="TextureButton" parent="VBoxContainer"]
+z_index = 100
+layout_mode = 2
+texture_normal = ExtResource("7_nvdoh")
+texture_hover = ExtResource("8_hk8x8")
+
+[node name="Label" type="Label" parent="VBoxContainer/BeeswaxActionButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -568.6154
+offset_top = -31.961533
+offset_right = -219.61542
+offset_bottom = 26.038467
+grow_horizontal = 2
+grow_vertical = 2
+text = "Pick Up Beeswax"
+label_settings = ExtResource("4_v6w55")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DebugRichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = -135.0
+offset_top = -65.0
+offset_right = 193.94223
+offset_bottom = 136.0
+scale = Vector2(0.5928093, 0.5928093)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 28
+text = "a
+b
+c
+"
+fit_content = true
+
+[node name="DoWorkTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="body_entered" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_entered"]
+[connection signal="body_exited" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_exited"]
+[connection signal="pressed" from="VBoxContainer/HoneycombActionButton" to="." method="_on_honeycomb_action_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HoneyActionButton" to="." method="_on_honey_action_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/BeeswaxActionButton" to="." method="_on_beeswax_action_button_pressed"]
+[connection signal="timeout" from="DoWorkTimer" to="." method="_on_do_work_timer_timeout"]

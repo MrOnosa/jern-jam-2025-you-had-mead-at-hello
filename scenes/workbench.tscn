@@ -43,7 +43,6 @@ texture_normal = ExtResource("3_7rqw5")
 texture_hover = ExtResource("4_8j27g")
 
 [node name="PlaceLabel" type="Label" parent="ActionButton"]
-z_index = 101
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

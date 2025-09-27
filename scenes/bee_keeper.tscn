@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3b1wwqkjscss"]
+[gd_scene load_steps=11 format=3 uid="uid://c3b1wwqkjscss"]
 
 [ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://scenes/bee_keeper.gd" id="1_3i6xr"]
 [ext_resource type="Texture2D" uid="uid://dgrh8ag1vpqjf" path="res://assets/beekeeper.png" id="2_tnovc"]
 [ext_resource type="Texture2D" uid="uid://fi4kpxtqot0o" path="res://assets/beekeeper_sting.png" id="3_qps6d"]
 [ext_resource type="Texture2D" uid="uid://cbt2ynwtf5wff" path="res://assets/honey/honey_jar.png" id="4_3i6xr"]
 [ext_resource type="PackedScene" uid="uid://bmm35ikscd1li" path="res://scenes/player/player_animations.tscn" id="4_tnovc"]
+[ext_resource type="Texture2D" uid="uid://cvht74dewnwqc" path="res://assets/placeholder/honeycomb.png" id="6_qps6d"]
+[ext_resource type="Texture2D" uid="uid://byv7mpmg6mpsv" path="res://assets/beeswax.png" id="6_sjvhd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aqk2v"]
 animations = [{
@@ -50,9 +52,21 @@ position = Vector2(1, -69)
 
 [node name="HoneyHighSprite" type="Sprite2D" parent="Holding"]
 unique_name_in_owner = true
-z_index = 1
+visible = false
 position = Vector2(33, 19)
 texture = ExtResource("4_3i6xr")
+
+[node name="BeeswaxHighSprite" type="Sprite2D" parent="Holding"]
+unique_name_in_owner = true
+position = Vector2(33, 19)
+texture = ExtResource("6_sjvhd")
+
+[node name="HoneycombHighSprite" type="Sprite2D" parent="Holding"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(33, 19)
+scale = Vector2(0.345, 0.345)
+texture = ExtResource("6_qps6d")
 
 [node name="InteractiveArea2D" type="Area2D" parent="." groups=["too_close_bubble"]]
 visible = false

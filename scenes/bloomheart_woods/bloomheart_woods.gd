@@ -5,18 +5,22 @@ const BEE = preload("uid://ws0llatxgtev")
 
 const NATURAL_HIVE_DRAGGABLE = preload("uid://dd56jcjuc6gn8")
 const MAN_MADE_HIVE_DRAGGABLE = preload("uid://dsmlt42isfk6r")
+const HONEY_EXTRACTOR_DRAGGABLE = preload("uid://88suwycgh5gw")
 const BEE_COLONY = preload("uid://cnqxl80su0co4")
 const MAN_MADE_BEE_COLONY = preload("uid://crwo4bniwcg18")
+const HONEY_EXTRACTOR = preload("uid://cgbkpvg1ukgty")
 
-@onready var cash_amount_label: Label = %CashAmountLabel
+@onready var cash_amount_label: Label = $HUD/PanelContainer/VBoxContainer/HBoxContainer/CashAmountLabel
 @onready var bee_keeper: BeeKeeper = $BeeKeeper
 @onready var panel_container: PanelContainer = $HUD/PanelContainer
 @onready var natural_hive_button: TextureButton = $HUD/PanelContainer/VBoxContainer/NaturalHiveButton
 @onready var man_made_hive_button: TextureButton = $HUD/PanelContainer/VBoxContainer/ManMadeHiveButton
+@onready var honey_extractor_button: TextureButton = $HUD/PanelContainer/VBoxContainer/HoneyExtractorButton
 @onready var sell_box: StaticBody2D = $Interactables/SellBox
+@onready var ground: TextureRect = $GroundArea/Ground
 
 
-enum Draggable_Items { NATURAL_BEE_HIVE, MAN_MADE_BEE_HIVE} 
+enum Draggable_Items { NATURAL_BEE_HIVE, MAN_MADE_BEE_HIVE, HONEY_EXTRACTOR} 
 @export var cash : int = 100
 var mouse_is_over_HUD : bool = false
 var mouse_is_within_window : bool = true
@@ -32,6 +36,7 @@ func _ready() -> void:
 	panel_container.mouse_exited.connect(_HUD_on_panel_container_mouse_exited)
 	natural_hive_button.pressed.connect(_on_natural_hive_button_pressed)
 	man_made_hive_button.pressed.connect(_on_man_made_hive_button_pressed)
+	honey_extractor_button.pressed.connect(_on_honey_extractor_button_pressed)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,6 +47,9 @@ func _process(delta: float) -> void:
 		drag_and_drop_item.position = drag_and_drop_item.get_parent().get_local_mouse_position()
 		drag_and_drop_item.modulate = Color.WHITE
 		var any_collisions : bool = false
+		if drag_and_drop_item.position.x > (ground.size.x-300) || drag_and_drop_item.position.y > (ground.size.y-70):
+			any_collisions = true
+			drag_and_drop_item.modulate = Color.INDIAN_RED
 		if !mouse_is_over_HUD:
 			var all_the_things = get_tree().get_nodes_in_group("too_close_bubble") as Array[Area2D]
 			for b in all_the_things:
@@ -77,6 +85,10 @@ func _process(delta: float) -> void:
 							bee_colony.max_raw_honey_capacity = bee_colony.raw_honey_needed_for_a_jar * 6
 							bee_colony.honey_collected.connect(bee_keeper._on_bee_colony_honey_collected)
 							bee_colony.spawn_bee.connect(_on_bee_colony_spawn_bee)
+							add_child(bee_colony)	
+						Draggable_Items.HONEY_EXTRACTOR:	
+							var bee_colony = HONEY_EXTRACTOR.instantiate() as HoneyExtractor
+							bee_colony.position = drag_and_drop_item.position
 							add_child(bee_colony)					
 						_:
 							printerr("Huh?", drag_and_drop_item_type)
@@ -108,11 +120,15 @@ func _on_man_made_hive_button_pressed() -> void:
 	drag_and_drop_item = MAN_MADE_HIVE_DRAGGABLE.instantiate()
 	drag_and_drop_item_type = Draggable_Items.MAN_MADE_BEE_HIVE
 	add_child(drag_and_drop_item)
+	
+func _on_honey_extractor_button_pressed() -> void:
+	drag_and_drop_item = HONEY_EXTRACTOR_DRAGGABLE.instantiate()
+	drag_and_drop_item_type = Draggable_Items.HONEY_EXTRACTOR
+	add_child(drag_and_drop_item)
 
 
 func _HUD_on_panel_container_mouse_entered() -> void:
 	mouse_is_over_HUD = true
-
 
 func _HUD_on_panel_container_mouse_exited() -> void:
 	mouse_is_over_HUD = false

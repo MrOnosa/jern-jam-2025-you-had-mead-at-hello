@@ -159,16 +159,15 @@ layout_mode = 2
 
 [node name="ActionButton" type="TextureButton" parent="."]
 z_index = 100
-offset_left = 112.0
-offset_top = 10.0
-offset_right = 584.0
-offset_bottom = 197.0
-scale = Vector2(0.4, 0.4)
+offset_left = 87.0
+offset_top = 6.0
+offset_right = 559.0
+offset_bottom = 193.0
+scale = Vector2(0.52, 0.52)
 texture_normal = ExtResource("7_r2i3f")
 texture_hover = ExtResource("8_n5mp6")
 
 [node name="Label" type="Label" parent="ActionButton"]
-z_index = 101
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

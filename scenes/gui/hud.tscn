@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtc7nf7jxt17u"]
+[gd_scene load_steps=4 format=3 uid="uid://dtc7nf7jxt17u"]
 
 [ext_resource type="Texture2D" uid="uid://d2chyn8tlqyat" path="res://assets/beehive.png" id="1_86rft"]
 [ext_resource type="Texture2D" uid="uid://ddekt73u2v20e" path="res://assets/hive_upgrade.png" id="2_624ws"]
+[ext_resource type="Texture2D" uid="uid://chkcygvbewdof" path="res://assets/honey_extractor.png" id="3_qxonp"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -12,6 +13,22 @@ offset_bottom = 642.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CashLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "CASH:"
+
+[node name="CashAmountLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "$999999"
+horizontal_alignment = 2
+clip_text = true
 
 [node name="NaturalHiveButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -28,3 +45,11 @@ size_flags_horizontal = 4
 mouse_filter = 1
 action_mode = 0
 texture_normal = ExtResource("2_624ws")
+
+[node name="HoneyExtractorButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+action_mode = 0
+texture_normal = ExtResource("3_qxonp")

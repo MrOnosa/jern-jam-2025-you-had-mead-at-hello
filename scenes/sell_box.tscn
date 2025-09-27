@@ -36,7 +36,7 @@ position = Vector2(0.5, 5.5)
 shape = SubResource("RectangleShape2D_wse8f")
 
 [node name="PlaceLabel" type="Label" parent="."]
-z_index = 101
+z_index = 100
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -74,7 +74,6 @@ texture_normal = ExtResource("3_47t8m")
 texture_hover = ExtResource("4_e26ny")
 
 [node name="PlaceLabel2" type="Label" parent="ActionButton"]
-z_index = 101
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

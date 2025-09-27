@@ -38,7 +38,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#z_index = int(global_position.y)
 	if anim_state == Action.FLYING:
 		animations.animation = "flying"
 	elif anim_state == Action.IDLE:

@@ -60,7 +60,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_64qp5")
 
 [node name="HeaderLabel" type="Label" parent="InfoPanel"]
-z_index = 101
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -79,7 +78,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PopulationLabel" type="Label" parent="InfoPanel"]
-z_index = 101
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -99,7 +97,6 @@ vertical_alignment = 1
 
 [node name="StarvingLabel" type="Label" parent="InfoPanel"]
 visible = false
-z_index = 101
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -162,16 +159,15 @@ layout_mode = 2
 
 [node name="ActionButton" type="TextureButton" parent="."]
 z_index = 100
-offset_left = 80.0
-offset_top = 83.0
-offset_right = 552.0
-offset_bottom = 270.0
+offset_left = 78.0
+offset_top = 24.0
+offset_right = 550.0
+offset_bottom = 211.0
 scale = Vector2(0.52, 0.52)
 texture_normal = ExtResource("3_js7wk")
 texture_hover = ExtResource("4_64qp5")
 
 [node name="Label" type="Label" parent="ActionButton"]
-z_index = 101
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
