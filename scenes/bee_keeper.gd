@@ -12,6 +12,7 @@ const SPEED = 300.0
 @onready var honey_high_sprite: Sprite2D = %HoneyHighSprite
 @onready var beeswax_high_sprite: Sprite2D = %BeeswaxHighSprite
 @onready var honeycomb_high_sprite: Sprite2D = %HoneycombHighSprite
+@onready var mead_high_sprite: Sprite2D = %MeadHighSprite
 
 
 var target_position : Vector2
@@ -33,6 +34,7 @@ func _process(_delta: float) -> void:
 	honey_high_sprite.visible = holding == Holding.HONEY_HIGH
 	beeswax_high_sprite.visible = holding == Holding.BEESWAX
 	honeycomb_high_sprite.visible = holding == Holding.HONEYCOMB_HIGH
+	mead_high_sprite.visible = holding == Holding.MEAD_HIGH
 	
 	if holding:
 		if anim_state == Action.WALKING:

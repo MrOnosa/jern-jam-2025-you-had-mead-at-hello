@@ -1,9 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://b7snix20rjbed"]
+[gd_scene load_steps=10 format=3 uid="uid://b7snix20rjbed"]
 
 [ext_resource type="Script" uid="uid://cf20ju8y3y8py" path="res://scenes/sell_box.gd" id="1_47t8m"]
-[ext_resource type="Texture2D" uid="uid://c32hjrwlewe4l" path="res://assets/sell_box_back.png" id="2_uowdk"]
 [ext_resource type="Texture2D" uid="uid://brh416hlld4qi" path="res://assets/gui/button_2.png" id="3_47t8m"]
-[ext_resource type="Texture2D" uid="uid://ctcdr6dyt0o5l" path="res://assets/sell_box_face.png" id="3_55i2q"]
 [ext_resource type="FontFile" uid="uid://b7vkyxnsa7dol" path="res://assets/fonts/Sunset Friday.otf" id="4_47t8m"]
 [ext_resource type="Texture2D" uid="uid://c5etmq5xjnqbf" path="res://assets/gui/button_2_hover.png" id="4_e26ny"]
 [ext_resource type="LabelSettings" uid="uid://cn1rdmmbnmsu3" path="res://assets/gui/button_font.tres" id="5_t15yl"]
@@ -12,46 +10,20 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wse8f"]
 size = Vector2(129, 71)
 
-[sub_resource type="LabelSettings" id="LabelSettings_e26ny"]
-font = ExtResource("4_47t8m")
-font_size = 14
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ioo17"]
 radius = 163.0
 height = 326.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_e26ny"]
+font = ExtResource("4_47t8m")
+font_size = 14
+
 [node name="SellBox" type="StaticBody2D"]
 script = ExtResource("1_47t8m")
-
-[node name="BackSprite" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("2_uowdk")
-
-[node name="FaceSprite" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("3_55i2q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 5.5)
 shape = SubResource("RectangleShape2D_wse8f")
-
-[node name="PlaceLabel" type="Label" parent="."]
-z_index = 100
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -109.0
-offset_top = -19.0
-offset_right = 110.0
-offset_bottom = 39.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "For Sell"
-label_settings = SubResource("LabelSettings_e26ny")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="InteractiveArea2D" type="Area2D" parent="." groups=["too_close_bubble"]]
 position = Vector2(-4, -25)
@@ -94,6 +66,23 @@ vertical_alignment = 1
 [node name="SellBox" type="Sprite2D" parent="."]
 position = Vector2(1, 0)
 texture = ExtResource("8_e26ny")
+
+[node name="PlaceLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -19.0
+offset_right = 110.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "For Sell"
+label_settings = SubResource("LabelSettings_e26ny")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_entered"]
 [connection signal="body_exited" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_exited"]

@@ -1,14 +1,18 @@
 class_name GameWorld
 extends Node2D
 
-const BEE = preload("uid://ws0llatxgtev")
-
+# GUI
 const NATURAL_HIVE_DRAGGABLE = preload("uid://dd56jcjuc6gn8")
 const MAN_MADE_HIVE_DRAGGABLE = preload("uid://dsmlt42isfk6r")
 const HONEY_EXTRACTOR_DRAGGABLE = preload("uid://88suwycgh5gw")
+const BUCKET_DRAGGABLE = preload("uid://dcljkr1dxfu0g")
+# Gameplay
+const BEE = preload("uid://ws0llatxgtev")
 const BEE_COLONY = preload("uid://cnqxl80su0co4")
 const MAN_MADE_BEE_COLONY = preload("uid://crwo4bniwcg18")
 const HONEY_EXTRACTOR = preload("uid://cgbkpvg1ukgty")
+const BUCKET = preload("uid://ckqo82apihh50")
+
 
 @onready var cash_amount_label: Label = $HUD/PanelContainer/VBoxContainer/HBoxContainer/CashAmountLabel
 @onready var bee_keeper: BeeKeeper = $BeeKeeper
@@ -16,11 +20,12 @@ const HONEY_EXTRACTOR = preload("uid://cgbkpvg1ukgty")
 @onready var natural_hive_button: TextureButton = $HUD/PanelContainer/VBoxContainer/NaturalHiveButton
 @onready var man_made_hive_button: TextureButton = $HUD/PanelContainer/VBoxContainer/ManMadeHiveButton
 @onready var honey_extractor_button: TextureButton = $HUD/PanelContainer/VBoxContainer/HoneyExtractorButton
+@onready var bucket_button: TextureButton = $HUD/PanelContainer/VBoxContainer/BucketButton
 @onready var sell_box: StaticBody2D = $Interactables/SellBox
 @onready var ground: TextureRect = $GroundArea/Ground
 
 
-enum Draggable_Items { NATURAL_BEE_HIVE, MAN_MADE_BEE_HIVE, HONEY_EXTRACTOR} 
+enum Draggable_Items { NATURAL_BEE_HIVE, MAN_MADE_BEE_HIVE, HONEY_EXTRACTOR, FOOD_GRADE_BUCKET} 
 @export var cash : int = 100
 var mouse_is_over_HUD : bool = false
 var mouse_is_within_window : bool = true
@@ -37,6 +42,7 @@ func _ready() -> void:
 	natural_hive_button.pressed.connect(_on_natural_hive_button_pressed)
 	man_made_hive_button.pressed.connect(_on_man_made_hive_button_pressed)
 	honey_extractor_button.pressed.connect(_on_honey_extractor_button_pressed)
+	bucket_button.pressed.connect(_on_bucket_button_pressed)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -89,6 +95,10 @@ func _process(delta: float) -> void:
 						Draggable_Items.HONEY_EXTRACTOR:	
 							var bee_colony = HONEY_EXTRACTOR.instantiate() as HoneyExtractor
 							bee_colony.position = drag_and_drop_item.position
+							add_child(bee_colony)	
+						Draggable_Items.FOOD_GRADE_BUCKET:	
+							var bee_colony = BUCKET.instantiate() as Bucket
+							bee_colony.position = drag_and_drop_item.position
 							add_child(bee_colony)					
 						_:
 							printerr("Huh?", drag_and_drop_item_type)
@@ -124,6 +134,11 @@ func _on_man_made_hive_button_pressed() -> void:
 func _on_honey_extractor_button_pressed() -> void:
 	drag_and_drop_item = HONEY_EXTRACTOR_DRAGGABLE.instantiate()
 	drag_and_drop_item_type = Draggable_Items.HONEY_EXTRACTOR
+	add_child(drag_and_drop_item)
+	
+func _on_bucket_button_pressed() -> void:
+	drag_and_drop_item = BUCKET_DRAGGABLE.instantiate()
+	drag_and_drop_item_type = Draggable_Items.FOOD_GRADE_BUCKET
 	add_child(drag_and_drop_item)
 
 
