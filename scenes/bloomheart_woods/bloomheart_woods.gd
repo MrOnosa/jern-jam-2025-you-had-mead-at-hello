@@ -75,8 +75,8 @@ func _process(delta: float) -> void:
 							bee_colony.max_raw_honey_capacity = bee_colony.raw_honey_needed_for_a_jar * 2
 							bee_colony.honey_collected.connect(bee_keeper._on_bee_colony_honey_collected)
 							bee_colony.spawn_bee.connect(_on_bee_colony_spawn_bee)
-							add_child(bee_colony)	
-						Draggable_Items.MAN_MADE_BEE_HIVE:	
+							add_child(bee_colony)
+						Draggable_Items.MAN_MADE_BEE_HIVE:
 							var bee_colony = MAN_MADE_BEE_COLONY.instantiate() as BeeColony
 							bee_colony.position = drag_and_drop_item.position
 							bee_colony.total_bees = 8000

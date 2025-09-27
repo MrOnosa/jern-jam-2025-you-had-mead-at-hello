@@ -44,14 +44,14 @@ script = ExtResource("1_w7kh3")
 
 [node name="HUD" parent="." instance=ExtResource("2_ctatt")]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/PanelContainer/VBoxContainer" index="0"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="HUD/PanelContainer/VBoxContainer" index="0"]
 layout_mode = 2
 
-[node name="CashLabel" type="Label" parent="HUD/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="CashLabel2" type="Label" parent="HUD/PanelContainer/VBoxContainer/HBoxContainer" index="2"]
 layout_mode = 2
 text = "CASH:"
 
-[node name="CashAmountLabel" type="Label" parent="HUD/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="CashAmountLabel2" type="Label" parent="HUD/PanelContainer/VBoxContainer/HBoxContainer" index="3"]
 unique_name_in_owner = true
 clip_contents = true
 layout_mode = 2
