@@ -42,19 +42,16 @@ shader_parameter/FloatParameter = 25.0
 y_sort_enabled = true
 script = ExtResource("1_w7kh3")
 
+[node name="HUD_PanelContainer_VBoxContainer#HBoxContainer2" type="HBoxContainer" parent="."]
+
 [node name="HUD" parent="." instance=ExtResource("2_ctatt")]
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HUD/PanelContainer/VBoxContainer" index="0"]
-layout_mode = 2
-
-[node name="CashLabel2" type="Label" parent="HUD/PanelContainer/VBoxContainer/HBoxContainer" index="2"]
-layout_mode = 2
+[node name="HUD_PanelContainer_VBoxContainer_HBoxContainer#CashLabel2" type="Label" parent="."]
 text = "CASH:"
 
-[node name="CashAmountLabel2" type="Label" parent="HUD/PanelContainer/VBoxContainer/HBoxContainer" index="3"]
+[node name="HUD_PanelContainer_VBoxContainer_HBoxContainer#CashAmountLabel2" type="Label" parent="."]
 unique_name_in_owner = true
 clip_contents = true
-layout_mode = 2
 size_flags_horizontal = 3
 text = "$999999"
 horizontal_alignment = 2
@@ -239,10 +236,6 @@ position = Vector2(830, 1421)
 [node name="Bush4" parent="." instance=ExtResource("19_oo54l")]
 position = Vector2(499, 1505)
 
-[connection signal="mouse_entered" from="HUD/PanelContainer" to="." method="_HUD_on_panel_container_mouse_entered"]
-[connection signal="mouse_exited" from="HUD/PanelContainer" to="." method="_HUD_on_panel_container_mouse_exited"]
-[connection signal="pressed" from="HUD/PanelContainer/VBoxContainer/NaturalHiveButton" to="." method="_on_natural_hive_button_pressed"]
-[connection signal="pressed" from="HUD/PanelContainer/VBoxContainer/ManMadeHiveButton" to="." method="_on_man_made_hive_button_pressed"]
 [connection signal="mouse_entered" from="Camera2D/CanvasLayer/MouseInWindowArea2D" to="." method="_on_mouse_in_window_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Camera2D/CanvasLayer/MouseInWindowArea2D" to="." method="_on_mouse_in_window_area_2d_mouse_exited"]
 [connection signal="placed" from="SellBox" to="." method="_on_sell_box_placed"]
