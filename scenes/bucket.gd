@@ -33,11 +33,13 @@ func _ready() -> void:
 	info_panel.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+var total_delta = 0
 func _process(delta: float) -> void:
 	$DebugRichTextLabel.text = str("H: ", str(honey_jars), "\nM: ", str(mead))
 	
 	if fermentation_status == Fermentation_Statuses.IN_PROGRESS:
-		sprite_2d.position = Vector2(10 * sin(delta), 10 * cos(delta)) 
+		total_delta += delta * 2
+		#sprite_2d.position = Vector2(5 * sin(total_delta), 5 * cos(total_delta))
 		# As the fermentation process occures, slowly drain ALL the jars of honey
 		var value_for_the_lot = 100.0 - fermentation_progress
 		jar_1_texture_progress_bar.value = value_for_the_lot
@@ -54,6 +56,7 @@ func _process(delta: float) -> void:
 		high_quality_mead_texture_progress_bar_2.modulate = Color.WHITE if high_quality_mead_texture_progress_bar_2.value > 0 else Color.TRANSPARENT	
 		
 	elif fermentation_status == Fermentation_Statuses.IDLE:
+		total_delta = 0
 		sprite_2d.position = Vector2.ZERO
 		# Fill each jar with honey	
 		jar_1_texture_progress_bar.value = min(100, honey_jars * 100)

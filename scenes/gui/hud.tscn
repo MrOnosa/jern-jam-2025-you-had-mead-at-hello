@@ -1,28 +1,46 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtc7nf7jxt17u"]
+[gd_scene load_steps=6 format=3 uid="uid://dtc7nf7jxt17u"]
 
 [ext_resource type="Texture2D" uid="uid://d2chyn8tlqyat" path="res://assets/beehive.png" id="1_86rft"]
+[ext_resource type="Texture2D" uid="uid://4w4r42ko28ls" path="res://assets/gui/gui_background.png" id="1_aoesn"]
 [ext_resource type="Texture2D" uid="uid://ddekt73u2v20e" path="res://assets/hive_upgrade.png" id="2_624ws"]
 [ext_resource type="Texture2D" uid="uid://chkcygvbewdof" path="res://assets/honey_extractor.png" id="3_qxonp"]
 [ext_resource type="Texture2D" uid="uid://bamwd6n8l2bsd" path="res://assets/bucket.png" id="4_ueg55"]
 
 [node name="HUD" type="CanvasLayer"]
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-unique_name_in_owner = true
-offset_right = 133.0
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = -10.0
+offset_top = -11.0
+offset_right = 145.0
+offset_bottom = 574.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+texture = ExtResource("1_aoesn")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 11.0
+offset_right = 144.0
 offset_bottom = 642.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="SpacerContainer" type="PanelContainer" parent="NinePatchRect/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(18.64, 3.72)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/VBoxContainer"]
 layout_mode = 2
 
-[node name="CashLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="CashLabel" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "CASH:"
 
-[node name="CashAmountLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="CashAmountLabel" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 clip_contents = true
 layout_mode = 2
@@ -31,7 +49,7 @@ text = "$999999"
 horizontal_alignment = 2
 clip_text = true
 
-[node name="NaturalHiveButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+[node name="NaturalHiveButton" type="TextureButton" parent="NinePatchRect/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -39,7 +57,7 @@ mouse_filter = 1
 action_mode = 0
 texture_normal = ExtResource("1_86rft")
 
-[node name="ManMadeHiveButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+[node name="ManMadeHiveButton" type="TextureButton" parent="NinePatchRect/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -47,7 +65,7 @@ mouse_filter = 1
 action_mode = 0
 texture_normal = ExtResource("2_624ws")
 
-[node name="HoneyExtractorButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+[node name="HoneyExtractorButton" type="TextureButton" parent="NinePatchRect/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -55,7 +73,7 @@ mouse_filter = 1
 action_mode = 0
 texture_normal = ExtResource("3_qxonp")
 
-[node name="BucketButton" type="TextureButton" parent="PanelContainer/VBoxContainer"]
+[node name="BucketButton" type="TextureButton" parent="NinePatchRect/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4

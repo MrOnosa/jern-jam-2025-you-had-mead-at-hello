@@ -14,13 +14,13 @@ const HONEY_EXTRACTOR = preload("uid://cgbkpvg1ukgty")
 const BUCKET = preload("uid://ckqo82apihh50")
 
 
-@onready var cash_amount_label: Label = $HUD/PanelContainer/VBoxContainer/HBoxContainer/CashAmountLabel
+@onready var cash_amount_label: Label = $HUD/NinePatchRect/VBoxContainer/HBoxContainer/CashAmountLabel
 @onready var bee_keeper: BeeKeeper = $BeeKeeper
-@onready var panel_container: PanelContainer = $HUD/PanelContainer
-@onready var natural_hive_button: TextureButton = $HUD/PanelContainer/VBoxContainer/NaturalHiveButton
-@onready var man_made_hive_button: TextureButton = $HUD/PanelContainer/VBoxContainer/ManMadeHiveButton
-@onready var honey_extractor_button: TextureButton = $HUD/PanelContainer/VBoxContainer/HoneyExtractorButton
-@onready var bucket_button: TextureButton = $HUD/PanelContainer/VBoxContainer/BucketButton
+@onready var panel_container: NinePatchRect = $HUD/NinePatchRect
+@onready var natural_hive_button: TextureButton = $HUD/NinePatchRect/VBoxContainer/NaturalHiveButton
+@onready var man_made_hive_button: TextureButton = $HUD/NinePatchRect/VBoxContainer/ManMadeHiveButton
+@onready var honey_extractor_button: TextureButton = $HUD/NinePatchRect/VBoxContainer/HoneyExtractorButton
+@onready var bucket_button: TextureButton = $HUD/NinePatchRect/VBoxContainer/BucketButton
 @onready var sell_box: StaticBody2D = $Interactables/SellBox
 @onready var ground: TextureRect = $GroundArea/Ground
 
