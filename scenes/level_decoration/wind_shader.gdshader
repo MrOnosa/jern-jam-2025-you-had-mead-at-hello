@@ -1,9 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ds4fwqgr0foma"]
-
-[ext_resource type="Texture2D" uid="uid://d0ftkcffvo5yo" path="res://assets/Level Decoration/bush_2.png" id="1_o775m"]
-
-[sub_resource type="Shader" id="Shader_o775m"]
-code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
+// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
 //
 // speed - The speed of the wind movement.
@@ -48,49 +43,4 @@ void vertex() {
     
     float time = TIME * speed + offset + randomTime;
     VERTEX.x += getWind(VERTEX.xy, UV, time);
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ikext"]
-shader = SubResource("Shader_o775m")
-shader_parameter/speed = 1.0
-shader_parameter/minStrength = 0.05
-shader_parameter/maxStrength = 0.01
-shader_parameter/strengthScale = 100.0
-shader_parameter/interval = 3.5
-shader_parameter/detail = 1.0
-shader_parameter/distortion = 0.0
-shader_parameter/heightOffset = 0.0
-shader_parameter/offset = 0.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mfc15"]
-radius = 17.0
-height = 62.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ioo17"]
-radius = 36.5
-height = 73.0
-
-[node name="Bush2" type="StaticBody2D"]
-collision_layer = 0
-collision_mask = 0
-
-[node name="Sprite" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_ikext")
-position = Vector2(5, -52)
-texture = ExtResource("1_o775m")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(9, -14.5)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_mfc15")
-
-[node name="InteractiveArea2D" type="Area2D" parent="." groups=["too_close_bubble"]]
-position = Vector2(-4, -181.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea2D"]
-position = Vector2(12, 149.5)
-shape = SubResource("CapsuleShape2D_ioo17")
-debug_color = Color(0, 0.6, 0.69803923, 0.28235295)
-
-[connection signal="body_entered" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_entered"]
-[connection signal="body_exited" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_exited"]
+}

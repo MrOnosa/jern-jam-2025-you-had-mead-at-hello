@@ -1,0 +1,13 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dq0c6lirq23a0"]
+
+[ext_resource type="FontFile" uid="uid://bh12idoysa18s" path="res://assets/fonts/Free Royalty.ttf" id="1_mvmha"]
+
+[resource]
+font = ExtResource("1_mvmha")
+font_size = 42
+font_color = Color(0.7411765, 0.5137255, 0, 1)
+stacked_outline_count = 2
+stacked_outline_0/size = 10
+stacked_outline_0/color = Color(1, 0.8509804, 0.33333334, 1)
+stacked_outline_1/size = 10
+stacked_outline_1/color = Color(1, 1, 1, 1)

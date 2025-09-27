@@ -1,0 +1,276 @@
+[gd_scene load_steps=25 format=3 uid="uid://c8fu5j8eq4nx8"]
+
+[ext_resource type="Texture2D" uid="uid://dmnihv382ty1d" path="res://assets/ground_texture.png" id="1_nv7u3"]
+[ext_resource type="Script" uid="uid://pbgyv2lj43s7" path="res://scenes/credits_scene/credits_scene.gd" id="1_u5nhv"]
+[ext_resource type="Texture2D" uid="uid://bd8chkxgjblgq" path="res://assets/bee.png" id="2_8dh13"]
+[ext_resource type="AudioStream" uid="uid://bkwul40wn181j" path="res://assets/sfx/ui_accept.ogg" id="2_d888s"]
+[ext_resource type="AudioStream" uid="uid://eftifp5h88l0" path="res://assets/sfx/ui_hover.ogg" id="3_n0wsh"]
+[ext_resource type="PackedScene" uid="uid://b7rtim3q5xhms" path="res://scenes/flower.tscn" id="3_ooxj4"]
+[ext_resource type="Texture2D" uid="uid://4w4r42ko28ls" path="res://assets/gui/gui_background.png" id="3_vvcte"]
+[ext_resource type="LabelSettings" uid="uid://dq0c6lirq23a0" path="res://assets/fonts/heading_label.tres" id="4_8dh13"]
+[ext_resource type="PackedScene" uid="uid://bcmis3rujwpjh" path="res://scenes/level_decoration/tree_1.tscn" id="4_8ksnm"]
+[ext_resource type="PackedScene" uid="uid://dtj1332ycu3b1" path="res://scenes/level_decoration/tree_3.tscn" id="5_b8j5p"]
+[ext_resource type="Texture2D" uid="uid://dogtp5dbjim3t" path="res://assets/gui/button_1.png" id="5_slh74"]
+[ext_resource type="PackedScene" uid="uid://y6ulpn24oveh" path="res://scenes/level_decoration/tree_4.tscn" id="6_5f8pu"]
+[ext_resource type="Texture2D" uid="uid://vfm1p832dp0b" path="res://assets/gui/button_1_hover.png" id="6_av73v"]
+[ext_resource type="LabelSettings" uid="uid://cn1rdmmbnmsu3" path="res://assets/gui/button_font.tres" id="7_a5k2i"]
+[ext_resource type="Texture2D" uid="uid://d2chyn8tlqyat" path="res://assets/beehive.png" id="7_k3nit"]
+[ext_resource type="Texture2D" uid="uid://ddekt73u2v20e" path="res://assets/hive_upgrade.png" id="8_u5nhv"]
+[ext_resource type="Texture2D" uid="uid://bc6k3lrp62p28" path="res://assets/Level Decoration/dirt_path_long_h.png" id="9_dikal"]
+[ext_resource type="Texture2D" uid="uid://c1xw674f3h8pv" path="res://assets/Level Decoration/flower_3.png" id="10_d888s"]
+[ext_resource type="Texture2D" uid="uid://cjfnnifd04cfb" path="res://assets/Level Decoration/flower_2.png" id="11_n0wsh"]
+[ext_resource type="Texture2D" uid="uid://dirpfh5dtu6wl" path="res://assets/Level Decoration/flower_4.png" id="12_ppp4b"]
+[ext_resource type="Texture2D" uid="uid://rj5ijglc6m3w" path="res://assets/Level Decoration/flower_1.png" id="13_pidy4"]
+[ext_resource type="Texture2D" uid="uid://bwapus8sj03rl" path="res://assets/Level Decoration/flower_5.png" id="14_qucsj"]
+[ext_resource type="Texture2D" uid="uid://cu4mun30y57ka" path="res://assets/Level Decoration/dirt_round_1.png" id="15_knko3"]
+[ext_resource type="Texture2D" uid="uid://cyrisgkbskoyb" path="res://assets/Level Decoration/dirt_path_short_v.png" id="19_n0wsh"]
+
+[node name="CreditsScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u5nhv")
+
+[node name="AudioPlayers" type="Node2D" parent="."]
+
+[node name="SFXAccept" type="AudioStreamPlayer" parent="AudioPlayers"]
+unique_name_in_owner = true
+stream = ExtResource("2_d888s")
+
+[node name="SFXHover" type="AudioStreamPlayer" parent="AudioPlayers"]
+unique_name_in_owner = true
+stream = ExtResource("3_n0wsh")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nv7u3")
+stretch_mode = 1
+flip_h = true
+
+[node name="SceneNode" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Bee" type="Sprite2D" parent="SceneNode"]
+unique_name_in_owner = true
+position = Vector2(319, 216)
+texture = ExtResource("2_8dh13")
+
+[node name="Bee2" type="Sprite2D" parent="SceneNode"]
+unique_name_in_owner = true
+position = Vector2(842, 76)
+texture = ExtResource("2_8dh13")
+flip_h = true
+
+[node name="Flower" parent="SceneNode" instance=ExtResource("3_ooxj4")]
+position = Vector2(96, 138)
+
+[node name="Flower2" parent="SceneNode" instance=ExtResource("3_ooxj4")]
+position = Vector2(320, 337)
+
+[node name="Flower3" parent="SceneNode" instance=ExtResource("3_ooxj4")]
+position = Vector2(1079, 129)
+
+[node name="Flower4" parent="SceneNode" instance=ExtResource("3_ooxj4")]
+position = Vector2(1223, 453)
+
+[node name="Flower5" parent="SceneNode" instance=ExtResource("3_ooxj4")]
+position = Vector2(1076, 626)
+
+[node name="Flower6" parent="SceneNode" instance=ExtResource("3_ooxj4")]
+position = Vector2(288, 669)
+
+[node name="Flower7" parent="SceneNode" instance=ExtResource("3_ooxj4")]
+position = Vector2(45, 476)
+
+[node name="Tree1" parent="SceneNode" instance=ExtResource("4_8ksnm")]
+position = Vector2(184, 319)
+
+[node name="Tree3" parent="SceneNode" instance=ExtResource("5_b8j5p")]
+position = Vector2(1056, 468)
+
+[node name="Tree4" parent="SceneNode" instance=ExtResource("6_5f8pu")]
+position = Vector2(118, 779)
+
+[node name="Beehive" type="Sprite2D" parent="SceneNode"]
+position = Vector2(235, 384)
+texture = ExtResource("7_k3nit")
+
+[node name="HiveUpgrade" type="Sprite2D" parent="SceneNode"]
+position = Vector2(955, 580)
+texture = ExtResource("8_u5nhv")
+
+[node name="DirtPathLongH" type="Sprite2D" parent="SceneNode"]
+position = Vector2(117, 531)
+texture = ExtResource("9_dikal")
+
+[node name="Flower8" type="Sprite2D" parent="SceneNode"]
+position = Vector2(112, 328)
+texture = ExtResource("10_d888s")
+
+[node name="Flower9" type="Sprite2D" parent="SceneNode"]
+position = Vector2(140, 359)
+texture = ExtResource("11_n0wsh")
+
+[node name="Flower10" type="Sprite2D" parent="SceneNode"]
+position = Vector2(945, 441)
+texture = ExtResource("12_ppp4b")
+
+[node name="Flower11" type="Sprite2D" parent="SceneNode"]
+position = Vector2(970, 464)
+texture = ExtResource("10_d888s")
+
+[node name="Flower1" type="Sprite2D" parent="SceneNode"]
+position = Vector2(916, 453)
+texture = ExtResource("13_pidy4")
+
+[node name="Flower12" type="Sprite2D" parent="SceneNode"]
+position = Vector2(1172, 483)
+texture = ExtResource("14_qucsj")
+
+[node name="DirtRound1" type="Sprite2D" parent="SceneNode"]
+position = Vector2(1229, 696)
+texture = ExtResource("15_knko3")
+
+[node name="DirtPathShortV" type="Sprite2D" parent="SceneNode"]
+position = Vector2(337, -19)
+texture = ExtResource("19_n0wsh")
+
+[node name="CreditsBG" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.0
+offset_top = -252.5
+offset_right = 236.0
+offset_bottom = 252.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_vvcte")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsBG/MarginContainer"]
+layout_mode = 2
+
+[node name="CreditsContent" type="RichTextLabel" parent="CreditsBG/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[b][font_size=24]Our Team[/font_size][/b]
+
+[font_size=12]Development, Game Design[/font_size]
+[b]Captain_Onosa[/b]
+[url]https://www.twitch.tv/captain_onosa[/url]
+[url]https://mronosa.itch.io/[/url]
+
+[font_size=12]Art, Development, SFX[/font_size]
+[b]TheAverageGoob[/b]
+[url]https://averagegamestudio.com/[/url]
+
+[font_size=12]Development[/font_size]
+[b]DeltaV[/b]
+[url]https://deltav0.itch.io/[/url]
+
+[b][font_size=24]Others[/font_size][/b]
+[b]CalmFrantix:[/b] Name idea - YouHadMeadAtHello
+
+[b][font_size=24]Resources[/font_size][/b]
+[url=https://www.dafont.com/sunset-friday.font]Sunset Friday Font[/url]
+[url=https://www.dafont.com/free-royalty.font]Free Royalty Font[/url]
+[url=https://godotshaders.com/shader/2d-wind-sway/]Godot Shaders[/url]
+
+[b][font_size=24]Special Thanks[/font_size][/b]
+[url=https://itch.io/jam/jern-jam-2025]Jern Jam Hosts[/url]"
+horizontal_alignment = 1
+
+[node name="CreditTitleBG" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -291.0
+offset_right = 162.0
+offset_bottom = -198.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_vvcte")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="CreditLabel" type="Label" parent="CreditTitleBG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Credits"
+label_settings = ExtResource("4_8dh13")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 491.00003
+offset_top = 600.0
+offset_right = 963.0
+offset_bottom = 787.0
+scale = Vector2(0.67138535, 0.67138535)
+texture_normal = ExtResource("5_slh74")
+texture_hover = ExtResource("6_av73v")
+
+[node name="Label" type="Label" parent="TitleButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.5
+offset_top = -29.0
+offset_right = 74.5
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "To Title"
+label_settings = ExtResource("7_a5k2i")
+horizontal_alignment = 1
+vertical_alignment = 1
