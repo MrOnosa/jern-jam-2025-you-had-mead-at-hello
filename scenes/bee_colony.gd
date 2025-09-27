@@ -1,12 +1,14 @@
 class_name BeeColony
 extends StaticBody2D
 
-@onready var jar_1_texture_progress_bar = %Jar1TextureProgressBar
-@onready var jar_2_texture_progress_bar = %Jar2TextureProgressBar
-@onready var jar_3_texture_progress_bar = %Jar3TextureProgressBar
-@onready var jar_4_texture_progress_bar = %Jar4TextureProgressBar
-@onready var jar_5_texture_progress_bar = %Jar5TextureProgressBar
-@onready var jar_6_texture_progress_bar = %Jar6TextureProgressBar
+@onready var honeycomb_texture_progress_bar_1: TextureProgressBar = %HoneycombTextureProgressBar1
+@onready var honeycomb_texture_progress_bar_2: TextureProgressBar = %HoneycombTextureProgressBar2
+@onready var honeycomb_texture_progress_bar_3: TextureProgressBar = %HoneycombTextureProgressBar3
+@onready var honeycomb_texture_progress_bar_4: TextureProgressBar = %HoneycombTextureProgressBar4
+@onready var honeycomb_texture_progress_bar_5: TextureProgressBar = %HoneycombTextureProgressBar5
+@onready var honeycomb_texture_progress_bar_6: TextureProgressBar = %HoneycombTextureProgressBar6
+
+
 @onready var action_button: TextureButton = $ActionButton
 @onready var info_panel: TextureRect = $InfoPanel
 
@@ -45,21 +47,21 @@ func _process(delta: float) -> void:
 	$InfoPanel/StarvingLabel.visible = is_starving
 	
 	# Fill each jar with honey			
-	jar_1_texture_progress_bar.value = calc_jar_percent(0)
-	jar_2_texture_progress_bar.value = calc_jar_percent(1)
-	jar_2_texture_progress_bar.modulate = Color.WHITE if jar_2_texture_progress_bar.value > 0 else Color.TRANSPARENT
+	honeycomb_texture_progress_bar_1.value = calc_jar_percent(0)
+	honeycomb_texture_progress_bar_2.value = calc_jar_percent(1)
+	honeycomb_texture_progress_bar_2.modulate = Color.WHITE if honeycomb_texture_progress_bar_2.value > 0 else Color.TRANSPARENT
 	
-	jar_3_texture_progress_bar.value = calc_jar_percent(2)
-	jar_3_texture_progress_bar.modulate = Color.WHITE if jar_3_texture_progress_bar.value > 0 else Color.TRANSPARENT
+	honeycomb_texture_progress_bar_3.value = calc_jar_percent(2)
+	honeycomb_texture_progress_bar_3.modulate = Color.WHITE if honeycomb_texture_progress_bar_3.value > 0 else Color.TRANSPARENT
 	
-	jar_4_texture_progress_bar.value = calc_jar_percent(3)
-	jar_4_texture_progress_bar.modulate = Color.WHITE if jar_4_texture_progress_bar.value > 0 else Color.TRANSPARENT
+	honeycomb_texture_progress_bar_4.value = calc_jar_percent(3)
+	honeycomb_texture_progress_bar_4.modulate = Color.WHITE if honeycomb_texture_progress_bar_4.value > 0 else Color.TRANSPARENT
 	
-	jar_5_texture_progress_bar.value = calc_jar_percent(4)
-	jar_5_texture_progress_bar.modulate = Color.WHITE if jar_5_texture_progress_bar.value > 0 else Color.TRANSPARENT
+	honeycomb_texture_progress_bar_5.value = calc_jar_percent(4)
+	honeycomb_texture_progress_bar_5.modulate = Color.WHITE if honeycomb_texture_progress_bar_5.value > 0 else Color.TRANSPARENT
 	
-	jar_6_texture_progress_bar.value = calc_jar_percent(5)
-	jar_6_texture_progress_bar.modulate = Color.WHITE if jar_6_texture_progress_bar.value > 0 else Color.TRANSPARENT
+	honeycomb_texture_progress_bar_6.value = calc_jar_percent(5)
+	honeycomb_texture_progress_bar_6.modulate = Color.WHITE if honeycomb_texture_progress_bar_6.value > 0 else Color.TRANSPARENT
 	
 	if player_nearby != null:
 		info_panel.show()

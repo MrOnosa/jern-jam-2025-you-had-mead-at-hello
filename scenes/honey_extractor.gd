@@ -81,9 +81,9 @@ func _process(delta: float) -> void:
 	if player_nearby != null:
 		info_panel.show()
 		if player_nearby.holding == BeeKeeper.Holding.HONEYCOMB_HIGH \
-		&& honeycombs <= 2.0 \
-		&& honey_jars + honeycombs <= 2.0  \
-		&& beeswax + honeycombs <= 2.0 :
+		&& honeycombs <= 2.01 \
+		&& honey_jars + honeycombs <= 2.01  \
+		&& beeswax + honeycombs <= 2.01 : #For some reason, comparing to 2.0 runs in to issues
 			honeycomb_action_button.show()
 		else:
 			honeycomb_action_button.hide()

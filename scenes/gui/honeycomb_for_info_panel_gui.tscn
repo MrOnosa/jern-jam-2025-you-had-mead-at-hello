@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://cncss4go8dud1"]
 
-[ext_resource type="Texture2D" uid="uid://cvht74dewnwqc" path="res://assets/placeholder/honeycomb.png" id="1_6abu2"]
+[ext_resource type="Texture2D" uid="uid://d2763oni7e3cl" path="res://assets/honeycomb.png" id="1_6abu2"]
 
 [node name="HoneycombTextureProgressBar" type="TextureProgressBar"]
-offset_right = 36.0
-offset_bottom = 55.0
+offset_right = 51.0
+offset_bottom = 49.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 value = 100.0

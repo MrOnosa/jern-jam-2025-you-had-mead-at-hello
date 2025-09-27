@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://vfm1p832dp0b" path="res://assets/gui/button_1_hover.png" id="4_64qp5"]
 [ext_resource type="LabelSettings" uid="uid://cn1rdmmbnmsu3" path="res://assets/gui/button_font.tres" id="5_flwcb"]
 [ext_resource type="Texture2D" uid="uid://da6cpijlphj45" path="res://assets/gui/panel_bg.png" id="6_64qp5"]
+[ext_resource type="PackedScene" uid="uid://cncss4go8dud1" path="res://scenes/gui/honeycomb_for_info_panel_gui.tscn" id="6_713g0"]
 [ext_resource type="FontFile" uid="uid://b7vkyxnsa7dol" path="res://assets/fonts/Sunset Friday.otf" id="7_flwcb"]
-[ext_resource type="PackedScene" uid="uid://bdc0ihum5w7nc" path="res://scenes/gui/jar_for_info_panel_gui.tscn" id="8_713g0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dwbse"]
 radius = 41.003048
@@ -117,10 +117,10 @@ vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InfoPanel"]
 layout_mode = 0
-offset_left = 132.0
-offset_top = 162.0
-offset_right = 454.84576
-offset_bottom = 434.0
+offset_left = 68.0
+offset_top = 196.0
+offset_right = 514.0
+offset_bottom = 468.0
 theme_override_constants/separation = 11
 
 [node name="TopHBoxContainer" type="HBoxContainer" parent="InfoPanel/VBoxContainer"]
@@ -128,15 +128,15 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 26
 
-[node name="Jar1TextureProgressBar" parent="InfoPanel/VBoxContainer/TopHBoxContainer" instance=ExtResource("8_713g0")]
+[node name="HoneycombTextureProgressBar1" parent="InfoPanel/VBoxContainer/TopHBoxContainer" instance=ExtResource("6_713g0")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Jar2TextureProgressBar" parent="InfoPanel/VBoxContainer/TopHBoxContainer" instance=ExtResource("8_713g0")]
+[node name="HoneycombTextureProgressBar2" parent="InfoPanel/VBoxContainer/TopHBoxContainer" instance=ExtResource("6_713g0")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Jar3TextureProgressBar" parent="InfoPanel/VBoxContainer/TopHBoxContainer" instance=ExtResource("8_713g0")]
+[node name="HoneycombTextureProgressBar3" parent="InfoPanel/VBoxContainer/TopHBoxContainer" instance=ExtResource("6_713g0")]
 unique_name_in_owner = true
 layout_mode = 2
 
@@ -145,15 +145,15 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 26
 
-[node name="Jar4TextureProgressBar" parent="InfoPanel/VBoxContainer/BottomHBoxContainer" instance=ExtResource("8_713g0")]
+[node name="HoneycombTextureProgressBar4" parent="InfoPanel/VBoxContainer/BottomHBoxContainer" instance=ExtResource("6_713g0")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Jar5TextureProgressBar" parent="InfoPanel/VBoxContainer/BottomHBoxContainer" instance=ExtResource("8_713g0")]
+[node name="HoneycombTextureProgressBar5" parent="InfoPanel/VBoxContainer/BottomHBoxContainer" instance=ExtResource("6_713g0")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Jar6TextureProgressBar" parent="InfoPanel/VBoxContainer/BottomHBoxContainer" instance=ExtResource("8_713g0")]
+[node name="HoneycombTextureProgressBar6" parent="InfoPanel/VBoxContainer/BottomHBoxContainer" instance=ExtResource("6_713g0")]
 unique_name_in_owner = true
 layout_mode = 2
 

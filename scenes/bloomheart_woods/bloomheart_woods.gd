@@ -70,7 +70,7 @@ func _process(delta: float) -> void:
 							var bee_colony = BEE_COLONY.instantiate() as BeeColony
 							bee_colony.position = drag_and_drop_item.position
 							bee_colony.total_bees = 8000
-							bee_colony.raw_honey_produced = bee_colony.raw_honey_needed_for_a_jar - 0.1
+							bee_colony.raw_honey_produced = bee_colony.raw_honey_needed_for_a_jar / 2.2
 							bee_colony.max_population = 20000
 							bee_colony.max_raw_honey_capacity = bee_colony.raw_honey_needed_for_a_jar * 2
 							bee_colony.honey_collected.connect(bee_keeper._on_bee_colony_honey_collected)
@@ -80,7 +80,7 @@ func _process(delta: float) -> void:
 							var bee_colony = MAN_MADE_BEE_COLONY.instantiate() as BeeColony
 							bee_colony.position = drag_and_drop_item.position
 							bee_colony.total_bees = 8000
-							bee_colony.raw_honey_produced = bee_colony.raw_honey_needed_for_a_jar - 0.1
+							bee_colony.raw_honey_produced = bee_colony.raw_honey_needed_for_a_jar / 2.2
 							bee_colony.max_population = 80000
 							bee_colony.max_raw_honey_capacity = bee_colony.raw_honey_needed_for_a_jar * 6
 							bee_colony.honey_collected.connect(bee_keeper._on_bee_colony_honey_collected)
