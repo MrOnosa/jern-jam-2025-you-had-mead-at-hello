@@ -1,0 +1,427 @@
+[gd_scene load_steps=27 format=3 uid="uid://c13da2cx7ddft"]
+
+[ext_resource type="Script" uid="uid://cwxt6ujfee6i3" path="res://scenes/options_scene/options_scene.gd" id="1_3qqxf"]
+[ext_resource type="Texture2D" uid="uid://dmnihv382ty1d" path="res://assets/ground_texture.png" id="1_n8gmn"]
+[ext_resource type="Texture2D" uid="uid://4w4r42ko28ls" path="res://assets/gui/gui_background.png" id="2_0yv4e"]
+[ext_resource type="Texture2D" uid="uid://cd6qskc3e2xwn" path="res://assets/Level Decoration/dirt_path_long_v.png" id="2_n7i35"]
+[ext_resource type="PackedScene" uid="uid://bcmis3rujwpjh" path="res://scenes/level_decoration/tree_1.tscn" id="3_3qqxf"]
+[ext_resource type="FontFile" uid="uid://b7vkyxnsa7dol" path="res://assets/fonts/Sunset Friday.otf" id="3_j1tue"]
+[ext_resource type="PackedScene" uid="uid://dtj1332ycu3b1" path="res://scenes/level_decoration/tree_3.tscn" id="4_bvnfk"]
+[ext_resource type="LabelSettings" uid="uid://dq0c6lirq23a0" path="res://assets/fonts/heading_label.tres" id="4_db2qe"]
+[ext_resource type="Texture2D" uid="uid://ctxq4r0wwlfnk" path="res://assets/gui/check_icon.png" id="4_s62bn"]
+[ext_resource type="PackedScene" uid="uid://y6ulpn24oveh" path="res://scenes/level_decoration/tree_4.tscn" id="5_ckwkc"]
+[ext_resource type="Texture2D" uid="uid://cn2o0d8uq31x7" path="res://assets/gui/check_icon_empty.png" id="5_hyxau"]
+[ext_resource type="Texture2D" uid="uid://by5l62r3qn7fj" path="res://assets/gui/check_icon_disabled.png" id="6_botvg"]
+[ext_resource type="PackedScene" uid="uid://ds4fwqgr0foma" path="res://scenes/level_decoration/bush_2.tscn" id="6_ymvci"]
+[ext_resource type="PackedScene" uid="uid://br8hxs6xyd0mu" path="res://scenes/level_decoration/bush_4.tscn" id="7_prq3x"]
+[ext_resource type="Texture2D" uid="uid://b7017a0fw0o23" path="res://assets/gui/check_icon_empty_disabled.png" id="7_yin4q"]
+[ext_resource type="PackedScene" uid="uid://b7rtim3q5xhms" path="res://scenes/flower.tscn" id="8_0kseq"]
+[ext_resource type="Texture2D" uid="uid://cjfnnifd04cfb" path="res://assets/Level Decoration/flower_2.png" id="9_ennc1"]
+[ext_resource type="Texture2D" uid="uid://dogtp5dbjim3t" path="res://assets/gui/button_1.png" id="9_yin4q"]
+[ext_resource type="Texture2D" uid="uid://c1xw674f3h8pv" path="res://assets/Level Decoration/flower_3.png" id="10_ivf12"]
+[ext_resource type="Texture2D" uid="uid://vfm1p832dp0b" path="res://assets/gui/button_1_hover.png" id="10_jmnaw"]
+[ext_resource type="Texture2D" uid="uid://bwapus8sj03rl" path="res://assets/Level Decoration/flower_5.png" id="11_fs2wx"]
+[ext_resource type="LabelSettings" uid="uid://cn1rdmmbnmsu3" path="res://assets/gui/button_font.tres" id="11_txpoe"]
+[ext_resource type="Texture2D" uid="uid://bd8chkxgjblgq" path="res://assets/bee.png" id="12_mxkg8"]
+[ext_resource type="Texture2D" uid="uid://d2chyn8tlqyat" path="res://assets/beehive.png" id="13_3m84r"]
+[ext_resource type="Theme" uid="uid://bprhvkas7epw0" path="res://scenes/options_scene/volume_slider_theme.tres" id="17_bvnfk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yin4q"]
+
+[node name="OptionsScene" type="Control" groups=["gui_options"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3qqxf")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_n8gmn")
+stretch_mode = 1
+
+[node name="Scene" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="DirtPathLongV" type="Sprite2D" parent="Scene"]
+position = Vector2(183, -51)
+texture = ExtResource("2_n7i35")
+
+[node name="Tree1" parent="Scene" instance=ExtResource("3_3qqxf")]
+position = Vector2(310, 329)
+
+[node name="Tree2" parent="Scene" instance=ExtResource("3_3qqxf")]
+position = Vector2(959, 687)
+
+[node name="Tree3" parent="Scene" instance=ExtResource("4_bvnfk")]
+position = Vector2(81, 575)
+
+[node name="Tree4" parent="Scene" instance=ExtResource("4_bvnfk")]
+position = Vector2(216, 741)
+
+[node name="Tree5" parent="Scene" instance=ExtResource("4_bvnfk")]
+position = Vector2(37, 803)
+
+[node name="Tree6" parent="Scene" instance=ExtResource("5_ckwkc")]
+position = Vector2(1257, 194)
+
+[node name="Tree7" parent="Scene" instance=ExtResource("5_ckwkc")]
+position = Vector2(1093, 215)
+
+[node name="Tree8" parent="Scene" instance=ExtResource("5_ckwkc")]
+position = Vector2(1238, 337)
+
+[node name="Bush2" parent="Scene" instance=ExtResource("6_ymvci")]
+position = Vector2(68, 114)
+
+[node name="Bush3" parent="Scene" instance=ExtResource("6_ymvci")]
+position = Vector2(6, 147)
+
+[node name="Bush4" parent="Scene" instance=ExtResource("7_prq3x")]
+position = Vector2(921, 709)
+
+[node name="Bush5" parent="Scene" instance=ExtResource("7_prq3x")]
+position = Vector2(985, 657)
+
+[node name="Bush6" parent="Scene" instance=ExtResource("7_prq3x")]
+position = Vector2(1018, 698)
+
+[node name="Bush7" parent="Scene" instance=ExtResource("7_prq3x")]
+position = Vector2(1138, 497)
+
+[node name="Flower" parent="Scene" instance=ExtResource("8_0kseq")]
+position = Vector2(81, 172)
+
+[node name="Flower2" parent="Scene" instance=ExtResource("8_0kseq")]
+position = Vector2(223, 349)
+
+[node name="Flower3" parent="Scene" instance=ExtResource("8_0kseq")]
+position = Vector2(362, 432)
+
+[node name="Flower4" parent="Scene" instance=ExtResource("8_0kseq")]
+position = Vector2(364, 637)
+
+[node name="Flower5" parent="Scene" instance=ExtResource("8_0kseq")]
+position = Vector2(1178, 677)
+
+[node name="Flower6" parent="Scene" instance=ExtResource("8_0kseq")]
+position = Vector2(1093, 601)
+
+[node name="Flower7" parent="Scene" instance=ExtResource("8_0kseq")]
+position = Vector2(1188, 539)
+
+[node name="Flower8" parent="Scene" instance=ExtResource("8_0kseq")]
+position = Vector2(1169, 364)
+
+[node name="Flower9" parent="Scene" instance=ExtResource("8_0kseq")]
+position = Vector2(1072, 311)
+
+[node name="Flower10" parent="Scene" instance=ExtResource("8_0kseq")]
+position = Vector2(908, 102)
+
+[node name="Flower11" parent="Scene" instance=ExtResource("8_0kseq")]
+position = Vector2(928, 292)
+
+[node name="Flower12" type="Sprite2D" parent="Scene"]
+position = Vector2(326, 647)
+texture = ExtResource("9_ennc1")
+
+[node name="Flower13" type="Sprite2D" parent="Scene"]
+position = Vector2(346, 665)
+texture = ExtResource("10_ivf12")
+
+[node name="Flower14" type="Sprite2D" parent="Scene"]
+position = Vector2(402, 664)
+texture = ExtResource("9_ennc1")
+
+[node name="Flower15" type="Sprite2D" parent="Scene"]
+position = Vector2(263, 369)
+texture = ExtResource("10_ivf12")
+
+[node name="Flower16" type="Sprite2D" parent="Scene"]
+position = Vector2(292, 413)
+texture = ExtResource("9_ennc1")
+
+[node name="Flower17" type="Sprite2D" parent="Scene"]
+position = Vector2(33, 183)
+texture = ExtResource("11_fs2wx")
+
+[node name="Flower18" type="Sprite2D" parent="Scene"]
+position = Vector2(112, 198)
+texture = ExtResource("11_fs2wx")
+
+[node name="Flower19" type="Sprite2D" parent="Scene"]
+position = Vector2(1099, 346)
+texture = ExtResource("10_ivf12")
+
+[node name="Flower20" type="Sprite2D" parent="Scene"]
+position = Vector2(1040, 316)
+texture = ExtResource("10_ivf12")
+
+[node name="Flower21" type="Sprite2D" parent="Scene"]
+position = Vector2(1069, 351)
+texture = ExtResource("9_ennc1")
+
+[node name="Flower22" type="Sprite2D" parent="Scene"]
+position = Vector2(990, 319)
+texture = ExtResource("10_ivf12")
+
+[node name="Flower23" type="Sprite2D" parent="Scene"]
+position = Vector2(1025, 343)
+texture = ExtResource("9_ennc1")
+
+[node name="Flower24" type="Sprite2D" parent="Scene"]
+position = Vector2(1007, 281)
+texture = ExtResource("9_ennc1")
+
+[node name="Bee" type="Sprite2D" parent="Scene"]
+position = Vector2(435, 54)
+texture = ExtResource("12_mxkg8")
+
+[node name="Bee2" type="Sprite2D" parent="Scene"]
+position = Vector2(151, 231)
+texture = ExtResource("12_mxkg8")
+
+[node name="Bee3" type="Sprite2D" parent="Scene"]
+position = Vector2(828, 651)
+texture = ExtResource("12_mxkg8")
+flip_h = true
+
+[node name="Bee4" type="Sprite2D" parent="Scene"]
+position = Vector2(914, 344)
+texture = ExtResource("12_mxkg8")
+flip_h = true
+
+[node name="Beehive" type="Sprite2D" parent="Scene"]
+position = Vector2(1060, 384)
+texture = ExtResource("13_3m84r")
+
+[node name="OptionsBG" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.0
+offset_top = -241.5
+offset_right = 236.0
+offset_bottom = 263.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0yv4e")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="OptionsVbox" type="VBoxContainer" parent="OptionsBG/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="AudioSettingContainer" type="VBoxContainer" parent="OptionsBG/MarginContainer/OptionsVbox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AudioTitleLabel" type="Label" parent="OptionsBG/MarginContainer/OptionsVbox/AudioSettingContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_j1tue")
+theme_override_font_sizes/font_size = 30
+text = "Audio Settings"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsBG/MarginContainer/OptionsVbox/AudioSettingContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="OptionsBG/MarginContainer/OptionsVbox/AudioSettingContainer/HBoxContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_j1tue")
+theme_override_font_sizes/font_size = 22
+text = "Primary Volume"
+
+[node name="PrimaryVolume" type="HSlider" parent="OptionsBG/MarginContainer/OptionsVbox/AudioSettingContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("17_bvnfk")
+max_value = 1.0
+step = 0.05
+
+[node name="PrimaryValueLabel" type="Label" parent="OptionsBG/MarginContainer/OptionsVbox/AudioSettingContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_j1tue")
+theme_override_font_sizes/font_size = 16
+text = "(50%)"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="OptionsBG/MarginContainer/OptionsVbox/AudioSettingContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="OptionsBG/MarginContainer/OptionsVbox/AudioSettingContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_j1tue")
+theme_override_font_sizes/font_size = 22
+text = "Music Volume"
+
+[node name="MusicVolume" type="HSlider" parent="OptionsBG/MarginContainer/OptionsVbox/AudioSettingContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("17_bvnfk")
+max_value = 1.0
+step = 0.05
+
+[node name="MusicValueLabel" type="Label" parent="OptionsBG/MarginContainer/OptionsVbox/AudioSettingContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_j1tue")
+theme_override_font_sizes/font_size = 16
+text = "(50%)"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="OptionsBG/MarginContainer/OptionsVbox/AudioSettingContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="OptionsBG/MarginContainer/OptionsVbox/AudioSettingContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_j1tue")
+theme_override_font_sizes/font_size = 22
+text = "SFX Volume"
+
+[node name="SFXVolume" type="HSlider" parent="OptionsBG/MarginContainer/OptionsVbox/AudioSettingContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("17_bvnfk")
+max_value = 1.0
+step = 0.05
+
+[node name="SFXValueLabel" type="Label" parent="OptionsBG/MarginContainer/OptionsVbox/AudioSettingContainer/HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_j1tue")
+theme_override_font_sizes/font_size = 16
+text = "(50%)"
+
+[node name="GameSettingsContainer" type="VBoxContainer" parent="OptionsBG/MarginContainer/OptionsVbox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="GameLabel" type="Label" parent="OptionsBG/MarginContainer/OptionsVbox/GameSettingsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_j1tue")
+theme_override_font_sizes/font_size = 30
+text = "Game Settings"
+
+[node name="SandboxCheck" type="CheckBox" parent="OptionsBG/MarginContainer/OptionsVbox/GameSettingsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/h_separation = 10
+theme_override_fonts/font = ExtResource("3_j1tue")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yin4q")
+theme_override_icons/checked = ExtResource("4_s62bn")
+theme_override_icons/unchecked = ExtResource("5_hyxau")
+theme_override_icons/checked_disabled = ExtResource("6_botvg")
+theme_override_icons/unchecked_disabled = ExtResource("7_yin4q")
+text = "Sandbox Mode"
+
+[node name="OptionsTitleBG" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -280.0
+offset_right = 162.0
+offset_bottom = -187.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0yv4e")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="OptionsLabel" type="Label" parent="OptionsTitleBG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+label_settings = ExtResource("4_db2qe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 486.0
+offset_top = 558.0
+offset_right = 958.0
+offset_bottom = 745.0
+scale = Vector2(0.67138535, 0.67138535)
+texture_normal = ExtResource("9_yin4q")
+texture_hover = ExtResource("10_jmnaw")
+
+[node name="Label" type="Label" parent="TitleButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.5
+offset_top = -29.0
+offset_right = 74.5
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Save & Exit"
+label_settings = ExtResource("11_txpoe")
+horizontal_alignment = 1
+vertical_alignment = 1
