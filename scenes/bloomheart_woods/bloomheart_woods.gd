@@ -16,6 +16,7 @@ const BUCKET = preload("uid://ckqo82apihh50")
 signal on_player_dragging_started
 signal on_player_dragging_ended
 
+@onready var hud: CanvasLayer = %HUD
 @onready var cash_amount_label: Label = $HUD/NinePatchRect/VBoxContainer/HBoxContainer/CashAmountLabel
 @onready var bee_keeper: BeeKeeper = $BeeKeeper
 @onready var panel_container: NinePatchRect = $HUD/NinePatchRect
@@ -25,7 +26,6 @@ signal on_player_dragging_ended
 @onready var bucket_button: TextureButton = $HUD/NinePatchRect/VBoxContainer/BucketButton
 @onready var more_info_patch_rect: NinePatchRect = $HUD/MoreInfoPatchRect
 @onready var rich_text_label: RichTextLabel = $HUD/MoreInfoPatchRect/MarginContainer/VBoxContainer/RichTextLabel
-
 
 @onready var sell_box: StaticBody2D = $Interactables/SellBox
 @onready var ground: TextureRect = $GroundArea/Ground
@@ -51,7 +51,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	cash_amount_label.text = str("$", Utility.add_commas_to_number(cash))
+	if Utility.sandbox_enabled:
+		cash_amount_label.text = str("$$∞")
+	else:
+		cash_amount_label.text = str("$", Utility.add_commas_to_number(cash))
 	
 	if drag_and_drop_item_type != Utility.Draggable_Items.VOID:
 		more_info_patch_rect.visible = true
@@ -63,13 +66,14 @@ func _process(delta: float) -> void:
 		drag_and_drop_item.position = drag_and_drop_item.get_parent().get_local_mouse_position()
 		drag_and_drop_item.modulate = Color.WHITE
 		var any_collisions : bool = false
+		var too_expensive : bool = false
 		if drag_and_drop_item.position.x > (ground.size.x-300) || drag_and_drop_item.position.y > (ground.size.y-70):
 			any_collisions = true
 			drag_and_drop_item.modulate = Color.INDIAN_RED
 		if !mouse_is_over_HUD:
 			# Can they even afford this thing?
 			if Utility.draggable_items_dictionary()[drag_and_drop_item_type]["Cost"] > cash:
-				any_collisions = true
+				too_expensive = true
 				
 			var all_the_things = get_tree().get_nodes_in_group("too_close_bubble") as Array[Area2D]
 			for b in all_the_things:
@@ -83,6 +87,11 @@ func _process(delta: float) -> void:
 				# Check if the space is free				
 				if any_collisions:
 					#todo - Sfx that goes AANT!
+					hud.toast(str("Not enough room there"))
+					pass
+				elif too_expensive && !Utility.sandbox_enabled:
+					#todo - Sfx that goes AANT!					
+					hud.toast(str("Need more cash \n", Utility.draggable_items_dictionary()[drag_and_drop_item_type]["Name"], " costs $", Utility.draggable_items_dictionary()[drag_and_drop_item_type]["Cost"]))
 					pass
 				else:
 					# instantiate the item and deduct the cost from your cash
@@ -118,7 +127,9 @@ func _process(delta: float) -> void:
 							add_child(bee_colony)					
 						_:
 							printerr("Huh?", drag_and_drop_item_type)
-					cash -= Utility.draggable_items_dictionary()[drag_and_drop_item_type]["Cost"]
+					
+					if !Utility.sandbox_enabled:
+						cash -= Utility.draggable_items_dictionary()[drag_and_drop_item_type]["Cost"]
 					
 			drag_and_drop_item_type = Utility.Draggable_Items.VOID
 			# Always clear this even if they are still over the hud.
@@ -134,9 +145,8 @@ func _on_bee_colony_spawn_bee(home_hive: BeeColony) -> void:
 
 
 func _on_sell_box_placed(item_name: String, value: int) -> void:
-	print(str("Sold! ", item_name," for ", value))
+	hud.toast(str("Sold! ", item_name," for $", value))
 	cash += value
-	
 
 
 # GUI 
@@ -169,8 +179,10 @@ func _on_bucket_button_pressed() -> void:
 	on_player_dragging_started.emit()
 
 func _build_more_info_rich_text(info: Dictionary) -> String:
-	var cost_text: String = str("Cost [b]", info["Cost"], "[/b]")
-	if info["Cost"] > cash:
+	var cost_text: String = str("Cost [b]$", info["Cost"], "[/b]")
+	if Utility.sandbox_enabled:
+		cost_text = str("Cost $[s]",info["Cost"],"[/s] Free - Sandbox Mode")	
+	elif info["Cost"] > cash:
 		cost_text = str(" [bgcolor=DB0000] ",cost_text," [/bgcolor] - Too expensive!")
 	else:
 		cost_text = str(" [bgcolor=288700] ",cost_text," [/bgcolor]")		

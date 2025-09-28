@@ -57,6 +57,7 @@ script = ExtResource("1_be4b0")
 cash = 1000
 
 [node name="HUD" parent="." instance=ExtResource("1_t832r")]
+unique_name_in_owner = true
 
 [node name="CloudShadows" type="CPUParticles2D" parent="HUD"]
 z_index = 75
