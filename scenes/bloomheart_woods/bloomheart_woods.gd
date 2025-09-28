@@ -26,6 +26,7 @@ signal on_player_dragging_ended
 @onready var bucket_button: TextureButton = $HUD/NinePatchRect/VBoxContainer/BucketButton
 @onready var more_info_patch_rect: NinePatchRect = $HUD/MoreInfoPatchRect
 @onready var rich_text_label: RichTextLabel = $HUD/MoreInfoPatchRect/MarginContainer/VBoxContainer/RichTextLabel
+@onready var player_center_marker_2d: Marker2D = $PlayerCenterMarker2D
 
 @onready var sell_box: StaticBody2D = $Interactables/SellBox
 @onready var ground: TextureRect = $GroundArea/Ground
@@ -145,6 +146,21 @@ func _process(delta: float) -> void:
 			drag_and_drop_item.queue_free()
 			on_player_dragging_ended.emit()
 		
+	# Sales Box indicator
+	player_center_marker_2d.global_position = bee_keeper.global_position
+	var sale_box_locations = get_tree().get_nodes_in_group("sell_box")
+	#	THIER CAN BE ONLY ONE
+	if sale_box_locations.size() > 0:
+		var angle_to_sales_box = player_center_marker_2d.global_position.angle_to_point(sale_box_locations[0].global_position)
+		player_center_marker_2d.rotation = angle_to_sales_box
+		if bee_keeper.holding != BeeKeeper.Holding.NOTHING && !sale_box_locations[0].visible_on_screen:
+			var tween = player_center_marker_2d.create_tween()
+			var new_position = Color("ffffff7f")
+			tween.tween_property(player_center_marker_2d, "modulate", new_position, 0.7)
+		else:
+			var tween = player_center_marker_2d.create_tween()
+			var new_position = Color.TRANSPARENT
+			tween.tween_property(player_center_marker_2d, "modulate", new_position, 0.7)
 		
 func _on_bee_colony_spawn_bee(home_hive: BeeColony) -> void:	
 	var bee : Bee = BEE.instantiate()

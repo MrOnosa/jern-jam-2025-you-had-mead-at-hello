@@ -7,6 +7,8 @@ const TOAST_LABLE = preload("uid://bn6h1et37uvkd")
 @onready var honey_extractor_button: TextureButton = %HoneyExtractorButton
 
 @onready var bucket_button: TextureButton = %BucketButton
+@onready var texture_progress_bar: TextureProgressBar = %TextureProgressBar
+
 
 
 var dragging : bool = false
@@ -14,12 +16,12 @@ var dragging : bool = false
 var placed_beehive : bool = false
 var placed_honey_extractor : bool = false
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	placed_beehive = Utility.sandbox_enabled
 	placed_honey_extractor = Utility.sandbox_enabled
 
+var tutorial_arrow_progress := 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:		
 	# Unlocked after placing a single beehive
@@ -29,6 +31,14 @@ func _process(delta: float) -> void:
 	# Unlocked after placing a single honey extractor
 	bucket_button.visible = placed_honey_extractor
 	
+	if !placed_beehive:
+		tutorial_arrow_progress += delta * 100.0
+		texture_progress_bar.value = min(100.0, tutorial_arrow_progress)
+		if tutorial_arrow_progress > 200:
+			tutorial_arrow_progress = 0
+	else:
+		texture_progress_bar.visible = false
+		
 
 func _input(event):
 	if dragging:

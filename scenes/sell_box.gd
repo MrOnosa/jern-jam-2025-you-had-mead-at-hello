@@ -3,6 +3,7 @@ extends StaticBody2D
 signal placed
 @onready var action_button: TextureButton = $ActionButton
 @onready var action_button_label: Label = %ActionButtonLabel
+var visible_on_screen : bool = true
 var player_nearby : BeeKeeper
 
 # Called when the node enters the scene tree for the first time.
@@ -49,3 +50,11 @@ func _on_action_button_pressed() -> void:
 			_:
 				placed.emit("???", 0)
 	pass # Replace with function body.
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	visible_on_screen = true
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	visible_on_screen = false

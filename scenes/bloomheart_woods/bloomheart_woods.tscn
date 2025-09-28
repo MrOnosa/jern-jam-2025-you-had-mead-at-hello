@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dq68pnmyoe7mc"]
+[gd_scene load_steps=40 format=3 uid="uid://dq68pnmyoe7mc"]
 
 [ext_resource type="Script" uid="uid://mqqion7wrlty" path="res://scenes/bloomheart_woods/bloomheart_woods.gd" id="1_be4b0"]
 [ext_resource type="Texture2D" uid="uid://dmnihv382ty1d" path="res://assets/ground_texture.png" id="1_bwr0l"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://c8mm26e11bevy" path="res://assets/Level Decoration/grass_2.png" id="17_hv86g"]
 [ext_resource type="Texture2D" uid="uid://ddq8v0vemum0" path="res://assets/Level Decoration/grass_3.png" id="18_y8ijm"]
 [ext_resource type="Texture2D" uid="uid://d0kxev5dluyyc" path="res://assets/Level Decoration/grass_4.png" id="19_va1an"]
+[ext_resource type="Texture2D" uid="uid://c0pe207hbkjet" path="res://assets/gui/gui_pointer.png" id="22_va1an"]
 [ext_resource type="PackedScene" uid="uid://b7rtim3q5xhms" path="res://scenes/flower.tscn" id="26_kyyel"]
 [ext_resource type="PackedScene" uid="uid://br8hxs6xyd0mu" path="res://scenes/level_decoration/bush_4.tscn" id="30_y8ijm"]
 
@@ -710,6 +711,17 @@ shape = SubResource("WorldBoundaryShape2D_0kbu6")
 
 [node name="BeeKeeper" parent="." instance=ExtResource("7_a72ot")]
 position = Vector2(3309, 1725)
+
+[node name="PlayerCenterMarker2D" type="Marker2D" parent="."]
+position = Vector2(3310, 1675)
+
+[node name="IndicatorMarker2D" type="Marker2D" parent="PlayerCenterMarker2D"]
+position = Vector2(212, 0)
+
+[node name="BeeColony" type="Sprite2D" parent="PlayerCenterMarker2D/IndicatorMarker2D"]
+position = Vector2(1, 1)
+rotation = 1.4922565
+texture = ExtResource("22_va1an")
 
 [node name="GoingTowardsThisPoint" type="Sprite2D" parent="."]
 unique_name_in_owner = true

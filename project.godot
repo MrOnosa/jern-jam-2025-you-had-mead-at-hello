@@ -39,6 +39,7 @@ bee_colony="ya know, for the bee colonies or bee hives or whatever"
 too_close_bubble="This is sure to have an interactive area so we can be sure not to place items on it"
 interactables=""
 gui_options=""
+sell_box="I know it's spell wrong but we're in too deep"
 
 [input]
 

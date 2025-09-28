@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtc7nf7jxt17u"]
+[gd_scene load_steps=12 format=3 uid="uid://dtc7nf7jxt17u"]
 
 [ext_resource type="Script" uid="uid://ca17mt7ncei3q" path="res://scenes/gui/hud.gd" id="1_2pnwd"]
 [ext_resource type="Texture2D" uid="uid://d2chyn8tlqyat" path="res://assets/beehive.png" id="1_86rft"]
@@ -6,6 +6,46 @@
 [ext_resource type="Texture2D" uid="uid://ddekt73u2v20e" path="res://assets/hive_upgrade.png" id="2_624ws"]
 [ext_resource type="Texture2D" uid="uid://chkcygvbewdof" path="res://assets/honey_extractor.png" id="3_qxonp"]
 [ext_resource type="Texture2D" uid="uid://bamwd6n8l2bsd" path="res://assets/bucket.png" id="4_ueg55"]
+[ext_resource type="Texture2D" uid="uid://clvwx3byc54lu" path="res://assets/gui/gui_tut_arrow.png" id="7_gbuxp"]
+[ext_resource type="PackedScene" uid="uid://bn6h1et37uvkd" path="res://scenes/gui/toast_lable.tscn" id="8_2b3sj"]
+
+[sub_resource type="Animation" id="Animation_2b3sj"]
+resource_name = "wiggle_tutorial_lable"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureProgressBar/ToastLable:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.12217305, -0.12217305, 0.12217305]
+}
+
+[sub_resource type="Animation" id="Animation_rmity"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureProgressBar/ToastLable:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.12217305]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q232d"]
+_data = {
+&"RESET": SubResource("Animation_rmity"),
+&"wiggle_tutorial_lable": SubResource("Animation_2b3sj")
+}
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_2pnwd")
@@ -88,6 +128,28 @@ mouse_default_cursor_shape = 2
 action_mode = 0
 texture_normal = ExtResource("4_ueg55")
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = 97.0
+offset_top = 70.0
+offset_right = 442.0
+offset_bottom = 198.0
+step = 0.01
+value = 100.0
+texture_progress = ExtResource("7_gbuxp")
+
+[node name="ToastLable" parent="TextureProgressBar" instance=ExtResource("8_2b3sj")]
+layout_mode = 1
+offset_left = -241.5
+offset_top = 48.0
+offset_right = 251.83337
+offset_bottom = 197.0
+rotation = 0.12217305
+pivot_offset = Vector2(252, 76)
+text = "Drag the beehive
+ to beign"
+metadata/_edit_use_anchors_ = true
+
 [node name="MoreInfoPatchRect" type="NinePatchRect" parent="."]
 unique_name_in_owner = true
 anchors_preset = -1
@@ -132,3 +194,9 @@ Cost [b]$300 [/b]
 [hr]
 [indent]A hand crafted beehive can hold a lot more bees. More bees means more honey. This comes with everything a beekeeper needs to grow their apiary.[/indent]"
 fit_content = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_q232d")
+}
+autoplay = "wiggle_tutorial_lable"

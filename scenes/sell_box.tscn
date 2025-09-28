@@ -18,7 +18,7 @@ height = 326.0
 font = ExtResource("4_47t8m")
 font_size = 14
 
-[node name="SellBox" type="StaticBody2D"]
+[node name="SellBox" type="StaticBody2D" groups=["sell_box"]]
 script = ExtResource("1_47t8m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -85,6 +85,10 @@ label_settings = SubResource("LabelSettings_e26ny")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
 [connection signal="body_entered" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_entered"]
 [connection signal="body_exited" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_exited"]
 [connection signal="pressed" from="ActionButton" to="." method="_on_action_button_pressed"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
