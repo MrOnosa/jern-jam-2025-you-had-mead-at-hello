@@ -88,6 +88,6 @@ func _on_workbench_placed() -> void:
 		holding = Holding.NOTHING		
 
 
-func _on_sell_box_placed() -> void:
+func _on_sell_box_placed(item, cost) -> void:
 	if holding != Holding.NOTHING:
 		holding = Holding.NOTHING

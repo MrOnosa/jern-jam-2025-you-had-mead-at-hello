@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtc7nf7jxt17u"]
+[gd_scene load_steps=7 format=3 uid="uid://dtc7nf7jxt17u"]
 
+[ext_resource type="Script" uid="uid://ca17mt7ncei3q" path="res://scenes/gui/hud.gd" id="1_2pnwd"]
 [ext_resource type="Texture2D" uid="uid://d2chyn8tlqyat" path="res://assets/beehive.png" id="1_86rft"]
 [ext_resource type="Texture2D" uid="uid://4w4r42ko28ls" path="res://assets/gui/gui_background.png" id="1_aoesn"]
 [ext_resource type="Texture2D" uid="uid://ddekt73u2v20e" path="res://assets/hive_upgrade.png" id="2_624ws"]
@@ -7,8 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://bamwd6n8l2bsd" path="res://assets/bucket.png" id="4_ueg55"]
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_2pnwd")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+unique_name_in_owner = true
 offset_left = -9.0
 offset_top = -10.0
 offset_right = 146.0
@@ -54,6 +57,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 1
+mouse_default_cursor_shape = 2
 action_mode = 0
 texture_normal = ExtResource("1_86rft")
 
@@ -62,6 +66,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 1
+mouse_default_cursor_shape = 2
 action_mode = 0
 texture_normal = ExtResource("2_624ws")
 
@@ -70,6 +75,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 1
+mouse_default_cursor_shape = 2
 action_mode = 0
 texture_normal = ExtResource("3_qxonp")
 
@@ -78,6 +84,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 1
+mouse_default_cursor_shape = 2
 action_mode = 0
 texture_normal = ExtResource("4_ueg55")
 
@@ -94,7 +101,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-mouse_filter = 0
+mouse_filter = 1
 texture = ExtResource("1_aoesn")
 patch_margin_left = 10
 patch_margin_top = 10

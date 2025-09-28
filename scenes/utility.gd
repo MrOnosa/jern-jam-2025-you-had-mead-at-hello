@@ -24,7 +24,6 @@ func draggable_items_dictionary() -> Dictionary[Draggable_Items, Dictionary]:
 		"Name": "Honey Extractor", 
 		"Cost": 200, 
 		"Text": "This machine extract raw honey and beeswax from from honeycombs. The honey and beeswax can be sold, or the honey can be processed further."
-
 		},
 	Draggable_Items.FOOD_GRADE_BUCKET: {
 		"Name": "Food Grade Bucket", 

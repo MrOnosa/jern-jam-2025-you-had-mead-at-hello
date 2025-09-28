@@ -1787,5 +1787,8 @@ y_sort_enabled = true
 [node name="SellBox" parent="Interactables" groups=["interactables"] instance=ExtResource("10_y41x7")]
 position = Vector2(2899, 1556)
 
+[connection signal="on_player_dragging_ended" from="." to="HUD" method="_on_bloomheart_woods_on_player_dragging_ended"]
+[connection signal="on_player_dragging_started" from="." to="HUD" method="_on_bloomheart_woods_on_player_dragging_started"]
+
 [editable path="HUD"]
 [editable path="TreesBushes/Tree2"]

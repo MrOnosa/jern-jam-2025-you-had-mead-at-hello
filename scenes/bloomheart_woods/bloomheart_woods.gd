@@ -13,6 +13,8 @@ const MAN_MADE_BEE_COLONY = preload("uid://crwo4bniwcg18")
 const HONEY_EXTRACTOR = preload("uid://cgbkpvg1ukgty")
 const BUCKET = preload("uid://ckqo82apihh50")
 
+signal on_player_dragging_started
+signal on_player_dragging_ended
 
 @onready var cash_amount_label: Label = $HUD/NinePatchRect/VBoxContainer/HBoxContainer/CashAmountLabel
 @onready var bee_keeper: BeeKeeper = $BeeKeeper
@@ -83,6 +85,7 @@ func _process(delta: float) -> void:
 					#todo - Sfx that goes AANT!
 					pass
 				else:
+					# instantiate the item and deduct the cost from your cash
 					match drag_and_drop_item_type:
 						Utility.Draggable_Items.NATURAL_BEE_HIVE:
 							var bee_colony = BEE_COLONY.instantiate() as BeeColony
@@ -115,10 +118,12 @@ func _process(delta: float) -> void:
 							add_child(bee_colony)					
 						_:
 							printerr("Huh?", drag_and_drop_item_type)
-			
+					cash -= Utility.draggable_items_dictionary()[drag_and_drop_item_type]["Cost"]
+					
 			drag_and_drop_item_type = Utility.Draggable_Items.VOID
 			# Always clear this even if they are still over the hud.
 			drag_and_drop_item.queue_free()
+			on_player_dragging_ended.emit()
 		
 		
 func _on_bee_colony_spawn_bee(home_hive: BeeColony) -> void:	
@@ -128,10 +133,10 @@ func _on_bee_colony_spawn_bee(home_hive: BeeColony) -> void:
 	add_child(bee)
 
 
-func _on_sell_box_placed() -> void:
-	print("Sold!")
-	cash += 100
-	pass # Replace with function body.
+func _on_sell_box_placed(item_name: String, value: int) -> void:
+	print(str("Sold! ", item_name," for ", value))
+	cash += value
+	
 
 
 # GUI 
@@ -140,24 +145,28 @@ func _on_natural_hive_button_pressed() -> void:
 	drag_and_drop_item_type = Utility.Draggable_Items.NATURAL_BEE_HIVE
 	rich_text_label.text = _build_more_info_rich_text(Utility.draggable_items_dictionary()[drag_and_drop_item_type])
 	add_child(drag_and_drop_item)
+	on_player_dragging_started.emit()
 
 func _on_man_made_hive_button_pressed() -> void:
 	drag_and_drop_item = MAN_MADE_HIVE_DRAGGABLE.instantiate()
 	drag_and_drop_item_type = Utility.Draggable_Items.MAN_MADE_BEE_HIVE
 	rich_text_label.text = _build_more_info_rich_text(Utility.draggable_items_dictionary()[drag_and_drop_item_type])
 	add_child(drag_and_drop_item)
+	on_player_dragging_started.emit()
 	
 func _on_honey_extractor_button_pressed() -> void:
 	drag_and_drop_item = HONEY_EXTRACTOR_DRAGGABLE.instantiate()
 	drag_and_drop_item_type = Utility.Draggable_Items.HONEY_EXTRACTOR	
 	rich_text_label.text = _build_more_info_rich_text(Utility.draggable_items_dictionary()[drag_and_drop_item_type])
 	add_child(drag_and_drop_item)
+	on_player_dragging_started.emit()
 	
 func _on_bucket_button_pressed() -> void:
 	drag_and_drop_item = BUCKET_DRAGGABLE.instantiate()
 	drag_and_drop_item_type = Utility.Draggable_Items.FOOD_GRADE_BUCKET	
 	rich_text_label.text = _build_more_info_rich_text(Utility.draggable_items_dictionary()[drag_and_drop_item_type])
 	add_child(drag_and_drop_item)
+	on_player_dragging_started.emit()
 
 func _build_more_info_rich_text(info: Dictionary) -> String:
 	var cost_text: String = str("Cost [b]", info["Cost"], "[/b]")
