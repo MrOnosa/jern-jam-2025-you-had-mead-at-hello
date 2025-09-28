@@ -106,6 +106,10 @@ func _process(delta: float) -> void:
 							bee_colony.honey_collected.connect(bee_keeper._on_bee_colony_honey_collected)
 							bee_colony.spawn_bee.connect(_on_bee_colony_spawn_bee)
 							
+							if (!hud.placed_beehive):
+								hud.placed_beehive = true
+								hud.toast("More items available\nfor purchase", 5.0)
+							
 							add_child(bee_colony)
 						Utility.Draggable_Items.MAN_MADE_BEE_HIVE:
 							var bee_colony = MAN_MADE_BEE_COLONY.instantiate() as BeeColony
@@ -119,7 +123,12 @@ func _process(delta: float) -> void:
 							add_child(bee_colony)	
 						Utility.Draggable_Items.HONEY_EXTRACTOR:	
 							var bee_colony = HONEY_EXTRACTOR.instantiate() as HoneyExtractor
-							bee_colony.position = drag_and_drop_item.position
+							bee_colony.position = drag_and_drop_item.position							
+							
+							if (!hud.placed_honey_extractor):
+								hud.placed_honey_extractor = true
+								hud.toast("More items available\nfor purchase", 5.0)
+								
 							add_child(bee_colony)	
 						Utility.Draggable_Items.FOOD_GRADE_BUCKET:	
 							var bee_colony = BUCKET.instantiate() as Bucket

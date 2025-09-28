@@ -1,15 +1,34 @@
 extends CanvasLayer
 
 const TOAST_LABLE = preload("uid://bn6h1et37uvkd")
+
+@onready var natural_hive_button: TextureButton = %NaturalHiveButton
+@onready var man_made_hive_button: TextureButton = %ManMadeHiveButton
+@onready var honey_extractor_button: TextureButton = %HoneyExtractorButton
+
+@onready var bucket_button: TextureButton = %BucketButton
+
+
 var dragging : bool = false
+
+var placed_beehive : bool = false
+var placed_honey_extractor : bool = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	placed_beehive = Utility.sandbox_enabled
+	placed_honey_extractor = Utility.sandbox_enabled
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _process(delta: float) -> void:		
+	# Unlocked after placing a single beehive
+	man_made_hive_button.visible = placed_beehive
+	honey_extractor_button.visible = placed_beehive
+	
+	# Unlocked after placing a single honey extractor
+	bucket_button.visible = placed_honey_extractor
+	
 
 func _input(event):
 	if dragging:
@@ -34,7 +53,7 @@ func _on_bloomheart_woods_on_player_dragging_started() -> void:
 func _on_bloomheart_woods_on_player_dragging_ended() -> void:
 	dragging = false
 
-func toast(message: String) -> void:
+func toast(message: String, _duration : float = 3.0) -> void:
 	var t = TOAST_LABLE.instantiate()
 	t.position = Vector2(-200, 0)
 	t.text = message
@@ -42,6 +61,6 @@ func toast(message: String) -> void:
 	var tween = t.create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	var new_position = t.position + Vector2(0, -100)
-	tween.tween_property(t, "position", new_position, 3).set_trans(Tween.TRANS_EXPO )
+	tween.tween_property(t, "position", new_position, _duration).set_trans(Tween.TRANS_EXPO )
 	tween.tween_callback(t.queue_free)
 	pass
