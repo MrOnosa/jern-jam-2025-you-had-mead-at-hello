@@ -39,10 +39,12 @@ script = ExtResource("1_u5nhv")
 [node name="SFXAccept" type="AudioStreamPlayer" parent="AudioPlayers"]
 unique_name_in_owner = true
 stream = ExtResource("2_d888s")
+bus = &"SFX"
 
 [node name="SFXHover" type="AudioStreamPlayer" parent="AudioPlayers"]
 unique_name_in_owner = true
 stream = ExtResource("3_n0wsh")
+bus = &"SFX"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -151,9 +153,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -236.0
-offset_top = -252.5
+offset_top = -265.5
 offset_right = 236.0
-offset_bottom = 252.5
+offset_bottom = 295.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_vvcte")
@@ -179,8 +181,8 @@ layout_mode = 2
 
 [node name="CreditsContent" type="RichTextLabel" parent="CreditsBG/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 420)
 layout_mode = 2
-size_flags_vertical = 3
 bbcode_enabled = true
 text = "[b][font_size=24]Our Team[/font_size][/b]
 
@@ -217,9 +219,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -165.0
-offset_top = -291.0
+offset_top = -304.0
 offset_right = 162.0
-offset_bottom = -198.5
+offset_bottom = -211.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_vvcte")
@@ -250,9 +252,9 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 491.00003
-offset_top = 600.0
+offset_top = 587.0
 offset_right = 963.0
-offset_bottom = 787.0
+offset_bottom = 774.0
 scale = Vector2(0.67138535, 0.67138535)
 texture_normal = ExtResource("5_slh74")
 texture_hover = ExtResource("6_av73v")

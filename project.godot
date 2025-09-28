@@ -18,6 +18,7 @@ config/icon="uid://bhe4d4w7erdmy"
 [autoload]
 
 Utility="*res://scenes/utility.gd"
+AudioManager="*res://scenes/options_scene/audio_manager.gd"
 
 [debug]
 
@@ -37,6 +38,7 @@ bee_group=""
 bee_colony="ya know, for the bee colonies or bee hives or whatever"
 too_close_bubble="This is sure to have an interactive area so we can be sure not to place items on it"
 interactables=""
+gui_options=""
 
 [input]
 

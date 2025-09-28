@@ -1,5 +1,6 @@
 extends Node
 
+var sandbox_enabled: bool = false
 
 enum Draggable_Items { VOID, NATURAL_BEE_HIVE, MAN_MADE_BEE_HIVE, HONEY_EXTRACTOR, FOOD_GRADE_BUCKET} 
 func draggable_items_dictionary() -> Dictionary[Draggable_Items, Dictionary]:
