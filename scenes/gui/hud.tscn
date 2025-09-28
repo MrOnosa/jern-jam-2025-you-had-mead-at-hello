@@ -9,10 +9,10 @@
 [node name="HUD" type="CanvasLayer"]
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-offset_left = -10.0
-offset_top = -11.0
-offset_right = 145.0
-offset_bottom = 574.0
+offset_left = -9.0
+offset_top = -10.0
+offset_right = 146.0
+offset_bottom = 575.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
@@ -80,3 +80,48 @@ size_flags_horizontal = 4
 mouse_filter = 1
 action_mode = 0
 texture_normal = ExtResource("4_ueg55")
+
+[node name="MoreInfoPatchRect" type="NinePatchRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.13828126
+anchor_top = 0.0055555557
+anchor_right = 0.39609376
+anchor_bottom = 0.2638889
+offset_right = 30.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+texture = ExtResource("1_aoesn")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="MoreInfoPatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MoreInfoPatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MoreInfoPatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Human Made Beehive
+Cost [b]$300 [/b]
+[hr]
+[indent]A hand crafted beehive can hold a lot more bees. More bees means more honey. This comes with everything a beekeeper needs to grow their apiary.[/indent]"
+fit_content = true

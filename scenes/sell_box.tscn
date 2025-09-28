@@ -45,7 +45,8 @@ scale = Vector2(0.52, 0.52)
 texture_normal = ExtResource("3_47t8m")
 texture_hover = ExtResource("4_e26ny")
 
-[node name="PlaceLabel2" type="Label" parent="ActionButton"]
+[node name="ActionButtonLabel" type="Label" parent="ActionButton"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -79,7 +80,7 @@ offset_right = 110.0
 offset_bottom = 39.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "For Sell"
+text = "For Sale"
 label_settings = SubResource("LabelSettings_e26ny")
 horizontal_alignment = 1
 vertical_alignment = 1

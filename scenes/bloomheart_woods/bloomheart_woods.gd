@@ -21,16 +21,18 @@ const BUCKET = preload("uid://ckqo82apihh50")
 @onready var man_made_hive_button: TextureButton = $HUD/NinePatchRect/VBoxContainer/ManMadeHiveButton
 @onready var honey_extractor_button: TextureButton = $HUD/NinePatchRect/VBoxContainer/HoneyExtractorButton
 @onready var bucket_button: TextureButton = $HUD/NinePatchRect/VBoxContainer/BucketButton
+@onready var more_info_patch_rect: NinePatchRect = $HUD/MoreInfoPatchRect
+@onready var rich_text_label: RichTextLabel = $HUD/MoreInfoPatchRect/MarginContainer/VBoxContainer/RichTextLabel
+
+
 @onready var sell_box: StaticBody2D = $Interactables/SellBox
 @onready var ground: TextureRect = $GroundArea/Ground
 
-
-enum Draggable_Items { NATURAL_BEE_HIVE, MAN_MADE_BEE_HIVE, HONEY_EXTRACTOR, FOOD_GRADE_BUCKET} 
 @export var cash : int = 100
 var mouse_is_over_HUD : bool = false
 var mouse_is_within_window : bool = true
 var drag_and_drop_item : Variant = null
-var drag_and_drop_item_type : Draggable_Items
+var drag_and_drop_item_type : Utility.Draggable_Items = Utility.Draggable_Items.VOID
 #const WORLD_GRASS_NOISE_TEXTURE = preload("uid://c0a00g37gmqql")
 
 # Called when the node enters the scene tree for the first time.
@@ -48,6 +50,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	cash_amount_label.text = str("$", Utility.add_commas_to_number(cash))
+	
+	if drag_and_drop_item_type != Utility.Draggable_Items.VOID:
+		more_info_patch_rect.visible = true
+	else:
+		more_info_patch_rect.visible = false
+		
 	if drag_and_drop_item != null && !drag_and_drop_item.is_queued_for_deletion():
 		# https://www.reddit.com/r/godot/comments/yge1ms/comment/iucbhph/
 		drag_and_drop_item.position = drag_and_drop_item.get_parent().get_local_mouse_position()
@@ -57,6 +65,10 @@ func _process(delta: float) -> void:
 			any_collisions = true
 			drag_and_drop_item.modulate = Color.INDIAN_RED
 		if !mouse_is_over_HUD:
+			# Can they even afford this thing?
+			if Utility.draggable_items_dictionary()[drag_and_drop_item_type]["Cost"] > cash:
+				any_collisions = true
+				
 			var all_the_things = get_tree().get_nodes_in_group("too_close_bubble") as Array[Area2D]
 			for b in all_the_things:
 				if b.overlaps_area(drag_and_drop_item.get_node("InteractiveArea2D")):
@@ -72,7 +84,7 @@ func _process(delta: float) -> void:
 					pass
 				else:
 					match drag_and_drop_item_type:
-						Draggable_Items.NATURAL_BEE_HIVE:
+						Utility.Draggable_Items.NATURAL_BEE_HIVE:
 							var bee_colony = BEE_COLONY.instantiate() as BeeColony
 							bee_colony.position = drag_and_drop_item.position
 							bee_colony.total_bees = 8000
@@ -81,8 +93,9 @@ func _process(delta: float) -> void:
 							bee_colony.max_raw_honey_capacity = bee_colony.raw_honey_needed_for_a_jar * 2
 							bee_colony.honey_collected.connect(bee_keeper._on_bee_colony_honey_collected)
 							bee_colony.spawn_bee.connect(_on_bee_colony_spawn_bee)
+							
 							add_child(bee_colony)
-						Draggable_Items.MAN_MADE_BEE_HIVE:
+						Utility.Draggable_Items.MAN_MADE_BEE_HIVE:
 							var bee_colony = MAN_MADE_BEE_COLONY.instantiate() as BeeColony
 							bee_colony.position = drag_and_drop_item.position
 							bee_colony.total_bees = 8000
@@ -92,17 +105,18 @@ func _process(delta: float) -> void:
 							bee_colony.honey_collected.connect(bee_keeper._on_bee_colony_honey_collected)
 							bee_colony.spawn_bee.connect(_on_bee_colony_spawn_bee)
 							add_child(bee_colony)	
-						Draggable_Items.HONEY_EXTRACTOR:	
+						Utility.Draggable_Items.HONEY_EXTRACTOR:	
 							var bee_colony = HONEY_EXTRACTOR.instantiate() as HoneyExtractor
 							bee_colony.position = drag_and_drop_item.position
 							add_child(bee_colony)	
-						Draggable_Items.FOOD_GRADE_BUCKET:	
+						Utility.Draggable_Items.FOOD_GRADE_BUCKET:	
 							var bee_colony = BUCKET.instantiate() as Bucket
 							bee_colony.position = drag_and_drop_item.position
 							add_child(bee_colony)					
 						_:
 							printerr("Huh?", drag_and_drop_item_type)
 			
+			drag_and_drop_item_type = Utility.Draggable_Items.VOID
 			# Always clear this even if they are still over the hud.
 			drag_and_drop_item.queue_free()
 		
@@ -123,24 +137,35 @@ func _on_sell_box_placed() -> void:
 # GUI 
 func _on_natural_hive_button_pressed() -> void:
 	drag_and_drop_item = NATURAL_HIVE_DRAGGABLE.instantiate()
-	drag_and_drop_item_type = Draggable_Items.NATURAL_BEE_HIVE
+	drag_and_drop_item_type = Utility.Draggable_Items.NATURAL_BEE_HIVE
+	rich_text_label.text = _build_more_info_rich_text(Utility.draggable_items_dictionary()[drag_and_drop_item_type])
 	add_child(drag_and_drop_item)
 
 func _on_man_made_hive_button_pressed() -> void:
 	drag_and_drop_item = MAN_MADE_HIVE_DRAGGABLE.instantiate()
-	drag_and_drop_item_type = Draggable_Items.MAN_MADE_BEE_HIVE
+	drag_and_drop_item_type = Utility.Draggable_Items.MAN_MADE_BEE_HIVE
+	rich_text_label.text = _build_more_info_rich_text(Utility.draggable_items_dictionary()[drag_and_drop_item_type])
 	add_child(drag_and_drop_item)
 	
 func _on_honey_extractor_button_pressed() -> void:
 	drag_and_drop_item = HONEY_EXTRACTOR_DRAGGABLE.instantiate()
-	drag_and_drop_item_type = Draggable_Items.HONEY_EXTRACTOR
+	drag_and_drop_item_type = Utility.Draggable_Items.HONEY_EXTRACTOR	
+	rich_text_label.text = _build_more_info_rich_text(Utility.draggable_items_dictionary()[drag_and_drop_item_type])
 	add_child(drag_and_drop_item)
 	
 func _on_bucket_button_pressed() -> void:
 	drag_and_drop_item = BUCKET_DRAGGABLE.instantiate()
-	drag_and_drop_item_type = Draggable_Items.FOOD_GRADE_BUCKET
+	drag_and_drop_item_type = Utility.Draggable_Items.FOOD_GRADE_BUCKET	
+	rich_text_label.text = _build_more_info_rich_text(Utility.draggable_items_dictionary()[drag_and_drop_item_type])
 	add_child(drag_and_drop_item)
 
+func _build_more_info_rich_text(info: Dictionary) -> String:
+	var cost_text: String = str("Cost [b]", info["Cost"], "[/b]")
+	if info["Cost"] > cash:
+		cost_text = str(" [bgcolor=DB0000] ",cost_text," [/bgcolor] - Too expensive!")
+	else:
+		cost_text = str(" [bgcolor=288700] ",cost_text," [/bgcolor]")		
+	return str(info["Name"], "\n", cost_text,"\n[hr]\n[indent]",info["Text"],"[/indent]")
 
 func _HUD_on_panel_container_mouse_entered() -> void:
 	mouse_is_over_HUD = true

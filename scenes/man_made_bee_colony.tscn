@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://crwo4bniwcg18"]
+[gd_scene load_steps=14 format=3 uid="uid://crwo4bniwcg18"]
 
 [ext_resource type="Script" uid="uid://cmcyjojsvvnxw" path="res://scenes/bee_colony.gd" id="1_mlkej"]
 [ext_resource type="Texture2D" uid="uid://ddekt73u2v20e" path="res://assets/hive_upgrade.png" id="2_mlkej"]
@@ -17,6 +17,10 @@ radius = 128.0
 height = 324.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_4e8ou"]
+font = ExtResource("5_67b4r")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_mlkej"]
 font = ExtResource("5_67b4r")
 font_size = 32
 
@@ -91,6 +95,24 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Population: 80,000"
 label_settings = SubResource("LabelSettings_4e8ou")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="InfoPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.5
+offset_top = -123.16701
+offset_right = 247.83331
+offset_bottom = -76.500336
+grow_horizontal = 2
+grow_vertical = 2
+text = "Collecting pollen, making honey"
+label_settings = SubResource("LabelSettings_mlkej")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -180,7 +202,7 @@ offset_right = 155.5
 offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Harvest Honey"
+text = "Take Honeycomb"
 label_settings = ExtResource("4_cx43v")
 horizontal_alignment = 1
 vertical_alignment = 1

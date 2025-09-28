@@ -54,6 +54,7 @@ normal = Vector2(-1, 0)
 [node name="BloomheartWoods" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_be4b0")
+cash = 1000
 
 [node name="HUD" parent="." instance=ExtResource("1_t832r")]
 

@@ -76,15 +76,6 @@ func _unhandled_input(_event: InputEvent) -> void:
 		mouse_or_touch_is_down = true
 	elif Input.is_action_just_released("left_click"):
 		mouse_or_touch_is_down = false
-		#click_position = get_global_mouse_position()
-		#GoToObj.global_position = click_position
-#
-		#if GoToObj.global_position.x > position.x && scale != Vector2.ONE:
-			#scale = Vector2(1, 1)
-			#rotation_degrees = 0
-		#elif GoToObj.global_position.x < position.x && scale == Vector2.ONE:
-			#scale = Vector2(1, -1)
-			#rotation_degrees = 180
 
 
 func _on_bee_colony_honey_collected() -> void:

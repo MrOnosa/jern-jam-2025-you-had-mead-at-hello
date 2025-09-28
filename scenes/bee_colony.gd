@@ -11,6 +11,7 @@ extends StaticBody2D
 
 @onready var action_button: TextureButton = $ActionButton
 @onready var info_panel: TextureRect = $InfoPanel
+@onready var status_label: Label = $InfoPanel/StatusLabel
 
 @export var pollen_needed_to_produce_one_raw_honey := 10
 @export var pollen_collected := 0
@@ -62,6 +63,23 @@ func _process(delta: float) -> void:
 	
 	honeycomb_texture_progress_bar_6.value = calc_jar_percent(5)
 	honeycomb_texture_progress_bar_6.modulate = Color.WHITE if honeycomb_texture_progress_bar_6.value > 0 else Color.TRANSPARENT
+
+	# Update Status:
+	if raw_honey_produced >= raw_honey_needed_for_a_jar && raw_honey_produced < raw_honey_needed_for_a_jar*1.93:
+		status_label.text = "Honeycomb is ready"
+		if player_nearby != null && player_nearby.holding != BeeKeeper.Holding.NOTHING:
+			status_label.text += " - Hands full"
+	elif raw_honey_produced >= raw_honey_needed_for_a_jar:
+		status_label.text = "Honeycombs are ready"
+		if player_nearby != null && player_nearby.holding != BeeKeeper.Holding.NOTHING:
+			status_label.text += " - Hands full"
+	elif pollen_collected < 10:
+		status_label.text = "Bees are collecting pollen"
+	elif raw_honey_produced < raw_honey_needed_for_a_jar:
+		status_label.text = "Bees are making honey, bee patient"
+	else:
+		status_label.text = "Bees are doing bee things"
+		
 	
 	if player_nearby != null:
 		info_panel.show()

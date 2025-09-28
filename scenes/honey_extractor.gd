@@ -73,6 +73,11 @@ func _process(delta: float) -> void:
 		status_label.text = "Currently Full of Honey"
 	elif beeswax == 3:
 		status_label.text = "Currently Full of Beeswax"
+	elif player_nearby != null \
+	&& player_nearby.holding != BeeKeeper.Holding.NOTHING \
+	&& player_nearby.holding != BeeKeeper.Holding.HONEYCOMB_HIGH \
+	&& (honey_jars > 0 || beeswax > 0) :
+		status_label.text = "Your hands are full"
 	elif honeycombs == 0:
 		status_label.text = "Currenly Idle - Needs honeycomb"
 	else:
