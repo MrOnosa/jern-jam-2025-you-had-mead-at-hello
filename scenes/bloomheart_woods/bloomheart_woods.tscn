@@ -111,7 +111,6 @@ position = Vector2(641.5, 362.5)
 shape = SubResource("RectangleShape2D_mhfi5")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
-visible = false
 material = SubResource("ShaderMaterial_0jk2t")
 anchors_preset = 15
 anchor_right = 1.0
