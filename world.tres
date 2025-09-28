@@ -39,7 +39,7 @@ input_name = "time"
 input_name = "screen_uv"
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_dbpwn"]
-default_input_values = [0, 0.0, 1, 10.0]
+default_input_values = [0, 0.0, 1, 5.0]
 operator = 2
 
 [sub_resource type="VisualShaderNodeColorOp" id="VisualShaderNodeColorOp_mu5wb"]
@@ -184,7 +184,7 @@ void fragment() {
 
 
 // FloatOp:20
-	float n_in20p1 = 10.00000;
+	float n_in20p1 = 5.00000;
 	float n_out20p0 = n_out31p0 * n_in20p1;
 
 
