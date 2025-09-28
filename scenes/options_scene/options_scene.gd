@@ -49,14 +49,17 @@ func update_labels() -> void:
 
 func set_primary_level(new_value: float) -> void:
 	AudioServer.set_bus_volume_db(0,linear_to_db(new_value))
+	update_labels()
 	
 	
 func set_music_level(new_value: float) -> void:
 	AudioServer.set_bus_volume_db(1,linear_to_db(new_value))
+	update_labels()
 	
 	
 func set_sfx_level(new_value: float) -> void:
 	AudioServer.set_bus_volume_db(2,linear_to_db(new_value))
+	update_labels()
 	
 
 func _on_title_button_pressed() -> void:

@@ -7,8 +7,6 @@ extends Node2D
 @onready var bees: Node2D = %Bees
 @onready var bee_flying: Sprite2D = %BeeFlying
 @onready var flowers: Node2D = %Flowers
-@onready var sfx_accept: AudioStreamPlayer = %SFXAccept
-@onready var sfx_hover: AudioStreamPlayer = %SFXHover
 @onready var jern_jam_logo: TextureButton = %JernJamLogo
 
 
@@ -18,9 +16,9 @@ func _ready() -> void:
 	credits_button.pressed.connect(_on_credits_button_pressed)
 	options_button.pressed.connect(_on_options_button_pressed)
 	
-	new_game_button.mouse_entered.connect(button_hover_sound)
-	options_button.mouse_entered.connect(button_hover_sound)
-	credits_button.mouse_entered.connect(button_hover_sound)
+	new_game_button.mouse_entered.connect(AudioManager.button_hover)
+	options_button.mouse_entered.connect(AudioManager.button_hover)
+	credits_button.mouse_entered.connect(AudioManager.button_hover)
 	
 	animate_bee()
 
@@ -31,7 +29,7 @@ func _process(_delta: float) -> void:
 	
 	
 func _on_new_game_button_pressed() -> void:
-	button_click_sound()
+	AudioManager.button_click()
 	get_tree().change_scene_to_file("res://scenes/bloomheart_woods/bloomheart_woods.tscn")
 
 
@@ -39,16 +37,6 @@ func animate_bee() -> void:
 	var t_bee = create_tween().set_trans(Tween.TRANS_CUBIC).set_loops(0)
 	t_bee.tween_property(bee_flying,"position:y",bee_flying.position.y + 5, randi_range(2,5))
 	t_bee.tween_property(bee_flying,"position:y",bee_flying.position.y - 5, randi_range(3,6))
-
-
-func button_hover_sound() -> void:
-	sfx_hover.pitch_scale = randf_range(0.8,1.2)
-	sfx_hover.play()
-	
-	
-func button_click_sound() -> void:
-	sfx_accept.pitch_scale = randf_range(0.8,1.2)
-	sfx_accept.play()
 
 
 func _on_jern_jam_logo_pressed() -> void:
@@ -69,10 +57,10 @@ func _on_jern_jam_logo_mouse_exited() -> void:
 
 
 func _on_credits_button_pressed() -> void:
-	button_click_sound()
+	AudioManager.button_click()
 	get_tree().change_scene_to_file("res://scenes/credits_scene/credits_scene.tscn")
 
 
 func _on_options_button_pressed() -> void:
-	button_click_sound()
+	AudioManager.button_click()
 	get_tree().change_scene_to_file("res://scenes/options_scene/options_scene.tscn")
