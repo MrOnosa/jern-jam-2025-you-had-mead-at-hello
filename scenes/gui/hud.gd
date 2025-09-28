@@ -14,13 +14,13 @@ func _process(delta: float) -> void:
 func _input(event):
 	if dragging:
 		if event is InputEventMouse || event is InputEventScreenDrag:
-			print(event.global_position)
-			if event.global_position.x > 165 && event.global_position.x < 538 &&  event.global_position.y < 290:
+			print(event.position)
+			if event.position.x > 165 && event.position.x < 538 &&  event.position.y < 290:
 				%MoreInfoPatchRect.modulate = Color("ffffff7f")
 			else:
 				%MoreInfoPatchRect.modulate = Color.WHITE
 			
-			if event.global_position.x < 170:
+			if event.position.x < 170:
 				%NinePatchRect.modulate = Color("ffffff7f")
 			else:
 				%NinePatchRect.modulate = Color.WHITE
