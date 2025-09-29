@@ -87,6 +87,7 @@ const SFX_MONEY_GAIN: AudioStream = preload("uid://ci558vfm1cgky")
 const SFX_PACKAGE_MEAD: AudioStream = preload("uid://21t11ijgqcw")
 const SFX_PICKUP_SOUND: AudioStream = preload("uid://cmfh704imcqnl")
 const SFX_WALKING_BUSHES: AudioStream = preload("uid://c0lk4t3c8runo")
+const ERROR_SOUND = preload("uid://bysjwgwokw1ve")
 
 
 
@@ -161,6 +162,11 @@ func play_money_sound() -> void:
 
 func play_drop_honey() -> void:
 	play_sound(SFX_DROP_HONEY_BUCKET,true,0.0,Vector2.ZERO,-1.0)
+
+
+func play_error_sound() -> void:
+	play_sound(ERROR_SOUND,true,0.0,Vector2.ZERO,-1.0)
+
 
 func play_bgm(audio_file: AudioStream, _volume: float = 0.0) -> void:
 	bgm_player.stream = audio_file
