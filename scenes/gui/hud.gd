@@ -12,6 +12,7 @@ const TOAST_LABLE = preload("uid://bn6h1et37uvkd")
 
 @onready var bucket_button: TextureButton = %BucketButton
 @onready var texture_progress_bar: TextureProgressBar = %TextureProgressBar
+@onready var menu_button: TextureButton = %MenuButton
 
 
 
@@ -23,6 +24,8 @@ var placed_honey_extractor : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	AudioManager.song_changed.connect(_on_song_changed)
+	menu_button.pressed.connect(_on_menu_button_pressed)
+	menu_button.mouse_entered.connect(AudioManager.button_hover)
 	
 	placed_beehive = Utility.sandbox_enabled
 	placed_honey_extractor = Utility.sandbox_enabled
@@ -64,8 +67,10 @@ func _input(event: InputEvent) -> void:
 		%NinePatchRect.modulate = Color.WHITE
 		
 	if event.is_action_pressed("pause_game") and not pause_menu.visible:
+		AudioManager.button_click()
 		pause_menu.show()
 	elif event.is_action_pressed("pause_game") and pause_menu.visible:
+		AudioManager.button_click()
 		pause_menu.hide()
 
 
@@ -93,3 +98,8 @@ func _on_song_changed(song_title: String, song_artist: String) -> void:
 	song_pop.composer_name = "Composer: " + song_artist
 	song_pop.song_name = "Song: " + song_title
 	add_child(song_pop)
+
+
+func _on_menu_button_pressed() -> void:
+	AudioManager.button_click()
+	pause_menu.show()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://brh26l2u7pq6t"]
+[gd_scene load_steps=8 format=3 uid="uid://brh26l2u7pq6t"]
 
 [ext_resource type="Shader" uid="uid://bhgve0st3u4xb" path="res://scenes/level_decoration/wind_shader.gdshader" id="1_6ydeq"]
 [ext_resource type="Texture2D" uid="uid://c1p0aqp2hu4tm" path="res://assets/Level Decoration/bush_3.png" id="1_e1377"]
+[ext_resource type="Script" uid="uid://dfllvxeiy2axr" path="res://scenes/level_decoration/sfx_area.gd" id="3_cm1ii"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cm1ii"]
 shader = ExtResource("1_6ydeq")
@@ -22,6 +23,9 @@ height = 114.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ioo17"]
 radius = 29.0
 height = 116.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a412m"]
+radius = 38.75
 
 [node name="Bush3" type="StaticBody2D"]
 collision_layer = 0
@@ -46,5 +50,14 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ioo17")
 debug_color = Color(0, 0.6, 0.69803923, 0.28235295)
 
+[node name="SFXArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_cm1ii")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SFXArea"]
+position = Vector2(8, -31)
+shape = SubResource("CircleShape2D_a412m")
+
 [connection signal="body_entered" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_entered"]
 [connection signal="body_exited" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_exited"]
+[connection signal="body_entered" from="SFXArea" to="SFXArea" method="_on_body_entered"]

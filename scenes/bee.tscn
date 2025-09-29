@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ws0llatxgtev"]
+[gd_scene load_steps=48 format=3 uid="uid://ws0llatxgtev"]
 
 [ext_resource type="Script" uid="uid://b7k4vr6n0ij4s" path="res://scenes/bee.gd" id="1_vie5o"]
 [ext_resource type="Texture2D" uid="uid://cw051ckwfdhxg" path="res://scenes/bee_animation/assets/flying/bee-flying_00.png" id="2_xbaam"]
@@ -190,6 +190,9 @@ radius = 17.117243
 _data = [Vector2(0, 1), 0.0, -2.2150881, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xbaam"]
+radius = 14.2
+
 [node name="Bee" type="AnimatableBody2D" groups=["bee_group"]]
 z_index = 1
 collision_layer = 2
@@ -213,3 +216,10 @@ points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)
 width = 20.0
 width_curve = SubResource("Curve_vie5o")
 joint_mode = 2
+
+[node name="SFXBeeSound" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SFXBeeSound"]
+shape = SubResource("CircleShape2D_xbaam")
+
+[connection signal="body_entered" from="SFXBeeSound" to="." method="_on_sfx_bee_sound_body_entered"]

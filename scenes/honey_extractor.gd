@@ -133,10 +133,12 @@ func _on_honeycomb_action_button_pressed() -> void:
 	player_nearby.holding = BeeKeeper.Holding.NOTHING
 
 func _on_honey_action_button_pressed() -> void:
+	AudioManager.play_drop_honey()
 	honey_jars = max(0.0, honey_jars - 1.0)
 	player_nearby.holding = BeeKeeper.Holding.HONEY_HIGH
 
 func _on_beeswax_action_button_pressed() -> void:
+	AudioManager.play_pickup_sound()
 	beeswax = max(0.0, beeswax - 1.0)
 	player_nearby.holding = BeeKeeper.Holding.BEESWAX
 

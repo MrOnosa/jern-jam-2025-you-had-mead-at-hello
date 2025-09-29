@@ -40,12 +40,16 @@ func _on_action_button_pressed() -> void:
 	if player_nearby != null:
 		match player_nearby.holding:
 			BeeKeeper.Holding.HONEY_HIGH:
+				AudioManager.play_money_sound()
 				placed.emit("Honey", 75)
 			BeeKeeper.Holding.HONEYCOMB_HIGH:
+				AudioManager.play_money_sound()
 				placed.emit("Honeycomb", 50)
 			BeeKeeper.Holding.BEESWAX:
+				AudioManager.play_money_sound()
 				placed.emit("Beeswax", 75)
 			BeeKeeper.Holding.MEAD_HIGH:
+				AudioManager.play_money_sound()
 				placed.emit("Mead", 300)
 			_:
 				placed.emit("???", 0)

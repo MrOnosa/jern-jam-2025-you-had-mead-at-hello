@@ -67,6 +67,7 @@ func set_sfx_level(new_value: float) -> void:
 	
 
 func hide_pause_menu() -> void:
+	AudioManager.button_click()
 	hide()
 
 

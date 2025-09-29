@@ -210,3 +210,8 @@ func set_facing(new_position: Vector2) -> void:
 		#1: return Tween.TransitionType.TRANS_SINE
 		#2: return Tween.TransitionType.TRANS_SPRING
 		#_: return Tween.TransitionType.TRANS_CIRC
+
+
+func _on_sfx_bee_sound_body_entered(body: Node2D) -> void:
+	if body is BeeKeeper:
+		AudioManager.play_bee_buzzing(global_position)

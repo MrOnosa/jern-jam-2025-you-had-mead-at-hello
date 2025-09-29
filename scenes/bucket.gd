@@ -124,10 +124,12 @@ func _on_mouse_exited() -> void:
 	mouse_hovering = false
 
 func _on_honey_action_button_pressed() -> void:
+	AudioManager.play_drop_honey()
 	honey_jars = min(3, honey_jars + 1)
 	player_nearby.holding = BeeKeeper.Holding.NOTHING
 	
 func _on_mead_action_button_pressed() -> void:
+	AudioManager.play_mead_pickup()
 	mead = max(0, mead - 1)
 	if mead == 0:
 		fermentation_progress = 0
@@ -144,6 +146,7 @@ func _on_do_work_timer_timeout() -> void:
 		var conversion_ratio = 3 
 		fermentation_progress = min(100, fermentation_progress + conversion_ratio)	
 	elif honey_jars >= 3 && fermentation_status != Fermentation_Statuses.IN_PROGRESS:
+		AudioManager.play_mead_maker_sound(global_position)
 		fermentation_progress = 1
 		fermentation_status = Fermentation_Statuses.IN_PROGRESS
 

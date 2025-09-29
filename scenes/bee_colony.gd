@@ -111,6 +111,7 @@ func _on_action_button_pressed() -> void:
 	if raw_honey_produced >= raw_honey_needed_for_a_jar:
 		# For now always collect high quality honey
 		raw_honey_produced -= raw_honey_needed_for_a_jar
+		AudioManager.play_pickup_sound()
 		honey_collected.emit()
 
 func _on_honey_production_timer_timeout() -> void:

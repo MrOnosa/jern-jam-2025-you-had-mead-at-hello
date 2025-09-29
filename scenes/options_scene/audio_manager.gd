@@ -17,49 +17,57 @@ var ost_playlist: Dictionary = {
 		"song": _1_MORNING_DRIZZLE,
 		"name": "Morning Drizzle",
 		"artist": "Ategondev",
-		"unlocked": true
+		"unlocked": true,
+		"volume": -10.0
 	},
 	"2": {
 		"song": _2_SUNNY_BEESNESS,
 		"name": "Sunny Beesness",
 		"artist": "Ategondev",
-		"unlocked": true
+		"unlocked": true,
+		"volume": -10.0
 	},
 	"3": {
 		"song": _3_BUZZY_MEADOWS,
 		"name": "Buzzy Meadows",
 		"artist": "Ategondev",
-		"unlocked": true
+		"unlocked": true,
+		"volume": -10.0
 	},
 	"4": {
 		"song": _4_HYMNOPTERA,
 		"name": "Hymnoptera",
 		"artist": "Ategondev",
-		"unlocked": true
+		"unlocked": true,
+		"volume": -10.0
 	},
 	"5": {
 		"song": _5_APIARY_NIGHTCLUB,
 		"name": "Apiary Nightclub",
 		"artist": "Ategondev",
-		"unlocked": true
+		"unlocked": true,
+		"volume": -10.0
 	},
 	"6": {
 		"song": _6_WAGGLE_DANCE,
 		"name": "Waggle Dance",
 		"artist": "Ategondev",
-		"unlocked": true
+		"unlocked": true,
+		"volume": -10.0
 	},
 	"7": {
 		"song": _7_MURDER_HORNET,
 		"name": "Murder Hornet",
 		"artist": "Ategondev",
-		"unlocked": false
+		"unlocked": false,
+		"volume": -10.0
 	},
 	"8": {
 		"song": _8_NUC_NUKE,
 		"name": "Nuc Nuke",
 		"artist": "Ategondev",
-		"unlocked": false
+		"unlocked": false,
+		"volume": -10.0
 	}
 }
 
@@ -68,10 +76,18 @@ var is_playlist_active: bool = false
 var bgm_player: AudioStreamPlayer
 
 # Sound Effects Variables
-var button_hover_sfx: AudioStream = preload("uid://eftifp5h88l0")
-var button_click_sfx: AudioStream = preload("uid://bkwul40wn181j")
-var extractor_sfx: AudioStream = preload("uid://c3kda4m4vp38j")
-var walking_ground_sfx: AudioStream = preload("uid://cflj256yp5p1b")
+const button_hover_sfx: AudioStream = preload("uid://eftifp5h88l0")
+const button_click_sfx: AudioStream = preload("uid://bkwul40wn181j")
+const extractor_sfx: AudioStream = preload("uid://c3kda4m4vp38j")
+const walking_ground_sfx: AudioStream = preload("uid://cflj256yp5p1b")
+const SFX_BEE_BUZZING_LOW: AudioStream = preload("uid://c5yocx0h6shgx")
+const SFX_DROP_HONEY_BUCKET: AudioStream = preload("uid://blrxdg87hlpax")
+const SFX_MEAD_MAKING: AudioStream = preload("uid://c16twfc54ea4j")
+const SFX_MONEY_GAIN: AudioStream = preload("uid://ci558vfm1cgky")
+const SFX_PACKAGE_MEAD: AudioStream = preload("uid://21t11ijgqcw")
+const SFX_PICKUP_SOUND: AudioStream = preload("uid://cmfh704imcqnl")
+const SFX_WALKING_BUSHES: AudioStream = preload("uid://c0lk4t3c8runo")
+
 
 
 func _ready() -> void:
@@ -81,11 +97,10 @@ func _ready() -> void:
 	bgm_player.finished.connect(_on_song_finished)
 
 
-func play_sound(audio_file: AudioStream, _distance: float = 0.0, _position: Vector2 = Vector2(0,0), _vary: bool = false) -> void:
+func play_sound(audio_file: AudioStream, _vary: bool = false, _distance: float = 0.0, _position: Vector2 = Vector2(0,0), _volume: float = 0.0) -> void:
 	var audio_player
 	
 	if _distance > 0.0:
-		print(_distance)
 		audio_player = AudioStreamPlayer2D.new()
 		audio_player.max_distance = _distance
 		audio_player.position = _position
@@ -95,6 +110,7 @@ func play_sound(audio_file: AudioStream, _distance: float = 0.0, _position: Vect
 	add_child(audio_player)
 	audio_player.finished.connect(audio_player.queue_free)
 	audio_player.bus = "SFX"
+	audio_player.volume_db = _volume
 	audio_player.stream = audio_file
 	
 	if _vary:
@@ -112,15 +128,43 @@ func button_click() -> void:
 	
 	
 func play_extractor_sound(_position: Vector2) -> void:
-	play_sound(extractor_sfx, 600.0, _position)
+	play_sound(extractor_sfx,false, 600.0, _position)
+	
+
+func play_mead_maker_sound(_position: Vector2) -> void:
+	play_sound(SFX_MEAD_MAKING,false, 600.0, _position)
+
+
+func play_mead_pickup() -> void:
+	play_sound(SFX_PACKAGE_MEAD,true)
 	
 	
 func play_walking_sound() -> void:
-	play_sound(walking_ground_sfx, 0.0, Vector2.ZERO, true)
+	play_sound(walking_ground_sfx, true, 0.0, Vector2.ZERO,-4.0)
 
 
-func play_bgm(audio_file: AudioStream) -> void:
+func play_bush_sfx() -> void:
+	play_sound(SFX_WALKING_BUSHES,true)
+
+
+func play_pickup_sound() -> void:
+	play_sound(SFX_PICKUP_SOUND,true)
+	
+
+func play_bee_buzzing(_position: Vector2) -> void:
+	play_sound(SFX_BEE_BUZZING_LOW,true,300,_position,10.0)
+
+
+func play_money_sound() -> void:
+	play_sound(SFX_MONEY_GAIN,true,0.0,Vector2.ZERO,-10.0)
+
+
+func play_drop_honey() -> void:
+	play_sound(SFX_DROP_HONEY_BUCKET,true,0.0,Vector2.ZERO,-1.0)
+
+func play_bgm(audio_file: AudioStream, _volume: float = 0.0) -> void:
 	bgm_player.stream = audio_file
+	bgm_player.volume_db = _volume
 	
 	if is_playlist_active:
 		bgm_player.stream.loop = false
@@ -137,7 +181,7 @@ func stop_bgm() -> void:
 func play_title_bgm() -> void:
 	is_playlist_active = false
 	current_song_index = 1
-	play_bgm(ost_playlist["1"].song)
+	play_bgm(ost_playlist["1"].song, ost_playlist["1"].volume)
 	song_changed.emit(ost_playlist["1"].name,ost_playlist["1"].artist)
 
 
@@ -165,7 +209,7 @@ func play_next_song() -> void:
 			return
 			
 		if ost_playlist[str(current_song_index)].unlocked:
-			play_bgm(ost_playlist[str(current_song_index)].song)
+			play_bgm(ost_playlist[str(current_song_index)].song,ost_playlist[str(current_song_index)].volume)
 			song_changed.emit(ost_playlist[str(current_song_index)].name, ost_playlist[str(current_song_index)].artist)
 			return
 
