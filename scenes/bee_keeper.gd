@@ -71,14 +71,21 @@ func _process(_delta: float) -> void:
 		
 
 func _physics_process(_delta: float) -> void:
+	var previous_position = position
+	
 	if position.distance_to(click_position) > 3:
 		target_position = (click_position - position).normalized()
 		velocity = target_position * SPEED
-		anim_state = Action.WALKING
 		move_and_slide()
 	else:
-		anim_state = Action.IDLE
 		velocity = Vector2.ZERO
+		
+	var movement = position.distance_to(previous_position)
+		
+	if movement > 1:
+		anim_state = Action.WALKING
+	else:
+		anim_state = Action.IDLE
 		
 		
 func _unhandled_input(_event: InputEvent) -> void:
