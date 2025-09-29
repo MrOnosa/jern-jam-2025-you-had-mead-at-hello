@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var song_label: Label = %SongLabel
 @onready var composer_label: Label = %ComposerLabel
+@onready var music_muted_label: Label = %MusicMutedLabel
 
 var song_name: String = ""
 var composer_name: String = ""
@@ -12,6 +13,7 @@ var ending_position: Vector2
 func _ready() -> void:
 	song_label.text = song_name
 	composer_label.text = composer_name
+	music_muted_label.visible = Utility.music_is_muted		
 	
 	self_modulate.a = 0
 	ending_position = position

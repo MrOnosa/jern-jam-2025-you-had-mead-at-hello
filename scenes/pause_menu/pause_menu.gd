@@ -59,6 +59,7 @@ func set_primary_level(new_value: float) -> void:
 	
 	
 func set_music_level(new_value: float) -> void:
+	Utility.music_is_muted = new_value == 0.0
 	AudioServer.set_bus_volume_db(1,linear_to_db(new_value))
 	update_labels()
 	

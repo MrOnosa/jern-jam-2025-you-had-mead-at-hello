@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dv4g732v2seay"]
+[gd_scene load_steps=8 format=3 uid="uid://dv4g732v2seay"]
 
 [ext_resource type="FontFile" uid="uid://b7vkyxnsa7dol" path="res://assets/fonts/Sunset Friday.otf" id="1_4cxms"]
 [ext_resource type="Script" uid="uid://cy5jqx2lgyb2" path="res://scenes/song_popup/song_popup.gd" id="1_arx2h"]
@@ -16,6 +16,9 @@ font_size = 32
 [sub_resource type="LabelSettings" id="LabelSettings_cf5vo"]
 font = ExtResource("1_4cxms")
 font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_arx2h"]
+font = ExtResource("1_4cxms")
 
 [node name="SongPopup" type="Node2D"]
 script = ExtResource("1_arx2h")
@@ -57,3 +60,9 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Composer: Ategon"
 label_settings = SubResource("LabelSettings_cf5vo")
+
+[node name="MusicMutedLabel" type="Label" parent="TextureRect/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "(Note: Music was muted in the settings menu)"
+label_settings = SubResource("LabelSettings_arx2h")
