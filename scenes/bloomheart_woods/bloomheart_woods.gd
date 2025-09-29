@@ -11,7 +11,7 @@ const BEE = preload("uid://ws0llatxgtev")
 const BEE_COLONY = preload("uid://cnqxl80su0co4")
 const MAN_MADE_BEE_COLONY = preload("uid://crwo4bniwcg18")
 const HONEY_EXTRACTOR = preload("uid://cgbkpvg1ukgty")
-const BUCKET = preload("uid://ckqo82apihh50")
+const BUCKET = preload("uid://dbh4sws1wru4s")
 
 signal on_player_dragging_started
 signal on_player_dragging_ended

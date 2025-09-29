@@ -10,7 +10,7 @@ extends StaticBody2D
 
 @onready var info_panel: TextureRect = $InfoPanel
 @onready var status_label: Label = $InfoPanel/StatusLabel
-@onready var debug_rich_text_label: RichTextLabel = $DebugRichTextLabel
+#@onready var debug_rich_text_label: RichTextLabel = $DebugRichTextLabel
 
 @onready var honey_action_button: TextureButton = $VBoxContainer/HoneyActionButton
 @onready var mead_action_button: TextureButton = $VBoxContainer/MeadActionButton
@@ -35,7 +35,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 var total_delta = 0
 func _process(delta: float) -> void:
-	$DebugRichTextLabel.text = str("H: ", str(honey_jars), "\nM: ", str(mead))
+	#$DebugRichTextLabel.text = str("H: ", str(honey_jars), "\nM: ", str(mead))
 	
 	if fermentation_status == Fermentation_Statuses.IN_PROGRESS:
 		total_delta += delta * 2

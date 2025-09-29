@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtc7nf7jxt17u"]
+[gd_scene load_steps=15 format=3 uid="uid://dtc7nf7jxt17u"]
 
 [ext_resource type="Script" uid="uid://ca17mt7ncei3q" path="res://scenes/gui/hud.gd" id="1_2pnwd"]
 [ext_resource type="Texture2D" uid="uid://d2chyn8tlqyat" path="res://assets/beehive.png" id="1_86rft"]
@@ -6,8 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://ddekt73u2v20e" path="res://assets/hive_upgrade.png" id="2_624ws"]
 [ext_resource type="Texture2D" uid="uid://chkcygvbewdof" path="res://assets/honey_extractor.png" id="3_qxonp"]
 [ext_resource type="Texture2D" uid="uid://bamwd6n8l2bsd" path="res://assets/bucket.png" id="4_ueg55"]
-[ext_resource type="Texture2D" uid="uid://clvwx3byc54lu" path="res://assets/gui/gui_tut_arrow.png" id="7_gbuxp"]
+[ext_resource type="FontFile" uid="uid://b7vkyxnsa7dol" path="res://assets/fonts/Sunset Friday.otf" id="7_gbuxp"]
 [ext_resource type="PackedScene" uid="uid://bn6h1et37uvkd" path="res://scenes/gui/toast_lable.tscn" id="8_2b3sj"]
+[ext_resource type="Texture2D" uid="uid://clvwx3byc54lu" path="res://assets/gui/gui_tut_arrow.png" id="8_rmity"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q232d"]
+font = ExtResource("7_gbuxp")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ggjrh"]
+font = ExtResource("7_gbuxp")
 
 [sub_resource type="Animation" id="Animation_2b3sj"]
 resource_name = "wiggle_tutorial_lable"
@@ -82,13 +89,15 @@ layout_mode = 2
 [node name="CashLabel" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "CASH:"
+label_settings = SubResource("LabelSettings_q232d")
 
 [node name="CashAmountLabel" type="Label" parent="NinePatchRect/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "$999999"
+text = "12750"
+label_settings = SubResource("LabelSettings_ggjrh")
 horizontal_alignment = 2
 clip_text = true
 
@@ -136,7 +145,7 @@ offset_right = 442.0
 offset_bottom = 198.0
 step = 0.01
 value = 100.0
-texture_progress = ExtResource("7_gbuxp")
+texture_progress = ExtResource("8_rmity")
 
 [node name="ToastLable" parent="TextureProgressBar" instance=ExtResource("8_2b3sj")]
 layout_mode = 1
