@@ -16,6 +16,8 @@ var primary_value: float
 var music_value: float
 var sfx_value: float
 
+var showed_warning: bool = false
+
 
 func _ready() -> void:
 	primary_volume.value_changed.connect(set_primary_level)
@@ -67,6 +69,8 @@ func set_sfx_level(new_value: float) -> void:
 	
 
 func hide_pause_menu() -> void:
+	$QuitButton/Label.text = "To Title"
+	showed_warning = false
 	AudioManager.button_click()
 	hide()
 
@@ -77,4 +81,12 @@ func _on_sandbox_checked() -> void:
 
 
 func _on_quit_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/title_screen/title_screen.tscn")
+	if showed_warning:
+		get_tree().change_scene_to_file("res://scenes/title_screen/title_screen.tscn")
+	else:
+		$ToTitleWarningTimer.start()
+		$QuitButton/Label.text = "You sure?\nProgress will be lost!"
+
+
+func _on_to_title_warning_timer_timeout() -> void:	
+	showed_warning = true
