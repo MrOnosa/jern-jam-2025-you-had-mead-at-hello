@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/2-sunny-beesness.ogg-a90a0d88c70221a00f9c3569
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
