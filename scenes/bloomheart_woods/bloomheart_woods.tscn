@@ -718,7 +718,8 @@ position = Vector2(3310, 1675)
 [node name="IndicatorMarker2D" type="Marker2D" parent="PlayerCenterMarker2D"]
 position = Vector2(212, 0)
 
-[node name="BeeColony" type="Sprite2D" parent="PlayerCenterMarker2D/IndicatorMarker2D"]
+[node name="Indicator" type="Sprite2D" parent="PlayerCenterMarker2D/IndicatorMarker2D"]
+z_index = 90
 position = Vector2(1, 1)
 rotation = 1.4922565
 texture = ExtResource("22_va1an")
