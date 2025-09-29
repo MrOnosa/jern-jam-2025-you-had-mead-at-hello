@@ -713,13 +713,13 @@ shape = SubResource("WorldBoundaryShape2D_0kbu6")
 position = Vector2(3309, 1725)
 
 [node name="PlayerCenterMarker2D" type="Marker2D" parent="."]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(3310, 1675)
 
 [node name="IndicatorMarker2D" type="Marker2D" parent="PlayerCenterMarker2D"]
 position = Vector2(212, 0)
 
 [node name="Indicator" type="Sprite2D" parent="PlayerCenterMarker2D/IndicatorMarker2D"]
-modulate = Color(1, 1, 1, 0)
 z_index = 90
 position = Vector2(1, 1)
 rotation = 1.4922565
