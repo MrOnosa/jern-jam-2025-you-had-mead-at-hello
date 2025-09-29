@@ -13,6 +13,7 @@ const SPEED = 300.0
 @onready var beeswax_high_sprite: Sprite2D = %BeeswaxHighSprite
 @onready var honeycomb_high_sprite: Sprite2D = %HoneycombHighSprite
 @onready var mead_high_sprite: Sprite2D = %MeadHighSprite
+@onready var walk_timer: Timer = %WalkTimer
 
 
 var target_position : Vector2
@@ -23,8 +24,11 @@ var player_facing_right : bool = true
 var direction_facing
 var player_base_scale: Vector2
 var mouse_or_touch_is_down : bool = false
+var walk_sound: bool = true
 
 func _ready():
+	walk_timer.timeout.connect(_walking_timer_timeout)
+	
 	GoToObj = get_node("../GoingTowardsThisPoint")
 	click_position = position
 	player_base_scale = scale
@@ -58,6 +62,12 @@ func _process(_delta: float) -> void:
 		elif GoToObj.global_position.x < position.x && scale == Vector2.ONE:
 			scale = Vector2(1, -1)
 			rotation_degrees = 180
+			
+	if anim_state == Action.WALKING:
+		if walk_sound:
+			AudioManager.play_walking_sound()
+			walk_sound = false
+			walk_timer.start()
 		
 
 func _physics_process(_delta: float) -> void:
@@ -91,3 +101,7 @@ func _on_workbench_placed() -> void:
 func _on_sell_box_placed(item, cost) -> void:
 	if holding != Holding.NOTHING:
 		holding = Holding.NOTHING
+
+
+func _walking_timer_timeout() -> void:
+	walk_sound = true

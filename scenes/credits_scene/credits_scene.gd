@@ -3,8 +3,6 @@ extends Control
 
 @onready var credits_content: RichTextLabel = %CreditsContent
 @onready var title_button: TextureButton = %TitleButton
-@onready var sfx_accept: AudioStreamPlayer = %SFXAccept
-@onready var sfx_hover: AudioStreamPlayer = %SFXHover
 @onready var bee: Sprite2D = %Bee
 @onready var bee_2: Sprite2D = %Bee2
 
@@ -13,28 +11,19 @@ func _ready() -> void:
 	title_button.pressed.connect(_on_title_button_pressed)
 	credits_content.meta_clicked.connect(_on_credits_meta_clicked)
 	
-	title_button.mouse_entered.connect(button_hover_sound)
+	title_button.mouse_entered.connect(AudioManager.button_hover)
 	
 	animate_bees()
 	
 	
 func _on_title_button_pressed() -> void:
-	button_click_sound()
+	AudioManager.button_click()
 	get_tree().change_scene_to_file("res://scenes/title_screen/title_screen.tscn")
 
 
 func _on_credits_meta_clicked(meta) -> void:
 	OS.shell_open(str(meta))
 
-
-func button_hover_sound() -> void:
-	sfx_hover.pitch_scale = randf_range(0.8,1.2)
-	sfx_hover.play()
-	
-	
-func button_click_sound() -> void:
-	sfx_accept.pitch_scale = randf_range(0.8,1.2)
-	sfx_accept.play()
 
 func animate_bees() -> void:
 	var t_bee = create_tween().set_trans(Tween.TRANS_CUBIC).set_loops(0)

@@ -1,10 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://c8fu5j8eq4nx8"]
+[gd_scene load_steps=23 format=3 uid="uid://c8fu5j8eq4nx8"]
 
 [ext_resource type="Texture2D" uid="uid://dmnihv382ty1d" path="res://assets/ground_texture.png" id="1_nv7u3"]
 [ext_resource type="Script" uid="uid://pbgyv2lj43s7" path="res://scenes/credits_scene/credits_scene.gd" id="1_u5nhv"]
 [ext_resource type="Texture2D" uid="uid://bd8chkxgjblgq" path="res://assets/bee.png" id="2_8dh13"]
-[ext_resource type="AudioStream" uid="uid://bkwul40wn181j" path="res://assets/sfx/ui_accept.ogg" id="2_d888s"]
-[ext_resource type="AudioStream" uid="uid://eftifp5h88l0" path="res://assets/sfx/ui_hover.ogg" id="3_n0wsh"]
 [ext_resource type="PackedScene" uid="uid://b7rtim3q5xhms" path="res://scenes/flower.tscn" id="3_ooxj4"]
 [ext_resource type="Texture2D" uid="uid://4w4r42ko28ls" path="res://assets/gui/gui_background.png" id="3_vvcte"]
 [ext_resource type="LabelSettings" uid="uid://dq0c6lirq23a0" path="res://assets/fonts/heading_label.tres" id="4_8dh13"]
@@ -33,18 +31,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u5nhv")
-
-[node name="AudioPlayers" type="Node2D" parent="."]
-
-[node name="SFXAccept" type="AudioStreamPlayer" parent="AudioPlayers"]
-unique_name_in_owner = true
-stream = ExtResource("2_d888s")
-bus = &"SFX"
-
-[node name="SFXHover" type="AudioStreamPlayer" parent="AudioPlayers"]
-unique_name_in_owner = true
-stream = ExtResource("3_n0wsh")
-bus = &"SFX"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

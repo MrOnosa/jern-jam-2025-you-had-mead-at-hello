@@ -40,6 +40,8 @@ var drag_and_drop_item_type : Utility.Draggable_Items = Utility.Draggable_Items.
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	AudioManager.play_game_bgm()
+	
 	sell_box.placed.connect(_on_sell_box_placed)
 	sell_box.placed.connect(bee_keeper._on_sell_box_placed)
 	panel_container.mouse_entered.connect(_HUD_on_panel_container_mouse_entered)

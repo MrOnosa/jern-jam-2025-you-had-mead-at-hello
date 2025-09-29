@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cgbkpvg1ukgty"]
+[gd_scene load_steps=14 format=3 uid="uid://cgbkpvg1ukgty"]
 
 [ext_resource type="Script" uid="uid://bcqjme1f4uoc5" path="res://scenes/honey_extractor.gd" id="1_287tr"]
 [ext_resource type="Texture2D" uid="uid://chkcygvbewdof" path="res://assets/honey_extractor.png" id="1_n0350"]
-[ext_resource type="AudioStream" uid="uid://c3kda4m4vp38j" path="res://assets/sfx/honey_extractor.ogg" id="2_v6w55"]
 [ext_resource type="Texture2D" uid="uid://da6cpijlphj45" path="res://assets/gui/panel_bg.png" id="3_mqeji"]
 [ext_resource type="LabelSettings" uid="uid://cn1rdmmbnmsu3" path="res://assets/gui/button_font.tres" id="4_v6w55"]
 [ext_resource type="FontFile" uid="uid://b7vkyxnsa7dol" path="res://assets/fonts/Sunset Friday.otf" id="5_j72ib"]
@@ -26,10 +25,6 @@ font_size = 32
 [node name="HoneyExtractor" type="StaticBody2D" groups=["bee_colony"]]
 input_pickable = true
 script = ExtResource("1_287tr")
-
-[node name="ExtractorSound" type="AudioStreamPlayer2D" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("2_v6w55")
 
 [node name="AnchorNode" type="Node2D" parent="."]
 position = Vector2(0, -60)
