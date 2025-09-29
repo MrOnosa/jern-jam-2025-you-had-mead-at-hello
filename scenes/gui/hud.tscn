@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dtc7nf7jxt17u"]
+[gd_scene load_steps=16 format=3 uid="uid://dtc7nf7jxt17u"]
 
 [ext_resource type="Script" uid="uid://ca17mt7ncei3q" path="res://scenes/gui/hud.gd" id="1_2pnwd"]
 [ext_resource type="Texture2D" uid="uid://d2chyn8tlqyat" path="res://assets/beehive.png" id="1_86rft"]
@@ -9,12 +9,28 @@
 [ext_resource type="FontFile" uid="uid://b7vkyxnsa7dol" path="res://assets/fonts/Sunset Friday.otf" id="7_gbuxp"]
 [ext_resource type="PackedScene" uid="uid://bn6h1et37uvkd" path="res://scenes/gui/toast_lable.tscn" id="8_2b3sj"]
 [ext_resource type="Texture2D" uid="uid://clvwx3byc54lu" path="res://assets/gui/gui_tut_arrow.png" id="8_rmity"]
+[ext_resource type="PackedScene" uid="uid://eks4w0v1m1k4" path="res://scenes/pause_menu/pause_menu.tscn" id="10_q232d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_q232d"]
 font = ExtResource("7_gbuxp")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ggjrh"]
 font = ExtResource("7_gbuxp")
+
+[sub_resource type="Animation" id="Animation_rmity"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureProgressBar/ToastLable:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.12217305]
+}
 
 [sub_resource type="Animation" id="Animation_2b3sj"]
 resource_name = "wiggle_tutorial_lable"
@@ -31,21 +47,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.12217305, -0.12217305, 0.12217305]
-}
-
-[sub_resource type="Animation" id="Animation_rmity"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureProgressBar/ToastLable:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.12217305]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q232d"]
@@ -209,3 +210,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_q232d")
 }
 autoplay = "wiggle_tutorial_lable"
+
+[node name="PauseMenu" parent="." instance=ExtResource("10_q232d")]
+unique_name_in_owner = true
+visible = false

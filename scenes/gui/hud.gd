@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@onready var pause_menu: PauseMenu = %PauseMenu
+
 const TOAST_LABLE = preload("uid://bn6h1et37uvkd")
 
 @onready var natural_hive_button: TextureButton = %NaturalHiveButton
@@ -20,6 +22,7 @@ var placed_honey_extractor : bool = false
 func _ready() -> void:
 	placed_beehive = Utility.sandbox_enabled
 	placed_honey_extractor = Utility.sandbox_enabled
+	pause_menu.hide()
 
 var tutorial_arrow_progress := 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,9 +41,9 @@ func _process(delta: float) -> void:
 			tutorial_arrow_progress = 0
 	else:
 		texture_progress_bar.visible = false
-		
+	
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if dragging:
 		if event is InputEventMouse || event is InputEventScreenDrag:
 			if event.position.x > 165 && event.position.x < 538 &&  event.position.y < 290:
@@ -55,6 +58,11 @@ func _input(event):
 	else:
 		%MoreInfoPatchRect.modulate = Color.WHITE
 		%NinePatchRect.modulate = Color.WHITE
+		
+	if event.is_action_pressed("pause_game") and not pause_menu.visible:
+		pause_menu.show()
+	elif event.is_action_pressed("pause_game") and pause_menu.visible:
+		pause_menu.hide()
 
 
 func _on_bloomheart_woods_on_player_dragging_started() -> void:

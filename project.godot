@@ -40,6 +40,7 @@ too_close_bubble="This is sure to have an interactive area so we can be sure not
 interactables=""
 gui_options=""
 sell_box="I know it's spell wrong but we're in too deep"
+hud=""
 
 [input]
 

@@ -38,7 +38,7 @@ player_rig = NodePath("PlayerAnimations")
 
 [node name="WalkTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.75
+wait_time = 0.37
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false

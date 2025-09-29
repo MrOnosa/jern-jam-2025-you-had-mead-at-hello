@@ -3,17 +3,49 @@ extends Node
 signal song_changed(title: String, artist: String)
 
 # Music Playlist
-var title_song: AudioStream = preload("uid://clpl30ka3t87u")
-var game_loop: AudioStream = preload("uid://cflk6iew1atom")
+const _1_MORNING_DRIZZLE: AudioStream = preload("uid://clpl30ka3t87u")
+const _2_SUNNY_BEESNESS: AudioStream = preload("uid://cflk6iew1atom")
+const _3_BUZZY_MEADOWS: AudioStream = preload("uid://ivxv4ikhk747")
+const _4_HYMNOPTERA: AudioStream = preload("uid://coljsvnpfe5rq")
+const _5_APIARY_NIGHTCLUB: AudioStream = preload("uid://cwikl180guucd")
+const _6_WAGGLE_DANCE: AudioStream = preload("uid://ck7lis4gwmap0")
+const _7_MURDER_HORNET: AudioStream = preload("uid://cfjk82eb2xj4y")
+const _8_NUC_NUKE: AudioStream = preload("uid://dclc70q6usao0")
+
 
 var ost_playlist: Dictionary = {
-	"title": {
-		"song": title_song,
+	"1": {
+		"song": _1_MORNING_DRIZZLE,
 		"name": "Morning Drizzle",
 		"artist": "Ategondev"
 	},
-	"game_loop": {
-		"song": game_loop,
+	"2": {
+		"song": _2_SUNNY_BEESNESS,
+		"name": "Sunny Beesness",
+		"artist": "Ategondev"
+	},
+	"3": {
+		"song": _3_BUZZY_MEADOWS,
+		"name": "Sunny Beesness",
+		"artist": "Ategondev"
+	},
+	"4": {
+		"song": _2_SUNNY_BEESNESS,
+		"name": "Sunny Beesness",
+		"artist": "Ategondev"
+	},
+	"5": {
+		"song": _2_SUNNY_BEESNESS,
+		"name": "Sunny Beesness",
+		"artist": "Ategondev"
+	},
+	"6": {
+		"song": _2_SUNNY_BEESNESS,
+		"name": "Sunny Beesness",
+		"artist": "Ategondev"
+	},
+	"7": {
+		"song": _2_SUNNY_BEESNESS,
 		"name": "Sunny Beesness",
 		"artist": "Ategondev"
 	}
@@ -82,10 +114,10 @@ func stop_bgm() -> void:
 
 
 func play_title_bgm() -> void:
-	play_bgm(ost_playlist["title"].song)
-	song_changed.emit(ost_playlist["title"].name,ost_playlist["title"].artist)
+	play_bgm(ost_playlist["1"].song)
+	song_changed.emit(ost_playlist["1"].name,ost_playlist["1"].artist)
 
 
 func play_game_bgm() -> void:
-	play_bgm(ost_playlist["game_loop"].song)
-	song_changed.emit(ost_playlist["game_loop"].name,ost_playlist["game_loop"].artist)
+	play_bgm(ost_playlist["2"].song)
+	song_changed.emit(ost_playlist["2"].name,ost_playlist["2"].artist)
