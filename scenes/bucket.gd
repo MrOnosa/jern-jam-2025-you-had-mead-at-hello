@@ -12,6 +12,7 @@ extends StaticBody2D
 @onready var status_label: Label = $InfoPanel/StatusLabel
 #@onready var debug_rich_text_label: RichTextLabel = $DebugRichTextLabel
 
+@onready var v_box_container: VBoxContainer = $VBoxContainer
 @onready var honey_action_button: TextureButton = $VBoxContainer/HoneyActionButton
 @onready var mead_action_button: TextureButton = $VBoxContainer/MeadActionButton
 
@@ -86,6 +87,7 @@ func _process(delta: float) -> void:
 		
 	
 	if player_nearby != null:
+		v_box_container.show()
 		info_panel.show()
 		if player_nearby.holding == BeeKeeper.Holding.HONEY_HIGH \
 		&& honey_jars < 3 \
@@ -105,6 +107,7 @@ func _process(delta: float) -> void:
 		honey_action_button.hide()
 		mead_action_button.hide()
 		info_panel.hide()
+		v_box_container.hide()
 	
 	if Input.is_action_pressed("show_all_stats_key") || mouse_hovering:
 		info_panel.show()

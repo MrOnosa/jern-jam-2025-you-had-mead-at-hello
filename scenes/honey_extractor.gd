@@ -16,6 +16,7 @@ extends StaticBody2D
 @onready var status_label: Label = $InfoPanel/StatusLabel
 @onready var debug_rich_text_label: RichTextLabel = $DebugRichTextLabel
 
+@onready var v_box_container: VBoxContainer = %VBoxContainer
 @onready var honeycomb_action_button: TextureButton = $VBoxContainer/HoneycombActionButton
 @onready var honey_action_button: TextureButton = $VBoxContainer/HoneyActionButton
 @onready var beeswax_action_button: TextureButton = $VBoxContainer/BeeswaxActionButton
@@ -29,6 +30,7 @@ var beeswax : float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	v_box_container.hide()
 	honeycomb_action_button.hide()
 	honey_action_button.hide()
 	info_panel.hide()
@@ -84,6 +86,7 @@ func _process(delta: float) -> void:
 		
 	
 	if player_nearby != null:
+		v_box_container.show()
 		info_panel.show()
 		if player_nearby.holding == BeeKeeper.Holding.HONEYCOMB_HIGH \
 		&& honeycombs <= 2.01 \
@@ -105,6 +108,7 @@ func _process(delta: float) -> void:
 		else:
 			beeswax_action_button.hide()			
 	else:
+		v_box_container.hide()
 		honeycomb_action_button.hide()
 		honey_action_button.hide()
 		beeswax_action_button.hide()

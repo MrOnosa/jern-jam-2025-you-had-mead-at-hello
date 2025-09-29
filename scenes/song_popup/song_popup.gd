@@ -21,7 +21,6 @@ func _ready() -> void:
 	
 	show_song()
 	
-	
 func show_song() -> void:
 	var tween = create_tween().set_trans(Tween.TRANS_LINEAR)
 	tween.tween_property(self, "modulate:a",1,1.0)

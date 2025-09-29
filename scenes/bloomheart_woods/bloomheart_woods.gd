@@ -89,11 +89,11 @@ func _process(delta: float) -> void:
 			if !mouse_is_over_HUD:				
 				# Check if the space is free				
 				if any_collisions:
-					#todo - Sfx that goes AANT!
+					AudioManager.play_error_sound()
 					hud.toast(str("Not enough room there"))
 					pass
 				elif too_expensive && !Utility.sandbox_enabled:
-					#todo - Sfx that goes AANT!					
+					AudioManager.play_error_sound()
 					hud.toast(str("Need more cash \n", Utility.draggable_items_dictionary()[drag_and_drop_item_type]["Name"], " costs $", Utility.draggable_items_dictionary()[drag_and_drop_item_type]["Cost"]))
 					pass
 				else:
