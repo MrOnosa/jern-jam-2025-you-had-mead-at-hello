@@ -12,6 +12,8 @@ extends Node2D
 
 
 func _ready() -> void:
+	AudioManager.play_title_bgm()
+	
 	new_game_button.pressed.connect(_on_new_game_button_pressed)
 	credits_button.pressed.connect(_on_credits_button_pressed)
 	options_button.pressed.connect(_on_options_button_pressed)

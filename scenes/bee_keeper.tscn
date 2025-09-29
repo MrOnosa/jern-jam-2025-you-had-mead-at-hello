@@ -36,6 +36,10 @@ motion_mode = 1
 script = ExtResource("1_3i6xr")
 player_rig = NodePath("PlayerAnimations")
 
+[node name="WalkTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.75
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("SpriteFrames_aqk2v")
