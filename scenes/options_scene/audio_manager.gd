@@ -12,45 +12,59 @@ const _6_WAGGLE_DANCE: AudioStream = preload("uid://ck7lis4gwmap0")
 const _7_MURDER_HORNET: AudioStream = preload("uid://cfjk82eb2xj4y")
 const _8_NUC_NUKE: AudioStream = preload("uid://dclc70q6usao0")
 
-
 var ost_playlist: Dictionary = {
 	"1": {
 		"song": _1_MORNING_DRIZZLE,
 		"name": "Morning Drizzle",
-		"artist": "Ategondev"
+		"artist": "Ategondev",
+		"unlocked": true
 	},
 	"2": {
 		"song": _2_SUNNY_BEESNESS,
 		"name": "Sunny Beesness",
-		"artist": "Ategondev"
+		"artist": "Ategondev",
+		"unlocked": true
 	},
 	"3": {
 		"song": _3_BUZZY_MEADOWS,
-		"name": "Sunny Beesness",
-		"artist": "Ategondev"
+		"name": "Buzzy Meadows",
+		"artist": "Ategondev",
+		"unlocked": true
 	},
 	"4": {
-		"song": _2_SUNNY_BEESNESS,
-		"name": "Sunny Beesness",
-		"artist": "Ategondev"
+		"song": _4_HYMNOPTERA,
+		"name": "Hymnoptera",
+		"artist": "Ategondev",
+		"unlocked": true
 	},
 	"5": {
-		"song": _2_SUNNY_BEESNESS,
-		"name": "Sunny Beesness",
-		"artist": "Ategondev"
+		"song": _5_APIARY_NIGHTCLUB,
+		"name": "Apiary Nightclub",
+		"artist": "Ategondev",
+		"unlocked": true
 	},
 	"6": {
-		"song": _2_SUNNY_BEESNESS,
-		"name": "Sunny Beesness",
-		"artist": "Ategondev"
+		"song": _6_WAGGLE_DANCE,
+		"name": "Waggle Dance",
+		"artist": "Ategondev",
+		"unlocked": true
 	},
 	"7": {
-		"song": _2_SUNNY_BEESNESS,
-		"name": "Sunny Beesness",
-		"artist": "Ategondev"
+		"song": _7_MURDER_HORNET,
+		"name": "Murder Hornet",
+		"artist": "Ategondev",
+		"unlocked": false
+	},
+	"8": {
+		"song": _8_NUC_NUKE,
+		"name": "Nuc Nuke",
+		"artist": "Ategondev",
+		"unlocked": false
 	}
 }
 
+var current_song_index: int = 1
+var is_playlist_active: bool = false
 var bgm_player: AudioStreamPlayer
 
 # Sound Effects Variables
@@ -64,6 +78,7 @@ func _ready() -> void:
 	bgm_player = AudioStreamPlayer.new()
 	add_child(bgm_player)
 	bgm_player.bus = "Music"
+	bgm_player.finished.connect(_on_song_finished)
 
 
 func play_sound(audio_file: AudioStream, _distance: float = 0.0, _position: Vector2 = Vector2(0,0), _vary: bool = false) -> void:
@@ -106,6 +121,12 @@ func play_walking_sound() -> void:
 
 func play_bgm(audio_file: AudioStream) -> void:
 	bgm_player.stream = audio_file
+	
+	if is_playlist_active:
+		bgm_player.stream.loop = false
+	else:
+		bgm_player.stream.loop = true
+	
 	bgm_player.play()
 	
 	
@@ -114,10 +135,42 @@ func stop_bgm() -> void:
 
 
 func play_title_bgm() -> void:
+	is_playlist_active = false
+	current_song_index = 1
 	play_bgm(ost_playlist["1"].song)
 	song_changed.emit(ost_playlist["1"].name,ost_playlist["1"].artist)
 
 
 func play_game_bgm() -> void:
-	play_bgm(ost_playlist["2"].song)
-	song_changed.emit(ost_playlist["2"].name,ost_playlist["2"].artist)
+	start_playlist(2)
+
+
+func _on_song_finished() -> void:
+	if is_playlist_active:
+		play_next_song()
+		
+
+func play_next_song() -> void:
+	var start_index = current_song_index
+	var playlist_size = ost_playlist.size()
+	
+	while true:
+		current_song_index += 1
+		
+		if current_song_index > playlist_size:
+			current_song_index = 1
+			
+		if current_song_index == start_index:
+			is_playlist_active = false
+			return
+			
+		if ost_playlist[str(current_song_index)].unlocked:
+			play_bgm(ost_playlist[str(current_song_index)].song)
+			song_changed.emit(ost_playlist[str(current_song_index)].name, ost_playlist[str(current_song_index)].artist)
+			return
+
+
+func start_playlist(starting_index: int = 1) -> void:
+	is_playlist_active = true
+	current_song_index = starting_index - 1
+	play_next_song()

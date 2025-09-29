@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@export var song_popup_scene: PackedScene
+
 @onready var pause_menu: PauseMenu = %PauseMenu
 
 const TOAST_LABLE = preload("uid://bn6h1et37uvkd")
@@ -20,6 +22,8 @@ var placed_honey_extractor : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	AudioManager.song_changed.connect(_on_song_changed)
+	
 	placed_beehive = Utility.sandbox_enabled
 	placed_honey_extractor = Utility.sandbox_enabled
 	pause_menu.hide()
@@ -82,3 +86,10 @@ func toast(message: String, _duration : float = 3.0) -> void:
 	tween.tween_property(t, "position", new_position, _duration).set_trans(Tween.TRANS_EXPO )
 	tween.tween_callback(t.queue_free)
 	pass
+
+
+func _on_song_changed(song_title: String, song_artist: String) -> void:
+	var song_pop: SongPopup = song_popup_scene.instantiate()
+	song_pop.composer_name = "Composer: " + song_artist
+	song_pop.song_name = "Song: " + song_title
+	add_child(song_pop)
