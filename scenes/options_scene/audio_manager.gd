@@ -32,7 +32,7 @@ var ost_playlist: Dictionary = {
 		"name": "Buzzy Meadows",
 		"artist": "Ategondev",
 		"unlocked": true,
-		"volume": -15.0
+		"volume": -10.0
 	},
 	"4": {
 		"song": _4_HYMNOPTERA,
