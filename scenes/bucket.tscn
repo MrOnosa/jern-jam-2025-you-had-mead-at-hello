@@ -36,7 +36,7 @@ texture = ExtResource("2_wuriu")
 position = Vector2(0, -49)
 shape = SubResource("CircleShape2D_ojsi1")
 
-[node name="InteractiveArea2D" type="Area2D" parent="."]
+[node name="InteractiveArea2D" type="Area2D" parent="." groups=["too_close_bubble"]]
 position = Vector2(0, -47)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea2D"]

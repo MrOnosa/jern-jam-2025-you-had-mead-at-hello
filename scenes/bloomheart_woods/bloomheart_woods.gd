@@ -62,10 +62,12 @@ func _ready() -> void:
 	Utility.soda_can_picked_up.connect(_on_soda_picked_up)
 
 var game_complete : bool = false
+var sandbox_mode_ever_on : bool = false # If true, invalidate the speedrun
 var time_elapsed : float = 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if !game_complete:
+		sandbox_mode_ever_on = sandbox_mode_ever_on || Utility.sandbox_enabled
 		time_elapsed += delta
 	if Utility.sandbox_enabled:
 		cash_amount_label.text = str("$$∞")
@@ -284,4 +286,7 @@ func _on_bear_turned_golden() -> void:
 		var milliseconds := fmod(time_elapsed, 1) * 100
 		var time_string := "%02d:%02d.%02d" % [minutes, seconds, milliseconds]
 		stopwatch_label.show()
-		stopwatch_label.text = stopwatch_label.text + time_string
+		if sandbox_mode_ever_on:
+			stopwatch_label.text = stopwatch_label.text + "(sandbox mode) " + time_string
+		else:
+			stopwatch_label.text = stopwatch_label.text + time_string
