@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxgenrah1lasl"]
+
+[ext_resource type="Texture2D" uid="uid://b2yiaglucr3ck" path="res://assets/honey/packed_honey.png" id="1_0bvjs"]
+
+[node name="PackedHoneyTextureRect" type="TextureRect"]
+texture = ExtResource("1_0bvjs")

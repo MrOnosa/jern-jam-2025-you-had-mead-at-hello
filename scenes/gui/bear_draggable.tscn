@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://caym1we4pi7i3"]
+
+[ext_resource type="Texture2D" uid="uid://dnixkife5moqb" path="res://assets/bear_statue.png" id="1_ca3fl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_opwqi"]
+radius = 110.0
+height = 308.0
+
+[node name="BearDraggable" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -142)
+texture = ExtResource("1_ca3fl")
+
+[node name="InteractiveArea2D" type="Area2D" parent="."]
+position = Vector2(0, -199)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea2D"]
+position = Vector2(1, 71)
+shape = SubResource("CapsuleShape2D_opwqi")

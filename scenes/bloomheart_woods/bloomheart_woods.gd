@@ -6,12 +6,16 @@ const NATURAL_HIVE_DRAGGABLE = preload("uid://dd56jcjuc6gn8")
 const MAN_MADE_HIVE_DRAGGABLE = preload("uid://dsmlt42isfk6r")
 const HONEY_EXTRACTOR_DRAGGABLE = preload("uid://88suwycgh5gw")
 const BUCKET_DRAGGABLE = preload("uid://dcljkr1dxfu0g")
+const BEAR_DRAGGABLE = preload("uid://caym1we4pi7i3")
+
 # Gameplay
 const BEE = preload("uid://ws0llatxgtev")
 const BEE_COLONY = preload("uid://cnqxl80su0co4")
 const MAN_MADE_BEE_COLONY = preload("uid://crwo4bniwcg18")
 const HONEY_EXTRACTOR = preload("uid://cgbkpvg1ukgty")
 const BUCKET = preload("uid://dbh4sws1wru4s")
+const BEAR = preload("uid://cublvc7s18q3a")
+
 
 signal on_player_dragging_started
 signal on_player_dragging_ended
@@ -24,6 +28,9 @@ signal on_player_dragging_ended
 @onready var man_made_hive_button: TextureButton = $HUD/NinePatchRect/VBoxContainer/ManMadeHiveButton
 @onready var honey_extractor_button: TextureButton = $HUD/NinePatchRect/VBoxContainer/HoneyExtractorButton
 @onready var bucket_button: TextureButton = $HUD/NinePatchRect/VBoxContainer/BucketButton
+@onready var bear_button: TextureButton = $HUD/NinePatchRect/VBoxContainer/BearButton
+
+
 @onready var more_info_patch_rect: NinePatchRect = $HUD/MoreInfoPatchRect
 @onready var rich_text_label: RichTextLabel = $HUD/MoreInfoPatchRect/MarginContainer/VBoxContainer/RichTextLabel
 @onready var player_center_marker_2d: Marker2D = $PlayerCenterMarker2D
@@ -50,6 +57,7 @@ func _ready() -> void:
 	man_made_hive_button.pressed.connect(_on_man_made_hive_button_pressed)
 	honey_extractor_button.pressed.connect(_on_honey_extractor_button_pressed)
 	bucket_button.pressed.connect(_on_bucket_button_pressed)
+	bear_button.pressed.connect(_on_bear_button_pressed)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -136,7 +144,11 @@ func _process(delta: float) -> void:
 						Utility.Draggable_Items.FOOD_GRADE_BUCKET:	
 							var bee_colony = BUCKET.instantiate() as Bucket
 							bee_colony.position = drag_and_drop_item.position
-							add_child(bee_colony)					
+							add_child(bee_colony)		
+						Utility.Draggable_Items.BEAR:	
+							var bee_colony = BEAR.instantiate() as Bear
+							bee_colony.position = drag_and_drop_item.position
+							add_child(bee_colony)
 						_:
 							printerr("Huh?", drag_and_drop_item_type)
 					
@@ -201,6 +213,13 @@ func _on_honey_extractor_button_pressed() -> void:
 func _on_bucket_button_pressed() -> void:
 	drag_and_drop_item = BUCKET_DRAGGABLE.instantiate()
 	drag_and_drop_item_type = Utility.Draggable_Items.FOOD_GRADE_BUCKET	
+	rich_text_label.text = _build_more_info_rich_text(Utility.draggable_items_dictionary()[drag_and_drop_item_type])
+	add_child(drag_and_drop_item)
+	on_player_dragging_started.emit()
+
+func _on_bear_button_pressed() -> void:
+	drag_and_drop_item = BEAR_DRAGGABLE.instantiate()
+	drag_and_drop_item_type = Utility.Draggable_Items.BEAR	
 	rich_text_label.text = _build_more_info_rich_text(Utility.draggable_items_dictionary()[drag_and_drop_item_type])
 	add_child(drag_and_drop_item)
 	on_player_dragging_started.emit()

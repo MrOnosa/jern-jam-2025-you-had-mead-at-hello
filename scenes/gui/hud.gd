@@ -9,6 +9,7 @@ const TOAST_LABLE = preload("uid://bn6h1et37uvkd")
 @onready var natural_hive_button: TextureButton = %NaturalHiveButton
 @onready var man_made_hive_button: TextureButton = %ManMadeHiveButton
 @onready var honey_extractor_button: TextureButton = %HoneyExtractorButton
+@onready var bear_button: TextureButton = %BearButton
 
 @onready var bucket_button: TextureButton = %BucketButton
 @onready var texture_progress_bar: TextureProgressBar = %TextureProgressBar
@@ -20,6 +21,7 @@ var dragging : bool = false
 
 var placed_beehive : bool = false
 var placed_honey_extractor : bool = false
+var mead_ever_collected : bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,6 +42,8 @@ func _process(delta: float) -> void:
 	
 	# Unlocked after placing a single honey extractor
 	bucket_button.visible = placed_honey_extractor
+	
+	bear_button.visible = mead_ever_collected
 	
 	if !placed_beehive:
 		tutorial_arrow_progress += delta * 100.0

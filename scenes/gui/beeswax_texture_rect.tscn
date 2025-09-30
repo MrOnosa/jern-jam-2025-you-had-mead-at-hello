@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgcicxyvpcpxd"]
+
+[ext_resource type="Texture2D" uid="uid://byv7mpmg6mpsv" path="res://assets/beeswax.png" id="1_5kh8p"]
+
+[node name="BeeswaxTextureRect" type="TextureRect"]
+texture = ExtResource("1_5kh8p")
+stretch_mode = 5

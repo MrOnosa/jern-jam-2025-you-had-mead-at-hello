@@ -3,7 +3,7 @@ extends Node
 var sandbox_enabled: bool = false
 var music_is_muted: bool = false
 
-enum Draggable_Items { VOID, NATURAL_BEE_HIVE, MAN_MADE_BEE_HIVE, HONEY_EXTRACTOR, FOOD_GRADE_BUCKET} 
+enum Draggable_Items { VOID, NATURAL_BEE_HIVE, MAN_MADE_BEE_HIVE, HONEY_EXTRACTOR, FOOD_GRADE_BUCKET, BEAR} 
 func draggable_items_dictionary() -> Dictionary[Draggable_Items, Dictionary]:
 	return { 
 	Draggable_Items.VOID: {
@@ -31,6 +31,11 @@ func draggable_items_dictionary() -> Dictionary[Draggable_Items, Dictionary]:
 		"Name": "Food Grade Bucket", 
 		"Cost": 200, 
 		"Text": "Used to make mead. Add 3 (three) units of honey to the bucket for fermentation. It will yield 2 (two) units of mead."
+		},
+	Draggable_Items.BEAR: {
+		"Name": "Bear Statue", 
+		"Cost": 1000, 
+		"Text": "The bear statue is a bit of a mystory. What is there for? Hmm... I hear bears like honey, beeswax, and mead!"
 		}
 	}
 

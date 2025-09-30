@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://devk4hm6v2wa"]
+
+[ext_resource type="Texture2D" uid="uid://di8u6it7bdghc" path="res://assets/High Quality Mead/mead_high_full.png" id="1_1md1v"]
+
+[node name="MeadTextureRect" type="TextureRect"]
+texture = ExtResource("1_1md1v")

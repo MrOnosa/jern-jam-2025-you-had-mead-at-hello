@@ -1,5 +1,11 @@
-class_name bear
+class_name Bear
 extends StaticBody2D
+
+const BEESWAX_TEXTURE_RECT = preload("uid://cgcicxyvpcpxd")
+const MEAD_TEXTURE_RECT = preload("uid://devk4hm6v2wa")
+const PACKED_HONEY_TEXTURE_RECT = preload("uid://bxgenrah1lasl")
+
+@onready var offering_flow_container: HFlowContainer = %OfferingFlowContainer
 
 @onready var info_panel: TextureRect = $InfoPanel
 @onready var status_label: Label = $InfoPanel/StatusLabel
@@ -95,6 +101,13 @@ func _on_mouse_exited() -> void:
 	mouse_hovering = false
 
 func _on_honeycomb_action_button_pressed() -> void:
+	var t = BEESWAX_TEXTURE_RECT.instantiate()
+	offering_flow_container.add_child(t)
+	var t2 = MEAD_TEXTURE_RECT.instantiate()
+	offering_flow_container.add_child(t2)
+	var t3 = PACKED_HONEY_TEXTURE_RECT.instantiate()
+	offering_flow_container.add_child(t3)
+	
 	AudioManager.play_extractor_sound(global_position)
 	honeycombs = min(3.0, honeycombs + 1.0)
 	player_nearby.holding = BeeKeeper.Holding.NOTHING
