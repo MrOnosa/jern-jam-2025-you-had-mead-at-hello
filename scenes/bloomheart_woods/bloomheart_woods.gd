@@ -29,6 +29,7 @@ signal on_player_dragging_ended
 @onready var honey_extractor_button: TextureButton = $HUD/NinePatchRect/VBoxContainer/HoneyExtractorButton
 @onready var bucket_button: TextureButton = $HUD/NinePatchRect/VBoxContainer/BucketButton
 @onready var bear_button: TextureButton = $HUD/NinePatchRect/VBoxContainer/BearButton
+@onready var stopwatch_label: Label = $HUD/StopwatchLabel
 
 
 @onready var more_info_patch_rect: NinePatchRect = $HUD/MoreInfoPatchRect
@@ -60,9 +61,12 @@ func _ready() -> void:
 	bear_button.pressed.connect(_on_bear_button_pressed)
 	Utility.soda_can_picked_up.connect(_on_soda_picked_up)
 
-
+var game_complete : bool = false
+var time_elapsed : float = 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if !game_complete:
+		time_elapsed += delta
 	if Utility.sandbox_enabled:
 		cash_amount_label.text = str("$$∞")
 	else:
@@ -145,11 +149,19 @@ func _process(delta: float) -> void:
 						Utility.Draggable_Items.FOOD_GRADE_BUCKET:	
 							var bee_colony = BUCKET.instantiate() as Bucket
 							bee_colony.position = drag_and_drop_item.position
+							bee_colony.on_pickup_mead.connect(_on_pickup_mead)
 							add_child(bee_colony)		
 						Utility.Draggable_Items.BEAR:	
 							var bee_colony = BEAR.instantiate() as Bear
 							bee_colony.position = drag_and_drop_item.position
+							bee_colony.bear_turned_golden.connect(_on_bear_turned_golden)
 							add_child(bee_colony)
+							AudioManager.play_bear_placed()
+							
+							if AudioManager.ost_playlist["7"]["unlocked"] == false:
+								AudioManager.ost_playlist["7"]["unlocked"] = true
+								AudioManager.start_playlist(7)
+								hud.toast("The bear smiles.\nNew Song Unlocked!", 5)
 						_:
 							printerr("Huh?", drag_and_drop_item_type)
 					
@@ -226,9 +238,9 @@ func _on_bear_button_pressed() -> void:
 	on_player_dragging_started.emit()
 
 func _build_more_info_rich_text(info: Dictionary) -> String:
-	var cost_text: String = str("Cost [b]$", info["Cost"], "[/b]")
+	var cost_text: String = str("Cost [b]$", Utility.add_commas_to_number(info["Cost"]), "[/b]")
 	if Utility.sandbox_enabled:
-		cost_text = str("Cost $[s]",info["Cost"],"[/s] Free - Sandbox Mode")	
+		cost_text = str("Cost $[s]",Utility.add_commas_to_number(info["Cost"]),"[/s] Free - Sandbox Mode")	
 	elif info["Cost"] > cash:
 		cost_text = str(" [bgcolor=DB0000] ",cost_text," [/bgcolor] - Too expensive!")
 	else:
@@ -245,3 +257,31 @@ func _HUD_on_panel_container_mouse_exited() -> void:
 func _on_soda_picked_up(_cash_gain_amount: int = 1) -> void:
 	AudioManager.play_pickup_sound()
 	cash += _cash_gain_amount
+
+func _on_pickup_mead() -> void:
+	if !hud.mead_ever_collected:
+		hud.toast("Bear now available\nfor purchase", 5.0)
+		hud.mead_ever_collected = true;
+
+func _on_bear_turned_golden() -> void:
+	if AudioManager.ost_playlist["8"]["unlocked"] == false:
+		game_complete = true
+		AudioManager.ost_playlist["8"]["unlocked"] = true
+		AudioManager.start_playlist(8)
+		hud.toast("The forrest is under the bear's protection.\nAll litter has been removed.\nThank you for playing!\n\nFinal Song Unlocked!", 15)
+		var all_the_soda_spawners = get_tree().get_nodes_in_group("soda_spawner") as Array[Node]
+		for b in all_the_soda_spawners:
+			if b is SodaSpawner:
+				b.the_spirit_of_the_bear_cleans_this_terrible_place()
+				
+		var all_the_soda_cans = get_tree().get_nodes_in_group("soda_cans") as Array[Node]
+		for b in all_the_soda_cans:
+			b.queue_free()
+		
+		await get_tree().create_timer(10).timeout
+		var minutes := time_elapsed / 60
+		var seconds := fmod(time_elapsed, 60)
+		var milliseconds := fmod(time_elapsed, 1) * 100
+		var time_string := "%02d:%02d.%02d" % [minutes, seconds, milliseconds]
+		stopwatch_label.show()
+		stopwatch_label.text = stopwatch_label.text + time_string

@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://boewt6ef3fe27" path="res://assets/bear_statue_gold.png" id="3_x34g0"]
 [ext_resource type="LabelSettings" uid="uid://cn1rdmmbnmsu3" path="res://assets/gui/button_font.tres" id="4_iwa67"]
 [ext_resource type="FontFile" uid="uid://b7vkyxnsa7dol" path="res://assets/fonts/Sunset Friday.otf" id="5_ym5xy"]
-[ext_resource type="Texture2D" uid="uid://dogtp5dbjim3t" path="res://assets/gui/button_1.png" id="9_ejuj0"]
-[ext_resource type="Texture2D" uid="uid://vfm1p832dp0b" path="res://assets/gui/button_1_hover.png" id="10_eblmn"]
+[ext_resource type="Texture2D" uid="uid://brh416hlld4qi" path="res://assets/gui/button_2.png" id="7_5084r"]
+[ext_resource type="Texture2D" uid="uid://c5etmq5xjnqbf" path="res://assets/gui/button_2_hover.png" id="8_x34g0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_052ee"]
 radius = 26.0
@@ -93,7 +93,7 @@ offset_right = 239.83331
 offset_bottom = -118.499985
 grow_horizontal = 2
 grow_vertical = 2
-text = "Turning gold with each offering"
+text = "The bear wants something else..."
 label_settings = SubResource("LabelSettings_4e8ou")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -107,83 +107,31 @@ offset_right = 524.0
 offset_bottom = 454.0
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-unique_name_in_owner = true
-offset_left = 82.0
-offset_top = -60.5
-offset_right = 557.0
-offset_bottom = 380.5
+[node name="ActionButton" type="TextureButton" parent="."]
+z_index = 100
+offset_left = 80.0
+offset_top = -54.0
+offset_right = 552.0
+offset_bottom = 138.0
 scale = Vector2(0.52, 0.52)
-theme_override_constants/separation = -60
+texture_normal = ExtResource("7_5084r")
+texture_hover = ExtResource("8_x34g0")
 
-[node name="HoneycombActionButton" type="TextureButton" parent="VBoxContainer"]
-z_index = 100
-layout_mode = 2
-texture_normal = ExtResource("9_ejuj0")
-texture_hover = ExtResource("10_eblmn")
-
-[node name="Label" type="Label" parent="VBoxContainer/HoneycombActionButton"]
+[node name="ActionButtonLabel" type="Label" parent="ActionButton"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -169.96155
-offset_top = -26.192299
-offset_right = 167.03845
-offset_bottom = 31.807701
+offset_left = -128.0
+offset_top = -29.0
+offset_right = 128.0
+offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Offer Honey"
-label_settings = ExtResource("4_iwa67")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HoneyActionButton" type="TextureButton" parent="VBoxContainer"]
-z_index = 100
-layout_mode = 2
-texture_normal = ExtResource("9_ejuj0")
-texture_hover = ExtResource("10_eblmn")
-
-[node name="Label" type="Label" parent="VBoxContainer/HoneyActionButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -156.96155
-offset_top = -26.192299
-offset_right = 154.03845
-offset_bottom = 31.807701
-grow_horizontal = 2
-grow_vertical = 2
-text = "Offer Beeswax"
-label_settings = ExtResource("4_iwa67")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BeeswaxActionButton" type="TextureButton" parent="VBoxContainer"]
-z_index = 100
-layout_mode = 2
-texture_normal = ExtResource("9_ejuj0")
-texture_hover = ExtResource("10_eblmn")
-
-[node name="Label" type="Label" parent="VBoxContainer/BeeswaxActionButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -175.96155
-offset_top = -26.192299
-offset_right = 173.03845
-offset_bottom = 31.807701
-grow_horizontal = 2
-grow_vertical = 2
-text = "Offer Mead"
+text = "Sell Honey"
 label_settings = ExtResource("4_iwa67")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -203,14 +151,8 @@ c
 "
 fit_content = true
 
-[node name="DoWorkTimer" type="Timer" parent="."]
-autostart = true
-
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="body_entered" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_entered"]
 [connection signal="body_exited" from="InteractiveArea2D" to="." method="_on_interactive_area_2d_body_exited"]
-[connection signal="pressed" from="VBoxContainer/HoneycombActionButton" to="." method="_on_honeycomb_action_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HoneyActionButton" to="." method="_on_honey_action_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/BeeswaxActionButton" to="." method="_on_beeswax_action_button_pressed"]
-[connection signal="timeout" from="DoWorkTimer" to="." method="_on_do_work_timer_timeout"]
+[connection signal="pressed" from="ActionButton" to="." method="_on_action_button_pressed"]

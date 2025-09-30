@@ -42,6 +42,7 @@ gui_options=""
 sell_box="I know it's spell wrong but we're in too deep"
 hud=""
 soda_cans=""
+soda_spawner=""
 
 [input]
 

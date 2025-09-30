@@ -179,6 +179,15 @@ text = "Drag the beehive
  to beign"
 metadata/_edit_use_anchors_ = true
 
+[node name="StopwatchLabel" type="Label" parent="."]
+visible = false
+offset_left = 156.0
+offset_top = 689.0
+offset_right = 198.0
+offset_bottom = 709.0
+text = "Golden Bear achieved: "
+label_settings = SubResource("LabelSettings_q232d")
+
 [node name="MoreInfoPatchRect" type="NinePatchRect" parent="."]
 unique_name_in_owner = true
 anchors_preset = -1

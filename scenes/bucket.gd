@@ -1,6 +1,8 @@
 class_name Bucket
 extends StaticBody2D
 
+signal on_pickup_mead
+
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var jar_1_texture_progress_bar: TextureProgressBar = %Jar1TextureProgressBar
 @onready var jar_2_texture_progress_bar: TextureProgressBar = %Jar2TextureProgressBar
@@ -132,6 +134,7 @@ func _on_honey_action_button_pressed() -> void:
 	player_nearby.holding = BeeKeeper.Holding.NOTHING
 	
 func _on_mead_action_button_pressed() -> void:
+	on_pickup_mead.emit()
 	AudioManager.play_mead_pickup()
 	mead = max(0, mead - 1)
 	if mead == 0:

@@ -38,7 +38,7 @@ func draggable_items_dictionary() -> Dictionary[Draggable_Items, Dictionary]:
 	Draggable_Items.BEAR: {
 		"Name": "Bear Statue", 
 		"Cost": 1000, 
-		"Text": "The bear statue is a bit of a mystory. What is there for? Hmm... I hear bears like honey, beeswax, and mead!"
+		"Text": "The bear statue is a bit of a mystery. What is it there for? Hmm... I hear bears like honey, beeswax, and mead!"
 		}
 	}
 

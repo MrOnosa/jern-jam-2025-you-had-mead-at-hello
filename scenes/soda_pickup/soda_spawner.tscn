@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_c3b10"]
 radius = 19.65
 
-[node name="SodaSpawner" type="Node2D"]
+[node name="SodaSpawner" type="Node2D" groups=["soda_spawner"]]
 script = ExtResource("1_2d0ur")
 soda_item_scene = ExtResource("2_c3b10")
 

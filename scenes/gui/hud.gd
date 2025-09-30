@@ -21,7 +21,7 @@ var dragging : bool = false
 
 var placed_beehive : bool = false
 var placed_honey_extractor : bool = false
-var mead_ever_collected : bool = true
+var mead_ever_collected : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,6 +31,7 @@ func _ready() -> void:
 	
 	placed_beehive = Utility.sandbox_enabled
 	placed_honey_extractor = Utility.sandbox_enabled
+	mead_ever_collected = Utility.sandbox_enabled
 	pause_menu.hide()
 
 var tutorial_arrow_progress := 0.0

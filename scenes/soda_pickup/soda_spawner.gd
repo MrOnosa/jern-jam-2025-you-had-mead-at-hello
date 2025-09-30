@@ -17,7 +17,10 @@ func _ready() -> void:
 	soda_area.body_exited.connect(_on_soda_area_exited)
 	
 	
-func _on_soda_timer_timeout() -> void:
+func _on_soda_timer_timeout() -> void:	
+	if disable_forever: # Prevent from spawning after getting golden bear
+		return
+		
 	if item_here:
 		can_spawn_here = false
 	else:
@@ -34,7 +37,7 @@ func _on_soda_timer_timeout() -> void:
 		await get_tree().create_timer(0.3).timeout
 		var all_the_things = get_tree().get_nodes_in_group("too_close_bubble") as Array[Area2D]
 		for b in all_the_things:
-			if b.overlaps_area(soda.get_node("SodaArea2D")):
+			if !b.is_queued_for_deletion() && b.overlaps_area(soda.get_node("SodaArea2D")):
 				soda.queue_free()
 				disable_forever = true
 				break
@@ -49,3 +52,6 @@ func _on_soda_area_entered(body: Node2D) -> void:
 	
 func _on_soda_area_exited(body: Node2D) -> void:
 	item_here = null
+
+func the_spirit_of_the_bear_cleans_this_terrible_place() -> void:
+	disable_forever = true
