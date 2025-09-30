@@ -3,14 +3,15 @@ extends Node
 signal song_changed(title: String, artist: String)
 
 # Music Playlist
-const _1_MORNING_DRIZZLE: AudioStream = preload("uid://clpl30ka3t87u")
-const _2_SUNNY_BEESNESS: AudioStream = preload("uid://cflk6iew1atom")
-const _3_BUZZY_MEADOWS: AudioStream = preload("uid://ivxv4ikhk747")
-const _4_HYMNOPTERA: AudioStream = preload("uid://coljsvnpfe5rq")
-const _5_APIARY_NIGHTCLUB: AudioStream = preload("uid://cwikl180guucd")
-const _6_WAGGLE_DANCE: AudioStream = preload("uid://ck7lis4gwmap0")
-const _7_MURDER_HORNET: AudioStream = preload("uid://cfjk82eb2xj4y")
-const _8_NUC_NUKE: AudioStream = preload("uid://dclc70q6usao0")
+const _1_MORNING_DRIZZLE: AudioStream = preload("uid://jeaahqyf2oer")
+const _2_SUNNY_BEESNESS: AudioStream = preload("uid://7eu2wgatxulq")
+const _3_BUZZY_MEADOWS: AudioStream = preload("uid://dkajangi3oyuf")
+const _4_HYMNOPTERA: AudioStream = preload("uid://dp6yxq8c7syqy")
+const _5_APIARY_NIGHTCLUB: AudioStream = preload("uid://xr4y4mcafidq")
+const _6_WAGGLE_DANCE: AudioStream = preload("uid://re0xhrahx386")
+const _7_MURDER_HORNET: AudioStream = preload("uid://cg82ymi06f3wf")
+const _8_NUC_NUKE: AudioStream = preload("uid://cffh7se8h242e")
+
 
 var ost_playlist: Dictionary = {
 	"1": {
