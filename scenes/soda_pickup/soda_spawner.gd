@@ -2,11 +2,12 @@ class_name SodaSpawner
 extends Node2D
 
 @export var soda_item_scene: PackedScene
-@export var soda_spawn_time: float = 30
+@export var soda_spawn_time: float = 120
 
 @onready var soda_timer: Timer = %SodaTimer
 @onready var soda_area: Area2D = %SodaArea
 
+var disable_forever: bool = false
 var can_spawn_here: bool = true
 var item_here
 
@@ -30,8 +31,16 @@ func _on_soda_timer_timeout() -> void:
 	if can_spawn_here:
 		var soda: SodaPickup = soda_item_scene.instantiate()
 		add_child(soda)
-		
-	soda_timer.start(randf_range(soda_spawn_time/2,soda_spawn_time))
+		await get_tree().create_timer(0.3).timeout
+		var all_the_things = get_tree().get_nodes_in_group("too_close_bubble") as Array[Area2D]
+		for b in all_the_things:
+			if b.overlaps_area(soda.get_node("SodaArea2D")):
+				soda.queue_free()
+				disable_forever = true
+				break
+	
+	if !disable_forever:
+		soda_timer.start(randf_range(soda_spawn_time/2,soda_spawn_time))
 
 
 func _on_soda_area_entered(body: Node2D) -> void:
