@@ -201,7 +201,7 @@ func stop_bgm() -> void:
 
 
 func play_title_bgm() -> void:
-	if is_song_playing("1"):
+	if is_song_playing(1):
 		return
 		
 	is_playlist_active = false
@@ -264,5 +264,5 @@ func start_playlist(starting_index: int = 1) -> void:
 	play_next_song()
 
 
-func is_song_playing(song_key: String) -> bool:
-	return bgm_player.playing and bgm_player.stream == ost_playlist[song_key].song
+func is_song_playing(song_key: int) -> bool:
+	return bgm_player.playing and song_key == current_song_index
