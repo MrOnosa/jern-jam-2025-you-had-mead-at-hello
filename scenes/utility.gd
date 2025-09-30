@@ -1,5 +1,8 @@
 extends Node
 
+# Global signals to be used remotely
+signal soda_can_picked_up
+
 var sandbox_enabled: bool = false
 var music_is_muted: bool = false
 

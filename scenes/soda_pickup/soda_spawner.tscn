@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjdwu2yuex8kp"]
+
+[ext_resource type="Script" uid="uid://cynk8suwkycwk" path="res://scenes/soda_pickup/soda_spawner.gd" id="1_2d0ur"]
+[ext_resource type="PackedScene" uid="uid://cnhrfspiudfb3" path="res://scenes/soda_pickup/soda_pickup.tscn" id="2_c3b10"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c3b10"]
+radius = 19.65
+
+[node name="SodaSpawner" type="Node2D"]
+script = ExtResource("1_2d0ur")
+soda_item_scene = ExtResource("2_c3b10")
+
+[node name="SodaTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+autostart = true
+
+[node name="SodaArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SodaArea"]
+shape = SubResource("CircleShape2D_c3b10")
+debug_color = Color(0.971031, 0.14046144, 0.56378436, 0.41960785)
