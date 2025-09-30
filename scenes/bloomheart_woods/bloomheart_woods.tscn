@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dq68pnmyoe7mc"]
+[gd_scene load_steps=41 format=3 uid="uid://dq68pnmyoe7mc"]
 
 [ext_resource type="Script" uid="uid://mqqion7wrlty" path="res://scenes/bloomheart_woods/bloomheart_woods.gd" id="1_be4b0"]
 [ext_resource type="Texture2D" uid="uid://dmnihv382ty1d" path="res://assets/ground_texture.png" id="1_bwr0l"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://c0pe207hbkjet" path="res://assets/gui/gui_pointer.png" id="22_va1an"]
 [ext_resource type="PackedScene" uid="uid://b7rtim3q5xhms" path="res://scenes/flower.tscn" id="26_kyyel"]
 [ext_resource type="PackedScene" uid="uid://br8hxs6xyd0mu" path="res://scenes/level_decoration/bush_4.tscn" id="30_y8ijm"]
+[ext_resource type="PackedScene" uid="uid://dxslt1chvejrp" path="res://scenes/floating_leaf/leaf_spawner.tscn" id="34_gb6q4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mhfi5"]
 size = Vector2(1245, 687)
@@ -1801,6 +1802,10 @@ y_sort_enabled = true
 
 [node name="SellBox" parent="Interactables" groups=["interactables"] instance=ExtResource("10_y41x7")]
 position = Vector2(2899, 1556)
+
+[node name="LeafSpawner" parent="." instance=ExtResource("34_gb6q4")]
+spawn_amount = 10
+leaf_life_low = 30.0
 
 [connection signal="on_player_dragging_ended" from="." to="HUD" method="_on_bloomheart_woods_on_player_dragging_ended"]
 [connection signal="on_player_dragging_started" from="." to="HUD" method="_on_bloomheart_woods_on_player_dragging_started"]

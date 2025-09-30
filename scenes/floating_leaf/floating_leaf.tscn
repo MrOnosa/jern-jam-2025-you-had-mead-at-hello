@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://u1l4jupv6llx"]
+
+[ext_resource type="Texture2D" uid="uid://ds5x2r5bu17pd" path="res://assets/Level Decoration/leaf_3.png" id="1_kgl01"]
+[ext_resource type="Script" uid="uid://b54pv5y84wyp0" path="res://scenes/floating_leaf/floating_leaf.gd" id="1_utrbr"]
+
+[node name="FloatingLeaf" type="Node2D"]
+z_index = 5
+script = ExtResource("1_utrbr")
+
+[node name="LeafSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("1_kgl01")
