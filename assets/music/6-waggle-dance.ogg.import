@@ -2,7 +2,7 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://ck7lis4gwmap0"
+uid="uid://re0xhrahx386"
 path="res://.godot/imported/6-waggle-dance.ogg-7f20368301a9a3a80bbc51b93a8a12c1.oggvorbisstr"
 
 [deps]
@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/6-waggle-dance.ogg-7f20368301a9a3a80bbc51b93a
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

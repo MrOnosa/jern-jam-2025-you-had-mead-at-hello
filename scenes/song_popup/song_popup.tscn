@@ -21,6 +21,7 @@ font_size = 20
 font = ExtResource("1_4cxms")
 
 [node name="SongPopup" type="Node2D"]
+modulate = Color(1, 1, 1, 0)
 script = ExtResource("1_arx2h")
 
 [node name="TextureRect" type="TextureRect" parent="."]

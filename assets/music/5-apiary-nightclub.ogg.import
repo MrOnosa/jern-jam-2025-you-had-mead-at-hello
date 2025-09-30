@@ -2,7 +2,7 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://cwikl180guucd"
+uid="uid://xr4y4mcafidq"
 path="res://.godot/imported/5-apiary-nightclub.ogg-287baecb5959375ccd4180be5d9a4bec.oggvorbisstr"
 
 [deps]
@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/5-apiary-nightclub.ogg-287baecb5959375ccd4180
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

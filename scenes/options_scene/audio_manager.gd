@@ -3,69 +3,70 @@ extends Node
 signal song_changed(title: String, artist: String)
 
 # Music Playlist
-const _1_MORNING_DRIZZLE: AudioStream = preload("uid://clpl30ka3t87u")
-const _2_SUNNY_BEESNESS: AudioStream = preload("uid://cflk6iew1atom")
-const _3_BUZZY_MEADOWS: AudioStream = preload("uid://ivxv4ikhk747")
-const _4_HYMNOPTERA: AudioStream = preload("uid://coljsvnpfe5rq")
-const _5_APIARY_NIGHTCLUB: AudioStream = preload("uid://cwikl180guucd")
-const _6_WAGGLE_DANCE: AudioStream = preload("uid://ck7lis4gwmap0")
-const _7_MURDER_HORNET: AudioStream = preload("uid://cfjk82eb2xj4y")
-const _8_NUC_NUKE: AudioStream = preload("uid://dclc70q6usao0")
+const _1_MORNING_DRIZZLE: AudioStream = preload("uid://jeaahqyf2oer")
+const _2_SUNNY_BEESNESS: AudioStream = preload("uid://7eu2wgatxulq")
+const _3_BUZZY_MEADOWS: AudioStream = preload("uid://dkajangi3oyuf")
+const _4_HYMNOPTERA: AudioStream = preload("uid://dp6yxq8c7syqy")
+const _5_APIARY_NIGHTCLUB: AudioStream = preload("uid://xr4y4mcafidq")
+const _6_WAGGLE_DANCE: AudioStream = preload("uid://re0xhrahx386")
+const _7_MURDER_HORNET: AudioStream = preload("uid://cg82ymi06f3wf")
+const _8_NUC_NUKE: AudioStream = preload("uid://cffh7se8h242e")
+
 
 var ost_playlist: Dictionary = {
 	"1": {
 		"song": _1_MORNING_DRIZZLE,
 		"name": "Morning Drizzle",
-		"artist": "Ategondev",
+		"artist": "Ategon",
 		"unlocked": true,
 		"volume": -10.0
 	},
 	"2": {
 		"song": _2_SUNNY_BEESNESS,
 		"name": "Sunny Beesness",
-		"artist": "Ategondev",
+		"artist": "Ategon",
 		"unlocked": true,
 		"volume": -10.0
 	},
 	"3": {
 		"song": _3_BUZZY_MEADOWS,
 		"name": "Buzzy Meadows",
-		"artist": "Ategondev",
+		"artist": "Ategon",
 		"unlocked": true,
 		"volume": -10.0
 	},
 	"4": {
 		"song": _4_HYMNOPTERA,
 		"name": "Hymnoptera",
-		"artist": "Ategondev",
+		"artist": "Ategon",
 		"unlocked": true,
 		"volume": -10.0
 	},
 	"5": {
 		"song": _5_APIARY_NIGHTCLUB,
 		"name": "Apiary Nightclub",
-		"artist": "Ategondev",
+		"artist": "Ategon",
 		"unlocked": true,
 		"volume": -10.0
 	},
 	"6": {
 		"song": _6_WAGGLE_DANCE,
 		"name": "Waggle Dance",
-		"artist": "Ategondev",
+		"artist": "Ategon",
 		"unlocked": true,
 		"volume": -10.0
 	},
 	"7": {
 		"song": _7_MURDER_HORNET,
 		"name": "Murder Hornet",
-		"artist": "Ategondev",
+		"artist": "Ategon",
 		"unlocked": false,
 		"volume": -10.0
 	},
 	"8": {
 		"song": _8_NUC_NUKE,
 		"name": "Nuc Nuke",
-		"artist": "Ategondev",
+		"artist": "Ategon",
 		"unlocked": false,
 		"volume": -10.0
 	}
@@ -74,6 +75,7 @@ var ost_playlist: Dictionary = {
 var current_song_index: int = 1
 var is_playlist_active: bool = false
 var bgm_player: AudioStreamPlayer
+var volume_tween: Tween
 
 # Sound Effects Variables
 const button_hover_sfx: AudioStream = preload("uid://eftifp5h88l0")
@@ -183,7 +185,7 @@ func play_bear_offering() -> void:
 
 
 func play_bgm(audio_file: AudioStream, _volume: float = 0.0) -> void:
-	bgm_player.stream = audio_file
+	bgm_player.stream = audio_file.duplicate() as AudioStream
 	bgm_player.volume_db = _volume
 	
 	if is_playlist_active:
@@ -199,17 +201,36 @@ func stop_bgm() -> void:
 
 
 func play_title_bgm() -> void:
-	if is_song_playing("1"):
+	if is_song_playing(1):
 		return
 		
 	is_playlist_active = false
 	current_song_index = 1
-	play_bgm(ost_playlist["1"].song, ost_playlist["1"].volume)
 	song_changed.emit(ost_playlist["1"].name,ost_playlist["1"].artist)
+	play_bgm(ost_playlist["1"].song, ost_playlist["1"].volume)
 
 
 func play_game_bgm() -> void:
+	_fade_out_title()
+
+
+func _fade_out_title() -> void:
+	if bgm_player and bgm_player.playing:
+		await _tween_volume(-80.0, 4)
+		bgm_player.stop()
+	
 	start_playlist(2)
+
+
+func _tween_volume(to_db: float, duration: float) -> void:
+	if volume_tween:
+		volume_tween.kill()
+	
+	volume_tween = create_tween()
+	volume_tween.tween_property(bgm_player, "volume_db", to_db, duration)
+	volume_tween.tween_interval(5)
+	
+	await volume_tween.finished
 
 
 func _on_song_finished() -> void:
@@ -243,5 +264,5 @@ func start_playlist(starting_index: int = 1) -> void:
 	play_next_song()
 
 
-func is_song_playing(song_key: String) -> bool:
-	return bgm_player.playing and bgm_player.stream == ost_playlist[song_key].song
+func is_song_playing(song_key: int) -> bool:
+	return bgm_player.playing and song_key == current_song_index

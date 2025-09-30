@@ -272,7 +272,7 @@ offset_bottom = 197.0
 rotation = 0.12217305
 pivot_offset = Vector2(252, 76)
 text = "Drag the beehive
- to beign"
+ to begin"
 metadata/_edit_use_anchors_ = true
 
 [node name="StopwatchLabel" type="Label" parent="."]
