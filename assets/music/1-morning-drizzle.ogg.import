@@ -2,7 +2,7 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://clpl30ka3t87u"
+uid="uid://jeaahqyf2oer"
 path="res://.godot/imported/1-morning-drizzle.ogg-50ca7b2d91212412b6b6546e5e9af835.oggvorbisstr"
 
 [deps]
@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/1-morning-drizzle.ogg-50ca7b2d91212412b6b6546
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

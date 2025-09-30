@@ -2,7 +2,7 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://dclc70q6usao0"
+uid="uid://cffh7se8h242e"
 path="res://.godot/imported/8-nuc-nuke.ogg-c29308adfa1cd1cfb5acfe61ccefb436.oggvorbisstr"
 
 [deps]
@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/8-nuc-nuke.ogg-c29308adfa1cd1cfb5acfe61ccefb4
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

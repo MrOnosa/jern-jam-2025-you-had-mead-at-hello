@@ -2,7 +2,7 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://ivxv4ikhk747"
+uid="uid://dkajangi3oyuf"
 path="res://.godot/imported/3-buzzy-meadows.ogg-36fa2620cff50208050ec985d90636b7.oggvorbisstr"
 
 [deps]
@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/3-buzzy-meadows.ogg-36fa2620cff50208050ec985d
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

@@ -2,7 +2,7 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://cfjk82eb2xj4y"
+uid="uid://cg82ymi06f3wf"
 path="res://.godot/imported/7-murder-hornet.ogg-976e1ddde88061c582ee5aec94d35172.oggvorbisstr"
 
 [deps]
@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/7-murder-hornet.ogg-976e1ddde88061c582ee5aec9
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

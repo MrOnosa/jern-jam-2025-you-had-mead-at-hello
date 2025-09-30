@@ -2,7 +2,7 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://coljsvnpfe5rq"
+uid="uid://dp6yxq8c7syqy"
 path="res://.godot/imported/4-hymnoptera.ogg-3db8aa84891c9128286856b58c98c64e.oggvorbisstr"
 
 [deps]
@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/4-hymnoptera.ogg-3db8aa84891c9128286856b58c98
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

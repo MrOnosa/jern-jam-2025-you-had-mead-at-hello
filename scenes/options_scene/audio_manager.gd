@@ -16,56 +16,56 @@ var ost_playlist: Dictionary = {
 	"1": {
 		"song": _1_MORNING_DRIZZLE,
 		"name": "Morning Drizzle",
-		"artist": "Ategondev",
+		"artist": "Ategon",
 		"unlocked": true,
 		"volume": -10.0
 	},
 	"2": {
 		"song": _2_SUNNY_BEESNESS,
 		"name": "Sunny Beesness",
-		"artist": "Ategondev",
+		"artist": "Ategon",
 		"unlocked": true,
 		"volume": -10.0
 	},
 	"3": {
 		"song": _3_BUZZY_MEADOWS,
 		"name": "Buzzy Meadows",
-		"artist": "Ategondev",
+		"artist": "Ategon",
 		"unlocked": true,
 		"volume": -10.0
 	},
 	"4": {
 		"song": _4_HYMNOPTERA,
 		"name": "Hymnoptera",
-		"artist": "Ategondev",
+		"artist": "Ategon",
 		"unlocked": true,
 		"volume": -10.0
 	},
 	"5": {
 		"song": _5_APIARY_NIGHTCLUB,
 		"name": "Apiary Nightclub",
-		"artist": "Ategondev",
+		"artist": "Ategon",
 		"unlocked": true,
 		"volume": -10.0
 	},
 	"6": {
 		"song": _6_WAGGLE_DANCE,
 		"name": "Waggle Dance",
-		"artist": "Ategondev",
+		"artist": "Ategon",
 		"unlocked": true,
 		"volume": -10.0
 	},
 	"7": {
 		"song": _7_MURDER_HORNET,
 		"name": "Murder Hornet",
-		"artist": "Ategondev",
+		"artist": "Ategon",
 		"unlocked": false,
 		"volume": -10.0
 	},
 	"8": {
 		"song": _8_NUC_NUKE,
 		"name": "Nuc Nuke",
-		"artist": "Ategondev",
+		"artist": "Ategon",
 		"unlocked": false,
 		"volume": -10.0
 	}
@@ -74,6 +74,7 @@ var ost_playlist: Dictionary = {
 var current_song_index: int = 1
 var is_playlist_active: bool = false
 var bgm_player: AudioStreamPlayer
+var volume_tween: Tween
 
 # Sound Effects Variables
 const button_hover_sfx: AudioStream = preload("uid://eftifp5h88l0")
@@ -204,12 +205,31 @@ func play_title_bgm() -> void:
 		
 	is_playlist_active = false
 	current_song_index = 1
-	play_bgm(ost_playlist["1"].song, ost_playlist["1"].volume)
 	song_changed.emit(ost_playlist["1"].name,ost_playlist["1"].artist)
+	play_bgm(ost_playlist["1"].song, ost_playlist["1"].volume)
 
 
 func play_game_bgm() -> void:
+	_fade_out_title()
+
+
+func _fade_out_title() -> void:
+	if bgm_player and bgm_player.playing:
+		await _tween_volume(-80.0, 4)
+		bgm_player.stop()
+	
 	start_playlist(2)
+
+
+func _tween_volume(to_db: float, duration: float) -> void:
+	if volume_tween:
+		volume_tween.kill()
+	
+	volume_tween = create_tween()
+	volume_tween.tween_property(bgm_player, "volume_db", to_db, duration)
+	volume_tween.tween_interval(5)
+	
+	await volume_tween.finished
 
 
 func _on_song_finished() -> void:
