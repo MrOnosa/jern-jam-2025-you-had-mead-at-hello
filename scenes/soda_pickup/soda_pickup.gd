@@ -18,9 +18,17 @@ func _ready() -> void:
 	soda_sprite.texture = soda_sprite_list.pick_random()
 	rotation_degrees = randi_range(15,360)
 	soda_area_2d.body_entered.connect(_on_body_entered)
+	modulate.a = 0
+	
+	show_soda()
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is BeeKeeper:
 		Utility.soda_can_picked_up.emit(soda_value)
 		queue_free()
+
+
+func show_soda() -> void:
+	var t_soda = create_tween().set_trans(Tween.TRANS_LINEAR)
+	t_soda.tween_property(self, "modulate:a", 1, 3.0)
