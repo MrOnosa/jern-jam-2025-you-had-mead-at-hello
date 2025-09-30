@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dq68pnmyoe7mc"]
+[gd_scene load_steps=42 format=3 uid="uid://dq68pnmyoe7mc"]
 
 [ext_resource type="Script" uid="uid://mqqion7wrlty" path="res://scenes/bloomheart_woods/bloomheart_woods.gd" id="1_be4b0"]
 [ext_resource type="Texture2D" uid="uid://dmnihv382ty1d" path="res://assets/ground_texture.png" id="1_bwr0l"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://c0pe207hbkjet" path="res://assets/gui/gui_pointer.png" id="22_va1an"]
 [ext_resource type="PackedScene" uid="uid://b7rtim3q5xhms" path="res://scenes/flower.tscn" id="26_kyyel"]
 [ext_resource type="PackedScene" uid="uid://br8hxs6xyd0mu" path="res://scenes/level_decoration/bush_4.tscn" id="30_y8ijm"]
+[ext_resource type="PackedScene" uid="uid://cjdwu2yuex8kp" path="res://scenes/soda_pickup/soda_spawner.tscn" id="34_0kbu6"]
 [ext_resource type="PackedScene" uid="uid://dxslt1chvejrp" path="res://scenes/floating_leaf/leaf_spawner.tscn" id="34_gb6q4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mhfi5"]
@@ -1802,6 +1803,125 @@ y_sort_enabled = true
 
 [node name="SellBox" parent="Interactables" groups=["interactables"] instance=ExtResource("10_y41x7")]
 position = Vector2(2899, 1556)
+
+[node name="Soda" type="Node2D" parent="Interactables"]
+
+[node name="SodaSpawner" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(3302, 1490)
+
+[node name="SodaSpawner2" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(2973, 1826)
+
+[node name="SodaSpawner3" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(3275, 1817)
+
+[node name="SodaSpawner4" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(4114, 1399)
+
+[node name="SodaSpawner5" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(4190, 1454)
+
+[node name="SodaSpawner6" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(4521, 1737)
+
+[node name="SodaSpawner7" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(2509, 1424)
+
+[node name="SodaSpawner8" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(3014, 1040)
+
+[node name="SodaSpawner9" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(3140, 1050)
+
+[node name="SodaSpawner10" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(1022, 1207)
+
+[node name="SodaSpawner11" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(1214, 1212)
+
+[node name="SodaSpawner12" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(1088, 1424)
+
+[node name="SodaSpawner13" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(886, 2602)
+
+[node name="SodaSpawner14" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(987, 2738)
+
+[node name="SodaSpawner15" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(2048, 3137)
+
+[node name="SodaSpawner16" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(441, 3546)
+
+[node name="SodaSpawner17" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(72, 3521)
+
+[node name="SodaSpawner18" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(143, 1949)
+
+[node name="SodaSpawner19" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(820, 256)
+
+[node name="SodaSpawner20" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(673, 195)
+
+[node name="SodaSpawner21" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(4039, 938)
+
+[node name="SodaSpawner22" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(5596, 655)
+
+[node name="SodaSpawner23" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(5702, 685)
+
+[node name="SodaSpawner24" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(5854, 154)
+
+[node name="SodaSpawner25" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(6102, 114)
+
+[node name="SodaSpawner26" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(6092, 1160)
+
+[node name="SodaSpawner27" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(5455, 3227)
+
+[node name="SodaSpawner28" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(5500, 3535)
+
+[node name="SodaSpawner29" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(5925, 3495)
+
+[node name="SodaSpawner30" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(4525, 3091)
+
+[node name="SodaSpawner31" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(4591, 2555)
+
+[node name="SodaSpawner32" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(4449, 2226)
+
+[node name="SodaSpawner33" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(4029, 1933)
+
+[node name="SodaSpawner34" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(4145, 1989)
+
+[node name="SodaSpawner35" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(3695, 387)
+
+[node name="SodaSpawner36" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(3397, 129)
+
+[node name="SodaSpawner37" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(2149, 63)
+
+[node name="SodaSpawner38" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(1952, 124)
+
+[node name="SodaSpawner39" parent="Interactables/Soda" instance=ExtResource("34_0kbu6")]
+position = Vector2(1507, 68)
 
 [node name="LeafSpawner" parent="." instance=ExtResource("34_gb6q4")]
 spawn_amount = 10

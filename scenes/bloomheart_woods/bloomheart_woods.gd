@@ -50,6 +50,7 @@ func _ready() -> void:
 	man_made_hive_button.pressed.connect(_on_man_made_hive_button_pressed)
 	honey_extractor_button.pressed.connect(_on_honey_extractor_button_pressed)
 	bucket_button.pressed.connect(_on_bucket_button_pressed)
+	Utility.soda_can_picked_up.connect(_on_soda_picked_up)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -220,3 +221,8 @@ func _HUD_on_panel_container_mouse_entered() -> void:
 
 func _HUD_on_panel_container_mouse_exited() -> void:
 	mouse_is_over_HUD = false
+
+
+func _on_soda_picked_up(_cash_gain_amount: int = 1) -> void:
+	AudioManager.play_pickup_sound()
+	cash += _cash_gain_amount
