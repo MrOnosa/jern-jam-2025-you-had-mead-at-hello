@@ -88,7 +88,9 @@ const SFX_PACKAGE_MEAD: AudioStream = preload("uid://21t11ijgqcw")
 const SFX_PICKUP_SOUND: AudioStream = preload("uid://cmfh704imcqnl")
 const SFX_WALKING_BUSHES: AudioStream = preload("uid://c0lk4t3c8runo")
 const ERROR_SOUND = preload("uid://bysjwgwokw1ve")
-
+const BEAR_STATUE_GOLDEN = preload("uid://dome0qtpvisdv")
+const BEAR_STATUE_OFFERING = preload("uid://fdh50mldtvy7")
+const BEAR_STATUE_PLACED = preload("uid://ul6dkatsgyo7")
 
 
 func _ready() -> void:
@@ -166,6 +168,18 @@ func play_drop_honey() -> void:
 
 func play_error_sound() -> void:
 	play_sound(ERROR_SOUND,true,0.0,Vector2.ZERO,-1.0)
+
+
+func play_bear_placed() -> void:
+	play_sound(BEAR_STATUE_PLACED,true)
+
+
+func play_bear_golden() -> void:
+	play_sound(BEAR_STATUE_GOLDEN,true)
+	
+	
+func play_bear_offering() -> void:
+	play_sound(BEAR_STATUE_OFFERING,true)
 
 
 func play_bgm(audio_file: AudioStream, _volume: float = 0.0) -> void:
