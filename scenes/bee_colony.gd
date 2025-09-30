@@ -31,8 +31,10 @@ var player_nearby : BeeKeeper = null
 var mouse_hovering : bool = false
 var is_starving : bool = false
 
+var honeycomb_ever_ready : bool = false
 signal honey_collected
 signal spawn_bee(home_hive: BeeColony)
+signal first_honeycomb_ready
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -139,6 +141,9 @@ func _on_hive_upkeep_timer_timeout() -> void:
 		is_starving = false
 		raw_honey_produced -= honey_to_feed_all_the_bees
 		total_bees = min(max_population, total_bees + bee_growth) # todo make a range
+		if !honeycomb_ever_ready && raw_honey_produced > raw_honey_needed_for_a_jar:
+			honeycomb_ever_ready = true
+			first_honeycomb_ready.emit()
 	else:
 		# Starving!!
 		is_starving = true

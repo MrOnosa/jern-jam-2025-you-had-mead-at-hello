@@ -14,13 +14,21 @@ const TOAST_LABLE = preload("uid://bn6h1et37uvkd")
 @onready var bucket_button: TextureButton = %BucketButton
 @onready var texture_progress_bar: TextureProgressBar = %TextureProgressBar
 @onready var menu_button: TextureButton = %MenuButton
+@onready var waiting_on_honeycomb_tutorial_lable: Label = $WaitingOnHoneycombTutorialLable
+@onready var harvest_honeycomb_tutorial_lable: Label = $HarvestHoneycombTutorialLable
+@onready var extract_honeycomb_tutorial_lable: Label = $ExtractHoneycombTutorialLable
+
+
 
 
 
 var dragging : bool = false
 
 var placed_beehive : bool = false
+var waiting_on_honeycomb : bool = true
 var placed_honey_extractor : bool = false
+var honeycomb_ever_collected : bool = false
+var honeycomb_ever_extracted : bool = false
 var mead_ever_collected : bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -33,6 +41,8 @@ func _ready() -> void:
 	placed_honey_extractor = Utility.sandbox_enabled
 	mead_ever_collected = Utility.sandbox_enabled
 	pause_menu.hide()
+	waiting_on_honeycomb_tutorial_lable.hide()
+	harvest_honeycomb_tutorial_lable.hide()
 
 var tutorial_arrow_progress := 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,7 +63,11 @@ func _process(delta: float) -> void:
 			tutorial_arrow_progress = 0
 	else:
 		texture_progress_bar.visible = false
+		# Show this label until a honeycomb is ready
+		waiting_on_honeycomb_tutorial_lable.visible = waiting_on_honeycomb
+		harvest_honeycomb_tutorial_lable.visible = !waiting_on_honeycomb && !honeycomb_ever_collected
 	
+	extract_honeycomb_tutorial_lable.visible = placed_beehive && !waiting_on_honeycomb && honeycomb_ever_collected && !honeycomb_ever_extracted
 
 func _input(event: InputEvent) -> void:
 	if dragging:
@@ -108,3 +122,7 @@ func _on_song_changed(song_title: String, song_artist: String) -> void:
 func _on_menu_button_pressed() -> void:
 	AudioManager.button_click()
 	pause_menu.show()
+
+func first_honeycomb_ready() -> void:
+	# Called every time a hive made one honeycomb
+	waiting_on_honeycomb = false

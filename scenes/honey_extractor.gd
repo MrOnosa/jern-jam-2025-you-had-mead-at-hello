@@ -1,6 +1,8 @@
 class_name HoneyExtractor
 extends StaticBody2D
 
+signal used_honeycomb
+
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var honeycomb_1_texture_progress_bar: TextureProgressBar = %Honeycomb1TextureProgressBar
 @onready var honeycomb_2_texture_progress_bar: TextureProgressBar = %Honeycomb2TextureProgressBar
@@ -135,6 +137,7 @@ func _on_honeycomb_action_button_pressed() -> void:
 	AudioManager.play_extractor_sound(global_position)
 	honeycombs = min(3.0, honeycombs + 1.0)
 	player_nearby.holding = BeeKeeper.Holding.NOTHING
+	used_honeycomb.emit()
 
 func _on_honey_action_button_pressed() -> void:
 	AudioManager.play_drop_honey()

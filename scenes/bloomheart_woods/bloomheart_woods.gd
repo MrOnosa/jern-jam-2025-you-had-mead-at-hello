@@ -122,7 +122,9 @@ func _process(delta: float) -> void:
 							bee_colony.max_population = 20000
 							bee_colony.max_raw_honey_capacity = bee_colony.raw_honey_needed_for_a_jar * 2
 							bee_colony.honey_collected.connect(bee_keeper._on_bee_colony_honey_collected)
+							bee_colony.honey_collected.connect(_on_bee_colony_harvested)
 							bee_colony.spawn_bee.connect(_on_bee_colony_spawn_bee)
+							bee_colony.first_honeycomb_ready.connect(_on_bee_colony_first_honeycomb_ready)
 							
 							if (!hud.placed_beehive):
 								hud.placed_beehive = true
@@ -137,12 +139,14 @@ func _process(delta: float) -> void:
 							bee_colony.max_population = 80000
 							bee_colony.max_raw_honey_capacity = bee_colony.raw_honey_needed_for_a_jar * 6
 							bee_colony.honey_collected.connect(bee_keeper._on_bee_colony_honey_collected)
+							bee_colony.honey_collected.connect(_on_bee_colony_harvested)
 							bee_colony.spawn_bee.connect(_on_bee_colony_spawn_bee)
+							bee_colony.first_honeycomb_ready.connect(_on_bee_colony_first_honeycomb_ready)
 							add_child(bee_colony)	
 						Utility.Draggable_Items.HONEY_EXTRACTOR:	
 							var bee_colony = HONEY_EXTRACTOR.instantiate() as HoneyExtractor
 							bee_colony.position = drag_and_drop_item.position							
-							
+							bee_colony.used_honeycomb.connect(_on_honey_extractor_used_honeycomb)
 							if (!hud.placed_honey_extractor):
 								hud.placed_honey_extractor = true
 								hud.toast("More items available\nfor purchase", 5.0)
@@ -197,6 +201,21 @@ func _on_bee_colony_spawn_bee(home_hive: BeeColony) -> void:
 	bee.home_hive = home_hive
 	add_child(bee)
 
+func _on_bee_colony_first_honeycomb_ready() -> void:
+	hud.first_honeycomb_ready()
+	
+func _on_bee_colony_harvested() -> void:
+	hud.honeycomb_ever_collected = true
+	
+func _on_honey_extractor_used_honeycomb() -> void:
+	var temp = hud.honeycomb_ever_extracted	
+	hud.honeycomb_ever_extracted = true # hide label
+	if !temp:
+		hud.toast("Your apiary is now producing honey!", 5)
+		await get_tree().create_timer(5.5).timeout
+		hud.toast("Next, put honey in buckets to produce mead.", 5)
+		await get_tree().create_timer(5.5).timeout
+		hud.toast("Or, sell some items to get cash.", 5)
 
 func _on_sell_box_placed(item_name: String, value: int) -> void:
 	hud.toast(str("Sold! ", item_name," for $", value))
@@ -270,7 +289,7 @@ func _on_bear_turned_golden() -> void:
 		game_complete = true
 		AudioManager.ost_playlist["8"]["unlocked"] = true
 		AudioManager.start_playlist(8)
-		hud.toast("The forrest is under the bear's protection.\nAll litter has been removed.\nThank you for playing!\n\nFinal Song Unlocked!", 15)
+		hud.toast("The forrest is under the bear's protection.\nAll litter has been removed.\nThank you for playing!\n\nFinal Song Unlocked!", 22)
 		var all_the_soda_spawners = get_tree().get_nodes_in_group("soda_spawner") as Array[Node]
 		for b in all_the_soda_spawners:
 			if b is SodaSpawner:
