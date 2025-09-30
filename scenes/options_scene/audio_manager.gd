@@ -32,7 +32,7 @@ var ost_playlist: Dictionary = {
 		"name": "Buzzy Meadows",
 		"artist": "Ategondev",
 		"unlocked": true,
-		"volume": -10.0
+		"volume": -15.0
 	},
 	"4": {
 		"song": _4_HYMNOPTERA,
@@ -185,6 +185,9 @@ func stop_bgm() -> void:
 
 
 func play_title_bgm() -> void:
+	if is_song_playing("1"):
+		return
+		
 	is_playlist_active = false
 	current_song_index = 1
 	play_bgm(ost_playlist["1"].song, ost_playlist["1"].volume)
@@ -224,3 +227,7 @@ func start_playlist(starting_index: int = 1) -> void:
 	is_playlist_active = true
 	current_song_index = starting_index - 1
 	play_next_song()
+
+
+func is_song_playing(song_key: String) -> bool:
+	return bgm_player.playing and bgm_player.stream == ost_playlist[song_key].song
