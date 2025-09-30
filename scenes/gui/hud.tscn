@@ -254,7 +254,6 @@ stretch_mode = 5
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 unique_name_in_owner = true
-visible = false
 offset_left = 97.0
 offset_top = 70.0
 offset_right = 442.0
@@ -395,7 +394,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ExtractHoneycombTutorialLable" parent="." instance=ExtResource("8_2b3sj")]
 offset_left = 130.0
-offset_top = 135.00003
+offset_top = 135.0
 offset_right = 624.0
 offset_bottom = 345.0
 rotation = 0.017453292
@@ -403,4 +402,15 @@ pivot_offset = Vector2(252, 76)
 text = "Place honeycomb
 in a 
 Honey Extractor"
+metadata/_edit_use_anchors_ = true
+
+[node name="SellItemsTutorialLable" parent="." instance=ExtResource("8_2b3sj")]
+offset_left = -487.0
+offset_top = -368.0
+offset_right = 128.0
+offset_bottom = -218.99997
+pivot_offset = Vector2(252, 76)
+text = "Low on cash?
+Sell items in the Sale Box"
+horizontal_alignment = 0
 metadata/_edit_use_anchors_ = true

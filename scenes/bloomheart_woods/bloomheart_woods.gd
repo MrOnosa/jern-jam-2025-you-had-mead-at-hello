@@ -108,6 +108,7 @@ func _process(delta: float) -> void:
 					hud.toast(str("Not enough room there"))
 					pass
 				elif too_expensive && !Utility.sandbox_enabled:
+					hud.ever_needed_more_cash = true
 					AudioManager.play_error_sound()
 					hud.toast(str("Need more cash \n", Utility.draggable_items_dictionary()[drag_and_drop_item_type]["Name"], " costs $", Utility.draggable_items_dictionary()[drag_and_drop_item_type]["Cost"]))
 					pass
@@ -219,6 +220,7 @@ func _on_honey_extractor_used_honeycomb() -> void:
 
 func _on_sell_box_placed(item_name: String, value: int) -> void:
 	hud.toast(str("Sold! ", item_name," for $", value))
+	hud.ever_sold_item = true
 	cash += value
 
 

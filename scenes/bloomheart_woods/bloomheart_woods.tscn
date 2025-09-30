@@ -1933,6 +1933,7 @@ leaf_life_low = 30.0
 
 [connection signal="on_player_dragging_ended" from="." to="HUD" method="_on_bloomheart_woods_on_player_dragging_ended"]
 [connection signal="on_player_dragging_started" from="." to="HUD" method="_on_bloomheart_woods_on_player_dragging_started"]
+[connection signal="placed" from="Interactables/SellBox" to="." method="_on_sell_box_placed"]
 
 [editable path="HUD"]
 [editable path="TreesBushes/Tree2"]

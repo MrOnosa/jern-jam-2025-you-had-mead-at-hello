@@ -17,9 +17,7 @@ const TOAST_LABLE = preload("uid://bn6h1et37uvkd")
 @onready var waiting_on_honeycomb_tutorial_lable: Label = $WaitingOnHoneycombTutorialLable
 @onready var harvest_honeycomb_tutorial_lable: Label = $HarvestHoneycombTutorialLable
 @onready var extract_honeycomb_tutorial_lable: Label = $ExtractHoneycombTutorialLable
-
-
-
+@onready var sell_items_tutorial_lable: Label = $SellItemsTutorialLable
 
 
 var dragging : bool = false
@@ -30,6 +28,8 @@ var placed_honey_extractor : bool = false
 var honeycomb_ever_collected : bool = false
 var honeycomb_ever_extracted : bool = false
 var mead_ever_collected : bool = false
+var ever_sold_item : bool = false
+var ever_needed_more_cash : bool = false 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -68,6 +68,7 @@ func _process(delta: float) -> void:
 		harvest_honeycomb_tutorial_lable.visible = !waiting_on_honeycomb && !honeycomb_ever_collected
 	
 	extract_honeycomb_tutorial_lable.visible = placed_beehive && !waiting_on_honeycomb && honeycomb_ever_collected && !honeycomb_ever_extracted
+	sell_items_tutorial_lable.visible = !ever_sold_item && ever_needed_more_cash
 
 func _input(event: InputEvent) -> void:
 	if dragging:
