@@ -687,6 +687,7 @@ collision_mask = 3
 shape = SubResource("WorldBoundaryShape2D_y8ijm")
 
 [node name="LeftWorldBoundry" type="StaticBody2D" parent="GroundArea"]
+position = Vector2(144, 0)
 collision_layer = 3
 collision_mask = 3
 
@@ -1548,6 +1549,9 @@ position = Vector2(161, 2903)
 
 [node name="Flower43" parent="Wildflowers" instance=ExtResource("26_kyyel")]
 position = Vector2(519, 3051)
+
+[node name="Flower126" parent="Wildflowers" instance=ExtResource("26_kyyel")]
+position = Vector2(71, 3571)
 
 [node name="Flower44" parent="Wildflowers" instance=ExtResource("26_kyyel")]
 position = Vector2(786, 3431)
