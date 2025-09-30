@@ -185,7 +185,7 @@ func play_bear_offering() -> void:
 
 
 func play_bgm(audio_file: AudioStream, _volume: float = 0.0) -> void:
-	bgm_player.stream = audio_file
+	bgm_player.stream = audio_file.duplicate() as AudioStream
 	bgm_player.volume_db = _volume
 	
 	if is_playlist_active:
