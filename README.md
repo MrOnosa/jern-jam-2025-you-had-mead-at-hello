@@ -2,7 +2,7 @@
 
 Play it for free on Itch - https://mronosa.itch.io/you-had-mead-at-hello
 
-Creatred for Jern Jam 2025 - https://itch.io/jam/jern-jam-2025
+Created for Jern Jam 2025 - https://itch.io/jam/jern-jam-2025
 
 Our Team:
 
